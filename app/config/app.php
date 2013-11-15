@@ -115,6 +115,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
     'Way\Generators\GeneratorsServiceProvider',
     'Frozennode\Administrator\AdministratorServiceProvider',
+    'Codesleeve\Stapler\StaplerServiceProvider',
     
 
 	),
