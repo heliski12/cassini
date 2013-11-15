@@ -12,6 +12,11 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		// $this->call('UserTableSeeder');
+		$this->call('SectorsTableSeeder');
+    $this->command->info('Sectors table has been seeded');
+		$this->call('RegionsTableSeeder');
+    $this->command->info('Regionstable has been seeded');
+    
 	}
 
 }

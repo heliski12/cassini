@@ -55,5 +55,34 @@ class Profile extends Eloquent {
     return $this->hasMany('Photo');
   }
 
+  public function getViewFormAttribute()
+  {
+    return "<a href='" . URL::to('/') . "/admin_profile_wizard'>Use Profile Wizard</a>";
+  }
+
+  public function getKeypersonsTosAttribute()
+  {
+    $keypersons = [];
+    foreach ($this->getAttribute('keypersons') as $keyperson)
+      $keypersons[]= $keyperson->name;
+    return implode(', ', $keypersons);
+  }
+
+  public function getRegionsTosAttribute()
+  {
+    $regions = [];
+    foreach ($this->getAttribute('regions') as $region)
+      $regions[]= $region->name;
+    return implode(', ', $regions);
+  } 
+
+  public function getSectorsTosAttribute()
+  {
+    $sectors = [];
+    foreach ($this->getAttribute('sectors') as $sector)
+      $sectors[]= $sector->name;
+    return implode(', ', $sectors);
+  } 
+
 
 }

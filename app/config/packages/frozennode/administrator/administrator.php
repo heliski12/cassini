@@ -57,8 +57,8 @@ return array(
                   'photos',
                   'profiles',
                   'publications',
-                  'regions',
-                  'sectors',
+                  //'regions',
+                  //'sectors',
                   'users'),
 
 	/**
