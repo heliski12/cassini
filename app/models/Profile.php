@@ -30,6 +30,11 @@ class Profile extends Eloquent {
     return $this->hasMany('Keyperson');
   }
 
+  public function presentations()
+  {
+    return $this->hasMany('Presentation');
+  }
+
   public function institution()
   {
     return $this->belongsTo('Institution');
@@ -60,12 +65,26 @@ class Profile extends Eloquent {
     return "<a href='" . URL::to('/') . "/admin_profile_wizard'>Use Profile Wizard</a>";
   }
 
+  public function getStatusTosAttribute()
+  {
+    if (!array_key_exists($this->getAttribute('status'), Config::get('cassini.profile_statuses')))
+      return Config::get('cassini.not_specified');
+    return Config::get('cassini.profile_statuses')[$this->getAttribute('status')];
+  }
+
   public function getKeypersonsTosAttribute()
   {
     $keypersons = [];
     foreach ($this->getAttribute('keypersons') as $keyperson)
-      $keypersons[]= $keyperson->name;
+      $keypersons[]= "<a href='" . URL::to('/') . "/admin/keypersons/" . $keyperson->id . "' target='_blank'>" . $keyperson->name . "</a>";
     return implode(', ', $keypersons);
+  }
+
+  public function getProviderTypeTosAttribute()
+  {
+    if (!array_key_exists($this->getAttribute('provider_type'), Config::get('cassini.provider_types')))
+      return Config::get('cassini.not_specified');
+    return Config::get('cassini.provider_types')[$this->getAttribute('provider_type')];
   }
 
   public function getRegionsTosAttribute()
@@ -84,5 +103,26 @@ class Profile extends Eloquent {
     return implode(', ', $sectors);
   } 
 
+  public function getPhotosCountAttribute()
+  {
+    $photos = $this->getAttribute('photos');
+    if (empty($photos))
+      return "0";
+    return sizeof($photos);
+  }
+  public function getPresentationsCountAttribute()
+  {
+    $presentations = $this->getAttribute('presentations');
+    if (empty($presentations))
+      return "0";
+    return sizeof($presentations);
+  }
+  public function getPublicationsCountAttribute()
+  {
+    $publications = $this->getAttribute('publications');
+    if (empty($publications))
+      return "0";
+    return sizeof($publications);
+  }
 
 }
