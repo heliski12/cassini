@@ -1,0 +1,39 @@
+html, body { height: 100%; }
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+.header {
+  background-color: #F0F0F0;
+}
+.header img {
+  max-height: 59px;
+  margin: 24px 0 24px 10px;
+}
+.wrap-login {
+  background: url("../img/login-bg.jpg") no-repeat center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  height: 100%;
+}
+.login-splash h2 {
+  color: #FFFFFF;
+  font-family: 'open_sansregular';
+  font-size: 28px;
+  line-height: 33px;
+  margin-top: 0px;
+}
+.login-content {
+  padding-top: 125px;
+}
+.signin {
+  height: 300px;
+  background-color: #F0F0F0;
+}
+
+/* TODO - REMOVE */
+.red { background-color: red; }
+.green { background-color: green; }
+.blue { background-color: blue; }

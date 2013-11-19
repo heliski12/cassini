@@ -17,7 +17,7 @@ class CreateProfilesTable extends Migration {
 			$table->integer('creator_id');
 			$table->enum('status',array('STARTED','COMPLETE_PENDING','PUBLISHED','REVOKED'));
 			$table->enum('provider_type', array('TECHNOLOGY_ENTREPRENEUR','ACADEMIC_RESEARCHER','GOVERNMENT_RESEARCHER'));
-			$table->integer('institution_id');
+      $table->integer('institution_id')->nullable();
 			$table->string('institution_department');
 			$table->string('organization');
 			$table->boolean('organization_for_profit');

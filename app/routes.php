@@ -13,8 +13,20 @@
 
 Route::get('/', function()
 {
-  return View::make('hello');
+  if (Auth::check())
+    return Redirect::to('/profiles');
+	return View::make('public.login');
 });
+
+
+Route::group(array('before' => 'auth'), function() 
+{
+  Route::get('/profiles', function() 
+  {
+    return "Protected profiles page";
+  }); 
+});
+
 
 
 // TODO - fix this placeholder

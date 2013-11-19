@@ -30,7 +30,7 @@ return array(
   ),
   'edit_fields' => array(
     'first_name' => [ 'title' => 'First Name' ],
-    'last_name' => [ 'title' => 'First Name' ],
+    'last_name' => [ 'title' => 'Last Name' ],
     'email' => [ 'title' => 'Email' ],
     'innovator' => [ 'title' => 'Innovator', 'type' => 'bool' ], 
     'seeker' => [ 'title' => 'Seeker', 'type' => 'bool' ], 
