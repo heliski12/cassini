@@ -17,6 +17,7 @@ html, body { height: 100%; }
   -moz-background-size: cover;
   -o-background-size: cover;
   height: 100%;
+  overflow-x: hidden;
 }
 .login-splash h2 {
   color: #FFFFFF;
@@ -26,11 +27,23 @@ html, body { height: 100%; }
   margin-top: 0px;
 }
 .login-content {
-  padding-top: 125px;
+  padding-top: 115px;
 }
-.signin {
-  height: 300px;
+.signin, .signup {
   background-color: #F0F0F0;
+  margin-bottom: 15px;
+}
+.signin form, .signup {
+  padding:10px;
+}
+.signin input {
+  margin-bottom:10px;
+}
+.signin button, .signup button {
+  margin-top: 20px;
+}
+.row {
+  padding: 0 15px;
 }
 
 /* TODO - REMOVE */

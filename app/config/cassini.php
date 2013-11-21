@@ -33,4 +33,8 @@ return [
   'not_specified' => 'Not Specified',
   'not_applicable' => 'n/a',
 
+  'forgot_email_subject' => 'Forgot Email',
+  'forgot_email_body' => 'To send the registered email address please provide your first and last name as well as your organization.  We will call the registered phone number for verification.',
+  'support_email' => 'support@motionry.com',
+
 ];
