@@ -52,6 +52,8 @@
 
     </div>
 
+    @yield('modal')
+
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
 

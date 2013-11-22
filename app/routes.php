@@ -18,6 +18,16 @@ Route::get('/', function()
 	return View::make('public.login');
 });
 
+Route::post('login', function()
+{
+  return "coming soon";
+});
+
+Route::post('signup', function()
+{
+  return "coming soon";
+});
+
 
 Route::group(array('before' => 'auth'), function() 
 {
