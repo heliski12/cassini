@@ -15,6 +15,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     'password_confirmation' => 'required|same:password',
   );
 
+  protected $fillable = [ 'first_name', 'last_name', 'organization', 'phone', 'email', 'password' ];
+
 	public function getAuthIdentifier()
 	{
 		return $this->getKey();

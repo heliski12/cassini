@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-  if (Auth::check())
+  if (Auth::check() and Auth::user()->role !== 'PENDING')
     return Redirect::to('/profiles');
 	return View::make('public.landing');
 });
@@ -30,7 +30,8 @@ Route::group(array('before' => 'pre-auth'), function()
   Route::get('authorization', function()
   {
     // TODO 
-    return "Thank you for signup up.  We will contact you shortly for access to the Marketplace.";
+    return View::make('pre-auth.landing');
+    
   });
 });
 

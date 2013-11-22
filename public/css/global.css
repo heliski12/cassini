@@ -51,6 +51,9 @@ html, body { height: 100%; }
 input.error {
   border: 3px solid #b94a48;
 }
+.container.authorization {
+  margin-top:20px;
+}
 
 
 /* TODO - REMOVE */
