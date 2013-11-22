@@ -15,7 +15,7 @@ Route::get('/', function()
 {
   if (Auth::check())
     return Redirect::to('/profiles');
-	return View::make('public.login');
+	return View::make('public.landing');
 });
 
 Route::post('login', function()
@@ -23,11 +23,16 @@ Route::post('login', function()
   return "coming soon";
 });
 
-Route::post('signup', function()
-{
-  return "coming soon";
-});
+Route::post('signup', 'UsersController@signup');
 
+Route::group(array('before' => 'pre-auth'), function() 
+{
+  Route::get('authorization', function()
+  {
+    // TODO 
+    return "Thank you for signup up.  We will contact you shortly for access to the Marketplace.";
+  });
+});
 
 Route::group(array('before' => 'auth'), function() 
 {

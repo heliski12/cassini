@@ -5,6 +5,16 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
+  public static $rules = array(
+    'first_name' => 'required',
+    'last_name' => 'required',
+    'organization' => 'required',
+    'phone' => 'required',
+    'email' => 'required|email|unique:users,email',
+    'password' => 'required|between:8,250', 
+    'password_confirmation' => 'required|same:password',
+  );
+
 	public function getAuthIdentifier()
 	{
 		return $this->getKey();
@@ -45,6 +55,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     if (!empty($value)) 
       $this->attributes['password'] = Hash::make($value); 
   }
+
+  public static function validate($input)
+  {
+    return Validator::make($input, static::$rules);
+  }
+  
   
 
 }

@@ -45,6 +45,12 @@ html, body { height: 100%; }
 .row {
   padding: 0 15px;
 }
+.modal-body .checkbox.last {
+  margin-bottom:20px;
+}
+input.error {
+  border: 3px solid #b94a48;
+}
 
 
 /* TODO - REMOVE */

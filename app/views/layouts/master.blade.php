@@ -31,7 +31,12 @@
       ga('send', 'pageview');
 
     </script>
+
     @endif
+
+      <script type="text/javascript">
+        var BASE_URL = "{{ URL::to('/') }}";
+      </script>
     
   </head>
 
@@ -56,6 +61,9 @@
 
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
+    {{ HTML::script('js/public.js') }}
+
+    @yield('js')
 
   </body>
 </html>

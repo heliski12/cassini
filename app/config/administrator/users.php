@@ -37,7 +37,7 @@ return array(
     'unsure' => [ 'title' => 'Unsure', 'type' => 'bool' ], 
     'title' => [ 'title' => 'Title' ],
     'organization' => [ 'title' => 'Organizatin' ],
-    'role' => [ 'title' => 'Role', 'type' => 'enum', 'options' => [ 'USER', 'PRESS', 'ADMIN' ] ],
+    'role' => [ 'title' => 'Role', 'type' => 'enum', 'options' => [ 'PENDING', 'USER', 'PRESS', 'ADMIN' ] ],
     'phone' => [ 'title' => 'Phone' ],
     'password' => [ 'title' => 'Password', 'type' => 'password', 'title' => 'Password' ] ,
   ),

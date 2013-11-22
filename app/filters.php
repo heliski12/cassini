@@ -33,9 +33,14 @@ App::after(function($request, $response)
 |
 */
 
+Route::filter('pre-auth', function()
+{
+	if (Auth::guest()) return Redirect::guest('/');
+});
+
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('public.login');
+  if (Auth::guest() or Auth::user()->role === 'PENDING') return Redirect::guest('/');
 });
 
 

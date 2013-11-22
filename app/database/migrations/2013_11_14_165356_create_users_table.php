@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration {
 			$table->boolean('unsure');
 			$table->string('title');
 			$table->string('organization');
-			$table->enum('role',array('USER','PRESS','ADMIN'));
+			$table->enum('role',array('PENDING','USER','PRESS','ADMIN'));
 			$table->string('phone');
 			$table->timestamps();
 		});
