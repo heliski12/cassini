@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.public')
 
 @section('title')
   @parent
@@ -22,8 +22,13 @@
       <div class="col-sm-3">
         <div class="signin">
         {{ Form::open(array('url' => 'login', 'id' => 'login_form')) }}
+        @if (Session::has('status'))
+          <div class="error-message">
+            {{ Session::get('status') }} 
+          </div>
+        @endif
         {{ Form::text('email',null, [ 'placeholder' => 'Email address', 'class' => 'form-control' ]) }}
-        {{ Form::text('password',null, [ 'placeholder' => 'Password', 'class' => 'form-control' ]) }}
+        {{ Form::password('password', [ 'placeholder' => 'Password', 'class' => 'form-control' ]) }}
         <div>Forgot <a href="mailto:{{ Config::get('cassini.support_email') }}?subject={{ Config::get('cassini.forgot_email_subject') }}&body={{ Config::get('cassini.forgot_email_body') }}" target="_blank">email</a> or <a href="#">password</a>?</div>
         
         {{ Form::button('SIGN IN', array('class' => 'btn btn-primary', 'type' => 'submit')) }}

@@ -27,7 +27,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', '[todo]', 'pathforlife.com');
+      ga('create', 'UA-44904108-1', 'marketplace.motionry.com');
       ga('send', 'pageview');
 
     </script>
@@ -47,8 +47,13 @@
 
       <div class="container-full header">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-2">
             <a href="http://www.motionry.com"><img alt="Motionry Logo" src="{{ asset('img/motionry.jpg') }}"/></a>
+          </div>
+          <div class="col-md-2 col-md-offset-8 user-nav">
+            <h6>CHANGE <a href="#">EMAIL</a> OR <a href="#">PASSWORD</a></h6> 
+            <h5>{{ Auth::user()->email }}</h5>
+            <h5><a href="{{ URL::to('/logout') }}">Log Out</a></h5>
           </div>
         </div>
       </div>

@@ -13,34 +13,45 @@
 
 Route::get('/', function()
 {
-  if (Auth::check() and Auth::user()->role !== 'PENDING')
-    return Redirect::to('/profiles');
+  if (Auth::check())
+  {
+    if (Auth::user()->role !== 'PENDING')
+    {
+      if (empty(Auth::user()->profile))
+        return Redirect::route('create_profile');
+      else
+        return Redirect::route('marketplace');
+    }
+  }
+
 	return View::make('public.landing');
 });
 
-Route::post('login', function()
-{
-  return "coming soon";
-});
-
+// public
+Route::post('login',  'UsersController@login');
+Route::get('logout',  'UsersController@logout');
 Route::post('signup', 'UsersController@signup');
 
+// user pending approval
 Route::group(array('before' => 'pre-auth'), function() 
 {
-  Route::get('authorization', function()
+  Route::get('authorization', [ 'as' => 'authorization', function()
   {
     // TODO 
     return View::make('pre-auth.landing');
     
-  });
+  }]);
 });
 
+// user approved areas 
 Route::group(array('before' => 'auth'), function() 
 {
   Route::get('/profiles', function() 
   {
     return "Protected profiles page";
   }); 
+  Route::get('/create_profile/{step?}', [ 'as' => 'create_profile', 'uses' => 'ProfilesController@create' ])->where('step', '[1-3]');
+  Route::get('/marketplace', [ 'as' => 'marketplace', 'uses' => 'ProfilesController@index' ]);
 });
 
 

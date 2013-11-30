@@ -5,9 +5,10 @@ $(function(){
     $.post(BASE_URL + '/signup', 
       $(this).serialize(),
       function(data, textStatus, request) {
-        if (request.getResponseHeader('signup')) 
-          document.location = BASE_URL + '/authorization';
-        else
+        // TODO - needed if want to forward to pending authorization page
+        //if (request.getResponseHeader('signup')) 
+          //document.location = BASE_URL + '/authorization';
+        //else
           $('#signup_modal_content').html(data);
     });
   });

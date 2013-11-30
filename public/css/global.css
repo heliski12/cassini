@@ -8,7 +8,7 @@ html, body { height: 100%; }
 }
 .header img {
   max-height: 59px;
-  margin: 24px 0 24px 10px;
+  margin: 22px 0 22px 10px;
 }
 .wrap-login {
   background: url("../img/login-bg.jpg") no-repeat center fixed;
@@ -51,8 +51,30 @@ html, body { height: 100%; }
 input.error {
   border: 3px solid #b94a48;
 }
+div.error-message {
+  color: #b94a48;
+  margin-bottom:8px;
+}
 .container.authorization {
   margin-top:20px;
+}
+.user-nav h5, .user-nav h6
+{
+  text-align: right;
+  margin-right:10px;
+}
+html .user-nav h6
+{
+  font-size: 10px;
+  padding-top:10px;
+  margin-bottom: 3px;
+}
+html .user-nav h5
+{
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 
