@@ -1,6 +1,5 @@
-@extends('layouts.private')
+@extends('layouts.create_profile')
 
-@section('content')
-<a href="{{ URL::to('/create_profile/2') }}">Previous</a>
+@section('form')
+step 3
 @stop
-

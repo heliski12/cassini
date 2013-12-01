@@ -47,10 +47,10 @@
 
       <div class="container-full header">
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-md-2 col-sm-3">
             <a href="http://www.motionry.com"><img alt="Motionry Logo" src="{{ asset('img/motionry.jpg') }}"/></a>
           </div>
-          <div class="col-md-2 col-md-offset-8 user-nav">
+          <div class="col-md-2 col-md-offset-8 col-sm-3 col-sm-offset-6 user-nav">
             <h6>CHANGE <a href="#">EMAIL</a> OR <a href="#">PASSWORD</a></h6> 
             <h5>{{ Auth::user()->email }}</h5>
             <h5><a href="{{ URL::to('/logout') }}">Log Out</a></h5>
