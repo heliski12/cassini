@@ -2,30 +2,39 @@
 
 @section('content')
 
-  <div class="container-full create-profile">
+  <div class="container-full">
+    <div class="create-profile">
     <div class="row">
-      <div class="col-md-11 col-md-offset-1">
-        <h4>Welcome and let's start creating your profile.</h4>
+      <div class="col-md-8 col-md-offset-2">
+        <h4>Welcome to the private beta.  You are just minutes away from establishing your profile.</h4>
       </div> 
     </div>
     <div class="row">
-      <div class="col-md-1 col-md-offset-1 col-sm-2 step {{ $step == 1 ? 'step-active' : '' }}">
-        <h3>Step 1</h3>
-        General Info 
+      <div class="col-md-8 col-md-offset-2 steps-nav">
+        <ul class="steps">
+          <li class="{{ $step == 1 ? 'active' : '' }}">1</li>
+          <li class="{{ $step == 2 ? 'active' : '' }}">2</li>
+          <li class="{{ $step == 3 ? 'active' : '' }}">3</li>
+        </ul>
       </div>
-      <div class="col-md-1 col-sm-2 step {{ $step == 2 ? 'step-active' : '' }}">
-        <h3>Step 2</h3>
-        Technology Info 
-      </div>
-      <div class="col-md-1 col-sm-2 step {{ $step == 3 ? 'step-active' : '' }}">
-        <h3>Step 3</h3>
-        Supporting Info 
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 steps-nav">
+          <ul class="step-titles">
+            <li class="{{ $step == 1 ? 'active' : '' }}">Contact</li>
+            <li class="{{ $step == 2 ? 'active' : '' }}">Technology or Research</li>
+            <li class="{{ $step == 3 ? 'active' : '' }}">Documents</li>
+          </ul>
       </div>
     </div>
 
-    {{ Form::open([ 'url' => route('store_profile', $step), 'id' => 'create_profile_form', 'role' => 'form' ]) }}
+    {{ Form::open([ 'url' => route('store_profile', $step), 'id' => 'create_profile_form', 'role' => 'form', 'class' => 'form-horizontal' ]) }}
+
+    <div class="create-profile-form">
 
 @yield('form')
+
+    </div>
 
     <div class="form-group">
       <div class="row">
@@ -57,7 +66,8 @@
 
 
     {{ Form::close() }}
-
+    
+    </div> <!-- /.create-profile -->
   </div><!-- /.container-full -->
 
 @stop

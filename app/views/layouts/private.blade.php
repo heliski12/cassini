@@ -66,7 +66,7 @@
 
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/public.js') }}
+    {{ HTML::script('js/marketplace.js') }}
 
     @yield('js')
 
