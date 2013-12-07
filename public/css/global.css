@@ -1,3 +1,4 @@
+html { overflow-x: hidden; }
 html, body { height: 100%; }
 .container-full {
   margin: 0 auto;
@@ -12,7 +13,7 @@ html, body { height: 100%; }
   margin: 22px 0 22px 10px;
 }
 /* general */
-a.icon {
+a.icon, a.icon span {
   text-decoration: none;
   color: inherit;
   font-size: 14px;
@@ -97,17 +98,21 @@ html .user-nav h5
   border: solid 2px #000000;
   margin:20px;
 }
+.create-profile h4
+{
+  margin-top: 30px;
+  font-size:28px;
+  text-align: center;
+}
 .create-profile h5 
 {
   margin-top: 20px;
   font-size: 18px;
   font-weight: 500;
 }
-.create-profile h4
+.create-profile h6
 {
-  margin-top: 30px;
-  font-size:28px;
-  text-align: center;
+  font-size: 14px;
 }
 .create-profile-form
 {
@@ -160,7 +165,7 @@ ul.steps li::before
   position: absolute;
   top: .9em;
   left: -2.55em;
-  width: 4.6em;
+  width: 4.61em;
   height: .2em;
   background: #5B8DA6;
   z-index: -1;
@@ -171,7 +176,7 @@ ul.steps li::after
   position: absolute;
   top: .9em;
   left: 0em;
-  width: 4.6em;
+  width: 4.61em;
   height: .2em;
   background: #5B8DA6;
   z-index: -1;
@@ -246,10 +251,28 @@ ul.step-titles li.active ~ li
 {
   background: #F0F0F0;
   border: none;
+  padding: 0px 1px 0px;
 }
 #create_profile_form .panel 
 {
   border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+#create_profile_form .panel-heading {
+  background: #F0F0F0;
+  padding: 0px;
+}
+#create_profile_form .panel-heading h5 
+{
+  margin: 0px;
+  padding: 10px 0px 15px;
+  background: #F0F0F0;
+}
+#create_profile_form .panel-heading h5 a
+{
+  font-size: 18px;
+  font-weight: 500;
 }
 #create_profile_form .btn-link
 {
@@ -260,6 +283,24 @@ ul.step-titles li.active ~ li
   text-decoration: none;
   color: #005580;
 }
+#create_profile_form a.add-another
+{
+  text-decoration: none;
+  color: inherit;
+  margin-left: 20px;
+}
+.innovator-type-extras input, .innovator-type-extras select, .innovator-type-extras label {
+  margin-left: 10px;
+  margin-right: -10px;
+}
+label.sub-radio-label { margin-left: -5px; }
+label.radio-label { font-weight: bold; margin-left: 10px; }
+#create_profile_form label.radio-label input { margin-left: -10px; }
+#create_profile_form label.sub-radio-label input { margin-left: -25px; }
+#create_profile_form div.form-group.form-group-label { margin-bottom: 0px; }
+#tech_description_charcount { float: right; }
+#profile-step-2 .bootstrap-select { margin-left: -15px; }
+
 
 
 /* TODO - REMOVE */

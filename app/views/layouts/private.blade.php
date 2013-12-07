@@ -12,6 +12,8 @@
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/fonts.css') }}
     {{ HTML::style('css/global.css') }}
+
+    @yield('css')
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -66,9 +68,12 @@
 
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
+
+    @yield('js-lib')
+
     {{ HTML::script('js/marketplace.js') }}
 
-    @yield('js')
+    @yield('js-user')
 
   </body>
 </html>

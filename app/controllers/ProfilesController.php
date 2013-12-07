@@ -6,12 +6,15 @@ class ProfilesController extends BaseController {
   {
     // TODO look up profile for user
 
+    $profile = new Profile;
+    //$profile = Profile::find(1);
+
     if ($step == 1)
-      return View::make('profiles.create_step_1')->with('step', 1);
+      return View::make('profiles.create_step_1')->with('step', 1)->with('profile', $profile);
     elseif ($step == 2)
-      return View::make('profiles.create_step_2')->with('step', 2);
+      return View::make('profiles.create_step_2')->with('step', 2)->with('profile', $profile);
     else
-      return View::make('profiles.create_step_3')->with('step', 3);
+      return View::make('profiles.create_step_3')->with('step', 3)->with('profile', $profile);
   }
 
   public function store($step = 1)

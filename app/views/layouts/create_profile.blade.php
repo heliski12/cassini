@@ -28,7 +28,8 @@
       </div>
     </div>
 
-    {{ Form::open([ 'url' => route('store_profile', $step), 'id' => 'create_profile_form', 'role' => 'form', 'class' => 'form-horizontal' ]) }}
+    {{ Form::open([ 'url' => route('store_profile', $step), 'id' => 'create_profile_form', 'role' => 'form', 'class' => ($step == 1) ? 'form-horizontal' : '' ]) }}
+    {{-- Form::model($profile, [ 'route' => ['store_profile', $step ], 'id' => 'create_profile_form', 'role' => 'form', 'class' => 'form-horizontal' ]) --}}
 
     <div class="create-profile-form">
 
@@ -70,4 +71,12 @@
     </div> <!-- /.create-profile -->
   </div><!-- /.container-full -->
 
+@stop
+
+@section('js-lib')
+  {{ HTML::script('js/bootstrap-select.min.js') }}
+@stop
+
+@section('css')
+  {{ HTML::style('css/bootstrap-select.min.css') }}
 @stop
