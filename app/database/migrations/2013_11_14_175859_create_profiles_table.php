@@ -29,7 +29,8 @@ class CreateProfilesTable extends Migration {
 			$table->boolean('ip_trademarks_pending');
 			$table->boolean('ip_patents');
 			$table->boolean('ip_patents_pending');
-			$table->string('url');
+			$table->string('website_url');
+			$table->string('website_title');
 			$table->timestamps();
 		});
 	}

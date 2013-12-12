@@ -30,6 +30,12 @@ return [
     'NOT_FUNDED' => 'Not currently funded',
   ],
 
+  'viewer_types' => [
+    'SEEKERS' => 'Seekers (Companies, Foundations, Gov\'t Agencies)',
+    'RESEARCHERS' => 'Researchers',
+    'ENTREPRENEURS' => 'Entrepreneurs',
+  ],
+
   'not_specified' => 'Not Specified',
   'not_applicable' => 'n/a',
 

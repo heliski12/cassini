@@ -14,5 +14,29 @@ class SelectHelper
     return $options; 
   }
 
+  public static function get_sector_options() 
+  {  
+    // TODO - cache these
+    $sectors = Sector::all();   
+    $options = [];
+    foreach ($sectors as $sector)
+    {
+      $options[$sector->id] = $sector->name;
+    }
+    return $options; 
+  }
+
+  public static function get_publication_options()
+  {
+    // TODO - cache these
+    $publications = Publication::all();   
+    $options = [];
+    foreach ($publications as $publication)
+    {
+      $options[$publication->id] = $publication->name;
+    }
+    return $options; 
+  }
+
 }
 

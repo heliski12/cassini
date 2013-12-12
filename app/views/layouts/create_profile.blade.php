@@ -35,35 +35,28 @@
 
 @yield('form')
 
-    </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-2 col-md-offset-1">
+            @if ($step > 1)
+            {{ Form::submit('&laquo; Previous', [ 'class' => 'btn btn-primary', 'name' => 'previous' ] ) }} 
+            @else
+            &nbsp;
+            @endif
+          </div>
 
-    <div class="form-group">
-      <div class="row">
-        <div class="col-md-2 col-md-offset-1 col-sm-3">
-          @if ($step > 1)
-          {{ Form::submit('&lt; Back', [ 'class' => 'btn btn-link', 'name' => 'previous' ] ) }} 
-          @else
-          &nbsp;
-          @endif
-        </div>
-
-        <div class="col-md-2 col-md-offset-3 col-sm-3">
-          @if ($step < 3)
-          {{ Form::submit('Next &gt;', [ 'class' => 'btn btn-link', 'name' => 'next' ] ) }} 
-          @else
-          &nbsp;
-          @endif
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="row">
-        <div class="col-md-1 col-md-offset-1 col-sm-2">
-          {{ Form::submit('Save Profile', [ 'class' => 'btn btn-primary' ]) }}
+          <div class="col-md-2 col-md-offset-6 profile-next">
+            @if ($step < 3)
+              {{ Form::submit('Save &amp; Next &raquo;', [ 'class' => 'btn btn-primary step' . $step, 'name' => 'next' ] ) }} 
+            @else
+              {{ Form::submit('Save Profile', [ 'class' => 'btn btn-primary' ]) }}
+            @endif
+          </div>
         </div>
       </div>
+
     </div>
+
 
 
     {{ Form::close() }}

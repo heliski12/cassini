@@ -72,7 +72,7 @@
     </div>
 
     <div class="form-group">
-      <p class="help-block col-md-offset-3"><a href="#" class="add-another">Add another team member</a></p>
+      <p class="help-block col-md-offset-3"><a href="#" class="add-another-kp">Add another team member</a></p>
     </div>
 
   </div>

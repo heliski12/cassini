@@ -283,7 +283,11 @@ ul.step-titles li.active ~ li
   text-decoration: none;
   color: #005580;
 }
-#create_profile_form a.add-another
+#create_profile_form a.add-another-kp, 
+#create_profile_form a.add-another-photo,
+#create_profile_form a.add-another-presentation,
+#create_profile_form a.add-another-publication,
+#create_profile_form a.add-another-award
 {
   text-decoration: none;
   color: inherit;
@@ -300,6 +304,11 @@ label.radio-label { font-weight: bold; margin-left: 10px; }
 #create_profile_form div.form-group.form-group-label { margin-bottom: 0px; }
 #tech_description_charcount { float: right; }
 #profile-step-2 .bootstrap-select { margin-left: -15px; }
+#create_profile_form input[type=submit] { margin: 10px 0px 20px; } 
+#create_profile_form .profile-next { text-align: right; }
+#create_profile_form .profile-next input.step1 { margin-right: 12px; }
+#create_profile_form .terms { margin-left: 0px; }
+
 
 
 

@@ -18,6 +18,7 @@ class CreateProfilePublicationTable extends Migration {
 			$table->integer('publication_id');
 			$table->string('article_title');
 			$table->string('article_url');
+			$table->string('name');
 			$table->timestamps();
 		});
 	}
