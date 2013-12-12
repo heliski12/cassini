@@ -50,8 +50,13 @@ $(function(){
   });
   $("button#upload_video").click(function(event) {
     event.preventDefault();
-    alert("Video uploads are coming soon!");
+    alert("Video uploads are coming soon!  (This can be a modal if desired)");
   });
+
+  $('#market_applications').tagit({
+      allowSpaces: true
+  });
+  
 
   $(".innovator-type-extras").collapse({toggle:false});
   $("input[name=innovator_type]").change(function(event) {

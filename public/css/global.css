@@ -308,6 +308,7 @@ label.radio-label { font-weight: bold; margin-left: 10px; }
 #create_profile_form .profile-next { text-align: right; }
 #create_profile_form .profile-next input.step1 { margin-right: 12px; }
 #create_profile_form .terms { margin-left: 0px; }
+#create_profile_form ul.tagit { background: #fff; }
 
 
 

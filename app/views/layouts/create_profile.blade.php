@@ -68,8 +68,12 @@
 
 @section('js-lib')
   {{ HTML::script('js/bootstrap-select.min.js') }}
+  {{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js') }}
+  {{ HTML::script('js/tag-it.min.js') }}
 @stop
 
 @section('css')
   {{ HTML::style('css/bootstrap-select.min.css') }}
+  {{ HTML::style('css/jquery.tagit.css') }}
+  {{ HTML::style('css/tagit.ui-zendesk.css') }}
 @stop
