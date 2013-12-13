@@ -33,12 +33,13 @@
       ga('send', 'pageview');
 
     </script>
-
     @endif
 
       <script type="text/javascript">
         var BASE_URL = "{{ URL::to('/') }}";
       </script>
+
+      @yield('js-head')
     
   </head>
 

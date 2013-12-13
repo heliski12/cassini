@@ -66,6 +66,20 @@
     </div> <!-- /.create-profile -->
   </div><!-- /.container-full -->
 
+  @yield('extra_forms')
+
+@stop
+
+@section('js-head')
+  <script type="text/javascript">
+    var counts = { 
+      'tm_count': {{ Input::old('keypersons') ? (sizeof(Input::old('keypersons')) - 1) : ((empty($profile->keypersons)) ? 0 : sizeof($profile->keypersons) - 1) }}, 
+      'photo_count':1,
+      'presentation_count':0,
+      'publication_count':0,
+      'award_count':0
+    };
+  </script>
 @stop
 
 @section('js-lib')

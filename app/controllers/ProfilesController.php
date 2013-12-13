@@ -4,20 +4,20 @@ class ProfilesController extends BaseController {
 
   public function create($step = 1)  
   {
-    Log::info("creating profile with session data " . print_r(Session::all(), true));
+    //Log::info("creating profile with session data " . print_r(Session::all(), true));
 
     $active_profile_id = Session::get('active_profile_id');
 
     if (!empty($active_profile_id))
     {
-      if (Session::has('active_profile_last_touched'))
+      if (Session::has('active_profile_last_touched') or Input::has('p'))
       {
         // look for abandoned profiles - if the application was started more than a day ago, just forget about it and start a new one
         $start_time = Session::get('active_profile_last_touched');
         $one_day_ago = new \DateTime;
         $one_day_ago->sub(new \DateInterval('P1D'));
 
-        if ($start_time < $one_day_ago)
+        if ($start_time < $one_day_ago or Input::has('p'))
         {
           $active_profile_id = null;
           Session::forget('active_profile_id');
@@ -26,10 +26,10 @@ class ProfilesController extends BaseController {
       }
     }
 
-    Log::info("creating profile, new session data after abandoned profile purge " . print_r(Session::all(), true));
+    //Log::info("creating profile, new session data after abandoned profile purge " . print_r(Session::all(), true));
 
     if (!empty($active_profile_id))
-      $profile = Profile::find($active_profile_id);
+      $profile = Profile::with('keypersons')->find($active_profile_id);
     else
       $profile = new Profile;
 
@@ -42,14 +42,26 @@ class ProfilesController extends BaseController {
 
   public function store($step = 1)
   {
-    $profile_id = Input::get('profile_id'); 
+    Input::flash();
+
+    $profile_id = Input::get('id'); 
 
     if (!empty($profile_id))
-      $profile = Profile::find($profile_id); 
+    {
+      $profile = Profile::fetchFullProfileForStep($profile_id, $step); 
+      $profile->fill(Input::all());
+    }
     else
+    {
       $profile = new Profile(Input::all());
+    }
+
+    $v = Profile::validateForStep(Input::all(), $step);
+    if (!empty($v) and $v->fails())
+      return View::make("profiles.create_step_$step")->with([ 'errors' => $v->messages(), 'step' => $step, 'profile' => $profile ]);
 
     $profile->save();
+    $profile->saveAssociatesForStep(Input::all(), $step);
 
     Session::put('active_profile_id', $profile->id);
     Session::put('active_profile_last_touched', new \DateTime);

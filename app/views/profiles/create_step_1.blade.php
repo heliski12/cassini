@@ -57,18 +57,52 @@
 
 
     <div class="panel-group" id="kp_accordion">
-      @foreach (range(0,0) as $temp_make_this_iterate_over_keypersons)
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h5><a data-toggle="collapse" data-parent"#kp_accordion" href="#collapse_kp0" class="icon">Key Researcher or Entrepreneur&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up"></span></a></h5>
-        </div>
-        <div id="collapse_kp0" class="panel-collapse collapse in">
-          <div class="panel-body">
-            @include('partials.keyperson_form')
+      @if (Input::old('keypersons'))
+        @foreach (Input::old('keypersons') as $idx => $keyperson)
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              @if ($idx == 0)
+              <h5><a data-toggle="collapse" data-parent"#kp_accordion" href="#collapse_kp0" class="icon">Key Researcher or Entrepreneur&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up"></span></a></h5>
+              @else
+              <h5><a data-toggle="collapse" data-parent"#kp_accordion" href="#collapse_kp{{$idx}}" class="icon">Team Member {{$idx}}&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up"></span></a></h5>
+              @endif
+            </div>
+            <div id="collapse_kp{{$idx}}" class="panel-collapse collapse in">
+              <div class="panel-body">
+                @include('partials.keyperson_form', [ 'idx' => $idx, 'keyperson' => new Keyperson($keyperson) ])
+              </div>
+            </div>
+          </div>
+        @endforeach
+      @elseif (empty($profile->keypersons))
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h5><a data-toggle="collapse" data-parent"#kp_accordion" href="#collapse_kp0" class="icon">Key Researcher or Entrepreneur&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up"></span></a></h5>
+          </div>
+          <div id="collapse_kp0" class="panel-collapse collapse in">
+            <div class="panel-body">
+              @include('partials.keyperson_form', [ 'idx' => 0, 'keyperson' => new Keyperson ])
+            </div>
           </div>
         </div>
-      </div>
-      @endforeach
+      @else
+        @foreach ($profile->keypersons as $idx => $keyperson)
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              @if ($idx == 0)
+              <h5><a data-toggle="collapse" data-parent"#kp_accordion" href="#collapse_kp0" class="icon">Key Researcher or Entrepreneur&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up"></span></a></h5>
+              @else
+              <h5><a data-toggle="collapse" data-parent"#kp_accordion" href="#collapse_kp{{$idx}}" class="icon">Team Member {{$idx}}&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up"></span></a></h5>
+              @endif
+            </div>
+            <div id="collapse_kp{{$idx}}" class="panel-collapse collapse in">
+              <div class="panel-body">
+                @include('partials.keyperson_form', [ 'idx' => $idx, 'keyperson' => $keyperson ])
+              </div>
+            </div>
+          </div>
+        @endforeach
+      @endif
     </div>
 
     <div class="form-group">
@@ -78,16 +112,19 @@
   </div>
 </div>
 
-<div id="extra_keyperson" style="display:none;">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h5><a data-toggle="collapse" data-parent"#kp_accordion" href="#collapse_kp{x}" class="icon">Team Member {x}&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up"></span></a></h5>
-    </div>
-    <div id="collapse_kp{x}" class="panel-collapse collapse in">
-      <div class="panel-body">
-        @include('partials.keyperson_form')
+@stop
+
+@section ('extra_forms')
+  <div id="extra_keyperson" style="display:none;">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5><a data-toggle="collapse" data-parent"#kp_accordion" href="#collapse_kp[x]" class="icon">Team Member [x]&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-up"></span></a></h5>
+      </div>
+      <div id="collapse_kp[x]" class="panel-collapse collapse in">
+        <div class="panel-body">
+          @include('partials.keyperson_form', [ 'idx' => 0, 'keyperson' => new Keyperson ])
+        </div>
       </div>
     </div>
   </div>
-</div>
-@stop
+@endsection

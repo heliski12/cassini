@@ -83,9 +83,9 @@ Route::get('/admin_profile_wizard', function()
 
 
 // TODO - DEV ONLY
-//Event::listen('illuminate.query', function($sql,$bindings,$time) {
-  //Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
-//});
+Event::listen('illuminate.query', function($sql,$bindings,$time) {
+  Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
+});
 
 
 // TODO - REMOVE THIS

@@ -7,7 +7,11 @@ class Keyperson extends Eloquent {
 
 	protected $guarded = array();
 
-	public static $rules = array();
+  public static $rules = array(
+    'first_name' => 'required',
+    'last_name' => 'required',
+    'email' => 'required|email',
+  );
 
   protected $table = 'keypersons'; 
 
@@ -33,6 +37,34 @@ class Keyperson extends Eloquent {
     $profile = $this->getAttribute('profile');
     return $profile->id . ': ' . $profile->tech_title;
   }
+
+  // TODO - refactor this into base class
+  // return the old input value if it exists, if not return the object's field data
+  public function getFormValue($old_input, $field_name)
+  {
+    if (!empty($old_input))
+      return $old_input;
+    else
+      return $this->$field_name;
+  }
+
+  public static function validateMultiple($input)
+  {
+    return Validator::make($input, static::rulesForMultiple($input));
+  }
+
+  public static function rulesForMultiple($input)
+  {
+    $rules = [];
+    foreach ($input['keypersons'] as $idx => $keyperson)
+    {
+      $rules["keypersons.$idx.first_name"] = 'required';
+      $rules["keypersons.$idx.last_name"] = 'required';
+      $rules["keypersons.$idx.email"] = 'required|email';
+    }
+    return $rules;
+  }
+  
 }
 
 Keyperson::saving(function($keyperson)

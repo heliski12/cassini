@@ -4,7 +4,7 @@ class Profile extends Eloquent {
   // there has to be another way of ignoring standard form input in one place.
   // using Input::except(['next','previous']) would lead to repeated code
   // TODO
-  protected $guarded = ['keyperson','next','previous'];
+  protected $guarded = ['keypersons','next','previous'];
 
   public static $rules = array();
 
@@ -131,6 +131,84 @@ class Profile extends Eloquent {
     if (empty($publications))
       return "0";
     return sizeof($publications);
+  }
+
+  public function saveAssociatesForStep($input, $step)
+  {
+    switch ($step)
+    {
+      case 1:
+        $this->saveAssociatesStep1($input); 
+      case 2:
+        return null;
+      case 3:
+        return null;
+    }
+  }
+
+  public static function fetchFullProfileForStep($profile_id, $step)
+  {
+    switch ($step)
+    {
+      case 1:
+        return Profile::with('keypersons')->find($profile_id);
+      case 2:
+        return null;
+      case 3:
+        return null;
+    }
+  }
+
+  public static function validateForStep($input, $step)
+  {
+    switch ($step)
+    {
+      case 1:
+        $v = Keyperson::validateMultiple(Input::all());
+        return $v; 
+      case 2:
+        return null;
+    }
+  
+  }
+
+  private function saveAssociatesStep1($input)
+  {
+    $existing_keypersons = $this->keypersons;
+    $existing_keyperson_ids = [];
+
+    if (!empty($existing_keypersons))
+    {
+      foreach ($existing_keypersons as $existing_keyperson)
+        $existing_keyperson_ids[]= $existing_keyperson->id;
+    }
+
+    $new_keyperson_ids = [];
+    foreach ($input['keypersons'] as $input_keyperson)
+    {
+      if (!empty($input_keyperson['id']))
+      {
+        $keyperson = Keyperson::find($input_keyperson['id']); 
+        $keyperson->fill($input_keyperson);
+        $keyperson->save();
+      }
+      else
+      {
+        $keyperson = new Keyperson($input_keyperson);
+        $this->keypersons()->save($keyperson);
+      }
+      $new_keyperson_ids[]= $keyperson->id;
+    }
+
+    // purge all old keypersons who are not part of this profile anymore
+    foreach ($existing_keyperson_ids as $existing_keyperson_id)
+    {
+      if (!in_array($existing_keyperson_id, $new_keyperson_ids))
+      {
+        $this->keypersons()->detatch($existing_keyperson_id);
+        DB::table('keypersons')->where('id',$existing_keyperson_id)->delete();
+      }
+    }
   }
 
 }

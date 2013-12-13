@@ -1,74 +1,75 @@
-<div class="form-group">
-  {{ Form::label('keyperson[0][first_name]', 'First Name', [ 'class' => 'col-md-3 control-label' ]) }}
+{{ Form::hidden("keypersons[$idx][id]", $keyperson->id) }}
+<div class='form-group {{ $errors->has("keypersons.$idx.first_name") ? "has-error" : "" }} '>
+  {{ Form::label("keypersons[$idx][first_name]", "First Name", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-9">
-    {{ Form::text('keyperson[0][first_name]',Input::old('first_name'), [ 'class' => 'form-control', 'id' => 'first_name' ]) }}
+    {{ Form::text("keypersons[$idx][first_name]",$keyperson->getFormValue(Input::old("keypersons[$idx][first_name]"),"first_name"), [ "class" => "form-control" ]) }}
+  </div>
+</div>
+<div class='form-group {{ $errors->has("keypersons.$idx.last_name") ? "has-error" : "" }} '>
+  {{ Form::label("keypersons[$idx][last_name]", "Last Name", [ "class" => "col-md-3 control-label" ]) }}
+  <div class="col-md-9">
+    {{ Form::text("keypersons[$idx][last_name]",$keyperson->getFormValue(Input::old("keypersons[$idx][last_name]"),"last_name"), [ "class" => "form-control" ]) }}
   </div>
 </div>
 <div class="form-group">
-  {{ Form::label('keyperson[0][last_name]', 'Last Name', [ 'class' => 'col-md-3 control-label' ]) }}
+  {{ Form::label("keypersons[$idx][title]", "Title", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-9">
-    {{ Form::text('keyperson[0][last_name]',Input::old('last_name'), [ 'class' => 'form-control', 'id' => 'last_name' ]) }}
+    {{ Form::text("keypersons[$idx][title]",$keyperson->getFormValue(Input::old("keypersons[$idx][title]"),"title"), [ "class" => "form-control" ]) }}
+  </div>
+</div>
+<div class='form-group {{ $errors->has("keypersons.$idx.email") ? "has-error" : "" }} '>
+  {{ Form::label("keypersons[$idx][email]", "Email", [ "class" => "col-md-3 control-label" ]) }}
+  <div class="col-md-9">
+    {{ Form::text("keypersons[$idx][email]",$keyperson->getFormValue(Input::old("keypersons[$idx][email]"),"email"), [ "class" => "form-control" ]) }}
   </div>
 </div>
 <div class="form-group">
-  {{ Form::label('keyperson[0][title]', 'Title', [ 'class' => 'col-md-3 control-label' ]) }}
+  {{ Form::label("keypersons[$idx][phone]", "Phone", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-9">
-    {{ Form::text('keyperson[0][title]',Input::old('title'), [ 'class' => 'form-control', 'id' => 'title' ]) }}
+    {{ Form::text("keypersons[$idx][phone]",$keyperson->getFormValue(Input::old("keypersons[$idx][phone]"),"phone"), [ "class" => "form-control" ]) }}
   </div>
 </div>
 <div class="form-group">
-  {{ Form::label('keyperson[0][email]', 'Email', [ 'class' => 'col-md-3 control-label' ]) }}
+  {{ Form::label("keypersons[$idx][address]", "Street Address", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-9">
-    {{ Form::text('keyperson[0][email]',Input::old('email'), [ 'class' => 'form-control', 'id' => 'email' ]) }}
+    {{ Form::text("keypersons[$idx][address]",$keyperson->getFormValue(Input::old("keypersons[$idx][address]"),"address"), [ "class" => "form-control" ]) }}
   </div>
 </div>
 <div class="form-group">
-  {{ Form::label('keyperson[0][phone]', 'Phone', [ 'class' => 'col-md-3 control-label' ]) }}
+  {{ Form::label("keypersons[$idx][address_line2]", "Address Line&nbsp;2", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-9">
-    {{ Form::text('keyperson[0][phone]',Input::old('phone'), [ 'class' => 'form-control', 'id' => 'phone' ]) }}
+    {{ Form::text("keypersons[$idx][address_line2]",$keyperson->getFormValue(Input::old("keypersons[$idx][address_line2]"),"address_line2"), [ "class" => "form-control" ]) }}
   </div>
 </div>
 <div class="form-group">
-  {{ Form::label('keyperson[0][address]', 'Street Address', [ 'class' => 'col-md-3 control-label' ]) }}
+  {{ Form::label("keypersons[$idx][address_line3]", "Address Line&nbsp;3", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-9">
-    {{ Form::text('keyperson[0][address]',Input::old('address'), [ 'class' => 'form-control', 'id' => 'address' ]) }}
+    {{ Form::text("keypersons[$idx][address_line3]",$keyperson->getFormValue(Input::old("keypersons[$idx][address_line3]"),"address_line3"), [ "class" => "form-control" ]) }}
   </div>
 </div>
 <div class="form-group">
-  {{ Form::label('keyperson[0][address_line2]', 'Address Line&nbsp;2', [ 'class' => 'col-md-3 control-label' ]) }}
-  <div class="col-md-9">
-    {{ Form::text('keyperson[0][address_line2]',Input::old('address_line2'), [ 'class' => 'form-control', 'id' => 'address_line2' ]) }}
-  </div>
-</div>
-<div class="form-group">
-  {{ Form::label('keyperson[0][address_line3]', 'Address Line&nbsp;3', [ 'class' => 'col-md-3 control-label' ]) }}
-  <div class="col-md-9">
-    {{ Form::text('keyperson[0][address_line3]',Input::old('address_line3'), [ 'class' => 'form-control', 'id' => 'address_line3' ]) }}
-  </div>
-</div>
-<div class="form-group">
-  {{ Form::label('keyperson[0][city]', 'City', [ 'class' => 'col-md-3 control-label' ]) }}
+  {{ Form::label("keypersons[$idx][city]", "City", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-3">
-    {{ Form::text('keyperson[0][city]',Input::old('city'), [ 'class' => 'form-control', 'id' => 'city' ]) }}
+    {{ Form::text("keypersons[$idx][city]",$keyperson->getFormValue(Input::old("keypersons[$idx][city]"),"city"), [ "class" => "form-control" ]) }}
   </div>
-  {{ Form::label('keyperson[0][state]', 'State / Province', [ 'class' => 'col-md-3 control-label' ]) }}
+  {{ Form::label("keypersons[$idx][state]", "State / Province", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-3">
-    {{ Form::text('keyperson[0][state]',Input::old('state'), [ 'class' => 'form-control', 'id' => 'state' ]) }}
+    {{ Form::text("keypersons[$idx][state]",$keyperson->getFormValue(Input::old("keypersons[$idx][state]"),"state"), [ "class" => "form-control" ]) }}
   </div>
 </div>
 <div class="form-group">
-  {{ Form::label('keyperson[0][zip_code]', 'Zip&nbsp;Code / Postal&nbsp;Code', [ 'class' => 'col-md-3 control-label' ]) }}
+  {{ Form::label("keypersons[$idx][zip_code]", "Zip&nbsp;Code / Postal&nbsp;Code", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-3">
-    {{ Form::text('keyperson[0][zip_code]',Input::old('zip_code'), [ 'class' => 'form-control', 'id' => 'zip_code' ]) }}
+    {{ Form::text("keypersons[$idx][zip_code]",$keyperson->getFormValue(Input::old("keypersons[$idx][zip_code]"),"zip_code"), [ "class" => "form-control" ]) }}
   </div>
-  {{ Form::label('keyperson[0][country]', 'Country', [ 'class' => 'col-md-3 control-label' ]) }}
+  {{ Form::label("keypersons[$idx][country]", "Country", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-3">
-    {{ Form::select('keyperson[0][country]', Config::get('countries.countries'), null, [ 'class' => 'country-multiselect form-control' ] ) }} 
+    {{ Form::select("keypersons[$idx][country]", Config::get("countries.countries"), $keyperson->getFormValue(Input::old("keypersons[$idx][country]"),"country"), [ "class" => "country-multiselect form-control" ] ) }} 
   </div>
 </div>
 <div class="form-group">
-  {{ Form::label('keyperson[0][photo]', 'Upload&nbsp;photo (5&nbsp;MB&nbsp;max)', [ 'class' => 'col-md-3 control-label' ]) }}
+  {{ Form::label("keypersons[$idx][photo]", "Upload&nbsp;photo (5&nbsp;MB&nbsp;max)", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-9">
-    {{ Form::file('keyperson[0][photo]',[ 'class' => 'form-control', 'id' => 'photo' ]) }}
+    {{ Form::file("keypersons[$idx][photo]",[ "class" => "form-control" ]) }}
   </div>
 </div>
