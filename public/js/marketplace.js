@@ -3,6 +3,13 @@ $(function(){
   $("#create_profile_form").on('click','[data-toggle=collapse]', function(event) {
     $(this).children("span").toggleClass("glyphicon-chevron-up");
     $(this).children("span").toggleClass("glyphicon-chevron-down");
+    $(".glyphicon-chevron-up").attr("title","Collapse view");
+    $(".glyphicon-chevron-down").attr("title","Expand view");
+  });
+  $("#create_profile_form").on('click','a.remove-tm', function(event) {
+    event.preventDefault();
+    var remove_selector = ".kp" + $(this).attr('id').substring(10);
+    $(remove_selector).remove(); 
   });
   $("a.add-another-kp").click(function(event) {
     event.preventDefault();
@@ -10,6 +17,7 @@ $(function(){
               .html()
               .replace(new RegExp("\\[x\\]","g"), ++counts.tm_count)
               .replace(new RegExp("\\[0\\]","g"), "["+counts.tm_count+"]");
+              console.log(extra_keyperson);
     $("#kp_accordion").append(extra_keyperson);
   });
   $("a.add-another-photo").click(function(event) {

@@ -5,7 +5,7 @@
   <div class="col-md-10 col-md-offset-1">
     <h5>Title of technology or research (can include a tagline)</h5>
     <div class="form-group">
-      {{ Form::text('tech_title',Input::old('tech_title'), [ 'class' => 'form-control', 'id' => 'tech_title' ]) }}
+      {{ Form::text('tech_title',$profile->tech_title, [ 'class' => 'form-control', 'id' => 'tech_title' ]) }}
     </div>
     <h5>Description of the technology or research (max 1550 characters with spaces)</h5>
     <div class="form-group">
@@ -17,7 +17,7 @@
     <div class="row">
       <div class="form-group">
         <div class="col-md-6">
-          {{ Form::select('product_stage', array_merge(['' => 'Select stage...'], Config::get('cassini.product_stages')), null, [ 'class' => 'selectpicker form-control' ] ) }} 
+          {{ Form::select('product_stage', array_merge(['' => 'Select stage...'], Config::get('cassini.product_stages')), $profile->product_stage, [ 'class' => 'selectpicker form-control' ] ) }} 
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
     <div class="row">
       <div class="form-group">
         <div class="col-md-6">
-          {{ Form::select('intellectual_propery', Config::get('cassini.intellectual_property_types'), null, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
+          {{ Form::select('intellectual_property[]', Config::get('cassini.intellectual_property_types'), $profile->intellectualProperty, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@
     <div class="row">
       <div class="form-group">
         <div class="col-md-6">
-          {{ Form::select('sectors', Config::get('cassini.funding_statuses'), null, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
+          {{ Form::select('funding_stages[]', Config::get('cassini.funding_statuses'), null, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
         </div>
       </div>
     </div>

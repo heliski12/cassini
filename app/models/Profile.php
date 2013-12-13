@@ -3,8 +3,8 @@
 class Profile extends Eloquent {
   // there has to be another way of ignoring standard form input in one place.
   // using Input::except(['next','previous']) would lead to repeated code
-  // TODO
-  protected $guarded = ['keypersons','next','previous'];
+  // TODO - photo
+  protected $guarded = ['keypersons','next','previous','regions','photo'];
 
   public static $rules = array();
 
@@ -20,7 +20,7 @@ class Profile extends Eloquent {
 
   public function applications()
   {
-    return $this->belongsToMany('Application');
+    return $this->belongsToMany('Application','profile_application');
   }
 
   public function publications()
@@ -132,6 +132,24 @@ class Profile extends Eloquent {
       return "0";
     return sizeof($publications);
   }
+  public function getIntellectualPropertyAttribute()
+  {
+    $props = [];
+    if ($this->ip_trademarks)         $props[]='TRADEMARKS';
+    if ($this->ip_trademarks_pending) $props[]='TRADEMARKS_PENDING';
+    if ($this->ip_patents)            $props[]='PATENTS';
+    if ($this->ip_patents_pending)    $props[]='PATENTS_PENDING';
+    return $props;
+  }
+  public function setIntellectualPropertyAttribute($value)
+  {
+    if (empty($value))
+      return;
+    $this->ip_trademarks         = in_array('TRADEMARKS',         $value);
+    $this->ip_trademarks_pending = in_array('TRADEMARKS_PENDING', $value);
+    $this->ip_patents            = in_array('PATENTS',            $value);
+    $this->ip_patents_pending    = in_array('PATENTS_PENDING',    $value);
+  }
 
   public function saveAssociatesForStep($input, $step)
   {
@@ -139,8 +157,10 @@ class Profile extends Eloquent {
     {
       case 1:
         $this->saveAssociatesStep1($input); 
+        break;
       case 2:
-        return null;
+        $this->saveAssociatesStep2($input);
+        break;
       case 3:
         return null;
     }
@@ -153,9 +173,10 @@ class Profile extends Eloquent {
       case 1:
         return Profile::with('keypersons')->find($profile_id);
       case 2:
-        return null;
+        return Profile::with(['regions','sectors','applications','photos'])->find($profile_id);
       case 3:
-        return null;
+        // TODO - permissions
+        return Profile::with(['presentations','publications','awards'])->find($profile_id);
     }
   }
 
@@ -205,10 +226,13 @@ class Profile extends Eloquent {
     {
       if (!in_array($existing_keyperson_id, $new_keyperson_ids))
       {
-        $this->keypersons()->detatch($existing_keyperson_id);
         DB::table('keypersons')->where('id',$existing_keyperson_id)->delete();
       }
     }
+  }
+
+  private function saveAssociatesStep2($input)
+  {
   }
 
 }
