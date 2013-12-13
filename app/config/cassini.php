@@ -30,6 +30,13 @@ return [
     'NOT_FUNDED' => 'Not currently funded',
   ],
 
+  'intellectual_property_types' => [
+    'TRADEMARKS' => 'Trademarks',
+    'TRADEMARKS_PENDING' => 'Trademarks pending',
+    'PATENTS' => 'Patents',
+    'PATENTS_PENDING' => 'Patents pending',
+  ],
+
   'viewer_types' => [
     'SEEKERS' => 'Seekers (Companies, Foundations, Gov\'t Agencies)',
     'RESEARCHERS' => 'Researchers',

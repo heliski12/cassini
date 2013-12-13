@@ -25,7 +25,7 @@
     <div class="row">
       <div class="form-group">
         <div class="col-md-6">
-          {{ Form::select('intellectual_propery', Config::get('cassini.product_stages'), null, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
+          {{ Form::select('intellectual_propery', Config::get('cassini.intellectual_property_types'), null, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
         </div>
       </div>
     </div>
@@ -63,6 +63,13 @@
           {{ Form::select('sectors', Config::get('cassini.funding_statuses'), null, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
         </div>
       </div>
+    </div>
+    <div class="form-group">
+      <p class="help-block"><a href="#" class="add-fs-additional">Add additional info</a></p>
+    </div>
+    <h5 class="fs-additional" style="display:none;">If you are currently funded, provide the name of the funding organization OR if you are seeking funding, what you intend to do with the funding.  This information will appear in your published profile.</h5>
+    <div class="form-group fs-additional" style="display:none;">
+      <textarea id="fs_extra_info" name="fs_extra_info" class="form-control" maxlength="1550" rows="10"></textarea>
     </div>
     <div class="row">
       <hr/>

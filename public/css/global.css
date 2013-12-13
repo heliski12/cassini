@@ -287,7 +287,8 @@ ul.step-titles li.active ~ li
 #create_profile_form a.add-another-photo,
 #create_profile_form a.add-another-presentation,
 #create_profile_form a.add-another-publication,
-#create_profile_form a.add-another-award
+#create_profile_form a.add-another-award,
+#create_profile_form a.add-fs-additional
 {
   text-decoration: none;
   color: inherit;

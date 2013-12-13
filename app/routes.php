@@ -52,8 +52,15 @@ Route::group(array('before' => 'auth'), function()
   }); 
   Route::get('/create_profile/{step?}', [ 'as' => 'create_profile', 'uses' => 'ProfilesController@create' ])->where('step', '[1-3]');
   Route::post('/create_profile/{step?}', [ 'as' => 'store_profile', 'uses' => 'ProfilesController@store' ])->where('step', '[1-3]');
+  Route::get('/edit_profile/{id}/{step?}', [ 'as' => 'edit_profile', 'uses' => 'ProfilesController@edit' ])->where('step', '[1-3]');
+  Route::post('/edit_profile/{step?}', [ 'as' => 'update_profile', 'uses' => 'ProfilesController@store' ]);
   Route::get('/marketplace', [ 'as' => 'marketplace', 'uses' => 'ProfilesController@index' ]);
 });
+
+
+
+
+
 
 
 
@@ -62,6 +69,18 @@ Route::get('/admin_profile_wizard', function()
 {
   return "<p style='font-size:30px;'>This is a placeholder for the profile wizard that an admin will see when they click to edit a profile through the wizard.<br/><br/>  This option is available to use the full user interface as a normal user would see it.<br/><br/>This page will allow an admin to edit key people, photos, presentations, institutions inline, rather than viewing/editing them on separate pages as in the main admin tool.<br/><br/>When an admin is done editing this profile, they'll be redirected back to the main admin tool.  The url of this page can be configured to be anything.</p><a href='" . URL::to('/') . "/admin/profiles'>back to admin</a>";
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 // TODO - DEV ONLY
 //Event::listen('illuminate.query', function($sql,$bindings,$time) {

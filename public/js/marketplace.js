@@ -48,6 +48,10 @@ $(function(){
               .replace(new RegExp("\\[0\\]","g"), "["+ ++award_count+"]");
     $("#awards_list").append(extra_award);
   });
+  $("a.add-fs-additional").click(function(event) {
+    event.preventDefault();
+    $(".fs-additional").show();
+  });
   $("button#upload_video").click(function(event) {
     event.preventDefault();
     alert("Video uploads are coming soon!  (This can be a modal if desired)");
@@ -57,10 +61,19 @@ $(function(){
       allowSpaces: true
   });
   
-
+  // initialize open/close state of innovator type based on previous model value
+  var innovator_type = $("input[name=innovator_type][checked]").val();
+  if (innovator_type && innovator_type == 'ENTREPRENEUR')
+  {
+    $("#entrepreneur").collapse('show');
+  }
+  else if (innovator_type && innovator_type == 'RESEARCHER')
+  {
+    $("#researcher").collapse('show');
+  }
   $(".innovator-type-extras").collapse({toggle:false});
   $("input[name=innovator_type]").change(function(event) {
-    if ($(this).val() == 'entrepreneur')
+    if ($(this).val() == 'ENTREPRENEUR')
     {
       $("#researcher").collapse('hide');
       $("#entrepreneur").collapse('show');

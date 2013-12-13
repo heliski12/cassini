@@ -28,8 +28,10 @@
       </div>
     </div>
 
-    {{ Form::open([ 'url' => route('store_profile', $step), 'id' => 'create_profile_form', 'role' => 'form', 'class' => ($step == 1) ? 'form-horizontal' : '' ]) }}
-    {{-- Form::model($profile, [ 'route' => ['store_profile', $step ], 'id' => 'create_profile_form', 'role' => 'form', 'class' => 'form-horizontal' ]) --}}
+    {{-- Form::open([ 'url' => route('store_profile', $step), 'id' => 'create_profile_form', 'role' => 'form', 'class' => ($step == 1) ? 'form-horizontal' : '' ]) --}}
+    {{ Form::model($profile, [ 'route' => ['store_profile', $step ], 'id' => 'create_profile_form', 'role' => 'form', 'class' => ($step == 1) ? 'form-horizontal' : '' ]) }}
+
+    {{ Form::hidden('id', $profile->id) }}
 
     <div class="create-profile-form">
 
@@ -49,7 +51,7 @@
             @if ($step < 3)
               {{ Form::submit('Save &amp; Next &raquo;', [ 'class' => 'btn btn-primary step' . $step, 'name' => 'next' ] ) }} 
             @else
-              {{ Form::submit('Save Profile', [ 'class' => 'btn btn-primary' ]) }}
+              {{ Form::submit('Publish Profile', [ 'class' => 'btn btn-primary' ]) }}
             @endif
           </div>
         </div>

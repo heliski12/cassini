@@ -6,7 +6,7 @@
     <h5>What type of Innovator are you?</h5>
     <div class="radio col-md-9 col-md-offset-3">
       <label class="radio-label">
-        <input type="radio" name="innovator_type" value="researcher">
+        <input type="radio" name="innovator_type" value="RESEARCHER" {{ ($profile->innovator_type === 'RESEARCHER') ? 'checked' : '' }} >
         Researcher
       </label>
     </div>
@@ -17,32 +17,32 @@
       </div>
       <div class="form-group">
         {{ Form::label('institution_department', 'Department', [ 'class' => 'control-label' ]) }}
-        {{ Form::text('institution_department',Input::old('institution_department'), [ 'class' => 'form-control', 'id' => 'institution_department' ]) }}
+        {{ Form::text('institution_department',$profile->institution_department, [ 'class' => 'form-control', 'id' => 'institution_department' ]) }}
       </div>
     </div>
     <div class="radio col-md-9 col-md-offset-3">
       <label class="radio-label">
-        <input type="radio" name="innovator_type" value="entrepreneur">
+        <input type="radio" name="innovator_type" value="ENTREPRENEUR" {{ ($profile->innovator_type === 'ENTREPRENEUR') ? 'checked' : '' }}>
         Entrepreneur
       </label>
     </div>
     <div class="col-md-9 col-md-offset-3 innovator-type-extras collapse" id="entrepreneur">
       <div class="form-group">
         {{ Form::label('organization', 'Organization', [ 'class' => 'control-label' ]) }}
-        {{ Form::text('organization',Input::old('organization'), [ 'class' => 'form-control', 'id' => 'organization' ]) }}
+        {{ Form::text('organization',$profile->organization, [ 'class' => 'form-control', 'id' => 'organization' ]) }}
       </div>
       <div class="form-group form-group-label">
         <label>Select what type of organization:</label>
       </div>
       <div class="radio">
         <label class="sub-radio-label">
-          <input type="radio" name="organization_type" value="for_profit">
+          <input type="radio" name="organization_type" value="FOR_PROFIT">
           For Profit
         </label>
       </div>
       <div class="radio">
         <label class="sub-radio-label">
-          <input type="radio" name="organization_type" value="non_profit">
+          <input type="radio" name="organization_type" value="NON_PROFIT">
           Non Profit
         </label>
       </div>

@@ -1,7 +1,10 @@
 <?php
 
 class Profile extends Eloquent {
-  protected $guarded = array();
+  // there has to be another way of ignoring standard form input in one place.
+  // using Input::except(['next','previous']) would lead to repeated code
+  // TODO
+  protected $guarded = ['keyperson','next','previous'];
 
   public static $rules = array();
 
@@ -58,6 +61,11 @@ class Profile extends Eloquent {
   public function photos()
   {
     return $this->hasMany('Photo');
+  }
+
+  public function awards()
+  {
+    return $this->hasMany('Award');
   }
 
   public function getViewFormAttribute()
