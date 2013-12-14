@@ -36,7 +36,7 @@
     <div class="row">
       <div class="form-group">
         <div class="col-md-6">
-          {{ Form::select('regions', SelectHelper::get_region_options(), null, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
+          {{ Form::select('region_ids[]', SelectHelper::get_region_options(), $profile->regionIds, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
     <div class="row">
       <div class="form-group">
         <div class="col-md-6">
-          {{ Form::select('sectors', SelectHelper::get_sector_options(), null, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
+          {{ Form::select('sector_ids[]', SelectHelper::get_sector_options(), $profile->sectorIds, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
         </div>
       </div>
     </div>

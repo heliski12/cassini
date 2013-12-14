@@ -150,6 +150,70 @@ class Profile extends Eloquent {
     $this->ip_patents            = in_array('PATENTS',            $value);
     $this->ip_patents_pending    = in_array('PATENTS_PENDING',    $value);
   }
+  public function getRegionIdsAttribute()
+  {
+    $props = [];
+    foreach ($this->regions as $region)
+      $props[]= $region->id;
+    return $props;
+  }
+  public function setRegionIdsAttribute($value)
+  {
+    $existing_regions = $this->regions;
+    
+    $existing_and_new_region_ids = [];
+
+    // possibly remove old regions
+    if (!empty($existing_regions))
+    {
+      foreach($existing_regions as $existing_region)
+      {
+        if (!in_array($existing_region->id, $value))
+          $this->regions()->detach($existing_region->id);
+        else
+          $existing_and_new_region_ids[]= $existing_region->id;
+      }
+    }
+
+    // add new regions that don't already exist
+    foreach ($value as $region_id)
+    {
+      if (!in_array($region_id, $existing_and_new_region_ids))
+        $this->regions()->attach($region_id);
+    }
+  }
+  public function getSectorIdsAttribute()
+  {
+    $props = [];
+    foreach ($this->sectors as $sector)
+      $props[]= $sector->id;
+    return $props;
+  }
+  public function setSectorIdsAttribute($value)
+  {
+    $existing_sectors = $this->sectors;
+    
+    $existing_and_new_sector_ids = [];
+
+    // possibly remove old sectors
+    if (!empty($existing_sectors))
+    {
+      foreach($existing_sectors as $existing_sector)
+      {
+        if (!in_array($existing_sector->id, $value))
+          $this->sectors()->detach($existing_sector->id);
+        else
+          $existing_and_new_sector_ids[]= $existing_sector->id;
+      }
+    }
+
+    // add new sectors that don't already exist
+    foreach ($value as $sector_id)
+    {
+      if (!in_array($sector_id, $existing_and_new_sector_ids))
+        $this->sectors()->attach($sector_id);
+    }
+  }
 
   public function saveAssociatesForStep($input, $step)
   {
