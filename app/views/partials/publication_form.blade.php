@@ -1,25 +1,32 @@
-<div class="form-horizontal">
-
+<div class="form-horizontal publication{{ $idx }}">
+  {{ Form::hidden("publications[$idx][id]", $publication->id) }}
   <div class="form-group">
+    <label class="control-label col-md-1">
+    @if ($show_remove)
+      <a href="#" class="icon remove-publication" id="remove_publication_{{$idx}}" title="Remove publication"><span class="glyphicon glyphicon-remove"></span></a> 
+    @else
+     &nbsp;
+    @endif
+    </label>
     {{ Form::label('', '&nbsp;', [ 'class' => 'col-md-1 control-label' ]) }}
     <div class="col-md-4">
-      {{ Form::select('product_stage', array_merge(['' => 'Select a web publication...'], SelectHelper::get_publication_options()), null, [ 'class' => 'selectpicker' ] ) }} 
+      {{ Form::select("publications[$idx][publication_id]", SelectHelper::get_publication_options(), $publication->getFormValue(Input::old("publications[$idx][publication_id]"),"publication_id"), [ 'class' => 'selectpicker'. (!empty($extra) ? '-extra' : '') ] ) }} 
     </div>
-    {{ Form::label('publication[0][name]', 'or enter name', [ 'class' => 'col-md-2 control-label' ]) }}
-    <div class="col-md-5">
-      {{ Form::text('publication[0][name]', Input::old('publication[0][name]'), [ 'class' => 'form-control' ]) }}
-    </div>
-  </div>
-  <div class="form-group">
-    {{ Form::label('publication[0][title]', 'Title', [ 'class' => 'col-md-1 control-label' ]) }}
-    <div class="col-md-11">
-      {{ Form::text('publication[0][title]', Input::old('publication[0][title]'), [ 'class' => 'form-control' ]) }}
+    {{ Form::label("publications[$idx][name]", 'or enter name', [ 'class' => 'col-md-2 control-label' ]) }}
+    <div class="col-md-4">
+      {{ Form::text("publications[$idx][name]", $publication->getFormValue(Input::old("publications[$idx][name]"),"name"), [ 'class' => 'form-control' ]) }}
     </div>
   </div>
   <div class="form-group">
-    {{ Form::label('publication[0][url]', 'URL', [ 'class' => 'col-md-1 control-label' ]) }}
-    <div class="col-md-11">
-      {{ Form::text('publication[0][url]',Input::old('publication[0][url])'), [ 'class' => 'form-control' ]) }}
+    {{ Form::label("publications[$idx][article_title]", 'Title', [ 'class' => 'col-md-2 control-label' ]) }}
+    <div class="col-md-10">
+      {{ Form::text("publications[$idx][article_title]", $publication->getFormValue(Input::old("publications[$idx][article_title]"),"article_title"), [ 'class' => 'form-control' ]) }}
+    </div>
+  </div>
+  <div class="form-group">
+    {{ Form::label("publications[$idx][article_url]", 'URL', [ 'class' => 'col-md-2 control-label' ]) }}
+    <div class="col-md-10">
+      {{ Form::text("publications[$idx][article_url]",$publication->getFormValue(Input::old("publications[$idx][article_url]"),"article_url"), [ 'class' => 'form-control' ]) }}
     </div>
   </div>
 </div>

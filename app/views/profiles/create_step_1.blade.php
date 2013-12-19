@@ -128,7 +128,7 @@
       </div>
       <div id="collapse_kp[x]" class="kp[x] panel-collapse collapse in">
         <div class="panel-body">
-          @include('partials.keyperson_form', [ 'idx' => 0, 'keyperson' => new Keyperson ])
+          @include('partials.keyperson_form', [ 'idx' => '[x]', 'keyperson' => new Keyperson ])
         </div>
       </div>
     </div>

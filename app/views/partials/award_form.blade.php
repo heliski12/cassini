@@ -1,14 +1,22 @@
-<div class="form-horizontal">
+<div class="form-horizontal award{{ $idx }}">
+{{ Form::hidden("awards[$idx][id]", $award->id) }}
   <div class="form-group">
-    {{ Form::label('award[0][title]', 'Title', [ 'class' => 'col-md-1 control-label' ]) }}
-    <div class="col-md-11">
-      {{ Form::text('award[0][title]', Input::old('award[0][title]'), [ 'class' => 'form-control' ]) }}
+    <label class="control-label col-md-1">
+    @if ($show_remove)
+      <a href="#" class="icon remove-award" id="remove_award_{{$idx}}" title="Remove award"><span class="glyphicon glyphicon-remove"></span></a> 
+    @else
+      &nbsp;
+    @endif
+    </label>
+    {{ Form::label("awards[$idx][title]", 'Title', [ 'class' => 'col-md-1 control-label' ]) }}
+    <div class="col-md-10">
+      {{ Form::text("awards[$idx][title]",$award->getFormValue(Input::old("awards[$idx][title]"),"title"), [ 'class' => 'form-control' ]) }}
     </div>
   </div>
   <div class="form-group">
-    {{ Form::label('award[0][url]', 'URL', [ 'class' => 'col-md-1 control-label' ]) }}
-    <div class="col-md-11">
-      {{ Form::text('award[0][url]',Input::old('award[0][url])'), [ 'class' => 'form-control' ]) }}
+    {{ Form::label("awards[$idx][url]", 'URL', [ 'class' => 'col-md-2 control-label' ]) }}
+    <div class="col-md-10">
+      {{ Form::text("awards[$idx][url]",$award->getFormValue(Input::old("awards[$idx][url]"),"url"), [ 'class' => 'form-control' ]) }}
     </div>
   </div>
 </div>

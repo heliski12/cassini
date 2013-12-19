@@ -42,8 +42,11 @@
     </div>
     <h5>What are the market applications?  For instance, a nanotechnology may be applicable to solar panels, HVAC, and green building materials.  (separated by commas)</h5>
     <div class="form-group">
-      <ul id="market_applications"></ul>
-      {{-- Form::text('market_application',Input::old('applications'), [ 'class' => 'form-control', 'id' => 'market_applications' ]) --}}
+      <ul id="market_applications">
+        @foreach ($profile->applications as $application)
+          <li>{{ $application->name }}</li>
+        @endforeach
+      </ul>
     </div>
     <h5>Market sector</h5>
     <div class="row">
@@ -60,7 +63,7 @@
     <div class="row">
       <div class="form-group">
         <div class="col-md-6">
-          {{ Form::select('funding_stages[]', Config::get('cassini.funding_statuses'), null, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
+          {{ Form::select('funding_statuses[]', Config::get('cassini.funding_statuses'), $profile->fundingStatuses, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }} 
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class Keyperson extends Eloquent {
+class Keyperson extends BaseModel {
   use Codesleeve\Stapler\Stapler;
 
 	protected $guarded = array();
@@ -36,16 +36,6 @@ class Keyperson extends Eloquent {
   {
     $profile = $this->getAttribute('profile');
     return $profile->id . ': ' . $profile->tech_title;
-  }
-
-  // TODO - refactor this into base class
-  // return the old input value if it exists, if not return the object's field data
-  public function getFormValue($old_input, $field_name)
-  {
-    if (!empty($old_input))
-      return $old_input;
-    else
-      return $this->$field_name;
   }
 
   public static function validateMultiple($input)

@@ -4,7 +4,7 @@ class Profile extends Eloquent {
   // there has to be another way of ignoring standard form input in one place.
   // using Input::except(['next','previous']) would lead to repeated code
   // TODO - photo
-  protected $guarded = ['keypersons','next','previous','regions','photo'];
+  protected $guarded = ['keypersons','next','previous','regions','photo','presentations','publications','awards'];
 
   public static $rules = array();
 
@@ -25,7 +25,7 @@ class Profile extends Eloquent {
 
   public function publications()
   {
-    return $this->belongsToMany('Publication')->withPivot('article_title', 'article_url');
+    return $this->hasMany('ProfilePublication');
   }
 
   public function keypersons()
@@ -144,11 +144,43 @@ class Profile extends Eloquent {
   public function setIntellectualPropertyAttribute($value)
   {
     if (empty($value))
-      return;
+      $value = [];
     $this->ip_trademarks         = in_array('TRADEMARKS',         $value);
     $this->ip_trademarks_pending = in_array('TRADEMARKS_PENDING', $value);
     $this->ip_patents            = in_array('PATENTS',            $value);
     $this->ip_patents_pending    = in_array('PATENTS_PENDING',    $value);
+  }
+  public function getFundingStatusesAttribute()
+  {
+    $props = [];
+    if ($this->fs_funded)     $props[]='FUNDED';
+    if ($this->fs_seeking)    $props[]='SEEKING';
+    if ($this->fs_not_funded) $props[]='NOT_FUNDED';
+    return $props;
+  }
+  public function setFundingStatusesAttribute($value)
+  {
+    if (empty($value))
+      $value = [];
+    $this->fs_funded     = in_array('FUNDED',     $value);
+    $this->fs_seeking    = in_array('SEEKING',    $value);
+    $this->fs_not_funded = in_array('NOT_FUNDED', $value);
+  }
+  public function getPermissionsAttribute()
+  {
+    $props = [];
+    if ($this->restrict_seekers)        $props[]='RESTRICT_SEEKERS';
+    if ($this->restrict_researchers)    $props[]='RESTRICT_RESEARCHERS';
+    if ($this->restrict_entrepreneurs)  $props[]='RESTRICT_ENTREPRENEURS';
+    return $props;
+  }
+  public function setPermissionsAttribute($value)
+  {
+    if (empty($value))
+      $value = [];
+    $this->restrict_seekers       = in_array('RESTRICT_SEEKERS',       $value);
+    $this->restrict_researchers   = in_array('RESTRICT_RESEARCHERS',   $value);
+    $this->restrict_entrepreneurs = in_array('RESTRICT_ENTREPRENEURS', $value);
   }
   public function getRegionIdsAttribute()
   {
@@ -214,6 +246,49 @@ class Profile extends Eloquent {
         $this->sectors()->attach($sector_id);
     }
   }
+  public function setMarketApplicationsAttribute($value)
+  {
+    $existing_applications = $this->applications;
+
+    $existing_and_new_application_names = [];
+
+    $new_application_names = [];
+
+    // possibly detach old applications
+    if (!empty($existing_applications))
+    {
+      foreach($existing_applications as $existing_application)
+      {
+        if (!in_array($existing_application->name, $value))
+          $this->applications()->detach($existing_application->id);
+        else
+          $existing_and_new_application_names[]= $existing_application->name;
+      }
+    }
+
+    // attach all of the common applications (those already in the db)
+    $common_applications = Application::whereIn('name',$value)->get();
+    foreach ($common_applications as $common_application)
+    {
+      // if it doesn't already exist, then attach it
+      if (!in_array($common_application->name, $existing_and_new_application_names))
+      {
+        $this->applications()->attach($common_application->id);
+        $existing_and_new_application_names[]= $common_application->name; 
+      }
+    }
+
+    // finally, add all of the applications that aren't in the database yet
+    foreach ($value as $new_name)
+    {
+      if (!in_array($new_name, $existing_and_new_application_names))
+      { 
+        $application = new Application(['name' => $new_name]);
+        $application->save();
+        $this->applications()->attach($application->id);
+      }
+    }
+  }
 
   public function saveAssociatesForStep($input, $step)
   {
@@ -226,7 +301,8 @@ class Profile extends Eloquent {
         $this->saveAssociatesStep2($input);
         break;
       case 3:
-        return null;
+        $this->saveAssociatesStep3($input);
+        break; 
     }
   }
 
@@ -239,7 +315,6 @@ class Profile extends Eloquent {
       case 2:
         return Profile::with(['regions','sectors','applications','photos'])->find($profile_id);
       case 3:
-        // TODO - permissions
         return Profile::with(['presentations','publications','awards'])->find($profile_id);
     }
   }
@@ -253,50 +328,82 @@ class Profile extends Eloquent {
         return $v; 
       case 2:
         return null;
+      case 3: 
+        return null;
     }
   
   }
 
   private function saveAssociatesStep1($input)
   {
-    $existing_keypersons = $this->keypersons;
-    $existing_keyperson_ids = [];
-
-    if (!empty($existing_keypersons))
-    {
-      foreach ($existing_keypersons as $existing_keyperson)
-        $existing_keyperson_ids[]= $existing_keyperson->id;
-    }
-
-    $new_keyperson_ids = [];
-    foreach ($input['keypersons'] as $input_keyperson)
-    {
-      if (!empty($input_keyperson['id']))
-      {
-        $keyperson = Keyperson::find($input_keyperson['id']); 
-        $keyperson->fill($input_keyperson);
-        $keyperson->save();
-      }
-      else
-      {
-        $keyperson = new Keyperson($input_keyperson);
-        $this->keypersons()->save($keyperson);
-      }
-      $new_keyperson_ids[]= $keyperson->id;
-    }
-
-    // purge all old keypersons who are not part of this profile anymore
-    foreach ($existing_keyperson_ids as $existing_keyperson_id)
-    {
-      if (!in_array($existing_keyperson_id, $new_keyperson_ids))
-      {
-        DB::table('keypersons')->where('id',$existing_keyperson_id)->delete();
-      }
-    }
+    $this->associateManyRelationship($this->keypersons, 'keypersons', 'Keyperson', $this->keypersons(), $input['keypersons']);
   }
 
   private function saveAssociatesStep2($input)
   {
+    // since empty select inputs aren't sent as POST variables, we must explicitly look for their absence
+    if (!array_key_exists('intellectual_property', $input))
+      $this->setIntellectualPropertyAttribute([]);
+    if (!array_key_exists('region_ids', $input))
+      $this->setRegionIdsAttribute([]);
+    if (!array_key_exists('sectors_ids', $input))
+      $this->setSectorIdsAttribute([]);
+    if (!array_key_exists('funding_statuses', $input))
+      $this->setFundingStatusesAttribute([]);
+    $this->save();
   }
 
+  private function saveAssociatesStep3($input)
+  {
+    // since empty select inputs aren't sent as POST variables, we must explicitly look for their absence
+    if (!array_key_exists('permissions', $input))
+      $this->setPermissionsAttribute([]);
+    $this->associateManyRelationship($this->presentations, 'presentations', 'Presentation', $this->presentations(), $input['presentations']);
+    $this->associateManyRelationship($this->awards, 'awards', 'Award', $this->awards(), $input['awards']);
+    $this->associateManyRelationship($this->publications, 'profile_publication', 'ProfilePublication', $this->publications(), $input['publications']);
+  }
+
+  // take the existing profile->[many-type] relationship and the [many-type] input and either update existing, delete pruned, or insert and associate new [many-type] entities
+  // $existing_many eg. $this->keypersons
+  // $table_name    eg. 'keyperson'
+  // $class         eg. 'Keyperson'
+  // $relationship  eg. $this->keypersons()
+  // $input_many    eg. Input::get('keypersons') 
+  private function associateManyRelationship($existing_many, $table_name, $class, $relationship, $input_many)
+  {
+    $existing_many_ids = [];
+
+    if (!empty($existing_many))
+    {
+      foreach ($existing_many as $existing)
+        $existing_many_ids[]= $existing->id;
+    }
+
+    $new_many_ids = [];
+    foreach ($input_many as $input_individual)
+    {
+      if (!empty($input_individual['id']))
+      {
+        // make sure use the profile id so that non-authorized users cannot delete keypersons
+        $many_instance = $class::where('id',$input_individual['id'])->where('profile_id',$this->id)->first(); 
+        $many_instance->fill($input_individual);
+        $many_instance->save();
+      }
+      else
+      {
+        $many_instance = new $class($input_individual);
+        $relationship->save($many_instance);
+      }
+      $new_many_ids[]= $many_instance->id;
+    }
+
+    // purge all old many's who are not part of this profile anymore
+    foreach ($existing_many_ids as $existing_many_id)
+    {
+      if (!in_array($existing_many_id, $new_many_ids))
+      {
+        DB::table($table_name)->where('id',$existing_many_id)->delete();
+      }
+    }
+  }
 }

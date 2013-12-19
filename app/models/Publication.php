@@ -1,12 +1,12 @@
 <?php
 
-class Publication extends Eloquent {
+class Publication extends BaseModel {
 	protected $guarded = array();
 
 	public static $rules = array();
 
   public function profiles()
   {
-    return $this->belongsToMany('Profile')->withPivot('article_title', 'article_url');
+    return $this->hasMany('Profile', 'profile_id');
   }
 }

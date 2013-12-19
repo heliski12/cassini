@@ -1,6 +1,6 @@
 <?php
 
-class Award extends Eloquent {
+class Award extends BaseModel {
 
 	protected $guarded = array();
 

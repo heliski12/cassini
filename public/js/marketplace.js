@@ -30,25 +30,41 @@ $(function(){
               .replace(new RegExp("\\[0\\]","g"), "["+counts.photo_count+"]");
     $("#photos_list").append(extra_photo);
   });
+  $("#create_profile_form").on('click','a.remove-presentation', function(event) {
+    event.preventDefault();
+    var remove_selector = ".presentation" + $(this).attr('id').substring(20);
+    $(remove_selector).remove(); 
+  });
   $("a.add-another-presentation").click(function(event) {
     event.preventDefault();
     var extra_presentation = $("#extra_presentation")
               .html()
-              .replace(new RegExp("\\[0\\]","g"), "["+ ++counts.presentation_count+"]");
+              .replace(new RegExp("\\[x\\]","g"), ++counts.presentation_count);
     $("#presentations_list").append(extra_presentation);
+  });
+  $("#create_profile_form").on('click','a.remove-publication', function(event) {
+    event.preventDefault();
+    var remove_selector = ".publication" + $(this).attr('id').substring(19);
+    $(remove_selector).remove(); 
   });
   $("a.add-another-publication").click(function(event) {
     event.preventDefault();
     var extra_publication = $("#extra_publication")
               .html()
-              .replace(new RegExp("\\[0\\]","g"), "["+ ++counts.publication_count+"]");
+              .replace(new RegExp("\\[x\\]","g"), ++counts.publication_count);
     $("#publications_list").append(extra_publication);
+    $(".publication"+counts.publication_count+" .selectpicker-extra").selectpicker({ dropupAuto: false, size: 9, selectedTextFormat: 'count > 5' });
+  });
+  $("#create_profile_form").on('click','a.remove-award', function(event) {
+    event.preventDefault();
+    var remove_selector = ".award" + $(this).attr('id').substring(13);
+    $(remove_selector).remove(); 
   });
   $("a.add-another-award").click(function(event) {
     event.preventDefault();
     var extra_award = $("#extra_award")
               .html()
-              .replace(new RegExp("\\[0\\]","g"), "["+ ++counts.award_count+"]");
+              .replace(new RegExp("\\[x\\]","g"), ++counts.award_count);
     $("#awards_list").append(extra_award);
   });
   $("a.add-fs-additional").click(function(event) {
@@ -57,11 +73,24 @@ $(function(){
   });
   $("button#upload_video").click(function(event) {
     event.preventDefault();
-    alert("Video uploads are coming soon!  (This can be a modal if desired)");
+    alert("Video uploads are coming soon!");
+  });
+  $("input[type=checkbox]").change(function(event) {
+    if ($(this).is(":checked"))
+      $("input#submit_profile").removeClass('disabled');
+    else
+      $("input#submit_profile").addClass('disabled');
+  });
+  $("#clicker").click(function(event) {
+    var checked = $("input[type=checkbox]").is(":checked"); 
+    if (!checked)
+      alert("You must agree to the Terms of Service before submitting your profile.");
+    return;
   });
 
   $('#market_applications').tagit({
-      allowSpaces: true
+      allowSpaces: true,
+      fieldName: 'market_applications[]'
   });
   
   // initialize open/close state of innovator type based on previous model value

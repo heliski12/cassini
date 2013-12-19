@@ -30,7 +30,7 @@ class SelectHelper
   {
     // TODO - cache these
     $publications = Publication::all();   
-    $options = [];
+    $options = [ '' => 'Select a web publication...' ];
     foreach ($publications as $publication)
     {
       $options[$publication->id] = $publication->name;

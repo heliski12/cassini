@@ -38,9 +38,9 @@ return [
   ],
 
   'viewer_types' => [
-    'SEEKERS' => 'Seekers (Companies, Foundations, Gov\'t Agencies)',
-    'RESEARCHERS' => 'Researchers',
-    'ENTREPRENEURS' => 'Entrepreneurs',
+    'RESTRICT_SEEKERS' => 'Seekers (Companies, Foundations, Gov\'t Agencies)',
+    'RESTRICT_RESEARCHERS' => 'Researchers',
+    'RESTRICT_ENTREPRENEURS' => 'Entrepreneurs',
   ],
 
   'not_specified' => 'Not Specified',

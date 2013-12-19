@@ -83,9 +83,9 @@ Route::get('/admin_profile_wizard', function()
 
 
 // TODO - DEV ONLY
-Event::listen('illuminate.query', function($sql,$bindings,$time) {
-  Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
-});
+//Event::listen('illuminate.query', function($sql,$bindings,$time) {
+  //Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
+//});
 
 
 // TODO - REMOVE THIS
@@ -111,6 +111,7 @@ Route::get('/test',function()
 //imagepng($im);
 //imagedestroy($im);
     //print_r(sys_get_temp_dir());
-    $keyperson = new Keyperson();
     //$keyperson->photo =  
+    //$profile = Profile::with('publications')->first();
+    //dd($profile->publications);
   });

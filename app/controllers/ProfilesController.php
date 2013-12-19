@@ -29,9 +29,14 @@ class ProfilesController extends BaseController {
     //Log::info("creating profile, new session data after abandoned profile purge " . print_r(Session::all(), true));
 
     if (!empty($active_profile_id))
-      $profile = Profile::with('keypersons')->find($active_profile_id);
-    else
+      $profile = Profile::fetchFullProfileForStep($active_profile_id, $step);
+
+    if (empty($profile))
+    {
+      Session::forget('active_profile_id');
+      Session::forget('active_profile_last_touched');
       $profile = new Profile;
+    }
 
     return View::make("profiles.create_step_$step")->with('step', $step)->with('profile', $profile);
   }
@@ -49,6 +54,11 @@ class ProfilesController extends BaseController {
     if (!empty($profile_id))
     {
       $profile = Profile::fetchFullProfileForStep($profile_id, $step); 
+
+      // don't let unauthorized users modify a profile!
+      if ($profile->creator_id != Auth::user()->id)
+        App::abort('500');
+
       $profile->fill(Input::all());
     }
     else
@@ -60,6 +70,7 @@ class ProfilesController extends BaseController {
     if (!empty($v) and $v->fails())
       return View::make("profiles.create_step_$step")->with([ 'errors' => $v->messages(), 'step' => $step, 'profile' => $profile ]);
 
+    $profile->creator()->associate(Auth::user());
     $profile->save();
     $profile->saveAssociatesForStep(Input::all(), $step);
 
