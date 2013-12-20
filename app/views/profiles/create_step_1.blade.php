@@ -13,7 +13,7 @@
     <div class="col-md-9 col-md-offset-3 innovator-type-extras collapse" id="researcher">
       <div class="form-group">
         {{ Form::label('institution_id', 'Academic or Government&nbsp;Institution', [ 'class' => 'control-label' ]) }}
-        {{ Form::select('institution_id', ['' => 'Select an Institution...', '1' => 'Stanford University', '2' => 'More will be populated thru Admin'], $profile->institution_id, [ 'class' => 'form-control' ] ) }} 
+        {{ Form::select('institution_id', SelectHelper::get_institution_options(), $profile->institution_id, [ 'class' => 'form-control' ] ) }} 
       </div>
       <div class="form-group">
         {{ Form::label('institution_department', 'Department', [ 'class' => 'control-label' ]) }}

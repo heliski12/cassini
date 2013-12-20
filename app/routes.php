@@ -50,11 +50,15 @@ Route::group(array('before' => 'auth'), function()
   {
     return "Protected profiles page";
   }); 
-  Route::get('/create_profile/{step?}', [ 'as' => 'create_profile', 'uses' => 'ProfilesController@create' ])->where('step', '[1-3]');
+  Route::get('/profiles/new', [ 'as' => 'new_profile', 'uses' => 'ProfilesController@newProfile' ]);
+  Route::get('/profiles/{id}', [ 'as' => 'show_profile', 'uses' => 'ProfilesController@show' ]);
+  Route::get('/create-profile/{step?}', [ 'as' => 'create_profile', 'uses' => 'ProfilesController@create' ])->where('step', '[1-3]');
   Route::post('/create_profile/{step?}', [ 'as' => 'store_profile', 'uses' => 'ProfilesController@store' ])->where('step', '[1-3]');
-  Route::get('/edit_profile/{id}/{step?}', [ 'as' => 'edit_profile', 'uses' => 'ProfilesController@edit' ])->where('step', '[1-3]');
-  Route::post('/edit_profile/{step?}', [ 'as' => 'update_profile', 'uses' => 'ProfilesController@store' ]);
+  Route::get('/edit-profile/{id}/{step?}', [ 'as' => 'edit_profile', 'uses' => 'ProfilesController@edit' ])->where('step', '[1-3]');
+  //Route::post('/edit_profile/{step?}', [ 'as' => 'update_profile', 'uses' => 'ProfilesController@store' ]);
   Route::get('/marketplace', [ 'as' => 'marketplace', 'uses' => 'ProfilesController@index' ]);
+  Route::get('/saved-profiles', [ 'as' => 'saved_profiles', 'uses' => 'ProfilesController@savedProfiles' ]);
+  Route::get('/my-profiles', [ 'as' => 'my_profiles', 'uses' => 'ProfilesController@myProfiles' ]);
 });
 
 
@@ -83,9 +87,9 @@ Route::get('/admin_profile_wizard', function()
 
 
 // TODO - DEV ONLY
-//Event::listen('illuminate.query', function($sql,$bindings,$time) {
-  //Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
-//});
+Event::listen('illuminate.query', function($sql,$bindings,$time) {
+  Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
+});
 
 
 // TODO - REMOVE THIS

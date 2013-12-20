@@ -18,6 +18,10 @@ a.icon, a.icon span {
   color: inherit;
   font-size: 14px;
 }
+.wrap
+{
+  padding-bottom: 10px;
+}
 
 /* login/signup */
 .wrap-login {
@@ -90,6 +94,16 @@ html .user-nav h5
   font-weight: 400;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.nav
+{
+  margin-top: 50px;
+}
+.nav a
+{
+  margin: 10px;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 /* create profile */
@@ -310,6 +324,23 @@ label.radio-label { font-weight: bold; margin-left: 10px; }
 #create_profile_form .profile-next input.step1 { margin-right: 12px; }
 #create_profile_form .terms { margin-left: 0px; }
 #create_profile_form ul.tagit { background: #fff; }
+
+/* my profiles */
+div.row.my-profiles-new {
+  margin-top: 20px;
+  font-size: 20px; 
+  font-weight: 400;
+}
+div.my-profiles {
+  margin-top: 20px;
+}
+img.my-profiles {
+  max-width: 190px;
+}
+div.my-profile {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 
 

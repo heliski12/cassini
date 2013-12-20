@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder {
     $this->command->info('users table has been seeded');
 		$this->call('PublicationsTableSeeder');
     $this->command->info('publications table has been seeded');
-    
+		$this->call('InstitutionsTableSeeder');
+    $this->command->info('institutions table has been seeded');
 	}
 
 }

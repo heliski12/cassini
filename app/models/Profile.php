@@ -4,7 +4,7 @@ class Profile extends Eloquent {
   // there has to be another way of ignoring standard form input in one place.
   // using Input::except(['next','previous']) would lead to repeated code
   // TODO - photo
-  protected $guarded = ['keypersons','next','previous','regions','photo','presentations','publications','awards'];
+  protected $guarded = ['keypersons','next','previous','edit','regions','photo','presentations','publications','awards'];
 
   public static $rules = array();
 

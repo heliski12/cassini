@@ -38,5 +38,17 @@ class SelectHelper
     return $options; 
   }
 
+  public static function get_institution_options()
+  {
+    // TODO - cache these
+    $institutions = Institution::all();
+    $options = [ '' => 'Select an institution...' ];
+    foreach ($institutions as $institution)
+    {
+      $options[$institution->id] = $institution->name;
+    }
+    return $options;
+  }
+
 }
 

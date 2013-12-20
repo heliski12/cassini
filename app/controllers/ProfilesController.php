@@ -2,6 +2,13 @@
 
 class ProfilesController extends BaseController {
 
+  public function newProfile()
+  {
+    Session::forget('active_profile_id');
+    Session::forget('active_profile_last_touched');
+    return Redirect::route('create_profile');
+  }
+
   public function create($step = 1)  
   {
     //Log::info("creating profile with session data " . print_r(Session::all(), true));
@@ -31,6 +38,11 @@ class ProfilesController extends BaseController {
     if (!empty($active_profile_id))
       $profile = Profile::fetchFullProfileForStep($active_profile_id, $step);
 
+    // TODO - revisit with complete permissions
+    // don't let unauthorized users modify a profile!
+    if (!empty($profile) and $profile->creator_id != Auth::user()->id)
+      return App::abort('500');
+
     if (empty($profile))
     {
       Session::forget('active_profile_id');
@@ -38,11 +50,15 @@ class ProfilesController extends BaseController {
       $profile = new Profile;
     }
 
+
     return View::make("profiles.create_step_$step")->with('step', $step)->with('profile', $profile);
   }
 
-  public function edit($id)
+  public function edit($id, $step = 1)
   {
+    Session::put('active_profile_id', $id);
+    Session::put('active_profile_last_touched', new \DateTime);
+    return $this->create($step);
   }
 
   public function store($step = 1)
@@ -55,6 +71,7 @@ class ProfilesController extends BaseController {
     {
       $profile = Profile::fetchFullProfileForStep($profile_id, $step); 
 
+      // TODO - revisit
       // don't let unauthorized users modify a profile!
       if ($profile->creator_id != Auth::user()->id)
         App::abort('500');
@@ -77,29 +94,59 @@ class ProfilesController extends BaseController {
     Session::put('active_profile_id', $profile->id);
     Session::put('active_profile_last_touched', new \DateTime);
 
+    $edit = Input::has('edit') and Input::get('edit');
+
     if (Input::has('next'))
     {
       Log::info("Going to next step number $step + 1");
 
-      return Redirect::route('create_profile', [ $step + 1 ]);
+      if ($edit)
+        return Redirect::route('edit_profile', [ $profile->id, $step + 1 ]);
+      else
+        return Redirect::route('create_profile', [ $step + 1 ]);
     }
     elseif (Input::has('previous'))
     {
       Log::info("Going to previous step number $step - 1");
 
-      return Redirect::route('create_profile', [ $step - 1 ]);
+      if ($edit)
+        return Redirect::route('edit_profile', [ $profile->id, $step - 1 ]);
+      else
+        return Redirect::route('create_profile', [ $step - 1 ]);
     }
     else
     {
       Log::info("Storing profile on step $step");
 
-      return "Profile saved!";
+      // TODO - this should be the profile preview
+      return Redirect::route('my_profiles');
     }
+  }
+
+  public function show($id)
+  {
+    // TODO - more eager fetches
+    $profile = Profile::with(['keypersons','institution'])->find($id);
+
+    // TODO - permissions
+
+    return View::make('profiles.show')->with('profile', $profile);
   }
 
   public function index()
   {
-    return "marketplace index";
+    return View::make('profiles.search');
   }
 
+  public function savedProfiles()
+  {
+    return View::make('profiles.saved_profiles');
+  }
+
+  public function myProfiles()
+  {
+    $profiles = Profile::with(['keypersons','institution'])->where('creator_id',Auth::user()->id)->get();
+
+    return View::make('profiles.my_profiles')->with('profiles',$profiles);
+  }
 }

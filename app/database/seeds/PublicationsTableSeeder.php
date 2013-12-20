@@ -8,14 +8,14 @@ class PublicationsTableSeeder extends Seeder {
       DB::table('publications')->delete();
 
 
-      $regions = [ 
+      $publications = [ 
         [ 'id' => 1, 'name' => 'Scientific American' ],
         [ 'id' => 2, 'name' => 'Nature' ],
         [ 'id' => 3, 'name' => 'Science' ],
       ];
 
         // Uncomment the below to run the seeder
-        DB::table('publications')->insert($regions);
+        DB::table('publications')->insert($publications);
     }
 
 }

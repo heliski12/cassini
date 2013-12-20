@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2 steps-nav">
           <ul class="step-titles">
-            <li class="{{ $step == 1 ? 'active' : '' }}">Contact {{ $profile->id }}</li>
+            <li class="{{ $step == 1 ? 'active' : '' }}">Contact</li>
             <li class="{{ $step == 2 ? 'active' : '' }}">Technology or Research</li>
             <li class="{{ $step == 3 ? 'active' : '' }}">Documents</li>
           </ul>
@@ -32,6 +32,7 @@
     {{-- Form::model($profile, [ 'route' => ['store_profile', $step ], 'id' => 'create_profile_form', 'role' => 'form', 'class' => ($step == 1) ? 'form-horizontal' : '' ]) --}}
 
     <input type="hidden" name="id" value="{{$profile->id}}"/>
+    <input type="hidden" name="edit" value="{{ Request::segment(1) == 'edit-profile' }}" />
 
     <div class="create-profile-form">
 

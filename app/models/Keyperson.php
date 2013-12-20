@@ -37,6 +37,7 @@ class Keyperson extends BaseModel {
     $profile = $this->getAttribute('profile');
     return $profile->id . ': ' . $profile->tech_title;
   }
+  public function getFullNameAttribute() { return $this->getAttribute('first_name') . ' ' . $this->getAttribute('last_name'); }
 
   public static function validateMultiple($input)
   {
