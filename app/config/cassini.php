@@ -43,6 +43,7 @@ return [
     'RESTRICT_ENTREPRENEURS' => 'Entrepreneurs',
   ],
 
+  'status_not_specified' => 'Started',
   'not_specified' => 'Not Specified',
   'not_applicable' => 'n/a',
 

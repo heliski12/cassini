@@ -18,19 +18,19 @@
           <div class="col-md-2 col-md-offset-1">
             <img class="my-profiles" src="{{ URL::to('/img/blank-avatar.jpg') }}" />
           </div>
-          <div class="col-md-6">
+          <div class="col-md-9">
             @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0)
               {{ $profile->keypersons[0]->full_name }}<br/>
             @endif
             <a href="{{ route('show_profile', [ 'id' => $profile->id ]) }}">{{ $profile->tech_title }}</a><br/>
-            @if (!empty($profile->institution))
+            @if ($profile->innovator_type === 'RESEARCHER')
               {{ $profile->institution->name }}<br/>
               {{ $profile->institution_department }}<br/>
             @else
               {{ $profile->organization }}<br/>
             @endif
-            <a href="{{ route('edit_profile', [ 'id' => $profile->id ]) }}">Edit</a>
-          
+            <a href="{{ route('edit_profile', [ 'id' => $profile->id ]) }}">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{{ route('add_editor', [ 'id' => $profile->id ])}}">Add Secondary Editor</a><br/>
+            Status: {{ $profile->status_tos }}
           </div>
         </div>
       @endforeach

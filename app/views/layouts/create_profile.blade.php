@@ -53,7 +53,7 @@
               {{ Form::submit('Save &amp; Next &raquo;', [ 'class' => 'btn btn-primary step' . $step, 'name' => 'next' ] ) }} 
             @else
               <div id="clicker">
-                {{ Form::submit('Publish Profile', [ 'class' => 'btn btn-primary disabled', 'id' => 'submit_profile' ]) }}
+                {{ Form::submit('Publish Profile', [ 'class' => 'btn btn-primary disabled', 'id' => 'submit_profile', 'name' => 'submit' ]) }}
               </div>
             @endif
           </div>

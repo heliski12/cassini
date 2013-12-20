@@ -4,7 +4,7 @@ class Profile extends Eloquent {
   // there has to be another way of ignoring standard form input in one place.
   // using Input::except(['next','previous']) would lead to repeated code
   // TODO - photo
-  protected $guarded = ['keypersons','next','previous','edit','regions','photo','presentations','publications','awards'];
+  protected $guarded = ['keypersons','next','previous','submit','edit','regions','photo','presentations','publications','awards'];
 
   public static $rules = array();
 
@@ -76,7 +76,7 @@ class Profile extends Eloquent {
   public function getStatusTosAttribute()
   {
     if (!array_key_exists($this->getAttribute('status'), Config::get('cassini.profile_statuses')))
-      return Config::get('cassini.not_specified');
+      return Config::get('cassini.status_not_specified');
     return Config::get('cassini.profile_statuses')[$this->getAttribute('status')];
   }
 

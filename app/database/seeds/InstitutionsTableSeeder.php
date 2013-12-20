@@ -9,10 +9,10 @@ class InstitutionsTableSeeder extends Seeder {
 
 
       $institutions = [ 
-        [ 'id' => 1, 'name' => 'Stanford' ],
-        [ 'id' => 2, 'name' => 'Harvard' ],
-        [ 'id' => 3, 'name' => 'Princeton' ],
-        [ 'id' => 4, 'name' => 'Cornell' ],
+        [ 'id' => 1, 'name' => 'Stanford', 'city' => 'Palo Alto', 'state' => 'California', 'country' => 'USA' ],
+        [ 'id' => 2, 'name' => 'Harvard', 'city' => 'Cambridge', 'state' => 'Massachusetts', 'country' => 'USA' ],
+        [ 'id' => 3, 'name' => 'Princeton', 'city' => 'Princeton', 'state' => 'New Jersey', 'country' => 'USA' ],
+        [ 'id' => 4, 'name' => 'Cornell', 'city' => 'Ithaca', 'state' => 'New York', 'country' => 'USA' ],
       ];
 
         // Uncomment the below to run the seeder

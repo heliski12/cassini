@@ -59,6 +59,7 @@ Route::group(array('before' => 'auth'), function()
   Route::get('/marketplace', [ 'as' => 'marketplace', 'uses' => 'ProfilesController@index' ]);
   Route::get('/saved-profiles', [ 'as' => 'saved_profiles', 'uses' => 'ProfilesController@savedProfiles' ]);
   Route::get('/my-profiles', [ 'as' => 'my_profiles', 'uses' => 'ProfilesController@myProfiles' ]);
+  Route::get('/add-editor/{id}', [ 'as' => 'add_editor', 'uses' => 'ProfilesController@addEditor' ]);
 });
 
 
@@ -88,6 +89,11 @@ Route::get('/admin_profile_wizard', function()
 
 // TODO - DEV ONLY
 Event::listen('illuminate.query', function($sql,$bindings,$time) {
+  for ($i = 0; $i < sizeof($bindings); $i++)
+  {
+    if ($bindings[$i] instanceof DateTime)
+      $bindings[$i]= $bindings[$i]->getTimestamp();
+  }
   Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
 });
 

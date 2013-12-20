@@ -87,6 +87,11 @@ class ProfilesController extends BaseController {
     if (!empty($v) and $v->fails())
       return View::make("profiles.create_step_$step")->with([ 'errors' => $v->messages(), 'step' => $step, 'profile' => $profile ]);
 
+    if (empty($profile->status))
+      $profile->status = 'STARTED';
+    elseif (Input::has('submit'))
+      $profile->status = 'COMPLETE_PENDING';
+
     $profile->creator()->associate(Auth::user());
     $profile->save();
     $profile->saveAssociatesForStep(Input::all(), $step);
@@ -126,7 +131,7 @@ class ProfilesController extends BaseController {
   public function show($id)
   {
     // TODO - more eager fetches
-    $profile = Profile::with(['keypersons','institution'])->find($id);
+    $profile = Profile::with(['keypersons','institution','sectors'])->find($id);
 
     // TODO - permissions
 

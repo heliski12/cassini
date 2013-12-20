@@ -342,6 +342,63 @@ div.my-profile {
   margin-bottom: 10px;
 }
 
+/* single profile */
+div.profile-wrap {
+  margin-top:40px;
+}
+div.profile-top {
+  background: #F0F0F0;
+  border: 1px solid #000;
+}
+div.profile-top-cell {
+  border-right: 1px solid #000;
+  border-left: 1px solid #000;
+  min-height: 190px;
+}
+div.profile-body {
+  border: 1px solid #000;
+  padding-top: 10px; 
+}
+div.profile-body-cell {
+  background: #F0F0F0;
+  margin: 15px 0px;
+}
+div.profile-tabs .nav {
+  margin-top: 10px;
+}
+.tab-content { 
+  margin-bottom: 20px;
+  background: #F0F0F0;
+}
+.nav-tabs a {
+  font-size: 14px;
+  color: #000;
+}
+.nav-tabs>li {
+  margin-bottom: -11px;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  background: #F0F0F0;
+  outline: 0;
+}
+.tab-pane
+{
+  padding-top: 10px;
+}
+html .btn-warning {
+  white-space: normal;
+  min-width: 215px;
+  min-height: 50px;
+}
+.btn-first { margin-top: 33px; margin-bottom: 10px; }
+.btn-last { margin-top: 10px;  margin-bottom: 33px; }
+.tech-title { font-size: 20px; font-weight: 400; margin-top: 10px; }
+.sector-pill { display: inline-block; margin-top: 5px; }
+.profile-logo { margin-top: 10px; margin-right: 10px; position: relative; }
+.profile-logo img { display: block; margin: 0 auto; max-height: 100px; }
+.profile-inst-det { margin: 10px auto; text-align: center; }
+.profile-inst { position: relative; }
+
 
 
 

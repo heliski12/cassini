@@ -38,6 +38,20 @@ class Keyperson extends BaseModel {
     return $profile->id . ': ' . $profile->tech_title;
   }
   public function getFullNameAttribute() { return $this->getAttribute('first_name') . ' ' . $this->getAttribute('last_name'); }
+  public function getCityStateCountryAttribute() 
+  { 
+    $address_str = '';
+    $city = $this->getAttribute('city'); 
+    $state = $this->getAttribute('state'); 
+    $country = $this->getAttribute('country'); 
+
+    if (!empty($city))
+      $address_str .= "$city, ";
+    $address_str .= "$state ";
+    $address_str .= $country;
+
+    return $address_str;
+  }
 
   public static function validateMultiple($input)
   {
