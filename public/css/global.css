@@ -77,16 +77,13 @@ div.error-message {
 }
 
 /* private layout */
-.user-nav h5, .user-nav h6
+.user-nav h5
 {
   text-align: right;
   margin-right:10px;
 }
-html .user-nav h6
-{
-  font-size: 10px;
-  padding-top:10px;
-  margin-bottom: 3px;
+.user-nav h5:first-child {
+  padding-top:25px;
 }
 html .user-nav h5
 {
@@ -133,7 +130,7 @@ html .user-nav h5
   background: #F0F0F0;
   margin:20px 40px;
 }
-.create-profile hr
+.create-profile hr, .my-account hr
 {
   border: 0;
   height: 1px;
@@ -325,7 +322,7 @@ label.radio-label { font-weight: bold; margin-left: 10px; }
 #create_profile_form .terms { margin-left: 0px; }
 #create_profile_form ul.tagit { background: #fff; }
 
-/* my profiles */
+/* my account */
 div.row.my-profiles-new {
   margin-top: 20px;
   font-size: 20px; 
@@ -341,22 +338,51 @@ div.my-profile {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.my-account
+{
+  border: solid 2px #000000;
+  margin:20px;
+}
+.my-account-inner
+{
+  background: #F0F0F0;
+  margin:20px 40px;
+  padding: 20px 0px;
+}
+.my-account h4 {
+  margin-top: 30px;
+  font-size:28px;
+  text-align: center;
+}
+.my-account h5
+{
+  font-size: 18px;
+}
+a.add-profile, a.add-profile:hover
+{
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+}
 
 /* single profile */
 div.profile-wrap {
   margin-top:40px;
+  margin-left: 20px; margin-right: 20px;
 }
 div.profile-top {
   background: #F0F0F0;
-  border: 1px solid #000;
+  border: 2px solid #000;
+  border-bottom: 1px solid #000;
 }
 div.profile-top-cell {
-  border-right: 1px solid #000;
-  border-left: 1px solid #000;
-  min-height: 190px;
+  border-right: 2px solid #000;
+  border-left: 2px solid #000;
+  min-height: 210px;
 }
 div.profile-body {
-  border: 1px solid #000;
+  border: 2px solid #000;
+  border-top: 1px solid #000;
   padding-top: 10px; 
 }
 div.profile-body-cell {
@@ -387,11 +413,10 @@ div.profile-tabs .nav {
 }
 html .btn-warning {
   white-space: normal;
-  min-width: 215px;
   min-height: 50px;
 }
-.btn-first { margin-top: 33px; margin-bottom: 10px; }
-.btn-last { margin-top: 10px;  margin-bottom: 33px; }
+.btn-first { margin-top: 40px; margin-bottom: 10px; }
+.btn-last { margin-top: 10px;  margin-bottom: 38px; }
 .tech-title { font-size: 20px; font-weight: 400; margin-top: 10px; }
 .sector-pill { display: inline-block; margin-top: 5px; }
 .profile-logo { margin-top: 10px; margin-right: 10px; position: relative; }

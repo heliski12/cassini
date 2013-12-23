@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container-full">
   @if (Session::has('message'))
     <div class="row message">
       <div class="col-md-10 col-md-offset-1">
@@ -11,7 +11,6 @@
     </div>
   @endif
   <div class="row profile-wrap">
-    <div class="col-md-10 col-md-offset-1">
       <div class="row profile-top">
         <div class="col-md-2 profile-inst">
           @if ($profile->innovator_type === 'RESEARCHER')
@@ -55,13 +54,13 @@
           </div>
         </div>
         <div class="col-md-3">
-          <button class="btn btn-warning btn-first" data-toggle="modal" data-target="#contact">Contact Motionry about this Profile</button>
+          <button class="btn btn-warning btn-first col-md-12" data-toggle="modal" data-target="#contact">Contact Motionry about this Profile</button>
           {{ Form::open([ 'url' => route('save_profile'), 'id' => 'contact_form', 'role' => 'form' ]) }}
           {{ Form::hidden('profile_id', $profile->id) }}
           @if ($profile->subscribers->contains(Auth::user()->id))
-            <button class="btn btn-warning btn-last disabled" type="submit">Profile Saved</button>
+            <button class="btn btn-warning btn-last disabled col-md-12" type="submit">Profile Saved</button>
           @else
-            <button class="btn btn-warning btn-last" type="submit">Save Profile</button>
+            <button class="btn btn-warning btn-last col-md-12" type="submit">Save Profile</button>
           @endif
           {{ Form::close() }}
         
@@ -116,7 +115,6 @@
           </div> 
         </div>
       </div>
-    </div>
   </div>
 
 </div>

@@ -58,10 +58,11 @@ Route::group(array('before' => 'auth'), function()
   //Route::post('/edit_profile/{step?}', [ 'as' => 'update_profile', 'uses' => 'ProfilesController@store' ]);
   Route::get('/marketplace', [ 'as' => 'marketplace', 'uses' => 'ProfilesController@index' ]);
   Route::get('/saved-profiles', [ 'as' => 'saved_profiles', 'uses' => 'ProfilesController@savedProfiles' ]);
-  Route::get('/my-profiles', [ 'as' => 'my_profiles', 'uses' => 'ProfilesController@myProfiles' ]);
+  Route::get('/my-account', [ 'as' => 'my_account', 'uses' => 'UsersController@myAccount' ]);
   Route::get('/add-editor/{id}', [ 'as' => 'add_editor', 'uses' => 'ProfilesController@addEditor' ]);
   Route::post('/contact', [ 'as' => 'contact', 'uses' => 'ProfilesController@contact' ]);
   Route::post('/save-profile', [ 'as' => 'save_profile', 'uses' => 'ProfilesController@save' ]);
+  Route::post('/update-password', [ 'as' => 'update_password', 'uses' => 'UsersController@updatePassword' ]);
 });
 
 

@@ -124,7 +124,7 @@ class ProfilesController extends BaseController {
       Log::info("Storing profile on step $step");
 
       // TODO - this should be the profile preview
-      return Redirect::route('my_profiles');
+      return Redirect::route('my_account');
     }
   }
 
@@ -148,13 +148,6 @@ class ProfilesController extends BaseController {
     return View::make('profiles.saved_profiles');
   }
 
-  public function myProfiles()
-  {
-    $profiles = Profile::with(['keypersons','institution'])->where('creator_id',Auth::user()->id)->get();
-
-    return View::make('profiles.my_profiles')->with('profiles',$profiles);
-  }
-
   public function contact()
   {
     $profile = Profile::find(Input::get('profile_id'));
@@ -165,7 +158,7 @@ class ProfilesController extends BaseController {
     $data = array('user' => $user, 'profile' => $profile, 'user_message' => $user_message);
     Mail::send('emails.profile_contact', $data, function($message) use ($user)
     {
-      $message->to(Config::get('cassini.admin_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has contacted you about a profile.");
+      $message->to(Config::get('cassini.support_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has contacted you about a profile.");
     });
 
     return Redirect::route('show_profile', [ $profile->id ])->with('message','Your message has been sent!'); 

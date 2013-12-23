@@ -51,6 +51,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   public function getInnovatorTosAttribute() { return $this->getAttribute('innovator') ? 'Yes' : ''; }
   public function getSeekerTosAttribute() { return $this->getAttribute('seeker') ? 'Yes' : ''; }
   public function getUnsureTosAttribute() { return $this->getAttribute('unsure') ? 'Yes' : ''; }
+  public function getIsAdminAttribute() { return $this->getAttribute('role') === 'ADMIN'; }
 
   public function setPasswordAttribute($value) 
   { 

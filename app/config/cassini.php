@@ -3,6 +3,7 @@
 return [
 
   'filestorage' => 'filesystem',  // or s3
+
   'admin_email' => 'jstavis@gmail.com',
 
   'profile_statuses' => [ 
@@ -50,6 +51,6 @@ return [
 
   'forgot_email_subject' => 'Forgot Email',
   'forgot_email_body' => 'To send the registered email address please provide your first and last name as well as your organization.  We will call the registered phone number for verification.',
-  'support_email' => 'support@motionry.com',
+  'support_email' => 'jstavis@gmail.com',
 
 ];
