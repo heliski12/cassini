@@ -154,4 +154,20 @@ class ProfilesController extends BaseController {
 
     return View::make('profiles.my_profiles')->with('profiles',$profiles);
   }
+
+  public function contact()
+  {
+    $profile = Profile::find(Input::get('profile_id'));
+    $user = Auth::user();
+    $user_message = Input::get('message');
+
+    Log::error("Mailing profile contact to admins");
+    $data = array('user' => $user, 'profile' => $profile, 'user_message' => $user_message);
+    Mail::send('emails.profile_contact', $data, function($message) use ($user)
+    {
+      $message->to(Config::get('cassini.admin_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has contacted you about a profile.");
+    });
+
+    return Redirect::route('show_profile', [ $profile->id ])->with('message','Your message has been sent!'); 
+  }
 }

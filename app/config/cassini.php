@@ -3,6 +3,7 @@
 return [
 
   'filestorage' => 'filesystem',  // or s3
+  'admin_email' => 'jstavis@gmail.com',
 
   'profile_statuses' => [ 
     'STARTED' => 'Started',

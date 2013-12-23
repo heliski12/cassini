@@ -3,6 +3,13 @@
 @section('content')
 
 <div class="container">
+  @if (Session::has('message'))
+    <div class="row message">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="alert alert-success">{{ Session::get('message') }}</div>
+      </div>
+    </div>
+  @endif
   <div class="row profile-wrap">
     <div class="col-md-10 col-md-offset-1">
       <div class="row profile-top">
@@ -48,21 +55,41 @@
           </div>
         </div>
         <div class="col-md-3">
-          <button class="btn btn-warning btn-first">Contact Motionry about this Profile</button>
+          <button class="btn btn-warning btn-first" data-toggle="modal" data-target="#contact">Contact Motionry about this Profile</button>
           <button class="btn btn-warning btn-last">Save Profile</button>
         
         </div>
       </div>
       <div class="row profile-body">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-7">
             <div class="row profile-body-cell">1</div> 
             <div class="row profile-body-cell">2</div> 
             <div class="row profile-body-cell">3</div> 
           </div>
-          <div class="col-md-4">
-            <div class="row profile-body-cell">a</div> 
-            <div class="row profile-body-cell">b</div> 
+          <div class="col-md-5">
+            <div class="row profile-body-cell">
+              <div class="profile-h">Key People</div>
+              @foreach ($profile->keypersons as $keyperson)
+                <div class="row profile-kp">
+                  <div class="col-md-4">
+                    <img src="{{ URL::to('/img/blank-avatar.jpg') }}"/> 
+                  </div>
+                  <div class="col-md-8 profile-kp-info">
+                    <span class="profile-kp-name">
+                      {{ $keyperson->full_name }}
+                    </span><br/>
+                    <span class="profile-kp-title">
+                      {{ $keyperson->title }}  
+                    </span>
+                  </div>
+                </div>
+              @endforeach
+            </div> 
+            <div class="row profile-body-cell">
+              <div class="profile-h">Funding</div>
+            
+            </div> 
           </div>
         </div>
         <div class="row profile-tabs">
@@ -89,5 +116,30 @@
 
 @stop
 
+@section('modal')
+<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contact_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" id="contact_modal_content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="contact_label">CONTACT MOTIONRY ABOUT THIS PROFILE</h4>
+      </div>
+      {{ Form::open( [ 'url' => 'contact', 'id' => 'signup_form', 'role' => 'form' ] ) }}
+      <div class="modal-body">
+        This private message regarding '<strong>{{ $profile->tech_title }}</strong>' will be sent to Motionry admins.
+        <br/><br/>
+        <textarea id="message" name="message" class="form-control" rows="10"></textarea>
+        {{ Form::hidden('profile_id', $profile->id) }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </div>
+      {{ Form::close() }}
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+@stop
 
 
