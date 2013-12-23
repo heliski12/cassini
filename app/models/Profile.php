@@ -50,12 +50,12 @@ class Profile extends Eloquent {
 
   public function subscribers()
   {
-    return $this->belongsToMany('User', 'profile_saves', 'user_id', 'profile_id');
+    return $this->belongsToMany('User', 'profile_saves', 'user_id', 'profile_id')->withTimestamps();
   }
 
   public function collaborators()
   {
-    return $this->belongsToMany('User', 'profile_permissions', 'user_id', 'profile_id');
+    return $this->belongsToMany('User', 'profile_permissions', 'user_id', 'profile_id')->withTimestamps();
   }
 
   public function photos()

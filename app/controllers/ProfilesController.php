@@ -170,4 +170,17 @@ class ProfilesController extends BaseController {
 
     return Redirect::route('show_profile', [ $profile->id ])->with('message','Your message has been sent!'); 
   }
+
+  public function save()
+  {
+    $profile = Profile::find(Input::get('profile_id'));
+    $user = Auth::user();
+
+    if ($user->subscriptions->contains($profile->id))
+      return Redirect::route('show_profile', [ $profile->id ])->with('message', 'This profile has already been saved.  You can access it from the \'Saved Profiles\' link above.');
+
+    $user->subscriptions()->attach($profile);
+
+    return Redirect::route('show_profile', [ $profile->id ])->with('message', 'This profile has been saved.  You can access it from the \'Saved Profiles\' link above.');
+  }
 }

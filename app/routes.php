@@ -61,6 +61,7 @@ Route::group(array('before' => 'auth'), function()
   Route::get('/my-profiles', [ 'as' => 'my_profiles', 'uses' => 'ProfilesController@myProfiles' ]);
   Route::get('/add-editor/{id}', [ 'as' => 'add_editor', 'uses' => 'ProfilesController@addEditor' ]);
   Route::post('/contact', [ 'as' => 'contact', 'uses' => 'ProfilesController@contact' ]);
+  Route::post('/save-profile', [ 'as' => 'save_profile', 'uses' => 'ProfilesController@save' ]);
 });
 
 

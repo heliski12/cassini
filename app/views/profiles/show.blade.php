@@ -56,7 +56,14 @@
         </div>
         <div class="col-md-3">
           <button class="btn btn-warning btn-first" data-toggle="modal" data-target="#contact">Contact Motionry about this Profile</button>
-          <button class="btn btn-warning btn-last">Save Profile</button>
+          {{ Form::open([ 'url' => route('save_profile'), 'id' => 'contact_form', 'role' => 'form' ]) }}
+          {{ Form::hidden('profile_id', $profile->id) }}
+          @if ($profile->subscribers->contains(Auth::user()->id))
+            <button class="btn btn-warning btn-last disabled" type="submit">Profile Saved</button>
+          @else
+            <button class="btn btn-warning btn-last" type="submit">Save Profile</button>
+          @endif
+          {{ Form::close() }}
         
         </div>
       </div>
@@ -124,7 +131,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="contact_label">CONTACT MOTIONRY ABOUT THIS PROFILE</h4>
       </div>
-      {{ Form::open( [ 'url' => 'contact', 'id' => 'signup_form', 'role' => 'form' ] ) }}
+      {{ Form::open([ 'url' => route('contact'), 'id' => 'contact_form', 'role' => 'form' ]) }}
       <div class="modal-body">
         This private message regarding '<strong>{{ $profile->tech_title }}</strong>' will be sent to Motionry admins.
         <br/><br/>

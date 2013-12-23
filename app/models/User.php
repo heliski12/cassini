@@ -39,12 +39,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
   public function subscriptions()
   {
-    return $this->belongsToMany('Profile', 'profile_saves', 'profile_id', 'user_id');
+    return $this->belongsToMany('Profile', 'profile_saves', 'profile_id', 'user_id')->withTimestamps();
   }
 
   public function collaborations()
   {
-    return $this->belongsToMany('Profile', 'profile_permissions', 'profile_id', 'user_id');
+    return $this->belongsToMany('Profile', 'profile_permissions', 'profile_id', 'user_id')->withTimestamps();
   }
 
   public function getFullNameAttribute() { return $this->getAttribute('first_name') . ' ' . $this->getAttribute('last_name'); }
