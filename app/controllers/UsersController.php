@@ -78,5 +78,19 @@ class UsersController extends BaseController {
     return Redirect::route('my_account')->with('message', 'Password updated.');
   }
   
+  public function email()
+  {
+    $user = Auth::user();
+    $user_message = Input::get('message');
+
+    Log::error("Mailing private email to admins");
+    $data = array('user' => $user, 'user_message' => $user_message);
+    Mail::send('emails.email_contact', $data, function($message) use ($user)
+    {
+      $message->to(Config::get('cassini.support_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has sent you a message from their account profile page.");
+    });
+
+    return Redirect::route('my_account')->with('message','Your message has been sent!'); 
+  }
 
 }

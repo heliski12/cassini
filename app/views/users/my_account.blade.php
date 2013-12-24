@@ -183,3 +183,27 @@
 @endif
   
 @stop
+
+@section('modal')
+<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="email_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" id="email_modal_content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="email_label">Contact Motionry</h4>
+      </div>
+      {{ Form::open([ 'url' => route('email'), 'id' => 'email_form', 'role' => 'form' ]) }}
+      <div class="modal-body">
+        This private message will be sent to Motionry admins.
+        <br/><br/>
+        <textarea id="message" name="message" class="form-control" rows="10"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </div>
+      {{ Form::close() }}
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+@stop
