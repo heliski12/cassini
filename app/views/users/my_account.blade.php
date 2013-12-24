@@ -11,7 +11,27 @@
       </div> 
     </div>
 
+    @if (Session::has('errors'))
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="alert alert-danger">
+          {{ Session::get('errors')->first() }} 
+        </div>   
+      </div>
+    </div>
+    @endif
+    @if (Session::has('message'))
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="alert alert-success">
+          {{ Session::get('message'); }} 
+        </div>   
+      </div>
+    </div>
+    @endif
+
     <div class="my-account-inner">
+
       @if (!empty($profiles))
         <div class="row">
           <div class="col-md-12">

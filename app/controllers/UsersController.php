@@ -64,6 +64,18 @@ class UsersController extends BaseController {
 
   public function updatePassword()
   {
+    $v = User::validatePassword(Input::all());
+
+    if ($v->fails())
+      return Redirect::route('my_account')->with('errors', $v->messages());
+
+    if (!Hash::check(Input::get('old_password'), Auth::user()->password))
+      return Redirect::route('my_account')->with('errors', new Illuminate\Support\MessageBag(['old_password' => 'Old password is incorrect.']));
+
+    Auth::user()->password = Input::get('new_password');
+    Auth::user()->save();
+
+    return Redirect::route('my_account')->with('message', 'Password updated.');
   }
   
 

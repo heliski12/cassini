@@ -358,11 +358,9 @@ div.my-profile {
 {
   font-size: 18px;
 }
-a.add-profile, a.add-profile:hover
+.my-account a.btn
 {
-  color: #000;
-  font-size: 18px;
-  font-weight: 500;
+  margin-bottom: 15px;
 }
 
 /* single profile */

@@ -15,6 +15,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     'password_confirmation' => 'required|same:password',
   );
 
+  public static $password_rules = array(
+    'old_password' => 'required',
+    'new_password' => 'required|between:8,250',
+    'confirm_password' => 'required|same:new_password',
+  );
+
   protected $fillable = [ 'first_name', 'last_name', 'organization', 'phone', 'email', 'password' ];
 
 	public function getAuthIdentifier()
@@ -62,6 +68,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   public static function validate($input)
   {
     return Validator::make($input, static::$rules);
+  }
+  public static function validatePassword($input)
+  {
+    return Validator::make($input, static::$password_rules);
   }
   
   

@@ -18,7 +18,7 @@ Route::get('/', function()
     if (Auth::user()->role !== 'PENDING')
     {
       if (empty(Auth::user()->profile))
-        return Redirect::route('create_profile');
+        return Redirect::route('my_account');
       else
         return Redirect::route('marketplace');
     }
