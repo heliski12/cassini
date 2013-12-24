@@ -9,8 +9,8 @@ class UsersTableSeeder extends Seeder {
 
 
       $users = [ 
-        [ 'id' => 1, 'email' => 'jstavis@gmail.com', 'password' => Hash::make('blahblah'), 'role' => 'ADMIN' ],
-        [ 'id' => 2, 'email' => 'amanda@motionry.com', 'password' => Hash::make('abcd1234'), 'role' => 'ADMIN' ],
+        [ 'id' => 101, 'email' => 'jstavis@gmail.com', 'password' => Hash::make('blahblah'), 'role' => 'ADMIN' ],
+        [ 'id' => 102, 'email' => 'amanda@motionry.com', 'password' => Hash::make('abcd1234'), 'role' => 'ADMIN' ],
       ];
 
         // Uncomment the below to run the seeder

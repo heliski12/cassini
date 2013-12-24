@@ -66,8 +66,8 @@ return array(
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
+			'database' => 'marketplace_prod',
+			'username' => 'postgres',
 			'password' => '',
 			'charset'  => 'utf8',
 			'prefix'   => '',

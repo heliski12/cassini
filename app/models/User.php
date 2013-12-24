@@ -64,6 +64,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     if (!empty($value)) 
       $this->attributes['password'] = Hash::make($value); 
   }
+  public function setMigratePasswordAttribute($value)
+  {
+    $this->attributes['password'] = $value;
+  }
 
   public static function validate($input)
   {

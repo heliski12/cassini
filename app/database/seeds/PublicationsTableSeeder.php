@@ -9,9 +9,9 @@ class PublicationsTableSeeder extends Seeder {
 
 
       $publications = [ 
-        [ 'id' => 1, 'name' => 'Scientific American' ],
-        [ 'id' => 2, 'name' => 'Nature' ],
-        [ 'id' => 3, 'name' => 'Science' ],
+        [ 'id' => 101, 'name' => 'Scientific American' ],
+        [ 'id' => 102, 'name' => 'Nature' ],
+        [ 'id' => 103, 'name' => 'Science' ],
       ];
 
         // Uncomment the below to run the seeder

@@ -39,7 +39,7 @@ class UsersController extends BaseController {
       if (Auth::user()->role === 'PENDING')
         return Redirect::route('authorization');
       elseif (empty(Auth::user()->profile))
-        return Redirect::route('create_profile');
+        return Redirect::route('my_account');
       else
         return Redirect::route('marketplace');
     }

@@ -32,7 +32,7 @@
 
     <div class="my-account-inner">
 
-      @if (!empty($profiles))
+      @if (!empty($profiles) and sizeof($profiles) > 0)
         <div class="row">
           <div class="col-md-12">
             <h5>Edit current profiles and add a person to edit profiles.  Note the person added must have an account.</h5>
@@ -62,7 +62,7 @@
       @else
         <div class="row">
           <div class="col-md-12">
-            <h5>You have not created ay profiles</h5>
+            <h5>You have not created ay profiles.</h5>
           </div>
         </div>
       @endif

@@ -22,10 +22,10 @@ class CreateUsersTable extends Migration {
 			$table->boolean('innovator');
 			$table->boolean('seeker');
 			$table->boolean('unsure');
-			$table->string('title');
-			$table->string('organization');
+      $table->string('title')->nullable();
+      $table->string('organization')->nullable();
 			$table->enum('role',array('PENDING','USER','PRESS','ADMIN'));
-			$table->string('phone');
+      $table->string('phone')->nullable();
 			$table->timestamps();
 		});
 	}

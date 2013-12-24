@@ -15,10 +15,10 @@ class CreateProfilePublicationTable extends Migration {
 		Schema::create('profile_publication', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('profile_id');
-			$table->integer('publication_id');
-			$table->string('article_title');
-			$table->string('article_url');
-			$table->string('name');
+      $table->integer('publication_id')->nullable();
+      $table->string('article_title')->nullable();
+      $table->string('article_url')->nullable();
+      $table->string('name')->nullable();
 			$table->timestamps();
 		});
 	}
