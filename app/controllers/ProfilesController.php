@@ -140,7 +140,9 @@ class ProfilesController extends BaseController {
 
   public function index()
   {
-    return View::make('profiles.search');
+    $results = Profile::with(['keypersons','institution','sectors'])->get();
+
+    return View::make('profiles.search')->with('results',$results);
   }
 
   public function savedProfiles()

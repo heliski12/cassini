@@ -131,7 +131,7 @@ html .user-nav h5
   background: #F0F0F0;
   margin:20px 40px;
 }
-.create-profile hr, .my-account hr, .collapse-line
+.create-profile hr, .my-account hr, .collapse-line, .marketplace hr
 {
   border: 0;
   height: 1px;
@@ -369,7 +369,7 @@ div.my-profile {
 {
   margin:20px;
 }
-.marketplace-search
+.marketplace-search, .marketplace-results
 {
   background: #F0F0F0;
   margin: 20px 40px;
@@ -426,6 +426,8 @@ div.my-profile {
 {
   margin-bottom:20px;
 }
+.marketplace-result { background: #D0D0D0; margin: 10px 20px; padding: 20px 0px; }
+.marketplace-result-img { max-width: 190px; }
 
 /* single profile */
 div.profile-wrap {

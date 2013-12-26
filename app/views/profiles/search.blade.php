@@ -83,6 +83,45 @@
       </div>
     </div>
     </div>
+    <div class="marketplace-results">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <h4>Innovator Listing</h4>
+        </div>
+      </div>
+      @if (!empty($results))
+        @foreach ($results as $idx => $result)
+          <div class="row marketplace-result">
+            <div class="col-md-2">
+              <a href="{{ route('show_profile', [ 'id' => $result->id ]) }}"><img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.jpg') }}"></img></a>
+            </div>
+            <div class="col-md-5">
+              @if (!empty($result->keypersons) and sizeof($result->keypersons) > 0)
+                {{ $result->keypersons[0]->full_name }}<br/>
+              @endif
+              <a href="{{ route('show_profile', [ 'id' => $result->id ]) }}">{{ $result->tech_title }}</a><br/>
+              @if ($result->innovator_type === 'RESEARCHER')
+                {{ $result->institution->name }}<br/>
+                {{ $result->institution_department }}<br/>
+              @else
+                {{ $result->organization }}<br/>
+              @endif
+            </div>
+            <div class="col-md-5">
+              <div class="row">Market Sectors</div>
+              <div class="row">Applications</div>
+            </div>
+          </div>
+          @if ($idx < sizeof($results) - 1)
+            <div class="row">
+              <div class="col-md-12">
+                <hr/>
+              </div>
+            </div>
+          @endif
+        @endforeach
+      @endif
+    </div>
   </div>
 </div>
 @stop
