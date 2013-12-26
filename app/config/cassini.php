@@ -14,9 +14,14 @@ return [
   ],
 
   'provider_types' => [
+    'ENTREPRENEUR' => 'Entrepreneur',
+    'RESEARCHER' => 'Researcher',
+  ],
+
+  'innovator_search_types' => [
     'TECHNOLOGY_ENTREPRENEUR' => 'Technology Entrepreneur',
-    'ACADEMIC_RESEARCHER' => 'Academic Researcher',
-    'GOVERNMENT_RESEARCHER' => 'Government Researcher',
+    'RESEARCHER' => 'Researcher',
+    'NON_PROFIT_ENTREPRENEUR' => 'Non-Profit Entrepreneur',
   ],
 
   'product_stages' => [

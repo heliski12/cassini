@@ -88,9 +88,19 @@ $(function(){
     return;
   });
 
-  $('#market_applications').tagit({
-      allowSpaces: true,
-      fieldName: 'market_applications[]'
+  if (typeof($("#market_applications").tagit) != "undefined") {
+    $('#market_applications').tagit({
+        allowSpaces: true,
+        fieldName: 'market_applications[]'
+    });
+  }
+
+  /////// search ////////
+  $(".marketplace").on('click','[data-toggle=collapse]', function(event) {
+    $(this).children("span").toggleClass("glyphicon-chevron-up");
+    $(this).children("span").toggleClass("glyphicon-chevron-down");
+    $(".glyphicon-chevron-up").attr("title","Collapse view");
+    $(".glyphicon-chevron-down").attr("title","Expand view");
   });
   
   // initialize open/close state of innovator type based on previous model value
@@ -132,7 +142,9 @@ $(function(){
   });
   ///////// create profile form /////////
 
-  $('.selectpicker').selectpicker({ dropupAuto: false, size: 9, selectedTextFormat: 'count > 5' });
+  if (typeof($(".selectpicker").selectpicker) != 'undefined') {
+    $('.selectpicker').selectpicker({ dropupAuto: false, size: 9, selectedTextFormat: 'count > 5' });
+  }
   
   
 });

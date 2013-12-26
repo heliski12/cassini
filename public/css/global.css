@@ -131,7 +131,7 @@ html .user-nav h5
   background: #F0F0F0;
   margin:20px 40px;
 }
-.create-profile hr, .my-account hr
+.create-profile hr, .my-account hr, .collapse-line
 {
   border: 0;
   height: 1px;
@@ -362,6 +362,69 @@ div.my-profile {
 .my-account a.btn
 {
   margin-bottom: 15px;
+}
+
+/* marketplace */
+.marketplace
+{
+  margin:20px;
+}
+.marketplace-search
+{
+  background: #F0F0F0;
+  margin: 20px 40px;
+  padding: 20px 0px;
+}
+.marketplace h4 {
+  font-size: 28px;
+  text-align: center;
+}
+.marketplace .panel-heading {
+  background: #F0F0F0;
+  padding: 0px;
+}
+.marketplace .panel-heading h5 
+{
+  background: #F0F0F0;
+}
+.marketplace .panel-body h5
+{
+  font-size: 16px;
+  font-weight: 700;
+  margin-left: 15px;
+}
+.marketplace a.icon span
+{
+  font-size: 20px;
+  font-weight: 500;
+}
+.marketplace .panel-body
+{
+  background: #F0F0F0;
+  border: none;
+  padding: 0px 1px 0px;
+}
+.marketplace .panel 
+{
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.collapse-line 
+{
+  width: 46%; 
+  float: left;
+}
+.collapse-control
+{
+  width: 8%;
+  float: left;
+  text-align: center;
+  margin-top: -10px;
+}
+.search-input 
+{
+  margin-bottom:20px;
 }
 
 /* single profile */

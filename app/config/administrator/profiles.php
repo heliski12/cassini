@@ -37,9 +37,8 @@ return array(
       'title' => 'Provider Type',
       'type' => 'enum',
       'options' => array(
-        'TECHNOLOGY_ENTREPRENEUR' => Config::get('cassini.provider_types')['TECHNOLOGY_ENTREPRENEUR'],
-        'ACADEMIC_RESEARCHER' => Config::get('cassini.provider_types')['ACADEMIC_RESEARCHER'],
-        'GOVERNMENT_RESEARCHER' => Config::get('cassini.provider_types')['GOVERNMENT_RESEARCHER'],
+        'ENTREPRENEUR' => Config::get('cassini.provider_types')['REPRENEUR'],
+        'RESEARCHER' => Config::get('cassini.provider_types')['RESEARCHER'],
       ),
     ),
     'organization' => [ 'title' => 'Organization (if applicable' ],
