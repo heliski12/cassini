@@ -14,13 +14,14 @@
                 <h4>Welcome.  You can easily customize your search results.  What are you interested in?</h4>
               </div>
             </div>
+            {{ Form::open([ 'url' => route('marketplace'), 'id' => 'marketplace_search', 'role' => 'form', 'method' => 'get' ]) }}
             <div class="row">
               <div class="col-md-4">
                 <h5>Market sector</h5>
                 <div class="row">
                   <div class="form-group">
                     <div class="col-md-12">
-                      {{ Form::select('sector_ids[]', SelectHelper::get_sector_options(), null, [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
+                      {{ Form::select('s[]', SelectHelper::get_sector_options(), Input::old('s[]'), [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
                     </div>
                   </div>
                 </div>
@@ -30,7 +31,7 @@
                 <div class="row">
                   <div class="form-group">
                     <div class="col-md-12">
-                      {{ Form::select('product_stage', array_merge(['' => 'Select stage...'], Config::get('cassini.product_stages')), null, [ 'class' => 'selectpicker', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
+                      {{ Form::select('p[]', Config::get('cassini.product_stages'), Input::old('p[]'), [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
                     </div>
                   </div>
                 </div>
@@ -40,7 +41,7 @@
                 <div class="row">
                   <div class="form-group">
                     <div class="col-md-12">
-                      {{ Form::select('innovator_type[]', Config::get('cassini.innovator_search_types'), null, [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
+                      {{ Form::select('i[]', Config::get('cassini.innovator_search_types'), Input::old('i[]'), [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
                     </div>
                   </div>
                 </div>
@@ -52,15 +53,16 @@
                   <div class="col-md-12">
                     <div class="input-group">
                       
-                      {{ Form::text('search_term', null, [ 'class' => 'form-control', 'placeholder' => 'Enter search term' ]) }}
-                      <span class="input-group-addon">
-                        Search 
+                      {{ Form::text('q', Input::old('q'), [ 'class' => 'form-control', 'placeholder' => 'Enter search term' ]) }}
+                      <span class="input-group-btn">
+                        {{ Form::submit('Search', [ 'class' => 'btn btn-default', 'id' => 'search' ]) }}
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            {{ Form::close() }}
           </div>
         </div>
         <div class="panel-heading">
@@ -96,10 +98,10 @@
               <a href="{{ route('show_profile', [ 'id' => $result->id ]) }}"><img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.jpg') }}"></img></a>
             </div>
             <div class="col-md-5">
+              <a class="title" href="{{ route('show_profile', [ 'id' => $result->id ]) }}">{{ $result->tech_title }}</a><br/>
               @if (!empty($result->keypersons) and sizeof($result->keypersons) > 0)
                 {{ $result->keypersons[0]->full_name }}<br/>
               @endif
-              <a href="{{ route('show_profile', [ 'id' => $result->id ]) }}">{{ $result->tech_title }}</a><br/>
               @if ($result->innovator_type === 'RESEARCHER')
                 {{ $result->institution->name }}<br/>
                 {{ $result->institution_department }}<br/>
@@ -108,8 +110,18 @@
               @endif
             </div>
             <div class="col-md-5">
-              <div class="row">Market Sectors</div>
-              <div class="row">Applications</div>
+              <div class="row"><h5>Market Sectors</h5></div>
+              <div class="row">
+                @foreach ($result->sectors as $sector)
+                  <a href="{{ route('marketplace') }}"><span class="label label-primary sector-pill">{{ $sector->name }}</span></a>
+                @endforeach
+              </div>
+              <div class="row"><h5>Applications</h5></div>
+              <div class="row">
+                @foreach ($result->applications as $application)
+                  <a href="{{ route('marketplace') }}"><span class="label label-primary sector-pill">{{ $application->name }}</span></a>
+                @endforeach
+              </div>
             </div>
           </div>
           @if ($idx < sizeof($results) - 1)

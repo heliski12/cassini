@@ -140,6 +140,7 @@ class ProfilesController extends BaseController {
 
   public function index()
   {
+    Input::flash();
     $results = Profile::with(['keypersons','institution','sectors'])->get();
 
     return View::make('profiles.search')->with('results',$results);
