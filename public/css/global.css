@@ -336,8 +336,8 @@ img.my-profiles {
   max-width: 190px;
 }
 div.my-profile {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .my-account
 {
@@ -363,6 +363,8 @@ div.my-profile {
 {
   margin-bottom: 15px;
 }
+.add-secondary-editor { margin-top: 5px; margin-left: -15px; }
+.secondary-editors .alert { padding: 0px; }
 
 /* marketplace */
 .marketplace

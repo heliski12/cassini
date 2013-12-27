@@ -57,7 +57,7 @@ class UsersController extends BaseController {
   
   public function myAccount()
   {
-    $profiles = Profile::with(['keypersons','institution'])->where('creator_id',Auth::user()->id)->get();
+    $profiles = Profile::with(['keypersons','institution','collaborators'])->where('creator_id',Auth::user()->id)->get();
 
     return View::make('users.my_account')->with('profiles',$profiles);
   }

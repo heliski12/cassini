@@ -40,10 +40,10 @@
         </div>
         @foreach ($profiles as $profile)
           <div class="row my-profile">
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-3 col-xs-12">
               <img class="my-profiles" src="{{ URL::to('/img/blank-avatar.jpg') }}" />
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 col-sm-9 col-xs-12">
               @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0)
                 {{ $profile->keypersons[0]->full_name }}<br/>
               @endif
@@ -54,8 +54,24 @@
               @else
                 {{ $profile->organization }}<br/>
               @endif
-              <a href="{{ route('edit_profile', [ 'id' => $profile->id ]) }}">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{{ route('add_editor', [ 'id' => $profile->id ])}}">Add Secondary Editor</a><br/>
-              Status: {{ $profile->status_tos }}
+              Status: {{ $profile->status_tos }}<br/>
+              <a href="{{ route('edit_profile', [ 'id' => $profile->id ]) }}">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;Secondary Editors:
+              <span class="secondary-editors">
+                @include('partials.secondary_editors', [ 'profile' => $profile ])
+              </span>
+              {{ Form::open([ 'url' => route('add_editor'), 'class' => 'add-editor-form', 'role' => 'form' ]) }}
+                <div class="row">
+                  <div class="col-md-7 col-sm-9 col-xs-9">
+                    <div class="input-group add-secondary-editor">
+                      {{ Form::hidden('profile_id', $profile->id) }}
+                      {{ Form::text('email', null, [ 'class' => 'form-control input-sm', 'placeholder' => 'Email address of secondary editor...' ]) }}
+                      <span class="input-group-btn">
+                        {{ Form::submit('Add secondary editor', [ 'class' => 'btn btn-primary btn-sm' ]) }}
+                      </span>
+                    </div>
+                  </div>
+                </div> 
+              {{ Form::close() }}
             </div>
           </div>
         @endforeach

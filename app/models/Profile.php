@@ -334,6 +334,26 @@ class Profile extends Eloquent {
   
   }
 
+  public function isEditor($user)
+  {
+    // a user is an editor if...
+
+    // he is an admin,
+    if ($user->role === 'ADMIN')
+      return true;
+
+    // he is the profile creator,
+    if ($this->creator_id === $user->id)
+      return true;
+
+    // he is a collaborator
+    if ($this->collaborators->contains($user->id))
+      return true;
+
+    // otherwise not an editor
+    return false;
+  }
+
   private function saveAssociatesStep1($input)
   {
     $this->associateManyRelationship($this->keypersons, 'keypersons', 'Keyperson', $this->keypersons(), $input['keypersons']);

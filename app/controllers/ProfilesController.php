@@ -179,4 +179,58 @@ class ProfilesController extends BaseController {
 
     return Redirect::route('show_profile', [ $profile->id ])->with('message', 'This profile has been saved.  You can access it from the \'Saved Profiles\' link above.');
   }
+
+  public function addEditor()
+  {
+    $profile = Profile::with('collaborators')->find(Input::get('profile_id'));
+    $user = Auth::user();
+
+    if (!$profile->isEditor($user))
+    {
+      Log::info("Invalid user tried to add editor profile.  User: $user->id, Profile: $profile->id");
+      App::abort('500');
+    }
+
+    $email = Input::get('email');
+
+    if (empty($email))
+      return View::make('partials.secondary_editors')->with([ 'profile' => $profile, 'error' => 'No user found!' ]);
+
+    $new_editor = User::where('email', strtolower($email))->first();
+
+    if (empty($new_editor))
+      return View::make('partials.secondary_editors')->with([ 'profile' => $profile, 'error' => 'No user found for ' . $email . '!' ]);
+
+    $error = null;
+    if (!$profile->isEditor($new_editor))
+      $profile->collaborators()->attach($new_editor);
+    else
+      $error = 'User is an admin or already an editor.'; 
+
+    $profile = Profile::with('collaborators')->find($profile->id);
+
+    return View::make('partials.secondary_editors')->with(['profile' => $profile, 'error' => $error]);
+  }
+
+  public function removeEditor()
+  {
+    $profile = Profile::with('collaborators')->find(Input::get('profile_id'));
+    $user = Auth::user();
+
+    if (!$profile->isEditor($user))
+    {
+      Log::info("Invalid user tried to remove editor from profile.  User: $user->id, Profile: $profile->id");
+      App::abort('500');
+    }
+
+    $editor = User::find(Input::get('user_id'));
+
+    if (empty($editor) or !$profile->collaborators->contains($editor->id))
+      return View::make('partials.secondary_editors')->with([ 'profile' => $profile, 'error' => 'That editor was not found.' ]);
+
+    $profile->collaborators()->detach($editor);
+    $profile = Profile::with('collaborators')->find($profile->id);
+
+    return View::make('partials.secondary_editors')->with(['profile' => $profile]);
+  }
 }

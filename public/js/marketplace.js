@@ -87,13 +87,40 @@ $(function(){
       alert("You must agree to the Terms of Service before submitting your profile.");
     return;
   });
-
   if (typeof($("#market_applications").tagit) != "undefined") {
     $('#market_applications').tagit({
         allowSpaces: true,
         fieldName: 'market_applications[]'
     });
   }
+  if (typeof($(".selectpicker").selectpicker) != 'undefined') {
+    $('.selectpicker').selectpicker({ dropupAuto: false, size: 9, selectedTextFormat: 'count > 5' });
+  }
+
+  //////// my profile ///////////////
+  $(".add-editor-form").submit(function(event) {
+    event.preventDefault();
+    //var profile_id = $($(this).find('input[name=profile_id]')[0]).val();
+    //var email = $($(this).find('input[name=email]')[0]).val();
+    var $this = $(this);
+    $.post(BASE_URL + '/add-editor', 
+      $(this).serialize(),
+      function(data) {
+        $this.prev('span.secondary-editors').html(data);
+    });
+  });
+  $("span.secondary-editors").on('click','.remove-se', function(event) {
+    event.preventDefault();
+    var profile_id = $(this).attr('pid');
+    var user_id = $(this).attr('uid');
+    var $this = $(this);
+    $.post(BASE_URL + '/remove-editor',
+      { profile_id : profile_id,
+        user_id : user_id },
+      function(data) {
+        $this.parent().html(data);
+    });
+  });
 
   /////// search ////////
   $(".marketplace").on('click','[data-toggle=collapse]', function(event) {
@@ -140,11 +167,7 @@ $(function(){
 
       $('#tech_description_charcount').html(used_chars + '/' +  max_chars);
   });
-  ///////// create profile form /////////
 
-  if (typeof($(".selectpicker").selectpicker) != 'undefined') {
-    $('.selectpicker').selectpicker({ dropupAuto: false, size: 9, selectedTextFormat: 'count > 5' });
-  }
   
   
 });

@@ -59,7 +59,8 @@ Route::group(array('before' => 'auth'), function()
   Route::get('/marketplace', [ 'as' => 'marketplace', 'uses' => 'ProfilesController@index' ]);
   Route::get('/saved-profiles', [ 'as' => 'saved_profiles', 'uses' => 'ProfilesController@savedProfiles' ]);
   Route::get('/my-account', [ 'as' => 'my_account', 'uses' => 'UsersController@myAccount' ]);
-  Route::get('/add-editor/{id}', [ 'as' => 'add_editor', 'uses' => 'ProfilesController@addEditor' ]);
+  Route::post('/add-editor', [ 'as' => 'add_editor', 'uses' => 'ProfilesController@addEditor' ]);
+  Route::post('/remove-editor', [ 'as' => 'remove_editor', 'uses' => 'ProfilesController@removeEditor' ]);
   Route::post('/contact', [ 'as' => 'contact', 'uses' => 'ProfilesController@contact' ]);
   Route::post('/email', [ 'as' => 'email', 'uses' => 'UsersController@email' ]);
   Route::post('/save-profile', [ 'as' => 'save_profile', 'uses' => 'ProfilesController@save' ]);

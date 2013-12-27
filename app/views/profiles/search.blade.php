@@ -52,7 +52,6 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="input-group">
-                      
                       {{ Form::text('q', Input::old('q'), [ 'class' => 'form-control', 'placeholder' => 'Enter search term' ]) }}
                       <span class="input-group-btn">
                         {{ Form::submit('Search', [ 'class' => 'btn btn-default', 'id' => 'search' ]) }}

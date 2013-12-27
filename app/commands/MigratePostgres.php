@@ -75,7 +75,7 @@ class MigratePostgres extends Command {
       $new_user->id = $user->id;
       $new_user->first_name = $user->firstname;
       $new_user->last_name = $user->lastname;
-      $new_user->email = $user->email;
+      $new_user->email = strtolower($user->email);
       //$new_user->migrate_password = $user->password_digest; 
       $new_user->password = 'abc123';  ///////////////////// TODO /////////////////////
       $new_user->innovator = $user->innovator; 
