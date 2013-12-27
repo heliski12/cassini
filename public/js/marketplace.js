@@ -107,6 +107,7 @@ $(function(){
       $(this).serialize(),
       function(data) {
         $this.prev('span.secondary-editors').html(data);
+        $this.find('input[name=email]').val('');
     });
   });
   $("span.secondary-editors").on('click','.remove-se', function(event) {

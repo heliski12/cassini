@@ -21,7 +21,7 @@
                 <div class="row">
                   <div class="form-group">
                     <div class="col-md-12">
-                      {{ Form::select('s[]', SelectHelper::get_sector_options(), Input::old('s[]'), [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
+                      {{ Form::select('m[]', SelectHelper::get_sector_options(), Input::old('m[]'), [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
                     </div>
                   </div>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="input-group">
                       {{ Form::text('q', Input::old('q'), [ 'class' => 'form-control', 'placeholder' => 'Enter search term' ]) }}
                       <span class="input-group-btn">
-                        {{ Form::submit('Search', [ 'class' => 'btn btn-default', 'id' => 'search' ]) }}
+                        {{ Form::submit('Search', [ 'class' => 'btn btn-default', 'id' => 'search', 'name' => 'a' ]) }}
                       </span>
                     </div>
                   </div>

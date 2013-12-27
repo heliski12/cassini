@@ -70,7 +70,67 @@
         <div class="row">
           <div class="col-md-7">
             <div class="row profile-body-cell">1</div> 
-            <div class="row profile-body-cell">2</div> 
+            <div class="row profile-body-cell">
+              <div class="col-md-12">
+                <div class="row stages">
+                  <div class="stage-circles">
+                    <div class="connect outside"></div>
+                    <div class="circle-wrap"><div class="circle {{ $profile->product_stage === 'EXPERIMENTAL' ? 'active' : '' }}"></div></div>
+                    <div class="connect"></div>
+                    <div class="circle-wrap"><div class="circle {{ $profile->product_stage === 'PROTOTYPE' ? 'active' : '' }}"></div></div>
+                    <div class="connect"></div>
+                    <div class="circle-wrap"><div class="circle {{ $profile->product_stage === 'MARKET_PILOT' ? 'active' : '' }}"></div></div>
+                    <div class="connect"></div>
+                    <div class="circle-wrap"><div class="circle {{ $profile->product_stage === 'MARKET' ? 'active' : '' }}"></div></div>
+                    <div class="connect outside"></div>
+                  </div>
+                  <div class="stage-titles">
+                    <div class="stage-title" style="text-align: left;">Experimental</div>
+                    <div class="stage-title" style="text-align: center;">Prototype&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                    <div class="stage-title" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;Market Pilot</div>
+                    <div class="stage-title" style="text-align: right;">Market&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                  </div>
+                </div> 
+              </div>
+              <div class="col-md-12">
+                <div class="row stages">
+                  <div class="patent-heading">Trademarks</div>
+                  <div class="patent-circle-wrap">
+                    <div class="patent-circles">
+                      <div class="connect outside"></div>
+                      <div class="circle-wrap"><div class="circle {{ ($profile->ip_trademarks or $profile->ip_trademarks_pending) ? 'active' : '' }}"></div></div>
+                      <div class="connect"></div>
+                      <div class="circle-wrap"><div class="circle {{ (!$profile->ip_trademarks and !$profile->ip_trademarks_pending) ? 'active' : '' }}"></div></div>
+                      <div class="connect"></div>
+                      <div class="circle-wrap"><div class="circle {{ $profile->ip_trademarks_pending ? 'active' : '' }}"></div></div>
+                      <div class="connect outside"></div>
+                    </div>
+                    <div class="patent-titles">
+                      <div class="stage-title" style="text-align: left;">&nbsp;&nbsp;Yes</div>
+                      <div class="stage-title" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;No</div>
+                      <div class="stage-title" style="text-align: right;">Pending</div>
+                    </div>
+                  </div>
+                  <div class="patent-heading">Patents</div>
+                  <div class="patent-circle-wrap">
+                    <div class="patent-circles">
+                      <div class="connect outside"></div>
+                      <div class="circle-wrap"><div class="circle {{ ($profile->ip_patents or $profile->ip_patents_pending) ? 'active' : '' }}"></div></div>
+                      <div class="connect"></div>
+                      <div class="circle-wrap"><div class="circle {{ (!$profile->ip_patents and !$profile->ip_patents_pending) ? 'active' : '' }}"></div></div>
+                      <div class="connect"></div>
+                      <div class="circle-wrap"><div class="circle {{ $profile->ip_patents_pending ? 'active' : '' }}"></div></div>
+                      <div class="connect outside"></div>
+                    </div>
+                    <div class="patent-titles">
+                      <div class="stage-title" style="text-align: left;">&nbsp;&nbsp;Yes</div>
+                      <div class="stage-title" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;No</div>
+                      <div class="stage-title" style="text-align: right;">Pending</div>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+            </div> 
             <div class="row profile-body-cell">3</div> 
           </div>
           <div class="col-md-5">

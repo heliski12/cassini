@@ -497,8 +497,58 @@ html .btn-warning {
 .profile-kp-info { padding: 40px 20px; }
 .profile-kp-name { font-weight: 700; }
 div.row.message { margin-top: 20px; margin-bottom: -20px; }
-
-
+div.stages { background-color: #428bca; margin-top: 15px; }
+div.stages:last-child { margin-bottom: 15px; }
+.stage-circles, .stage-titles, .patent-circles, .patent-titles {
+    display: table;
+    width: 100%;
+    padding: 10px;
+}
+.stage-titles, .patent-titles {
+  padding-top: 0px;
+  padding-bottom: 10px;
+}
+.circle-wrap, .connect, .stage-title {
+    display: table-cell;
+}
+.circle-wrap {
+    width: 1px;
+}
+.stage-title {
+  color: #fff;
+  width: 25%;
+}
+.patent-heading {
+  color: #fff;
+  padding-top: 10px;
+  float: left;
+  width: 16%;
+  text-align: right;
+}
+.patent-circle-wrap {
+  float: left;
+  width: 34%;
+}
+.circle {
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.connect {
+    border-top: 2px solid #FFF;
+    position: relative;
+    top: 10px;
+}
+.connect.outside {
+  width: 30px;
+}
+.patent-circles .connect.outside {
+  width: 10px;
+}
+.circle.active {
+    background: #eea236;
+}
 
 
 /* TODO - REMOVE */

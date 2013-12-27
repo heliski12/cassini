@@ -141,7 +141,16 @@ class ProfilesController extends BaseController {
   public function index()
   {
     Input::flash();
-    $results = Profile::with(['keypersons','institution','sectors'])->get();
+
+    if (Input::has('a'))
+    {
+      // TODO - search goes here
+      $results = Profile::with(['keypersons','institution','sectors'])->orderBy('created_at','DESC')->get();
+    }
+    else
+    {
+      $results = Profile::with(['keypersons','institution','sectors'])->orderBy('created_at','DESC')->take(10)->get();
+    }
 
     return View::make('profiles.search')->with('results',$results);
   }
