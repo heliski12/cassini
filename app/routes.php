@@ -57,11 +57,13 @@ Route::group(array('before' => 'auth'), function()
   Route::get('/edit-profile/{id}/{step?}', [ 'as' => 'edit_profile', 'uses' => 'ProfilesController@edit' ])->where('step', '[1-3]');
   //Route::post('/edit_profile/{step?}', [ 'as' => 'update_profile', 'uses' => 'ProfilesController@store' ]);
   Route::get('/marketplace', [ 'as' => 'marketplace', 'uses' => 'ProfilesController@index' ]);
-  Route::get('/saved-profiles', [ 'as' => 'saved_profiles', 'uses' => 'ProfilesController@savedProfiles' ]);
+  Route::get('/saved-profiles', [ 'as' => 'saved_profiles', 'uses' => 'UsersController@savedProfiles' ]);
   Route::get('/my-account', [ 'as' => 'my_account', 'uses' => 'UsersController@myAccount' ]);
   Route::post('/add-editor', [ 'as' => 'add_editor', 'uses' => 'ProfilesController@addEditor' ]);
   Route::post('/remove-editor', [ 'as' => 'remove_editor', 'uses' => 'ProfilesController@removeEditor' ]);
+  Route::post('/remove-saved-profile', [ 'as' => 'remove_saved_profile', 'uses' => 'UsersController@removeSavedProfile' ]);
   Route::post('/contact', [ 'as' => 'contact', 'uses' => 'ProfilesController@contact' ]);
+  Route::post('/contact-multiple', [ 'as' => 'contact_multiple', 'uses' => 'ProfilesController@contactMultiple' ]);
   Route::post('/email', [ 'as' => 'email', 'uses' => 'UsersController@email' ]);
   Route::post('/save-profile', [ 'as' => 'save_profile', 'uses' => 'ProfilesController@save' ]);
   Route::post('/update-password', [ 'as' => 'update_password', 'uses' => 'UsersController@updatePassword' ]);

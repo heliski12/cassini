@@ -149,15 +149,10 @@ class ProfilesController extends BaseController {
     }
     else
     {
-      $results = Profile::with(['keypersons','institution','sectors'])->orderBy('created_at','DESC')->take(10)->get();
+      $results = Profile::with(['keypersons','institution','sectors'])->where('status','PUBLISHED')->orderBy('created_at','DESC')->take(10)->get();
     }
 
     return View::make('profiles.search')->with('results',$results);
-  }
-
-  public function savedProfiles()
-  {
-    return View::make('profiles.saved_profiles');
   }
 
   public function contact()
@@ -166,14 +161,36 @@ class ProfilesController extends BaseController {
     $user = Auth::user();
     $user_message = Input::get('message');
 
-    Log::error("Mailing profile contact to admins");
     $data = array('user' => $user, 'profile' => $profile, 'user_message' => $user_message);
     Mail::send('emails.profile_contact', $data, function($message) use ($user)
     {
-      $message->to(Config::get('cassini.support_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has contacted you about a profile.");
+      $message->to(Config::get('cassini.support_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has contacted motionry about a profile.");
     });
 
     return Redirect::route('show_profile', [ $profile->id ])->with('message','Your message has been sent!'); 
+  }
+
+  public function contactMultiple()
+  {
+    $profile_ids = explode(',',Input::get('profile_ids'));
+    $user = Auth::user();
+    $user_message = Input::get('message');
+
+    $profiles = Profile::whereIn('id', $profile_ids)->get();
+
+    if (empty($profiles))
+    {
+      Log::error('User ' . $user->id . ' has tried to contact for missing profiles, input: ' . Input::get('profile_ids'));
+      App::abort('500');
+    }
+
+    $data = array('user' => $user, 'profiles' => $profiles, 'user_message' => $user_message);
+    Mail::send('emails.profile_contact_multiple', $data, function($message) use ($user)
+    {
+      $message->to(Config::get('cassini.support_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has contacted motionry about one or more profiles.");
+    });
+
+    return Redirect::route('saved_profiles')->with('message','Your message has been sent!'); 
   }
 
   public function save()

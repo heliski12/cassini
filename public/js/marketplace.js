@@ -122,6 +122,30 @@ $(function(){
         $this.parent().html(data);
     });
   });
+  $("div.saved-profile-controls").on('click','.remove-sp', function(event) {
+    event.preventDefault();
+    var profile_id = $(this).attr('pid');
+    var $this = $(this);
+    $.post(BASE_URL + '/remove-saved-profile',
+      { profile_id : profile_id },
+      function(data) {
+        $this.closest('.my-profile').remove();
+    });
+  });
+  $(".saved-profile-contact").click(function(event) {
+    var selected = $(".contact-select:checked");
+    var text = "";
+    var profile_ids = "";
+    for (var i = 0; i < selected.length; i++)
+    {
+      var selected_id = $(selected[i]).attr('id');
+      var selected_title = $("#name_"+selected_id).val();
+      text = text + "<li>" + selected_title + "</li>";
+      profile_ids = profile_ids + selected_id + ",";
+    }
+    $("#profile_ids").val(profile_ids);
+    $("#message_profiles").html(text);
+  });
 
   /////// search ////////
   $(".marketplace").on('click','[data-toggle=collapse]', function(event) {

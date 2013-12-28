@@ -102,8 +102,10 @@
                 {{ $result->keypersons[0]->full_name }}<br/>
               @endif
               @if ($result->innovator_type === 'RESEARCHER')
-                {{ $result->institution->name }}<br/>
-                {{ $result->institution_department }}<br/>
+                @if (!empty($result->institution))
+                  {{ $result->institution->name }}<br/>
+                  {{ $result->institution_department }}<br/>
+                @endif
               @else
                 {{ $result->organization }}<br/>
               @endif

@@ -62,6 +62,26 @@ class UsersController extends BaseController {
     return View::make('users.my_account')->with('profiles',$profiles);
   }
 
+  public function savedProfiles()
+  {
+    $profiles = Auth::user()->subscriptions;
+    $profiles->load('keypersons','institution');
+    return View::make('profiles.saved_profiles')->with('profiles', $profiles);
+  }
+
+  public function removeSavedProfile()
+  {
+    $profile = Profile::with('subscribers')->find(Input::get('profile_id'));
+
+    if (empty($profile) or !$profile->subscribers->contains(Auth::user()->id))
+    {
+      Log::error("User " . Auth::user()->id . " tried to delete non saved profile.  ID input: " . Input::get('profile_id'));
+      App::abort('500');
+    }
+
+    $profile->subscribers()->detach(Auth::user());
+  }
+
   public function updatePassword()
   {
     $v = User::validatePassword(Input::all());
