@@ -501,6 +501,11 @@ html .btn-warning {
 .profile-kp img { margin-left: -29px; }
 .profile-kp-info { padding: 40px 20px; }
 .profile-kp-name { font-weight: 700; }
+.profile-description { padding: 20px 0px; }
+.profile-description:last-child { padding: 0px 0px 20px; }
+#publications img { display: block; margin: auto; }
+.publication-row { margin-top: 10px; margin-bottom: 30px; }
+.publication-link { padding: 10px 20px; text-align: center; }
 div.row.message { margin-top: 20px; margin-bottom: -20px; }
 div.stages { background-color: #428bca; margin-top: 15px; }
 div.stages:last-child { margin-bottom: 15px; }

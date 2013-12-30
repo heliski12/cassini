@@ -1,8 +1,6 @@
 @extends('layouts.private')
 
 @section('content')
-
-
 <div class="container-full">
   <div class="my-account">
     <div class="row">
@@ -161,6 +159,7 @@
     </div>
   </div>
 </div>
+@stop
 
 @section('modal')
 <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="email_label" aria-hidden="true">

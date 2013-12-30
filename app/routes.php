@@ -122,6 +122,21 @@ Route::post('/kp_test', function()
 // TODO - REMOVE THIS
 Route::get('/test',function()
   {
+    $results = SphinxSearch::search('material')->
+      setFieldWeights(
+        array(
+          'tech_title' => 1,
+          'fs_extra_info' => 10
+        )
+      )->get(true);
+
+    $r = [];
+    foreach ($results as $result)
+      $r[]= $result->id;
+
+    dd($r);
+    dd($results);
+
 //$im = imagecreatefrompng('/tmp/blah.png');
 
 //header('Content-Type: image/png');

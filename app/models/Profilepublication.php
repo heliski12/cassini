@@ -12,7 +12,10 @@ class ProfilePublication extends BaseModel {
   {
     return $this->belongsTo('Publication', 'publication_id');
   }
-    
 
+  public function getArticleCleanUrlAttribute()
+  {
+    return StringHelper::clean_url($this->getAttribute('article_url'));
+  }
 }
 

@@ -107,7 +107,7 @@
                     </div>
                     <div class="patent-titles">
                       <div class="stage-title" style="text-align: left;">&nbsp;&nbsp;Yes</div>
-                      <div class="stage-title" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;No</div>
+                      <div class="stage-title" style="text-align: center;">&nbsp;&nbsp;No</div>
                       <div class="stage-title" style="text-align: right;">Pending</div>
                     </div>
                   </div>
@@ -124,14 +124,26 @@
                     </div>
                     <div class="patent-titles">
                       <div class="stage-title" style="text-align: left;">&nbsp;&nbsp;Yes</div>
-                      <div class="stage-title" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;No</div>
+                      <div class="stage-title" style="text-align: center;">&nbsp;&nbsp;No</div>
                       <div class="stage-title" style="text-align: right;">Pending</div>
                     </div>
                   </div>
                 </div> 
               </div>
             </div> 
-            <div class="row profile-body-cell">3</div> 
+            <div class="row profile-body-cell">
+              <div class="col-md-12">
+                <div class="row profile-description">
+                  {{ $profile->tech_description }}
+                </div>
+                <div class="row profile-description">
+                  <div class="profile-h">Market Applications</div>
+                    @foreach ($profile->applications as $application)
+                      <a href="{{ route('marketplace') }}"><span class="label label-primary sector-pill">{{ $application->name }}</span></a>
+                    @endforeach
+                </div>
+              </div>
+            </div> 
           </div>
           <div class="col-md-5">
             <div class="row profile-body-cell">
@@ -167,8 +179,39 @@
               <li><a href="#awards" data-toggle="tab">Awards</a></li>
             </ul>
             <div class="tab-content">
-              <div class="tab-pane fade in active" id="website">The website</div>
-              <div class="tab-pane fade" id="publications">The publications</div>
+              <div class="tab-pane fade in active" id="website">
+                <div class="row">
+                  <div class="col-md-10">
+                    @if (!empty($profile->website_title))
+                      {{ $profile->website_title }}<br/>
+                    @endif
+                    @if (!empty($profile->website_clean_url))
+                      <a href="{{ $profile->website_clean_url }}" target="_blank">{{ $profile->website_clean_url }}</a>
+                    @else
+                      No website provided
+                    @endif
+                  </div>
+                </div>
+                <div class="row">&nbsp;</div>
+              </div>
+              <div class="tab-pane fade" id="publications">
+                @foreach ($profile->publications as $idx => $publication)
+                  @if ($idx % 4 === 0)
+                    <div class="row publication-row">
+                  @endif
+                    <div class="col-md-3">
+                      <div class="row">
+                        <img src="{{ URL::to('/img/publication.png') }}" /> 
+                      </div>
+                      <div class="row publication-link">
+                        <a href="{{ $publication->article_clean_url }}">{{ $publication->article_title }}</a> 
+                      </div>
+                    </div>
+                  @if ($idx % 4 === 3 or $idx === sizeof($profile->publications) - 1)
+                    </div>
+                  @endif
+                @endforeach
+              </div>
               <div class="tab-pane fade" id="presentations">The presentations</div>
               <div class="tab-pane fade" id="awards">The awards</div>
             </div>

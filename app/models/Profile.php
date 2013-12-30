@@ -73,6 +73,11 @@ class Profile extends Eloquent {
     return "<a href='" . URL::to('/') . "/admin_profile_wizard'>Use Profile Wizard</a>";
   }
 
+  public function getWebsiteCleanUrlAttribute()
+  {
+    return StringHelper::clean_url($this->getAttribute('website_url'));
+  }
+
   public function getStatusTosAttribute()
   {
     if (!array_key_exists($this->getAttribute('status'), Config::get('cassini.profile_statuses')))
