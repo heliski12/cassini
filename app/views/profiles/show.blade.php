@@ -195,25 +195,68 @@
                 <div class="row">&nbsp;</div>
               </div>
               <div class="tab-pane fade" id="publications">
-                @foreach ($profile->publications as $idx => $publication)
-                  @if ($idx % 4 === 0)
-                    <div class="row publication-row">
-                  @endif
-                    <div class="col-md-3">
-                      <div class="row">
-                        <img src="{{ URL::to('/img/publication.png') }}" /> 
+                @if (!empty($profile->publications))
+                  @foreach ($profile->publications as $idx => $publication)
+                    @if ($idx % 4 === 0)
+                      <div class="row publication-row">
+                    @endif
+                      <div class="col-md-3">
+                        <div class="row">
+                          <img src="{{ URL::to('/img/publication.png') }}" /> 
+                        </div>
+                        <div class="row publication-link">
+                          <a href="{{ $publication->article_clean_url }}">{{ $publication->article_title }}</a> 
+                        </div>
                       </div>
-                      <div class="row publication-link">
-                        <a href="{{ $publication->article_clean_url }}">{{ $publication->article_title }}</a> 
+                    @if ($idx % 4 === 3 or $idx === sizeof($profile->publications) - 1)
                       </div>
-                    </div>
-                  @if ($idx % 4 === 3 or $idx === sizeof($profile->publications) - 1)
-                    </div>
-                  @endif
-                @endforeach
+                    @endif
+                  @endforeach
+                @else
+                  <div class="row">
+                    <div class="col-md-10">
+                      This profile has no publications. 
+                    </div> 
+                  </div>
+                  <div class="row">&nbsp;</div>
+                @endif
               </div>
-              <div class="tab-pane fade" id="presentations">The presentations</div>
-              <div class="tab-pane fade" id="awards">The awards</div>
+              <div class="tab-pane fade" id="presentations">
+                  @if (!empty($profile->presentations) and sizeof($profile->presentations) > 0)
+                    <ul>
+                    @foreach ($profile->presentations as $presentation)
+                      <li>
+                        <a href="{{ $presentation->clean_url }}">{{ $presentation->title }}</a>
+                      </li>
+                    @endforeach 
+                    </ul> 
+                  @else
+                    <div class="row">
+                      <div class="col-md-10">
+                        This profile has no presentations. 
+                      </div> 
+                    </div>
+                    <div class="row">&nbsp;</div>
+                  @endif
+              </div>
+              <div class="tab-pane fade" id="awards">
+                  @if (!empty($profile->awards) and sizeof($profile->awards) > 0)
+                    <ul>
+                    @foreach ($profile->awards as $award)
+                      <li>
+                        <a href="{{ $award->clean_url }}">{{ $award->title }}</a>
+                      </li>
+                    @endforeach 
+                    </ul> 
+                  @else
+                    <div class="row">
+                      <div class="col-md-10">
+                        This profile has no awards. 
+                      </div> 
+                    </div>
+                    <div class="row">&nbsp;</div>
+                  @endif
+              </div>
             </div>
           </div> 
         </div>

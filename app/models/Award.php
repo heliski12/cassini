@@ -10,5 +10,10 @@ class Award extends BaseModel {
   {
     return $this->belongsTo('Profile');
   }
+
+  public function getCleanUrlAttribute()
+  {
+    return StringHelper::clean_url($this->getAttribute('url'));
+  }
 }
 

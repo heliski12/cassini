@@ -65,7 +65,7 @@ class Keyperson extends BaseModel {
     {
       $rules["keypersons.$idx.first_name"] = 'required';
       $rules["keypersons.$idx.last_name"] = 'required';
-      $rules["keypersons.$idx.email"] = 'required|email';
+      //$rules["keypersons.$idx.email"] = 'required|email';
     }
     return $rules;
   }
