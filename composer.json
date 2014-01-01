@@ -8,7 +8,7 @@
     "frozennode/administrator": "dev-master",
     "way/generators": "dev-master",
     "codesleeve/stapler": "dev-master",
-    "aws/aws-sdk-php": "2.4.*@dev",
+    "aws/aws-sdk-php-laravel": "1.*",
     "scalia/sphinxsearch": "dev-master"
 	},
 	"autoload": {

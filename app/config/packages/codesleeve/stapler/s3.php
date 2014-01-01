@@ -98,6 +98,6 @@ return [
 	|
 	*/
 
-	'path' => ':attachment/:id/:style/:filename',
+	'path' => 'public/:class/:attachment/:id/:style/:filename',
 	
 ];

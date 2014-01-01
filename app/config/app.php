@@ -117,6 +117,7 @@ return array(
     'Frozennode\Administrator\AdministratorServiceProvider',
     'Codesleeve\Stapler\StaplerServiceProvider',
     'Scalia\SphinxSearch\SphinxSearchServiceProvider',
+    'Aws\Laravel\AwsServiceProvider',
     
 
 	),
@@ -184,6 +185,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
     'SphinxSearch'    => 'Scalia\SphinxSearch\SphinxSearchFacade',
+    'AWS' => 'Aws\Laravel\AwsFacade',
 
 	),
 

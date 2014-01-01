@@ -122,6 +122,10 @@ Route::post('/kp_test', function()
 // TODO - REMOVE THIS
 Route::get('/test',function()
   {
+    $kp = Keyperson::find(1);
+
+    dd($kp->photo->url('original'));
+
     $results = SphinxSearch::search('material')->
       setFieldWeights(
         array(

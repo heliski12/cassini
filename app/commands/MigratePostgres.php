@@ -138,15 +138,40 @@ class MigratePostgres extends Command {
       $keyperson->state = $profile->state;
       $keyperson->zip_code = $profile->zip;
       $keyperson->country = $profile->country;
-      /////////////////////////// TODO - PHOTO ///////////////////////////////////
+      $keyperson->photo_file_name = $profile->keyperson1photo_file_name;
+      $keyperson->photo_file_size = $profile->keyperson1photo_file_size;
+      $keyperson->photo_content_type = $profile->keyperson1photo_content_type;
+      $keyperson->photo_updated_at = $profile->keyperson1photo_updated_at;
       $keyperson->save();
+
+      // move the s3 image to the proper path
+      $s3 = App::make('aws')->get('s3');
+      $objs = $s3->getIterator('ListObjects', array(
+        'Bucket' => getenv('AWS_BUCKET'),
+        'Prefix' => 'app/public/assets/profiles/people/'.$profile->id,
+      ));
+      foreach($objs as $obj)
+      {
+        $key = $obj['Key'];
+        $file_path = explode($profile->id,$key)[1];
+        $s3->copyObject(array(
+          'Bucket' => getenv('AWS_BUCKET'),
+          'CopySource' => getenv('AWS_BUCKET') . '/' . $key,
+          'Key' => '/public/Keyperson/photos/'.$keyperson->id.$file_path,
+          'ACL' => 'public-read',
+        ));
+      }
+
 
       // keypersons
       foreach (range(2,15) as $idx)
       {
         $kp = 'keyperson'.$idx;
         $kp_title = 'keyperson'.$idx.'title';
-        //////////////////////////////// TODO - PHOTO ////////////////////////////
+        $kp_file_name = 'keyperson'.$idx.'photo_file_name';
+        $kp_file_size = 'keyperson'.$idx.'photo_file_size';
+        $kp_content_type = 'keyperson'.$idx.'photo_content_type';
+        $kp_updated_at = 'keyperson'.$idx.'photo_updated_at';
 
         if (!empty($profile->$kp))
         {
@@ -155,7 +180,10 @@ class MigratePostgres extends Command {
           $keyperson->first_name = explode(" ",$profile->$kp)[0];
           $keyperson->last_name = implode(" ", array_slice(explode(" ",$profile->$kp),1));
           $keyperson->title = $profile->$kp_title;
-          //////////////////////// TODO - PHOTO ///////////////////////////
+          $keyperson->photo_file_name = $profile->$kp_file_name;
+          $keyperson->photo_file_size = $profile->$kp_file_size;
+          $keyperson->photo_content_type = $profile->$kp_content_type;
+          $keyperson->photo_updated_at = $profile->$kp_updated_at;
           $keyperson->save();
         }
       }
