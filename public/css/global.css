@@ -499,7 +499,7 @@ html .btn-warning {
 .profile-h { text-transform: uppercase; font-weight: 700; padding-top: 10px; }
 .profile-kp { background: #D0D0D0; margin: 10px 0px;  }
 .profile-kp img { margin-left: -29px; }
-.profile-kp-info { padding: 40px 20px; }
+.profile-kp-info { padding: 10px 20px; }
 .profile-kp-name { font-weight: 700; }
 .profile-description { padding: 20px 0px; }
 .profile-description:last-child { padding: 0px 0px 20px; }

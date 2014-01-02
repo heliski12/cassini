@@ -56,8 +56,29 @@ class MigratePostgres extends Command {
       $institution->city = $academic->city;
       $institution->state = $academic->state;
       $institution->country = $academic->country;
-      //////////////////////////////////// TODO - LOGO /////////////////////////////////////////
+      $institution->logo_file_name = $academic->academiclogo_file_name;
+      $institution->logo_file_size = $academic->academiclogo_file_size;
+      $institution->logo_content_type = $academic->academiclogo_content_type;
+      $institution->logo_updated_at = $academic->academiclogo_updated_at;
       $institution->save();
+
+      // move the s3 image to the proper path
+      $s3 = App::make('aws')->get('s3');
+      $objs = $s3->getIterator('ListObjects', array(
+        'Bucket' => getenv('AWS_BUCKET'),
+        'Prefix' => 'app/public/assets/academics/logos/'.$academic->id,
+      ));
+      foreach($objs as $obj)
+      {
+        $key = $obj['Key'];
+        $file_path = explode($academic->id,$key)[1];
+        $s3->copyObject(array(
+          'Bucket' => getenv('AWS_BUCKET'),
+          'CopySource' => getenv('AWS_BUCKET') . '/' . $key,
+          'Key' => '/public/Institution/logos/'.$academic->id.$file_path,
+          'ACL' => 'public-read',
+        ));
+      }
     }
 
     foreach ($webpublications as $webpublication)
@@ -65,8 +86,29 @@ class MigratePostgres extends Command {
       $publication = new Publication;
       $publication->id = $webpublication->id;
       $publication->name = $webpublication->name;
-      ////////////////////////////////// TODO - PHOTO //////////////////////////////////////////
+      $publication->photo_file_name = $webpublication->photo_file_name;
+      $publication->photo_file_size = $webpublication->photo_file_size;
+      $publication->photo_content_type = $webpublication->photo_content_type;
+      $publication->photo_updated_at = $webpublication->photo_updated_at;
       $publication->save();
+
+      // move the s3 image to the proper path
+      $s3 = App::make('aws')->get('s3');
+      $objs = $s3->getIterator('ListObjects', array(
+        'Bucket' => getenv('AWS_BUCKET'),
+        'Prefix' => 'app/public/assets/webpublication/photos/'.$webpublication->id,
+      ));
+      foreach($objs as $obj)
+      {
+        $key = $obj['Key'];
+        $file_path = explode($webpublication->id,$key)[1];
+        $s3->copyObject(array(
+          'Bucket' => getenv('AWS_BUCKET'),
+          'CopySource' => getenv('AWS_BUCKET') . '/' . $key,
+          'Key' => '/public/Publication/photos/'.$publication->id.$file_path,
+          'ACL' => 'public-read',
+        ));
+      }
     }
 
     foreach ($users as $user)
@@ -120,7 +162,29 @@ class MigratePostgres extends Command {
       $new_profile->website_url = $profile->webpage;
       $new_profile->created_at = explode(".",$profile->created_at)[0]; 
       $new_profile->updated_at = explode(".",$profile->updated_at)[0];
+      $new_profile->organization_logo_file_name = $profile->providerlogo_file_name;
+      $new_profile->organization_logo_file_size = $profile->providerlogo_file_size;
+      $new_profile->organization_logo_content_type = $profile->providerlogo_content_type;
+      $new_profile->organization_logo_updated_at = $profile->providerlogo_updated_at;
       $new_profile->save();
+
+      // move the s3 image to the proper path
+      $s3 = App::make('aws')->get('s3');
+      $objs = $s3->getIterator('ListObjects', array(
+        'Bucket' => getenv('AWS_BUCKET'),
+        'Prefix' => 'app/public/assets/profiles/providerlogo/'.$profile->id,
+      ));
+      foreach($objs as $obj)
+      {
+        $key = $obj['Key'];
+        $file_path = explode($profile->id,$key)[1];
+        $s3->copyObject(array(
+          'Bucket' => getenv('AWS_BUCKET'),
+          'CopySource' => getenv('AWS_BUCKET') . '/' . $key,
+          'Key' => '/public/Profile/organization_logos/'.$profile->id.$file_path,
+          'ACL' => 'public-read',
+        ));
+      }
 
       $keyperson = new Keyperson;
       $keyperson->profile_id = $new_profile->id;
@@ -185,6 +249,24 @@ class MigratePostgres extends Command {
           $keyperson->photo_content_type = $profile->$kp_content_type;
           $keyperson->photo_updated_at = $profile->$kp_updated_at;
           $keyperson->save();
+
+          // move the s3 image to the proper path
+          $s3 = App::make('aws')->get('s3');
+          $objs = $s3->getIterator('ListObjects', array(
+            'Bucket' => getenv('AWS_BUCKET'),
+            'Prefix' => 'app/public/assets/profiles/people/'.$profile->id,
+          ));
+          foreach($objs as $obj)
+          {
+            $key = $obj['Key'];
+            $file_path = explode($profile->id,$key)[1];
+            $s3->copyObject(array(
+              'Bucket' => getenv('AWS_BUCKET'),
+              'CopySource' => getenv('AWS_BUCKET') . '/' . $key,
+              'Key' => '/public/Keyperson/photos/'.$keyperson->id.$file_path,
+              'ACL' => 'public-read',
+            ));
+          }
         }
       }
 

@@ -1,12 +1,26 @@
 <?php
 
 class Profile extends Eloquent {
+  use Codesleeve\Stapler\Stapler;
+
   // there has to be another way of ignoring standard form input in one place.
   // using Input::except(['next','previous']) would lead to repeated code
   // TODO - photo
   protected $guarded = ['keypersons','next','previous','submit','edit','regions','photo','presentations','publications','awards'];
 
   public static $rules = array();
+
+  public function __construct(array $attributes = array())
+  {
+    $this->hasAttachedFile('organization_logo', array(
+      'styles' => array(
+        'medium' => '300x300',
+        'small' => '100x100'
+      ),
+    ));
+
+    parent::__construct($attributes);
+  }
 
   public function sectors()
   {

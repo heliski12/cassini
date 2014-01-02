@@ -15,6 +15,10 @@ class CreatePublicationsTable extends Migration {
 		Schema::create('publications', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
+			$table->string("photo_file_name")->nullable();
+			$table->integer("photo_file_size")->nullable();
+			$table->string("photo_content_type")->nullable();
+			$table->timestamp("photo_updated_at")->nullable();
 			$table->timestamps();
 		});
 	}

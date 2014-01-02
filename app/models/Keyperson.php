@@ -22,7 +22,6 @@ class Keyperson extends BaseModel {
 
   public function __construct(array $attributes = array())
   {
-    // TODO - decide what to do with stapler
     $this->hasAttachedFile('photo', array(
       'styles' => array(
         'medium' => '300x300',

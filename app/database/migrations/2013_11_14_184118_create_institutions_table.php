@@ -23,6 +23,10 @@ class CreateInstitutionsTable extends Migration {
 			$table->string('city');
 			$table->string('state');
 			$table->string('country');
+			$table->string("logo_file_name")->nullable();
+			$table->integer("logo_file_size")->nullable();
+			$table->string("logo_content_type")->nullable();
+			$table->timestamp("logo_updated_at")->nullable();
 			$table->timestamps();
 		});
 	}

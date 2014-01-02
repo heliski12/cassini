@@ -15,8 +15,8 @@
         <div class="col-md-2 profile-inst">
           @if ($profile->innovator_type === 'RESEARCHER')
             <div class="profile-logo">
-              @if (!empty($profile->institution->photo))
-                &nbsp;
+              @if (!empty($profile->institution->logo_file_name))
+                <img src="{{ asset($profile->institution->logo->url('small')) }}"/>
               @else
                 <img src="{{ URL::to('/img/university-avatar.png') }}"/>
               @endif
@@ -29,8 +29,8 @@
             </div>
           @else
             <div class="profile-logo">
-              @if (!empty($profile->entrepreneur_photo))
-                &nbsp;
+              @if (!empty($profile->organization_logo_file_name))
+                <img src="{{ asset($profile->organization_logo->url('small')) }}"/>
               @else
                 <img src="{{ URL::to('/img/company-avatar.png') }}"/>
               @endif
@@ -151,7 +151,11 @@
               @foreach ($profile->keypersons as $keyperson)
                 <div class="row profile-kp">
                   <div class="col-md-4">
-                    <img src="{{ URL::to('/img/blank-avatar.jpg') }}"/> 
+                    @if (empty($keyperson->photo_file_name))
+                      <img src="{{ URL::to('/img/blank-avatar.jpg') }}"/> 
+                    @else
+                      <img src="{{ asset($keyperson->photo->url('small')) }}"/> 
+                    @endif
                   </div>
                   <div class="col-md-8 profile-kp-info">
                     <span class="profile-kp-name">
@@ -166,6 +170,15 @@
             </div> 
             <div class="row profile-body-cell">
               <div class="profile-h">Funding</div>
+              <div class="row profile-kp">
+                <div class="col-md-12 profile-kp-info">
+                  @if (!empty($profile->fs_extra_info))
+                    {{ $profile->fs_extra_info }} 
+                  @else
+                    No info specified
+                  @endif
+                </div> 
+              </div>
             
             </div> 
           </div>
@@ -202,7 +215,11 @@
                     @endif
                       <div class="col-md-3">
                         <div class="row">
-                          <img src="{{ URL::to('/img/publication.png') }}" /> 
+                          @if (!empty($publication->publication) and !empty($publication->publication->photo_file_name))
+                            <img src="{{ asset($publication->publication->photo->url('small')) }}" /> 
+                          @else
+                            <img src="{{ URL::to('/img/publication.png') }}" /> 
+                          @endif
                         </div>
                         <div class="row publication-link">
                           <a href="{{ $publication->article_clean_url }}">{{ $publication->article_title }}</a> 

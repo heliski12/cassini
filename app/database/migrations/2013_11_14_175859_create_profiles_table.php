@@ -37,6 +37,10 @@ class CreateProfilesTable extends Migration {
       $table->boolean('restrict_seekers');
       $table->boolean('restrict_researchers');
       $table->boolean('restrict_entrepreneurs');
+			$table->string("organization_logo_file_name")->nullable();
+			$table->integer("organization_logo_file_size")->nullable();
+			$table->string("organization_logo_content_type")->nullable();
+			$table->timestamp("organization_logo_updated_at")->nullable();
 			$table->timestamps();
 		});
 	}
