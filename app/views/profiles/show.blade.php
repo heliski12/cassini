@@ -18,7 +18,7 @@
               @if (!empty($profile->institution->logo_file_name))
                 <img src="{{ asset($profile->institution->logo->url('small')) }}"/>
               @else
-                <img src="{{ URL::to('/img/university-avatar.png') }}"/>
+                <img src="{{ URL::to('/img/company-avatar.png') }}"/>
               @endif
             </div>
             <div class="profile-inst-det">
@@ -69,7 +69,52 @@
       <div class="row profile-body">
         <div class="row">
           <div class="col-md-7">
-            <div class="row profile-body-cell">1</div> 
+            @if (!empty($profile->photos))
+              <div class="row profile-body-cell">
+                <div class="row">
+                  <div class="col-md-12 photo-main">
+                    <img src="{{ asset($profile->photos[0]->photo->url('large')) }}" class="img-rounded" id="photo_main_img" alt="{{ $profile->photos[0]->description }}" />
+                  </div> 
+                </div>
+                @if (!empty($profile->photos[0]->description))
+                  <div class="row">
+                    <div class="col-md-12" id="photo_main_desc">
+                      {{ $profile->photos[0]->description }} 
+                    </div> 
+                  </div>
+                @endif
+                @if (sizeof($profile->photos) > 1)
+                <div class="row">
+                  <div class="col-md-12">
+                    <div id="photo_carousel" class="carousel slide" data-interval="9999999999999">
+                      <div class="carousel-inner">
+                        @foreach($profile->photos as $idx => $photo)
+                          @if ($idx === 0 or $idx % 4 === 0)
+                            <div class="item {{ $idx === 0 ? 'active' : '' }}">
+                              <div class="row">
+                          @endif
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                              <a href="#" class="carousel-thumb" lg="#photo_{{ $photo->id }}_lg" >
+                                <img class="img-responsive img-thumbnail" src="{{ asset($photo->photo->url('thumb')) }}" alt="{{ $photo->description }}" />
+                                <img style="display:none;" src="{{ asset($photo->photo->url('large')) }}" id="photo_{{ $photo->id }}_lg" alt="{{ $photo->description }}" />
+                              </a>
+                            </div>
+                          @if ($idx % 4 === 3 or $idx === sizeof($profile->photos) - 1)
+                              </div>
+                            </div>
+                          @endif
+                        @endforeach
+                      </div>
+                      @if (sizeof($profile->photos) > 4)
+                        <a class="left" href="#photo_carousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                        <a class="right" href="#photo_carousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                      @endif
+                    </div>
+                  </div> 
+                </div>
+              @endif
+              </div> 
+            @endif
             <div class="row profile-body-cell">
               <div class="col-md-12">
                 <div class="row stages">
@@ -282,6 +327,12 @@
 
 </div>
 
+@stop
+
+@section('css')
+@stop
+
+@section('js-lib')
 @stop
 
 @section('modal')

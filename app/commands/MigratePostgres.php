@@ -341,9 +341,45 @@ class MigratePostgres extends Command {
           $new_profile->sectors()->attach($idx);
       }
 
-      // photos 
-      ///////////////////////////// TODO ////////////////////////////////
-      // photo, imagetext
+      // photos
+      foreach (range(1,5) as $idx)
+      {
+        $photo_title = 'imagetext'.$idx;
+        $photo_file_name = 'profilephoto'.$idx.'_file_name';
+        $photo_file_size = 'profilephoto'.$idx.'_file_size';
+        $photo_content_type = 'profilephoto'.$idx.'_content_type';
+        $photo_updated_at = 'profilephoto'.$idx.'_updated_at';
+
+        if (!empty($profile->$photo_file_name))
+        {
+          $photo = new Photo;
+          $photo->profile_id = $new_profile->id;
+          $photo->description = $profile->$photo_title;
+          $photo->photo_file_name = $profile->$photo_file_name;
+          $photo->photo_file_size = $profile->$photo_file_size;
+          $photo->photo_content_type = $profile->$photo_content_type;
+          $photo->photo_updated_at = $profile->$photo_updated_at;
+          $photo->save();
+
+          // move the s3 image to the proper path
+          $s3 = App::make('aws')->get('s3');
+          $objs = $s3->getIterator('ListObjects', array(
+            'Bucket' => getenv('AWS_BUCKET'),
+            'Prefix' => 'app/public/assets/profiles/photos1234/'.$profile->id,
+          ));
+          foreach($objs as $obj)
+          {
+            $key = $obj['Key'];
+            $file_path = explode($profile->id,$key)[1];
+            $s3->copyObject(array(
+              'Bucket' => getenv('AWS_BUCKET'),
+              'CopySource' => getenv('AWS_BUCKET') . '/' . $key,
+              'Key' => '/public/Photo/photos/'.$photo->id.$file_path,
+              'ACL' => 'public-read',
+            ));
+          }
+        }
+      }
 
 
 

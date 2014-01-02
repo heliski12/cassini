@@ -16,6 +16,10 @@ class CreatePhotosTable extends Migration {
 			$table->increments('id');
       $table->integer('profile_id');
 			$table->string('description');
+			$table->string("photo_file_name")->nullable();
+			$table->integer("photo_file_size")->nullable();
+			$table->string("photo_content_type")->nullable();
+			$table->timestamp("photo_updated_at")->nullable();
 			$table->timestamps();
 		});
 	}

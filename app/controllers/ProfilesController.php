@@ -130,8 +130,7 @@ class ProfilesController extends BaseController {
 
   public function show($id)
   {
-    // TODO - more eager fetches
-    $profile = Profile::with(['keypersons','institution','sectors','applications','publications.publication','presentations','awards'])->find($id);
+    $profile = Profile::with(['keypersons','institution','sectors','applications','publications.publication','presentations','awards','photos'])->find($id);
 
     // TODO - permissions
 

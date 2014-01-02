@@ -193,6 +193,17 @@ $(function(){
       $('#tech_description_charcount').html(used_chars + '/' +  max_chars);
   });
 
+  if (typeof($("#photo-carousel").carousel) != 'undefined') {
+    $("#photo-carousel").carousel({ });
+  }
+
+  $("a.carousel-thumb").click(function(event) {
+    event.preventDefault();
+    var associate = $($(this).attr('lg'));
+    $("#photo_main_img").attr('src',associate.attr('src'));
+    $("#photo_main_img").attr('alt',associate.attr('alt'));
+    $("#photo_main_desc").html(associate.attr('alt'));
+  });
   
   
 });
