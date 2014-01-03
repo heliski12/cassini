@@ -118,6 +118,7 @@ return array(
     'Codesleeve\Stapler\StaplerServiceProvider',
     'Scalia\SphinxSearch\SphinxSearchServiceProvider',
     'Aws\Laravel\AwsServiceProvider',
+    'Illuminate\Remote\RemoteServiceProvider',
     
 
 	),
@@ -155,7 +156,7 @@ return array(
 		'Cache'           => 'Illuminate\Support\Facades\Cache',
 		'ClassLoader'     => 'Illuminate\Support\ClassLoader',
 		'Config'          => 'Illuminate\Support\Facades\Config',
-		'Controller'      => 'Illuminate\Routing\Controllers\Controller',
+		'Controller'      => 'Illuminate\Routing\Controller',
 		'Cookie'          => 'Illuminate\Support\Facades\Cookie',
 		'Crypt'           => 'Illuminate\Support\Facades\Crypt',
 		'DB'              => 'Illuminate\Support\Facades\DB',
@@ -186,6 +187,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
     'SphinxSearch'    => 'Scalia\SphinxSearch\SphinxSearchFacade',
     'AWS' => 'Aws\Laravel\AwsFacade',
+    'SSH' => 'Illuminate\Support\Facades\SSH',
 
 	),
 

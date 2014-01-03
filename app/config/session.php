@@ -30,6 +30,7 @@ return array(
 	*/
 
 	'lifetime' => 129600,  // 3 months
+  'expire_on_close' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -122,4 +123,5 @@ return array(
 
 	'domain' => null,
 
+  'secure' => false,
 );

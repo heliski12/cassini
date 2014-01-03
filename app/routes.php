@@ -31,6 +31,7 @@ Route::get('/', function()
 Route::post('login',  'UsersController@login');
 Route::get('logout',  'UsersController@logout');
 Route::post('signup', 'UsersController@signup');
+Route::controller('reminders', 'RemindersController');
 
 // user pending approval
 Route::group(array('before' => 'pre-auth'), function() 
@@ -123,6 +124,8 @@ Route::post('/kp_test', function()
 Route::get('/test',function()
   {
 
+    if (true)
+      return View::make('emails.auth.reminder');
     $profile = Profile::first();
 
     dd($profile->publications[0]->publication);

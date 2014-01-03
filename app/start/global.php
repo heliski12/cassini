@@ -81,3 +81,8 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+Password::validator(function($credentials)
+{
+  return strlen($credentials['password']) >= 8;
+});

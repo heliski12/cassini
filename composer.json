@@ -4,7 +4,7 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.0.*",
+		"laravel/framework": "4.1.*",
     "frozennode/administrator": "dev-master",
     "way/generators": "dev-master",
     "codesleeve/stapler": "dev-master",

@@ -508,7 +508,7 @@ html .btn-warning {
 .publication-link { padding: 10px 20px; text-align: center; }
 .photo-main { margin-top: 15px; margin-bottom: 15px; }
 .photo-main img { display: block; margin: 0 auto; }
-#photo_main_desc { text-align: center; }
+#photo_main_desc { text-align: center; padding-bottom: 10px; }
 #photo_carousel a.left { color: #000; position: absolute; bottom: 0; left: -10px; margin-right: 5px; top: 50%; margin-top: -10px; }
 #photo_carousel a.right { color: #000; position: absolute; bottom: 0; left: auto; right: -5px; top: 50%; margin-top: -10px; }
 #photo_carousel img { max-height: 60px; }
