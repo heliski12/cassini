@@ -28,7 +28,15 @@
       </div>
     </div>
 
-    {{ Form::open([ 'url' => route('store_profile', $step), 'id' => 'create_profile_form', 'role' => 'form', 'class' => ($step == 1) ? 'form-horizontal' : '' ]) }}
+    @if (!$errors->isEmpty())
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="alert alert-danger">{{ $errors->first() }}</div>
+      </div>
+    </div>
+    @endif
+
+    {{ Form::open([ 'url' => route('store_profile', $step), 'files' => true, 'id' => 'create_profile_form', 'role' => 'form', 'class' => ($step == 1) ? 'form-horizontal' : '' ]) }}
     {{-- Form::model($profile, [ 'route' => ['store_profile', $step ], 'id' => 'create_profile_form', 'role' => 'form', 'class' => ($step == 1) ? 'form-horizontal' : '' ]) --}}
 
     <input type="hidden" name="id" value="{{$profile->id}}"/>

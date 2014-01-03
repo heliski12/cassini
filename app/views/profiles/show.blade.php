@@ -69,7 +69,7 @@
       <div class="row profile-body">
         <div class="row">
           <div class="col-md-7">
-            @if (!empty($profile->photos))
+            @if (!empty($profile->photos) and sizeof($profile->photos) > 0)
               <div class="row profile-body-cell">
                 <div class="row">
                   <div class="col-md-12 photo-main">

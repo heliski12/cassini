@@ -86,13 +86,13 @@ class ProfilesController extends BaseController {
     $v = Profile::validateForStep(Input::all(), $step);
     if (!empty($v) and $v->fails())
       return View::make("profiles.create_step_$step")->with([ 'errors' => $v->messages(), 'step' => $step, 'profile' => $profile ]);
-
     if (empty($profile->status))
       $profile->status = 'STARTED';
     elseif (Input::has('submit'))
       $profile->status = 'COMPLETE_PENDING';
 
-    $profile->creator()->associate(Auth::user());
+    if (empty($profile->creator))
+      $profile->creator()->associate(Auth::user());
     $profile->save();
     $profile->saveAssociatesForStep(Input::all(), $step);
 

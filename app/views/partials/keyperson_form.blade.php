@@ -68,8 +68,8 @@
   </div>
 </div>
 <div class="form-group">
-  {{ Form::label("keypersons[$idx][photo]", "Upload&nbsp;photo (5&nbsp;MB&nbsp;max)", [ "class" => "col-md-3 control-label" ]) }}
+  {{ Form::label("keypersons_photos[]", "Upload&nbsp;photo (5&nbsp;MB&nbsp;max)", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-9">
-    {{ Form::file("keypersons[$idx][photo]",[ "class" => "form-control" ]) }}
+    {{ Form::file("keypersons_photos[]",[ "class" => "form-control" ]) }}
   </div>
 </div>

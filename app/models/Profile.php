@@ -6,7 +6,7 @@ class Profile extends Eloquent {
   // there has to be another way of ignoring standard form input in one place.
   // using Input::except(['next','previous']) would lead to repeated code
   // TODO - photo
-  protected $guarded = ['keypersons','next','previous','submit','edit','regions','photo','presentations','publications','awards'];
+  protected $guarded = ['keypersons','next','previous','submit','edit','regions','photo','presentations','publications','awards','organization_logo','keypersons_photos'];
 
   public static $rules = array();
 
@@ -376,6 +376,10 @@ class Profile extends Eloquent {
   private function saveAssociatesStep1($input)
   {
     $this->associateManyRelationship($this->keypersons, 'keypersons', 'Keyperson', $this->keypersons(), $input['keypersons']);
+
+    $this->organization_logo = Input::file('organization_logo');
+
+    $this->save();
   }
 
   private function saveAssociatesStep2($input)

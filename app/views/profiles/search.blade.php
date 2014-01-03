@@ -94,7 +94,13 @@
         @foreach ($results as $idx => $result)
           <div class="row marketplace-result">
             <div class="col-md-2">
-              <a href="{{ route('show_profile', [ 'id' => $result->id ]) }}"><img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.jpg') }}"></img></a>
+              <a href="{{ route('show_profile', [ 'id' => $result->id ]) }}">
+                @if (!empty($result->keypersons) and sizeof($result->keypersons) > 0)
+                  <img class="marketplace-result-img" src="{{ asset($result->keypersons[0]->photo->url('small')) }}"></img>
+                @else
+                  <img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.jpg') }}"></img>
+                @endif
+              </a>
             </div>
             <div class="col-md-5">
               <a class="title" href="{{ route('show_profile', [ 'id' => $result->id ]) }}">{{ $result->tech_title }}</a><br/>

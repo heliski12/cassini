@@ -47,8 +47,8 @@
         </label>
       </div>
       <div class="form-group">
-        {{ Form::label('entrepreneur_logo', 'Upload&nbsp;logo (5&nbsp;MB&nbsp;max)', [ 'class' => 'control-label' ]) }}
-        {{ Form::file('entrepreneur_logo',[ 'class' => 'form-control', 'id' => 'entrepreneur_logo' ]) }}
+        {{ Form::label('organization_logo', 'Upload&nbsp;logo (5&nbsp;MB&nbsp;max)', [ 'class' => 'control-label' ]) }}
+        {{ Form::file('organization_logo',[ 'class' => 'form-control', 'id' => 'organization_logo' ]) }}
       </div>
     </div>
     <div class="row">

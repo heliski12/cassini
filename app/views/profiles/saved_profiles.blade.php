@@ -55,7 +55,11 @@
             </div>
             <div class="col-md-2 col-sm-3 col-xs-12">
               <a href="{{ route('show_profile', [ 'id' => $profile->id ]) }}">
-                <img class="my-profiles" src="{{ URL::to('/img/blank-avatar.jpg') }}" />
+                @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0)
+                  <img class="my-profiles" src="{{ asset($profile->keypersons[0]->photo->url('small')) }}" />
+                @else
+                  <img class="my-profiles" src="{{ URL::to('/img/blank-avatar.jpg') }}" />
+                @endif
               </a>
             </div>
             <div class="col-md-7 col-sm-8 col-xs-12 saved-profile">
