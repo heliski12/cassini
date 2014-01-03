@@ -59,11 +59,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   public function getUnsureTosAttribute() { return $this->getAttribute('unsure') ? 'Yes' : ''; }
   public function getIsAdminAttribute() { return $this->getAttribute('role') === 'ADMIN'; }
 
-  //public function setPasswordAttribute($value) 
-  //{ 
-    //if (!empty($value)) 
-      //$this->attributes['password'] = Hash::make($value); 
-  //}
+  public function setPasswordAttribute($value) 
+  { 
+    if (!empty($value)) 
+      $this->attributes['password'] = Hash::make($value); 
+  }
   public function setMigratePasswordAttribute($value)
   {
     $this->attributes['password'] = $value;

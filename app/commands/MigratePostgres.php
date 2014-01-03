@@ -119,7 +119,7 @@ class MigratePostgres extends Command {
       $new_user->last_name = $user->lastname;
       $new_user->email = strtolower($user->email);
       //$new_user->migrate_password = $user->password_digest; 
-      $new_user->password = 'abc123';  ///////////////////// TODO /////////////////////
+      $new_user->password = $user->password_digest; //'abc123';  ///////////////////// TODO /////////////////////
       $new_user->innovator = $user->innovator; 
       $new_user->seeker = $user->seeker;
       $new_user->unsure = $user->unsure; 

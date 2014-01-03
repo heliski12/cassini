@@ -37,7 +37,7 @@ return array(
       'title' => 'Provider Type',
       'type' => 'enum',
       'options' => array(
-        'ENTREPRENEUR' => Config::get('cassini.provider_types')['REPRENEUR'],
+        'ENTREPRENEUR' => Config::get('cassini.provider_types')['ENTREPRENEUR'],
         'RESEARCHER' => Config::get('cassini.provider_types')['RESEARCHER'],
       ),
     ),

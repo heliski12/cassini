@@ -30,7 +30,7 @@ $env = $app->detectEnvironment(array(
 
   'local' => array('localhost*', '*.local',),
   'staging' => array('yottaram*',),
-  'production' => array('motionry*','marketplace.motionry*'),
+  'production' => array('motionry*','marketplace.motionry*','*.motionry.com'),
   
 
 ));
