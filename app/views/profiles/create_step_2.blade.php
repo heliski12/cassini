@@ -72,7 +72,7 @@
     </div>
     <h5 class="fs-additional" style="display:none;">If you are currently funded, provide the name of the funding organization OR if you are seeking funding, what you intend to do with the funding.  This information will appear in your published profile.</h5>
     <div class="form-group fs-additional" style="display:none;">
-      <textarea id="fs_extra_info" name="fs_extra_info" class="form-control" maxlength="1550" rows="10"></textarea>
+      <textarea id="fs_extra_info" name="fs_extra_info" class="form-control" maxlength="1550" rows="10">{{ $profile->fs_extra_info }}</textarea>
     </div>
     <div class="row">
       <hr/>
