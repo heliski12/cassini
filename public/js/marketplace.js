@@ -26,8 +26,8 @@ $(function(){
       return;
     var extra_photo = $("#extra_photo")
               .html()
-              .replace(new RegExp("Photo 1","g"), "Photo " + ++counts.photo_count)
-              .replace(new RegExp("\\[0\\]","g"), "["+counts.photo_count+"]");
+              .replace(new RegExp("\\[x\\]","g"), ++counts.photo_count)
+              .replace(new RegExp("\\[0\\]","g"), counts.photo_count);
     $("#photos_list").append(extra_photo);
   });
   $("#create_profile_form").on('click','a.remove-presentation', function(event) {

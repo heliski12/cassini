@@ -85,7 +85,7 @@
   <script type="text/javascript">
     var counts = { 
       'tm_count': {{ Input::old('keypersons') ? (sizeof(Input::old('keypersons')) - 1) : ((empty($profile->keypersons)) ? 0 : sizeof($profile->keypersons) - 1) }}, 
-      'photo_count':1,
+      'photo_count': {{ ((empty($profile->photos)) ? 1 : sizeof($profile->photos)) }},
       'presentation_count':0,
       'publication_count':0,
       'award_count':0

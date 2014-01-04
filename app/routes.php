@@ -124,11 +124,11 @@ Route::post('/kp_test', function()
 Route::get('/test',function()
   {
 
-    if (true)
-      return View::make('emails.auth.reminder');
-    $profile = Profile::first();
+    //if (true)
+      //return View::make('emails.auth.reminder');
+    //$profile = Profile::first();
 
-    dd($profile->publications[0]->publication);
+    //dd($profile->publications[0]->publication);
 
     $results = SphinxSearch::search('material')->
       setFieldWeights(

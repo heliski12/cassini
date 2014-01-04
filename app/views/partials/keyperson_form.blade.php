@@ -68,8 +68,21 @@
   </div>
 </div>
 <div class="form-group">
+  @if (empty($keyperson->photo_file_name))
   {{ Form::label("keypersons_photos[]", "Upload&nbsp;photo (5&nbsp;MB&nbsp;max)", [ "class" => "col-md-3 control-label" ]) }}
   <div class="col-md-9">
     {{ Form::file("keypersons_photos[]",[ "class" => "form-control" ]) }}
   </div>
+  @else
+  <label class="col-md-3 control-label">Photo</label>
+  <div class="col-md-9">
+    <img class="keyperson-logo" src="{{ asset($keyperson->photo->url('small')) }}" />
+  </div>
+  <div>
+    {{ Form::label("keypersons_photos[]", "Upload&nbsp;new&nbsp;photo (5&nbsp;MB&nbsp;max)", [ "class" => "col-md-3 control-label" ]) }}
+    <div class="col-md-9">
+      {{ Form::file("keypersons_photos[]",[ "class" => "form-control" ]) }}
+    </div>
+  </div>
+  @endif
 </div>

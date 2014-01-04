@@ -39,7 +39,11 @@
         @foreach ($profiles as $profile)
           <div class="row my-profile">
             <div class="col-md-2 col-sm-3 col-xs-12">
-              <img class="my-profiles" src="{{ URL::to('/img/blank-avatar.jpg') }}" />
+                @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0)
+                  <img class="marketplace-result-img" src="{{ asset($profile->keypersons[0]->photo->url('small')) }}"></img>
+                @else
+                  <img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.jpg') }}"></img>
+                @endif
             </div>
             <div class="col-md-8 col-sm-9 col-xs-12">
               @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0)

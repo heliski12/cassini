@@ -38,7 +38,8 @@ return [
 	|
 	*/
 
-	'default_url' => '/:attachment/:style/missing.png',
+  // TODO - don't hardcode this!!!!
+	'default_url' => '/img/blank-avatar.jpg', ///:attachment/:style/missing.png',
 
 	/*
 	|--------------------------------------------------------------------------

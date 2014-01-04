@@ -1,6 +1,6 @@
 <?php
 
-class Photo extends Eloquent {
+class Photo extends BaseModel {
   use Codesleeve\Stapler\Stapler;
 	protected $guarded = array();
 

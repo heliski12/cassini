@@ -79,19 +79,29 @@
     </div>
     <h5>Upload photo of the technology or research (max 4 photos)</h5>
       <div id="photos_list">
-      @foreach (range(0,0) as $temp_make_this_iterate_over_photos)
-            @include('partials.photo_form')
-      @endforeach
+        @foreach (range(0,3) as $idx)
+          @if (sizeof($profile->photos) > $idx)
+            @include('partials.photo_form', [ 'photo' => $profile->photos[$idx], 'idx' => $idx, 'label' => $idx + 1 ])
+          @else
+            @include('partials.photo_form', [ 'photo' => new Photo, 'idx' => $idx, 'label' => $idx + 1 ])
+          @endif
+        @endforeach
       </div>
-    <div class="form-group">
-      <p class="help-block col-md-offset-3"><a href="#" class="add-another-photo">Add another photo</a></p>
-    </div>
+      @if (false and sizeof($profile->photos) < 4)
+        <div class="form-group">
+          <p class="help-block col-md-offset-3"><a href="#" class="add-another-photo">Add another photo</a></p>
+        </div>
+      @endif
 
 
   </div>
 </div>
+@stop
 
+@section ('extra_forms')
+@if (false)
 <div id="extra_photo" style="display:none;">
-    @include('partials.photo_form')
+  @include('partials.photo_form', [ 'photo' => new Photo, 'idx' => '[x]', 'label' => '[0]' ])
 </div>
+@endif
 @stop

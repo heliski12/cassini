@@ -6,7 +6,7 @@ class Profile extends Eloquent {
   // there has to be another way of ignoring standard form input in one place.
   // using Input::except(['next','previous']) would lead to repeated code
   // TODO - photo
-  protected $guarded = ['keypersons','next','previous','submit','edit','regions','photo','presentations','publications','awards','organization_logo','keypersons_photos'];
+  protected $guarded = ['keypersons','next','previous','submit','edit','regions','photo','presentations','publications','awards','organization_logo','keypersons_photos','photo_photos','photos'];
 
   public static $rules = array();
 
@@ -343,8 +343,9 @@ class Profile extends Eloquent {
     switch ($step)
     {
       case 1:
-        $v = Keyperson::validateMultiple(Input::all());
-        return $v; 
+        //$v = Keyperson::validateMultiple(Input::all());
+        //return $v; 
+        return null;
       case 2:
         return null;
       case 3: 
@@ -377,9 +378,18 @@ class Profile extends Eloquent {
   {
     $this->associateManyRelationship($this->keypersons, 'keypersons', 'Keyperson', $this->keypersons(), $input['keypersons']);
 
+    // organization logo
     $this->organization_logo = Input::file('organization_logo');
-
     $this->save();
+
+    // keyperson logos
+    $profile = Profile::find($this->id);
+    foreach (Input::file('keypersons_photos') as $idx => $photo)
+    {
+      $profile->keypersons[$idx]->photo = $photo;
+      $profile->keypersons[$idx]->save();
+    }
+
   }
 
   private function saveAssociatesStep2($input)
@@ -393,7 +403,21 @@ class Profile extends Eloquent {
       $this->setSectorIdsAttribute([]);
     if (!array_key_exists('funding_statuses', $input))
       $this->setFundingStatusesAttribute([]);
+
+    $this->associateManyRelationship($this->photos, 'photos', 'Photo', $this->photos(), $input['photos']);
     $this->save();
+
+    // photos
+    $profile = Profile::with('photos')->find($this->id);
+    $photos = Input::file('photo_photos');
+    if (!empty($photos))
+    {
+      foreach (Input::file('photo_photos') as $idx => $photo)
+      {
+        $profile->photos[$idx]->photo = $photo;
+        $profile->photos[$idx]->save();
+      }
+    }
   }
 
   private function saveAssociatesStep3($input)

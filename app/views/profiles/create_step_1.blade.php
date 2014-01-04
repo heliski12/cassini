@@ -46,9 +46,20 @@
           Non Profit
         </label>
       </div>
-      <div class="form-group">
-        {{ Form::label('organization_logo', 'Upload&nbsp;logo (5&nbsp;MB&nbsp;max)', [ 'class' => 'control-label' ]) }}
-        {{ Form::file('organization_logo',[ 'class' => 'form-control', 'id' => 'organization_logo' ]) }}
+      <div class="form-group" id="organization_logo_fg">
+        @if (empty($profile->organization_logo_file_name))
+          {{ Form::label('organization_logo', 'Upload&nbsp;logo (5&nbsp;MB&nbsp;max)', [ 'class' => 'control-label' ]) }}
+          {{ Form::file('organization_logo',[ 'class' => 'form-control', 'id' => 'organization_logo' ]) }}
+        @else
+          <div>
+            <label class="control-label">Logo</label>
+          </div>
+          <img class="organization-logo" src="{{ asset($profile->organization_logo->url('small')) }}" />
+          <div>
+            {{ Form::label('organization_logo', 'Upload&nbsp;new&nbsp;logo (5&nbsp;MB&nbsp;max)', [ 'class' => 'control-label' ]) }}
+            {{ Form::file('organization_logo',[ 'class' => 'form-control', 'id' => 'organization_logo' ]) }}
+          </div>
+        @endif
       </div>
     </div>
     <div class="row">

@@ -102,7 +102,7 @@
                 @endif
               </a>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 kp-name">
               <a class="title" href="{{ route('show_profile', [ 'id' => $result->id ]) }}">{{ $result->tech_title }}</a><br/>
               @if (!empty($result->keypersons) and sizeof($result->keypersons) > 0)
                 {{ $result->keypersons[0]->full_name }}<br/>

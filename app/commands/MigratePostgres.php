@@ -119,6 +119,7 @@ class MigratePostgres extends Command {
       $new_user->last_name = $user->lastname;
       $new_user->email = strtolower($user->email);
       //$new_user->migrate_password = $user->password_digest; 
+      $new_user->from_migration = true;
       $new_user->password = $user->password_digest; //'abc123';  ///////////////////// TODO /////////////////////
       $new_user->innovator = $user->innovator; 
       $new_user->seeker = $user->seeker;
@@ -139,6 +140,8 @@ class MigratePostgres extends Command {
 
     foreach ($profiles as $profile)
     {
+      if (empty($profile->keyperson1))
+        continue;
       $new_profile = new Profile;
       $new_profile->id = $profile->id;
       $new_profile->creator_id = $profile->user_id;
@@ -150,6 +153,7 @@ class MigratePostgres extends Command {
       $new_profile->organization_type = $profile->forProfit === true ? 'FOR_PROFIT' : ($profile->forProfit === false ? 'NON_PROFIT' : null);
       $new_profile->tech_title = $profile->tagline;
       $new_profile->tech_description = $profile->summary;
+      
       $new_profile->product_stage = $this->stages[$profile->stage];
       $new_profile->fs_funded = $profile->funded === true;
       $new_profile->fs_not_funded = empty($profile->funded);
