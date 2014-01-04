@@ -51,7 +51,14 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
+  return Response::view('errors.error_500', array(), 500);
 });
+
+App::missing(function($exception)
+{
+    return Response::view('errors.error_404', array(), 404);
+});
+
 
 /*
 |--------------------------------------------------------------------------

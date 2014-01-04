@@ -573,8 +573,8 @@ div.stages:last-child { margin-bottom: 15px; }
     background: #eea236;
 }
 
+/* errors */
+.error-icon { display: block; margin: 80px auto; }
+.error-text { text-align: center; font-size: 24px; font-weight: 700; }
+.error-text a { color: #560812; }
 
-/* TODO - REMOVE */
-.red { background-color: red; }
-.green { background-color: green; }
-.blue { background-color: blue; }
