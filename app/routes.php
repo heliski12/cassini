@@ -96,14 +96,14 @@ Route::get('/admin_profile_wizard', function()
 
 
 // TODO - DEV ONLY
-Event::listen('illuminate.query', function($sql,$bindings,$time) {
-  for ($i = 0; $i < sizeof($bindings); $i++)
-  {
-    if ($bindings[$i] instanceof DateTime)
-      $bindings[$i]= $bindings[$i]->getTimestamp();
-  }
-  Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
-});
+//Event::listen('illuminate.query', function($sql,$bindings,$time) {
+  //for ($i = 0; $i < sizeof($bindings); $i++)
+  //{
+    //if ($bindings[$i] instanceof DateTime)
+      //$bindings[$i]= $bindings[$i]->getTimestamp();
+  //}
+  //Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
+//});
 
 
 // TODO - REMOVE THIS

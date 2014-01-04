@@ -84,7 +84,7 @@ class Profile extends Eloquent {
 
   public function getViewFormAttribute()
   {
-    return "<a href='" . URL::to('/') . "/admin_profile_wizard'>Use Profile Wizard</a>";
+    return "<a target='_blank' href='" . route('edit_profile', ['id' => $this->id ]) . "'>Use Profile Wizard</a>";
   }
 
   public function getWebsiteCleanUrlAttribute()
@@ -102,12 +102,14 @@ class Profile extends Eloquent {
   public function getKeypersonsTosAttribute()
   {
     $keypersons = [];
-    foreach ($this->getAttribute('keypersons') as $keyperson)
-      $keypersons[]= "<a href='" . URL::to('/') . "/admin/keypersons/" . $keyperson->id . "' target='_blank'>" . $keyperson->name . "</a>";
+    foreach ($this->keypersons as $keyperson)
+      $keypersons[]= $keyperson->fullName;
+
+      //$keypersons[]= "<a href='" . URL::to('/') . "/admin/keypersons/" . $keyperson->id . "' target='_blank'>" . $keyperson->name . "</a>";
     return implode(', ', $keypersons);
   }
 
-  public function getProviderTypeTosAttribute()
+  public function getInnovatorTypeTosAttribute()
   {
     if (!array_key_exists($this->getAttribute('provider_type'), Config::get('cassini.provider_types')))
       return Config::get('cassini.not_specified');

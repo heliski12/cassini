@@ -91,7 +91,7 @@ class ProfilesController extends BaseController {
     elseif (Input::has('submit'))
       $profile->status = 'COMPLETE_PENDING';
 
-    if (empty($profile->creator))
+    if (empty($profile->creator_id))
       $profile->creator()->associate(Auth::user());
     $profile->save();
     $profile->saveAssociatesForStep(Input::all(), $step);
