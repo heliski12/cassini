@@ -141,10 +141,64 @@ class ProfilesController extends BaseController {
   {
     Input::flash();
 
+    // "a" is the name of the submit button
     if (Input::has('a'))
     {
-      // TODO - search goes here
-      $results = Profile::with(['keypersons','institution','sectors'])->orderBy('created_at','DESC')->get();
+      $query = Input::has('q') ? Input::get('q') : '';
+      $market_sectors = Input::has('m') ? Input::get('m') : null;
+      $product_stages = Input::has('p') ? Input::get('p') : null;
+      $innovator_types = Input::has('i') ? Input::get('i') : null;
+
+      // query sphinx if a search term was entered
+      if (!empty($query))
+      {
+        $results = SphinxSearch::search($query)->get(true);
+      }
+
+      // find all the ids of the results of sphinx search 
+      $ids = [];
+      if (!empty($results) and $results)
+        $ids = array_map(function($res) { return $res->id; }, $results);
+
+      // if a search term was entered and there are no results, return an empty result set
+      if (!empty($query) and empty($ids))
+        return View::make('profiles.search')->with('results', []);
+
+      // do the eager fetches
+      $results = Profile::with(['keypersons','institution','applications','sectors']);
+
+      // filter the product stages
+      if (!empty($product_stages))
+        $results = $results->whereIn('product_stage',$product_stages);
+
+      // filter the innovator types
+      if (!empty($innovator_types))
+      {
+        $results = $results->where(function($query) use ($innovator_types) 
+        {
+          if (in_array('TECHNOLOGY_ENTREPRENEUR',$innovator_types))
+            $query->orWhere('organization_type','=','FOR_PROFIT');
+          if (in_array('RESEARCHER',$innovator_types))
+            $query->orWhere('innovator_type','=','RESEARCHER');
+          if (in_array('NON_PROFIT_ENTREPRENEUR',$innovator_types))
+            $query->orWhere('organization_type','=','NON_PROFIT');
+        });
+      }
+
+      // filter the market sectors
+      if (!empty($market_sectors))
+      {
+        $results = $results->whereHas('sectors', function($query) use ($market_sectors)
+      {
+        $query->whereIn('sectors.id',$market_sectors);
+      });
+      }
+
+      // if there are results from sphinx, then filter for these profiles
+      if (!empty($ids))
+        $results = $results->whereIn('id',$ids);
+      
+      $results = $results->get();
     }
     else
     {

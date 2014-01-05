@@ -96,14 +96,17 @@ Route::get('/admin_profile_wizard', function()
 
 
 // TODO - DEV ONLY
-//Event::listen('illuminate.query', function($sql,$bindings,$time) {
-  //for ($i = 0; $i < sizeof($bindings); $i++)
-  //{
-    //if ($bindings[$i] instanceof DateTime)
-      //$bindings[$i]= $bindings[$i]->getTimestamp();
-  //}
-  //Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
-//});
+if (app()->env !== 'production')
+{
+  Event::listen('illuminate.query', function($sql,$bindings,$time) {
+    for ($i = 0; $i < sizeof($bindings); $i++)
+    {
+      if ($bindings[$i] instanceof DateTime)
+        $bindings[$i]= $bindings[$i]->getTimestamp();
+    }
+    Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
+  });
+}
 
 
 // TODO - REMOVE THIS
@@ -129,6 +132,10 @@ Route::get('/test',function()
     //$profile = Profile::first();
 
     //dd($profile->publications[0]->publication);
+
+    $res = Profile::whereIn('product_stage',['EXPERIMENTAL','MARKET'])->get();
+
+    dd(sizeof($res));
 
     $results = SphinxSearch::search('material')->
       setFieldWeights(

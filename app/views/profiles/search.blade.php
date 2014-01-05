@@ -126,7 +126,7 @@
               <div class="row"><h5>Applications</h5></div>
               <div class="row">
                 @foreach ($result->applications as $application)
-                  <a href="{{ route('marketplace') }}"><span class="label label-primary sector-pill">{{ $application->name }}</span></a>
+                <a href="{{ route('marketplace', [ 'q' => $application->name, 'a' => 'Search' ]) }}"><span class="label label-primary sector-pill">{{ $application->name }}</span></a>
                 @endforeach
               </div>
             </div>
@@ -139,6 +139,10 @@
             </div>
           @endif
         @endforeach
+      @else
+      <div class="row">
+      <div class="col-md-12">No results found!</div> 
+      </div>
       @endif
     </div>
   </div>

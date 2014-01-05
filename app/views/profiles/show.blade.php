@@ -184,7 +184,7 @@
                 <div class="row profile-description">
                   <div class="profile-h">Market Applications</div>
                     @foreach ($profile->applications as $application)
-                      <a href="{{ route('marketplace') }}"><span class="label label-primary sector-pill">{{ $application->name }}</span></a>
+                      <a href="{{ route('marketplace', [ 'q' => $application->name, 'a' => 'Search' ]) }}"><span class="label label-primary sector-pill">{{ $application->name }}</span></a>
                     @endforeach
                 </div>
               </div>
