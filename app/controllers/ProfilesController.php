@@ -220,7 +220,7 @@ class ProfilesController extends BaseController {
       $message->to(Config::get('cassini.support_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has contacted motionry about a profile.");
     });
 
-    return Redirect::route('show_profile', [ $profile->id ])->with('message','Your message has been sent!'); 
+    return Redirect::route('show_profile', [ $profile->id ])->with('message','Thank you and your message has been sent.'); 
   }
 
   public function contactMultiple()
@@ -243,7 +243,7 @@ class ProfilesController extends BaseController {
       $message->to(Config::get('cassini.support_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has contacted motionry about one or more profiles.");
     });
 
-    return Redirect::route('saved_profiles')->with('message','Your message has been sent!'); 
+    return Redirect::route('saved_profiles')->with('message','Thank you and your message has been sent.'); 
   }
 
   public function save()
