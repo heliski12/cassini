@@ -9,7 +9,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     'first_name' => 'required',
     'last_name' => 'required',
     'organization' => 'required',
-    'phone' => 'required',
     'email' => 'required|email|unique:users,email',
     'password' => 'required|between:8,250', 
     'password_confirmation' => 'required|same:password',
