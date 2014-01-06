@@ -175,7 +175,7 @@
       </div>
       {{ Form::open([ 'url' => route('email'), 'id' => 'email_form', 'role' => 'form' ]) }}
       <div class="modal-body">
-        This private message will be sent to Motionry admins.
+        This message will be sent to Motionry.  How can we help you?
         <br/><br/>
         <textarea id="message" name="message" class="form-control" rows="10"></textarea>
       </div>
