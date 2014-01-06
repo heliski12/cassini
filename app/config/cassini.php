@@ -8,7 +8,7 @@ return [
 
   'profile_statuses' => [ 
     'STARTED' => 'Started',
-    'COMPLETE_PENDING' => 'Submitted (not published)',
+    'COMPLETE_PENDING' => 'Submitted and will be reviewed by Motionry shortly before it is published.',
     'PUBLISHED' => 'Published',
     'REVOKED' => 'Revoked (un-published)',  
   ],
