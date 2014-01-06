@@ -81,7 +81,7 @@
       @else
         <div class="row">
           <div class="col-md-12">
-            <h5>You have not saved ay profiles.</h5>
+            <h5>You have not saved any profiles.</h5>
           </div>
         </div>
       @endif
