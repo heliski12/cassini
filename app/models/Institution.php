@@ -11,8 +11,8 @@ class Institution extends Eloquent {
   {
     $this->hasAttachedFile('logo', array(
       'styles' => array(
-        'medium' => '300x300',
-        'small' => '100x100'
+        'medium' => '300',
+        'small' => '100'
       ),
     ));
 

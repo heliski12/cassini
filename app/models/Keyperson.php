@@ -24,8 +24,8 @@ class Keyperson extends BaseModel {
   {
     $this->hasAttachedFile('photo', array(
       'styles' => array(
-        'medium' => '300x300',
-        'small' => '100x100'
+        'medium' => '300',
+        'small' => '100'
       ),
     ));
 

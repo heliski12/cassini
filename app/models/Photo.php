@@ -10,8 +10,8 @@ class Photo extends BaseModel {
   {
     $this->hasAttachedFile('photo', array(
       'styles' => array(
-        'large' => '450x450',
-        'thumb' => '100x100'
+        'large' => '450',
+        'thumb' => '100'
       ),
     ));
 

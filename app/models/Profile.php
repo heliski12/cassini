@@ -14,8 +14,8 @@ class Profile extends Eloquent {
   {
     $this->hasAttachedFile('organization_logo', array(
       'styles' => array(
-        'medium' => '300x300',
-        'small' => '100x100'
+        'medium' => '300',
+        'small' => '100'
       ),
     ));
 
