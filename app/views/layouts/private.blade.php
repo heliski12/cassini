@@ -11,7 +11,7 @@
 
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/fonts.css') }}
-    {{ HTML::style('css/global.css') }}
+    {{ HTML::style('css/global.css?1') }}
 
     @yield('css')
     
@@ -81,7 +81,7 @@
 
     @yield('js-lib')
 
-    {{ HTML::script('js/marketplace.js') }}
+    {{ HTML::script('js/marketplace.js?1') }}
 
     @yield('js-user')
 
