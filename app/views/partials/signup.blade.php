@@ -1,6 +1,6 @@
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h4 class="modal-title" id="user_signup_label">CREATE A MOTIONRY ACCOUNT</h4>
+  <h4 class="modal-title" id="user_signup_label">Create a Motionry account</h4>
 </div>
 {{ Form::open( [ 'url' => 'signup', 'id' => 'signup_form', 'role' => 'form' ] ) }}
 <div class="modal-body">
@@ -11,7 +11,7 @@
   </div> 
   <div class="checkbox">
     <label>
-      {{ Form::checkbox('seeker','seeker',false) }} I'm a Seeker (looking for partners)
+      {{ Form::checkbox('seeker','seeker',false) }} I'm a Seeker (looking for research or technology partners)
     </label>
   </div> 
   <div class="checkbox last">
@@ -47,15 +47,6 @@
     {{ Form::text('organization',Input::old('organization'), [ 'class' => 'form-control' . ($errors->has('organization') ? ' error' : ''), 'id' => 'organization' ]) }}
   </div>
   <div class="form-group">
-    {{ Form::label('phone', 'Phone') }}
-    @if ($errors->has('phone'))
-      <div class="error-message">
-        {{ $errors->first('phone') }}
-      </div>
-    @endif
-    {{ Form::text('phone',Input::old('phone'), [ 'class' => 'form-control' . ($errors->has('phone') ? ' error' : ''), 'id' => 'phone' ]) }}
-  </div>
-  <div class="form-group">
     {{ Form::label('email', 'Email') }}
     @if ($errors->has('email'))
       <div class="error-message">
@@ -65,7 +56,7 @@
     {{ Form::text('email',Input::old('email'), [ 'class' => 'form-control' . ($errors->has('email') ? ' error' : ''), 'id' => 'email' ]) }}
   </div>
   <div class="form-group">
-    {{ Form::label('password', 'Password') }}
+    {{ Form::label('password', 'Password (case sensitive and must be at least 8 characters in length)') }}
     @if ($errors->has('password'))
       <div class="error-message">
         {{ $errors->first('password') }}

@@ -598,3 +598,13 @@ div.stages:last-child { margin-bottom: 15px; }
 .error-text { text-align: center; font-size: 24px; font-weight: 700; }
 .error-text a { color: #560812; }
 
+/* bootstrap overrides */
+html .btn-primary:hover,
+html .btn-primary:focus,
+html .btn-primary:active,
+html .btn-primary.active,
+html .open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #ed9c28;
+  border-color: #d58512;
+}
