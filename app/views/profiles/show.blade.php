@@ -341,11 +341,11 @@
     <div class="modal-content" id="contact_modal_content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="contact_label">Contact motionry about this profile</h4>
+        <h4 class="modal-title" id="contact_label">Contact Motionry about this profile</h4>
       </div>
       {{ Form::open([ 'url' => route('contact'), 'id' => 'contact_form', 'role' => 'form' ]) }}
       <div class="modal-body">
-        This private message regarding '<strong>{{ $profile->tech_title }}</strong>' will be sent to Motionry admins.
+        This message regarding '<strong>{{ $profile->tech_title }}</strong>' will be sent to Motionry.  Please let us know what action you would like us to take, such as having the team on the profile contact you directly.
         <br/><br/>
         <textarea id="message" name="message" class="form-control" rows="10"></textarea>
         {{ Form::hidden('profile_id', $profile->id) }}
