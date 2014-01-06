@@ -120,7 +120,7 @@
               <div class="row"><h5>Market Sectors</h5></div>
               <div class="row">
                 @foreach ($result->sectors as $sector)
-                  <a href="{{ route('marketplace') }}"><span class="label label-primary sector-pill">{{ $sector->name }}</span></a>
+                <a href="{{ route('marketplace', [ 'm[]' => $sector->id, 'a' => 'Search' ]) }}"><span class="label label-primary sector-pill">{{ $sector->name }}</span></a>
                 @endforeach
               </div>
               <div class="row"><h5>Applications</h5></div>

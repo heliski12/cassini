@@ -49,7 +49,7 @@
           </div>
           <div class="market-sectors">
             @foreach ($profile->sectors as $sector)
-            <span class="label label-primary sector-pill">{{ $sector->name }}</span>
+            <a href="{{ route('marketplace', [ 'm[]' => $sector->id, 'a' => 'Search' ]) }}"><span class="label label-primary sector-pill">{{ $sector->name }}</span></a>
             @endforeach
           </div>
         </div>
