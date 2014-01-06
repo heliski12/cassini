@@ -45,7 +45,7 @@
         </div>
         @foreach ($profiles as $profile)
           <div class="row my-profile">
-            <div class="col-md-1 saved-profile-controls">
+            <div class="col-md-1 col-sm-2 saved-profile-controls">
               <div class="checkbox">
                 {{ Form::checkbox('select_'.$profile->id,'select_'.$profile->id, false, [ 'class' => 'contact-select', 'id' => $profile->id ]) }} 
                 {{ Form::hidden('id_'.$profile->id, $profile->id, [ 'id' => 'id_'.$profile->id ]) }} 
@@ -53,7 +53,7 @@
                 <a href="#" class="icon remove-sp" pid="{{ $profile->id }}" title="Delete saved profile"><span class="glyphicon glyphicon-remove"></span></a>
               </div>
             </div>
-            <div class="col-md-2 col-sm-3 col-xs-12">
+            <div class="col-md-1 col-sm-2 col-xs-12">
               <a href="{{ route('show_profile', [ 'id' => $profile->id ]) }}">
                 @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0)
                   <img class="my-profiles" src="{{ asset($profile->keypersons[0]->photo->url('small')) }}" />
@@ -62,7 +62,7 @@
                 @endif
               </a>
             </div>
-            <div class="col-md-7 col-sm-8 col-xs-12 saved-profile">
+            <div class="col-md-7 col-sm-7 col-xs-12 saved-profile">
               @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0)
                 {{ $profile->keypersons[0]->full_name }}<br/>
               @endif
