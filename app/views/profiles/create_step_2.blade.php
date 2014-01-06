@@ -40,7 +40,7 @@
         </div>
       </div>
     </div>
-    <h5>What are the market applications?  For instance, a nanotechnology may be applicable to solar panels, HVAC, and green building materials.  (separated by commas)</h5>
+    <h5>What are the market applications?  For instance, a nanotechnology may be applicable to solar panels, HVAC, and green building materials.  Click on enter or return key after each entry to separate.</h5>
     <div class="form-group">
       <ul id="market_applications">
         @foreach ($profile->applications as $application)
