@@ -195,14 +195,14 @@
               <div class="profile-h">Key People</div>
               @foreach ($profile->keypersons as $keyperson)
                 <div class="row profile-kp">
-                  <div class="col-md-4">
+                  <div class="col-md-3 col-sm-2 col-xs-3">
                     @if (empty($keyperson->photo_file_name))
                       <img src="{{ URL::to('/img/blank-avatar.jpg') }}"/> 
                     @else
                       <img src="{{ asset($keyperson->photo->url('small')) }}"/> 
                     @endif
                   </div>
-                  <div class="col-md-8 profile-kp-info">
+                  <div class="col-md-9 col-sm-10 col-xs-9 profile-kp-info">
                     <span class="profile-kp-name">
                       {{ $keyperson->full_name }}
                     </span><br/>
@@ -240,11 +240,14 @@
               <div class="tab-pane fade in active" id="website">
                 <div class="row">
                   <div class="col-md-10">
-                    @if (!empty($profile->website_title))
-                      {{ $profile->website_title }}<br/>
-                    @endif
                     @if (!empty($profile->website_clean_url))
-                      <a href="{{ $profile->website_clean_url }}" target="_blank">{{ $profile->website_clean_url }}</a>
+                    <a href="{{ $profile->website_clean_url }}" target="_blank">
+                      @if (!empty($profile->website_title))
+                        {{ $profile->website_title }}<br/>
+                      @else
+                        {{ $profile->website_clean_url }}
+                      @endif
+                    </a>
                     @else
                       No website provided
                     @endif
