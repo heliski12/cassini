@@ -59,7 +59,10 @@ class UsersController extends BaseController {
   {
     $profiles = Profile::with(['keypersons','institution','collaborators'])->where('creator_id',Auth::user()->id)->get();
 
-    return View::make('users.my_account')->with('profiles',$profiles);
+    $collaborations = Auth::user()->collaborations;
+    $collaborations->load(['keypersons','institution','collaborators']);
+
+    return View::make('users.my_account')->with('profiles',$profiles->merge($collaborations));
   }
 
   public function savedProfiles()

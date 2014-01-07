@@ -5,7 +5,7 @@
   <div class="my-account">
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
-        <h4>Your Motionry Account</h4>
+        <h4>My Motionry Account</h4>
       </div> 
     </div>
 
@@ -82,7 +82,11 @@
       @else
         <div class="row">
           <div class="col-md-12">
-            <h5>You have not created ay profiles.</h5>
+            @if (Auth::user()->innovator)
+              <h5>You have not created any profiles.</h5>
+            @else
+              <h5>You have not been added as an editor on any profiles.</h5>
+            @endif
           </div>
         </div>
       @endif
@@ -91,24 +95,26 @@
           <hr/>
         </div>
       </div>
+      @if (Auth::user()->innovator)
+        <div class="row">
+          <div class="col-md-12">
+            <h5>Add a new profile</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-2">
+            <a class="btn btn-primary" href="{{ URL::to('/profiles/new') }}">Create Profile</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <hr/>
+          </div>
+        </div>
+      @endif
       <div class="row">
         <div class="col-md-12">
-          <h5>Add a new profile</h5>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 col-md-offset-2">
-          <a class="btn btn-primary" href="{{ URL::to('/profiles/new') }}">Create Profile</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <hr/>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h5>Change password</h5>
+          <h5>Change password (case sensitive and must be at least 8 characters in length)</h5>
         </div>
       </div>
       <div class="row">
@@ -157,7 +163,7 @@
       </div>
       <div class="row">
         <div class="col-md-offset-2 col-md-4">
-          <h5>(610) 220-0184</h5>
+          <h5>1-610-220-0184 (U.S.)</h5>
         </div>
       </div>
     </div>
