@@ -11,7 +11,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-10 col-md-offset-1">
-                <h4>Welcome.  You can easily customize your search results.  What are you interested in?</h4>
+                <h4>Welcome.  You can easily customize your search results.</h4>
               </div>
             </div>
             {{ Form::open([ 'url' => route('marketplace'), 'id' => 'marketplace_search', 'role' => 'form', 'method' => 'get' ]) }}
@@ -93,7 +93,7 @@
       @if (!empty($results))
         @foreach ($results as $idx => $result)
           <div class="row marketplace-result">
-            <div class="col-md-2">
+            <div class="col-md-1 col-sm-2 col-xs-12">
               <a href="{{ route('show_profile', [ 'id' => $result->id ]) }}">
                 @if (!empty($result->keypersons) and sizeof($result->keypersons) > 0)
                   <img class="marketplace-result-img" src="{{ asset($result->keypersons[0]->photo->url('small')) }}"></img>
@@ -102,7 +102,7 @@
                 @endif
               </a>
             </div>
-            <div class="col-md-5 kp-name">
+            <div class="col-md-5 col-sm-5 col-xs-12 kp-name">
               <a class="title" href="{{ route('show_profile', [ 'id' => $result->id ]) }}">{{ $result->tech_title }}</a><br/>
               @if (!empty($result->keypersons) and sizeof($result->keypersons) > 0)
                 {{ $result->keypersons[0]->full_name }}<br/>
@@ -116,7 +116,7 @@
                 {{ $result->organization }}<br/>
               @endif
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 col-sm-4 col-xs-12">
               <div class="row"><h5>Market Sectors</h5></div>
               <div class="row">
                 @foreach ($result->sectors as $sector)

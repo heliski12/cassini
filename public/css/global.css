@@ -452,13 +452,18 @@ div.saved-profile { margin-left: 40px; }
   text-align: center;
   margin-top: -10px;
 }
+.collapse-control a:hover
+{
+  color: #ed9c28;
+}
 .search-input 
 {
   margin-bottom:20px;
 }
 .marketplace-result { background: #D0D0D0; margin: 10px 20px; padding: 20px 0px; }
 .marketplace-result .kp-name { margin-top: 7px; }
-.marketplace-result-img { max-width: 190px; }
+.marketplace-result div:first-child { margin-right: 35px; }
+.marketplace-result-img { width: 100px; margin-top: 10px; }
 .marketplace-result a.title { font-size: 18px; font-weight: 500; }
 .marketplace-result h5 { font-size: 18px; font-weight: 500; }
 
@@ -607,7 +612,12 @@ html .btn-primary:hover,
 html .btn-primary:focus,
 html .btn-primary:active,
 html .btn-primary.active,
-html .open .dropdown-toggle.btn-primary {
+html .open .dropdown-toggle.btn-primary,
+html .btn-default:hover,
+html .btn-default:focus,
+html .btn-default:active,
+html .btn-default.active,
+html .open .dropdown-toggle.btn-default {
   color: #ffffff;
   background-color: #ed9c28;
   border-color: #d58512;
