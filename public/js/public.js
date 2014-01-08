@@ -14,3 +14,10 @@ $(function(){
   });
 });
 
+$(document).ready(function() {
+			$.fn.fullpage({
+        slidesColor: ['#FFFFF','#18698B','#506227']
+			});
+		});
+
+

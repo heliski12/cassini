@@ -1,0 +1,61 @@
+#motionry .wrap {
+  background: url("../img/login-bg.jpg") no-repeat center fixed;
+  background-size: cover;
+  height: 100%;
+}
+img.logo { margin-top: 40px; }
+.navlinks { font-size: 24px; margin-top: 40px; }
+.navlinks ul { list-style-type: none; margin: 0; padding: 0; }
+.navlinks ul li { display: inline; margin: 0 15px; }
+.navlinks ul li:first-child { margin-left: 0px; }
+.navlinks ul li:last-child { margin-right: 0px; }
+.navlinks a { color: #FFF; }
+.navlinks a:hover { text-decoration: none; }
+.title-login { margin-top: 150px; }
+.title-login h1 { color: #FFF; margin-top: 30px; }
+.signin, .signup { background-color: #FFF; margin-bottom: 15px; }
+.signin form, .signup { padding:10px 20px 30px; }
+.signin input { margin-bottom:10px; }
+.signin button.btn-primary { float: right; }
+.login-or-signup { padding: 15px 0px 0px; margin: 0px 20px; border-bottom: 1px solid #428bca; color: #bababa; }
+.login-or-signup button { padding: 0px; margin-bottom: 2px; font-weight: 700; }
+.login-or-signup button:hover { text-decoration: none; color: #ed9c2b; }
+.login-or-signup .login-msg { color: #7e7e7e; font-weight: 700; }
+a.forgot { color: #7e7e7e; font-size: 11px; }
+a.forgot:hover { text-decoration: none; color: #ed9c2b; }
+
+/**********************/
+.title {
+  width:100%;
+  height:100px;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+  text-align: center;
+}
+.title h1 {
+  color: #FFF;
+  font-size: 40px;
+}
+/**********************/
+
+
+
+html .controlArrow { display: none; }
+html .btn-primary:hover,
+html .btn-primary:focus,
+html .btn-primary:active,
+html .btn-primary.active,
+html .open .dropdown-toggle.btn-primary,
+html .btn-default:hover,
+html .btn-default:focus,
+html .btn-default:active,
+html .btn-default.active,
+html .open .dropdown-toggle.btn-default {
+  color: #ffffff;
+  background-color: #ed9c28;
+  border-color: #d58512;
+}
