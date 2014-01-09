@@ -26,10 +26,10 @@ class RemindersController extends Controller {
 		switch ($response)
 		{
 			case Password::INVALID_USER:
-				return Redirect::back()->with('error', Lang::get($response));
+        return View::make('password.remind')->with('error', Lang::get($response));
 
 			case Password::REMINDER_SENT:
-				return Redirect::back()->with('status', Lang::get($response));
+        return View::make('password.remind')->with('status', Lang::get($response));
 		}
 	}
 

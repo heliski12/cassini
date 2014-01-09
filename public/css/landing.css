@@ -13,6 +13,9 @@
   margin: 0 auto -120px;
   background: #FFF;
 }
+body.password-reset {
+  background: #bfbfbf;
+}
 img.logo { margin-top: 40px; }
 .navlinks { font-size: 24px; margin-top: 40px; }
 .navlinks ul, .footer ul { list-style-type: none; margin: 0; padding: 0; }
@@ -51,7 +54,12 @@ div.arrow-down > div { text-align: center; }
 .footer ul.social { margin-top: 30px; }
 .footer ul li a { color: #fff; font-size: 18px; }
 .footer .copy { color: #4B8CB2; }
-.thanks { margin-top: 13px; }
+.thanks, .forgot { margin-top: 13px; }
+.forgot .form-group { margin-top: 10px; }
+button.password { float: right; }
+#password_reset_form { background: #FFF; padding: 20px 20px 50px; margin-bottom: 15px; }
+.password-reset h2 { font-size: 18px; }
+
 
 
 /* overrides */

@@ -12,15 +12,20 @@ $(function(){
         $('#signup_modal_content').html(data);
     });
   });
+  $(document).on('submit','#password_reminder_form', function(event) {
+    event.preventDefault();
+    $.post($(this).attr('action'), 
+      $(this).serialize(),
+      function(data, textStatus, request) {
+        $('#forgot_password_modal_content').html(data);
+    });
+  });
 });
 
 $(document).ready(function() {
   $(".main").onepage_scroll({
       sectionContainer: "div.section"
   });
-  //$.fn.fullpage({
-      //slidesColor: ['#FFFFF','#428bca','#FFF']
-  //});
   $("a#scroll_down").click(function(event) {
     event.preventDefault();
     $(".main").moveDown();

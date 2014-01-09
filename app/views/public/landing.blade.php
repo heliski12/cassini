@@ -82,7 +82,7 @@
                       @endif
                       {{ Form::text('email',null, [ 'placeholder' => 'Email address', 'class' => 'form-control' ]) }}
                       {{ Form::password('password', [ 'placeholder' => 'Password', 'class' => 'form-control' ]) }}
-                      <a class="forgot" href="{{ action('RemindersController@getRemind') }}">Forgot password?</a>
+                      <a class="forgot" href="#" data-toggle='modal' data-target="#forgot_password">Forgot password?</a>
                       
                       {{ Form::button('SIGN IN', [ 'class' => 'btn btn-primary', 'type' => 'submit' ]) }}
                       
@@ -174,6 +174,14 @@
   <div class="modal-dialog">
     <div class="modal-content" id="signup_modal_content">
       @include('partials.signup')
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="forgot_password" tabindex="-1" role="dialog" aria-labelledby="forgot_password_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" id="forgot_password_modal_content">
+      @include('password.remind')
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
