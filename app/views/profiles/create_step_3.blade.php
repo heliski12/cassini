@@ -95,7 +95,7 @@
       <div class="form-group terms">
         <div class="checkbox col-md-11">
           <label>
-            <input type="checkbox" > I accept the <a href="{{ URL::to('/') }}" target="_blank">Terms of Service and Privacy Policy</a>
+            <input type="checkbox" > I accept the <a href="{{{ asset('/Motionry Terms of Service and Privacy Policy.pdf') }}}" target="_blank">Terms of Service and Privacy Policy</a>
           </label>
         </div> 
       </div>

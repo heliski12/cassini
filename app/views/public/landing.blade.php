@@ -59,7 +59,7 @@
                   <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-3 col-sm-5 col-sm-offset-2 col-xs-12 navlinks">
                     <ul>
                       <li><a href="#">Blog</a></li>
-                      <li><a href="#">Terms</a></li>
+                      <li><a href="{{{ asset('/Motionry Terms of Service and Privacy Policy.pdf') }}}" target="_blank">Terms</a></li>
                       <li><a href="#">Contact</a></li>
                     </ul>
                   </div>
@@ -148,7 +148,7 @@
               <div class="row">
                 <ul class="bottom-nav">
                   <li><a href="#">Blog</a></li>
-                  <li><a href="#">Terms</a></li>
+                  <li><a href="{{{ asset('/Motionry Terms of Service and Privacy Policy.pdf') }}}" target="_blank">Terms</a></li>
                   <li><a href="#">Contact</a></li>
                 </ul>
               </div>
