@@ -51,7 +51,7 @@
       <div class="container-full header">
         <div class="row">
           <div class="col-md-2">
-            <a href="http://www.motionry.com"><img alt="Motionry Logo" src="{{ asset('img/motionry.jpg') }}"/></a>
+            <a href="http://www.motionry.com"><img alt="Motionry Logo" src="{{ asset('img/Black-Motionry-Logo.png') }}"/></a>
           </div>
           <div class="col-md-5 col-md-offset-2 nav">
             <a href="{{ URL::to('/marketplace') }}">Browse Innovators</a>

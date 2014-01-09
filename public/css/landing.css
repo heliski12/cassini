@@ -3,12 +3,22 @@
   background-size: cover;
   height: 100%;
 }
+#page2 .wrap {
+  height: 100%;
+  background: #4B8CB2;
+}
+#page3 .wrap {
+  min-height: 100%;
+  height: auto !important;
+  margin: 0 auto -120px;
+  background: #FFF;
+}
 img.logo { margin-top: 40px; }
 .navlinks { font-size: 24px; margin-top: 40px; }
-.navlinks ul { list-style-type: none; margin: 0; padding: 0; }
-.navlinks ul li { display: inline; margin: 0 15px; }
-.navlinks ul li:first-child { margin-left: 0px; }
-.navlinks ul li:last-child { margin-right: 0px; }
+.navlinks ul, .footer ul { list-style-type: none; margin: 0; padding: 0; }
+.navlinks ul li, .footer ul li { display: inline; margin: 0 15px; }
+.navlinks ul li:first-child, .footer ul li:first-child { margin-left: 0px; }
+.navlinks ul li:last-child, .footer ul li:last-child { margin-right: 0px; }
 .navlinks a { color: #FFF; }
 .navlinks a:hover { text-decoration: none; }
 .title-login { margin-top: 150px; }
@@ -23,6 +33,24 @@ img.logo { margin-top: 40px; }
 .login-or-signup .login-msg { color: #7e7e7e; font-weight: 700; }
 a.forgot { color: #7e7e7e; font-size: 11px; }
 a.forgot:hover { text-decoration: none; color: #ed9c2b; }
+.error-message { color: #a94442; font-size: 12px; margin-bottom: 5px; }
+div.arrow-down { position: absolute; bottom: 0; left: 50%; margin-left: -45px; }
+div.arrow-down a { color: #FFF; font-size: 30px; }
+div.arrow-down a span { margin-left: 27px; }
+div.arrow-down span.scroll-down { color: #FFF; font-size: 16px; margin-right: 55px; }
+div.arrow-down > div { text-align: center; }
+#page2 { text-align: center; }
+#page2 h2 { color: #FFF; margin-top: 80px; }
+#page2 img { display: block; margin: 0 auto; max-width: 850px; margin-top: 80px; }
+.our-story { text-align: center; border-bottom: #7e7e7e solid 2px; }
+.our-story h2 { color: #204a72; margin-top: 80px; font-size: 30px; margin-bottom: 20px; }
+.our-story-desc { margin-top: 40px; }
+.our-story-desc p { color: #204a72; font-size: 26px; padding: 8px 0px; }
+.footer { background: #204A72;  height: 120px; }
+.footer ul.bottom-nav { margin-top: 40px; }
+.footer ul.social { margin-top: 30px; }
+.footer ul li a { color: #fff; font-size: 18px; }
+.footer .copy { color: #4B8CB2; }
 
 /**********************/
 .title {

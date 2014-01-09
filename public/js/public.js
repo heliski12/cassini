@@ -7,17 +7,24 @@ $(function(){
       function(data, textStatus, request) {
         // TODO - needed if want to forward to pending authorization page
         //if (request.getResponseHeader('signup')) 
-          //document.location = BASE_URL + '/authorization';
+        //document.location = BASE_URL + '/authorization';
         //else
-          $('#signup_modal_content').html(data);
+        $('#signup_modal_content').html(data);
     });
   });
 });
 
 $(document).ready(function() {
-			$.fn.fullpage({
-        slidesColor: ['#FFFFF','#18698B','#506227']
-			});
-		});
+  $(".main").onepage_scroll({
+      sectionContainer: "div.section"
+  });
+  //$.fn.fullpage({
+      //slidesColor: ['#FFFFF','#428bca','#FFF']
+  //});
+  $("a#scroll_down").click(function(event) {
+    event.preventDefault();
+    $(".main").moveDown();
+  });
+});
 
 
