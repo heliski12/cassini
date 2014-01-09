@@ -11,10 +11,18 @@ class UsersController extends BaseController {
       return View::make('partials.signup')->with('errors', $v->messages());
 
     $user = new User(Input::except([ '_token', 'password_confirmation' ]));
+    $user->innovator = Input::has('innovator');
+    $user->seeker = Input::has('seeker');
+    $user->unsure = Input::has('unsure');
     $user->role = 'PENDING';
     $user->save();
 
     Auth::loginUsingId($user->id);
+
+    Mail::send('emails.welcome_email', [], function($message) use ($user)
+    {
+      $message->to($user->email, $user->full_name)->subject("Thanks for signing up on Motionry");
+    });
 
     return View::make('partials.post_register');
     

@@ -123,6 +123,14 @@ class ProfilesController extends BaseController {
     {
       Log::info("Storing profile on step $step");
 
+      if ($profile->status === 'COMPLETE_PENDING')
+      {
+        Mail::send('emails.application_submitted_email', [], function($message) use ($user)
+        {
+          $message->to($user->email, $user->full_name)->subject("Motionry application completed");
+        });
+      }
+
       // TODO - this should be the profile preview
       return Redirect::route('my_account');
     }

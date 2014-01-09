@@ -51,28 +51,29 @@ div.arrow-down > div { text-align: center; }
 .footer ul.social { margin-top: 30px; }
 .footer ul li a { color: #fff; font-size: 18px; }
 .footer .copy { color: #4B8CB2; }
+.thanks { margin-top: 13px; }
 
 /**********************/
-.title {
-  width:100%;
-  height:100px;
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  margin:auto;
-  text-align: center;
-}
-.title h1 {
-  color: #FFF;
-  font-size: 40px;
-}
+/*.title {*/
+  /*width:100%;*/
+  /*height:100px;*/
+  /*position:absolute;*/
+  /*top:0;*/
+  /*bottom:0;*/
+  /*left:0;*/
+  /*right:0;*/
+  /*margin:auto;*/
+  /*text-align: center;*/
+/*}*/
+/*.title h1 {*/
+  /*color: #FFF;*/
+  /*font-size: 40px;*/
+/*}*/
 /**********************/
 
 
 
-html .controlArrow { display: none; }
+/*html .controlArrow { display: none; }*/
 html .btn-primary:hover,
 html .btn-primary:focus,
 html .btn-primary:active,
@@ -87,3 +88,4 @@ html .open .dropdown-toggle.btn-default {
   background-color: #ed9c28;
   border-color: #d58512;
 }
+html .modal-body { padding-bottom: 0px; padding-top: 0px; }

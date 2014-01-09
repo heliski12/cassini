@@ -2,7 +2,7 @@
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
   <h4 class="modal-title" id="user_signup_label">&nbsp;</h4>
 </div>
-<div class="modal-body">
+<div class="modal-body thanks">
   Thank you for signing up!  We will send an email shortly that will allow you access.
 </div>
 <div class="modal-footer">
