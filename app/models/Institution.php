@@ -14,6 +14,7 @@ class Institution extends Eloquent {
         'medium' => '300',
         'small' => '100'
       ),
+      'default_url' => '/img/company-avatar.png',
     ));
 
     parent::__construct($attributes);
@@ -27,6 +28,11 @@ class Institution extends Eloquent {
   public function getLogoLinkAttribute()
   {
     return $this->logo->url('small');
+  }
+
+  public function getEditLogoAttribute()
+  {
+    return "<a href='" . route('institution_logo', ['id' => $this->id ]) . "'>Click here</a>";
   }
 
   public function getAddressAttribute()

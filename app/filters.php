@@ -43,6 +43,11 @@ Route::filter('auth', function()
   if (Auth::guest() or Auth::user()->role === 'PENDING') return Redirect::guest('/');
 });
 
+Route::filter('admin', function()
+{
+  if (Auth::guest() or Auth::user()->role !== 'ADMIN') return Redirect::guest('/');
+});
+
 
 Route::filter('auth.basic', function()
 {

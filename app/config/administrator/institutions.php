@@ -9,7 +9,8 @@ return array(
   'columns' => array(
     'id',
     'name',
-    'logo_link' => ['title' => 'Photo', 'output' => '<img src="(:value)"/>'],
+    'logo_link' => ['title' => 'Logo', 'output' => '<img src="(:value)"/>'],
+    'edit_logo' => ['title' => 'Edit logo'],
   ),
   'edit_fields' => array(
     'name',

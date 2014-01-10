@@ -14,6 +14,7 @@ class Publication extends BaseModel {
         'medium' => '300',
         'small' => '100'
       ),
+      'default_url' => '/img/publication.png',
     ));
 
     parent::__construct($attributes);
@@ -28,4 +29,10 @@ class Publication extends BaseModel {
   {
     return $this->photo->url('small');
   }
+
+  public function getEditPhotoAttribute()
+  {
+    return "<a href='" . route('publication_photo', ['id' => $this->id ]) . "'>Click here</a>";
+  }
+
 }
