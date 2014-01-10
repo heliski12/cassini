@@ -9,7 +9,7 @@
     </div>
     <h5>Description of the technology or research (max 1550 characters with spaces)</h5>
     <div class="form-group">
-      <textarea id="tech_description" name="tech_description" class="form-control" maxlength="1550" rows="10"></textarea>
+      <textarea id="tech_description" name="tech_description" class="form-control" maxlength="1550" rows="10">{{{ $profile->tech_description }}}</textarea>
       <div id="tech_description_charcount">
       </div>
     </div>
