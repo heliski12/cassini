@@ -125,6 +125,7 @@ class ProfilesController extends BaseController {
 
       if ($profile->status === 'COMPLETE_PENDING')
       {
+        $user = $profile->creator;
         Mail::send('emails.application_submitted_email', [], function($message) use ($user)
         {
           $message->to($user->email, $user->full_name)->subject("Motionry application completed");
