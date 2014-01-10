@@ -23,6 +23,10 @@ class UsersController extends BaseController {
     {
       $message->to($user->email, $user->full_name)->subject("Thanks for signing up on Motionry");
     });
+    Mail::send('emails.admin_user_signup', ['user' => $user], function($message) 
+    {
+      $message->to(Config::get('cassini.support_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has signed up for Motionry");
+    });
 
     return View::make('partials.post_register');
     

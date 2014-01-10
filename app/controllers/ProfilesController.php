@@ -130,6 +130,10 @@ class ProfilesController extends BaseController {
         {
           $message->to($user->email, $user->full_name)->subject("Motionry application completed");
         });
+        Mail::send('emails.admin_submit_profile', ['user' => $user, 'profile' => $profile], function($message) 
+        {
+          $message->to(Config::get('cassini.support_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has submitted a profile for review");
+        });
       }
 
       // TODO - this should be the profile preview
