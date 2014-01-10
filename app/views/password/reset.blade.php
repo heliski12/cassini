@@ -85,7 +85,7 @@ var BASE_URL = "{{ URL::to('/') }}";
         </div>
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-            <a href="{{ URL::to('/') }}" class="btn btn-primary">Go back to Motionry to log in</a>  
+            <a href="{{ URL::to('/') }}" class="btn btn-primary">Back to Motionry</a>  
           </div>
         </div>
       </div>
