@@ -143,9 +143,9 @@
                   <div class="patent-circle-wrap">
                     <div class="patent-circles">
                       <div class="connect outside"></div>
-                      <div class="circle-wrap"><div class="circle {{ ($profile->ip_trademarks or $profile->ip_trademarks_pending) ? 'active' : '' }}"></div></div>
+                      <div class="circle-wrap"><div class="circle {{ ($profile->ip_trademarks) ? 'active' : '' }}"></div></div>
                       <div class="connect"></div>
-                      <div class="circle-wrap"><div class="circle {{ (!$profile->ip_trademarks and !$profile->ip_trademarks_pending) ? 'active' : '' }}"></div></div>
+                      <div class="circle-wrap"><div class="circle {{ (!$profile->ip_trademarks) ? 'active' : '' }}"></div></div>
                       <div class="connect"></div>
                       <div class="circle-wrap"><div class="circle {{ $profile->ip_trademarks_pending ? 'active' : '' }}"></div></div>
                       <div class="connect outside"></div>
