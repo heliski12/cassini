@@ -46,15 +46,16 @@ div.arrow-down > div { text-align: center; }
 #page2 h2 { color: #FFF; margin-top: 20px; }
 #page2 img { display: block; margin: 0 auto; max-width: 850px; margin-top: 30px; }
 .our-story { text-align: center; border-bottom: #7e7e7e solid 2px; }
-.our-story h2 { color: #204a72; margin-top: 20px; font-size: 30px; margin-bottom: 20px; }
+.our-story h2 { color: #204a72; margin-top: 20px; font-size: 30px; margin-bottom: 5px; }
 .our-story-desc { margin-top: 20px; }
 .our-story-desc p { color: #204a72; font-size: 24px; padding: 5px 0px; }
 .footer { background: #204A72;  height: 80px; }
 .footer ul.bottom-nav { margin-top: 15px; }
-.footer ul.social { margin-top: 3px; }
+.footer ul.social { margin-top: 12px; }
+.social img { max-width: 60px; }
 .footer ul li a { color: #fff; font-size: 18px; }
 .footer .copy { color: #4B8CB2; }
-.thanks, .forgot { margin-top: 13px; }
+.thanks, .forgot, .email { margin-top: 13px; }
 .forgot .form-group { margin-top: 10px; }
 button.password { float: right; }
 #password_reset_form { background: #FFF; padding: 20px 20px 50px; margin-bottom: 15px; }

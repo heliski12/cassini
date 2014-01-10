@@ -78,6 +78,7 @@
         {{ Form::password('password_confirmation', [ 'class' => 'form-control', 'id' => 'password_confirmation' ]) }}
       </div>
     </div>
+  </div>
   <div class="form-group">
     <p class="help-block">* The Innovator account requires a brief application which will be sent to you shortly.</p> 
   </div>

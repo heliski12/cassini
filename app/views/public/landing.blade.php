@@ -60,10 +60,17 @@
                     <ul>
                       <li><a href="#">Blog</a></li>
                       <li><a href="{{{ asset('/Motionry Terms of Service and Privacy Policy.pdf') }}}" target="_blank">Terms</a></li>
-                      <li><a href="#">Contact</a></li>
+                      <li><a href="#" data-toggle='modal' data-target="#contact">Contact</a></li>
                     </ul>
                   </div>
                 </div>
+                @if (Session::has('message'))
+                  <div class="row" style="margin-top:10px;">
+                    <div class="col-md-6 col-md-offset-3">
+                      <div class="alert alert-success">{{{ Session::get('message') }}}</div> 
+                    </div> 
+                  </div>
+                @endif
                 <div class="row title-login">
                   <div class="col-md-7 col-md-offset-1">
                     <h1>Discover technologies that matter</h1> 
@@ -149,7 +156,7 @@
                 <ul class="bottom-nav">
                   <li><a href="#">Blog</a></li>
                   <li><a href="{{{ asset('/Motionry Terms of Service and Privacy Policy.pdf') }}}" target="_blank">Terms</a></li>
-                  <li><a href="#">Contact</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>
                 </ul>
               </div>
               <div class="row copy">
@@ -182,6 +189,30 @@
   <div class="modal-dialog">
     <div class="modal-content" id="forgot_password_modal_content">
       @include('password.remind')
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="email_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" id="email_modal_content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="email_label">Contact Motionry</h4>
+      </div>
+      {{ Form::open([ 'url' => route('pcontact'), 'id' => 'email_form', 'role' => 'form' ]) }}
+      <div class="modal-body email">
+        This message will be sent to Motionry.  How can we help you?
+        <br/><br/>
+        Your name: <input name="name" class="form-control" type="text"></input><br/>
+        Your email: <input name="email" class="form-control" type="email"></input><br/>
+        <textarea id="message" name="message" class="form-control" rows="10"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </div>
+      {{ Form::close() }}
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

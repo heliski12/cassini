@@ -124,4 +124,22 @@ class UsersController extends BaseController {
     return Redirect::route('my_account')->with('message','Your message has been sent!'); 
   }
 
+  public function pcontact()
+  {
+    $user_message = Input::get('message');
+    $name = Input::get('name');
+    $email = Input::get('email');
+
+    Log::error("Mailing private email to admins from public pages");
+    $data = array('user_message' => $user_message, 'name' => $name, 'email' => $email);
+    Mail::send('emails.pub_email_contact', $data, function($message) 
+    {
+      $message->to(Config::get('cassini.support_email'), 'Motionry Admin')->subject("Motionry Admin: Someone has sent you a message from the public landing page.");
+    });
+
+    return Redirect::to('/')->with('message','Your message has been sent!'); 
+  }
+
+
+
 }

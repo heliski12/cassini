@@ -32,6 +32,7 @@ Route::post('login',  'UsersController@login');
 Route::get('logout',  'UsersController@logout');
 Route::post('signup', 'UsersController@signup');
 Route::controller('reminders', 'RemindersController');
+Route::post('/pcontact', [ 'as' => 'pcontact', 'uses' => 'UsersController@pcontact' ]);
 
 // user pending approval
 Route::group(array('before' => 'pre-auth'), function() 
