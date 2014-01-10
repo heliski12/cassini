@@ -29,16 +29,18 @@
 
     @if (app()->env == 'production')
     <script type="text/javascript">
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34438676-1']);
+      _gaq.push(['_setDomainName', 'motionry.com']);
+      _gaq.push(['_trackPageview']);
 
-      ga('create', 'UA-44904108-1', 'marketplace.motionry.com');
-      ga('send', 'pageview');
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
 
-    </script>
-
+     </script>
     @endif
 
       <script type="text/javascript">
@@ -58,7 +60,7 @@
                   </div>
                   <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-3 col-sm-5 col-sm-offset-2 col-xs-12 navlinks">
                     <ul>
-                      <li><a href="#">Blog</a></li>
+                      <li><a href="http://blog.motionry.com">Blog</a></li>
                       <li><a href="{{{ asset('/Motionry Terms of Service and Privacy Policy.pdf') }}}" target="_blank">Terms</a></li>
                       <li><a href="#" data-toggle='modal' data-target="#contact">Contact</a></li>
                     </ul>
@@ -154,7 +156,7 @@
             <div class="col-md-8 col-md-offset-1 col-sm-7 col-sm-offset-1 col-xs-6">
               <div class="row">
                 <ul class="bottom-nav">
-                  <li><a href="#">Blog</a></li>
+                  <li><a href="http://blog.motionry.com">Blog</a></li>
                   <li><a href="{{{ asset('/Motionry Terms of Service and Privacy Policy.pdf') }}}" target="_blank">Terms</a></li>
                   <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>
                 </ul>

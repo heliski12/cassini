@@ -94,6 +94,3 @@ if (app()->env !== 'production')
   });
 }
 
-Route::get('test', function() {
-  phpinfo();
-  });
