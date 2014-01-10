@@ -154,6 +154,11 @@ $(function(){
     $(".glyphicon-chevron-up").attr("title","Collapse view");
     $(".glyphicon-chevron-down").attr("title","Expand view");
   });
+  $("#clear_fields").click(function(event) {
+    event.preventDefault();
+    $("input[name=q]").val("");
+    $(".selectpicker").selectpicker("deselectAll");
+  });
   
   // initialize open/close state of innovator type based on previous model value
   var innovator_type = $("input[name=innovator_type][checked]").val();

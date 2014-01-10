@@ -81,7 +81,7 @@
 
     @yield('js-lib')
 
-    {{ HTML::script('js/marketplace.js?1') }}
+    {{ HTML::script('js/marketplace.js?2') }}
 
     @yield('js-user')
 
