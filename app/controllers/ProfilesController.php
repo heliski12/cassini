@@ -41,7 +41,7 @@ class ProfilesController extends BaseController {
     // TODO - revisit with complete permissions
     // don't let unauthorized users modify a profile!
     if (!empty($profile) and !$profile->isEditor(Auth::user()))
-      return App::abort('500');
+      $profile = null;
 
     if (empty($profile))
     {

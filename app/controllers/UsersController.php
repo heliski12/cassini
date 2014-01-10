@@ -48,10 +48,12 @@ class UsersController extends BaseController {
       Auth::user()->last_login = new \DateTime;
       Auth::user()->save();
 
-      if (Auth::user()->role === 'PENDING')
+      $user = User::with('profiles')->find(Auth::user()->id);
+
+      if ($user->role === 'PENDING')
         return Redirect::route('authorization');
-      elseif (empty(Auth::user()->profile))
-        return Redirect::route('my_account');
+      elseif ($user->innovator and empty($user->profiles))
+        return Redirect::route('create_profile');
       else
         return Redirect::route('marketplace');
     }

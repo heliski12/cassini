@@ -42,6 +42,7 @@ div.arrow-down a { color: #FFF; font-size: 30px; }
 div.arrow-down a span { margin-left: 27px; }
 div.arrow-down span.scroll-down { color: #FFF; font-size: 16px; margin-right: 55px; }
 div.arrow-down > div { text-align: center; }
+div.arrow-down a:hover { color: #ed9c28; }
 #page2 { text-align: center; }
 #page2 h2 { color: #FFF; margin-top: 30px; }
 #page2 img { display: block; margin: 0 auto; max-width: 850px; margin-top: 30px; }
@@ -66,9 +67,18 @@ button.password { float: right; }
 /* overrides */
 html .onepage-pagination li a.active:before {
   border-color: #ed9c28; 
+  border-width: 2px;
+  left: 9px;
+  margin-top: 0px;
 }
 html .onepage-pagination li a:before {
   background-color: #ed9c28;
+  width: 8px;
+  height: 8px;
+}
+html .onepage-pagination li a{
+  width: 8px;
+  height: 8px;
 }
 html .btn-primary:hover,
 html .btn-primary:focus,
