@@ -102,7 +102,7 @@
       {{ Form::open([ 'url' => route('contact_multiple'), 'id' => 'contact_multiple_form', 'role' => 'form' ]) }}
       {{ Form::hidden('profile_ids',null, [ 'id' => 'profile_ids' ]) }}
       <div class="modal-body">
-        This private message regarding the following profiles will be sent to Motionry admins:
+        This private message regarding the following profiles will be sent to Motionry:
         <br/>
         <br/>
         <ul id="message_profiles">
