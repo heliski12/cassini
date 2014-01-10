@@ -78,8 +78,8 @@
                 </div>
                 @if (!empty($profile->photos[0]->description))
                   <div class="row">
-                    <div class="col-md-12" id="photo_main_desc">
-                      {{ $profile->photos[0]->description }} 
+                    <div id="photo_main_desc">
+                      <span>{{ $profile->photos[0]->description }}</span>
                     </div> 
                   </div>
                 @endif
