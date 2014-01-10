@@ -160,9 +160,9 @@
                   <div class="patent-circle-wrap">
                     <div class="patent-circles">
                       <div class="connect outside"></div>
-                      <div class="circle-wrap"><div class="circle {{ ($profile->ip_patents or $profile->ip_patents_pending) ? 'active' : '' }}"></div></div>
+                      <div class="circle-wrap"><div class="circle {{ ($profile->ip_patents) ? 'active' : '' }}"></div></div>
                       <div class="connect"></div>
-                      <div class="circle-wrap"><div class="circle {{ (!$profile->ip_patents and !$profile->ip_patents_pending) ? 'active' : '' }}"></div></div>
+                      <div class="circle-wrap"><div class="circle {{ (!$profile->ip_patents) ? 'active' : '' }}"></div></div>
                       <div class="connect"></div>
                       <div class="circle-wrap"><div class="circle {{ $profile->ip_patents_pending ? 'active' : '' }}"></div></div>
                       <div class="connect outside"></div>
