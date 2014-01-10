@@ -427,9 +427,31 @@ class Profile extends Eloquent {
     // since empty select inputs aren't sent as POST variables, we must explicitly look for their absence
     if (!array_key_exists('permissions', $input))
       $this->setPermissionsAttribute([]);
-    $this->associateManyRelationship($this->presentations, 'presentations', 'Presentation', $this->presentations(), $input['presentations']);
-    $this->associateManyRelationship($this->awards, 'awards', 'Award', $this->awards(), $input['awards']);
-    $this->associateManyRelationship($this->publications, 'profile_publication', 'ProfilePublication', $this->publications(), $input['publications']);
+
+    $clean_presentations = [];
+    foreach ($input['presentations'] as $presentation)
+    {
+      if ((array_key_exists('title',$presentation) and !empty($presentation['title'])) or (array_key_exists('url',$presentation) and !empty($presentation['url'])))
+        $clean_presentations[]= $presentation;
+    }
+    $this->associateManyRelationship($this->presentations, 'presentations', 'Presentation', $this->presentations(), $clean_presentations);
+
+    $clean_awards = [];
+    foreach ($input['awards'] as $award)
+    {
+      if ((array_key_exists('title',$award) and !empty($award['title'])) or (array_key_exists('url',$award) and !empty($award['url'])))
+        $clean_awards[]= $award;
+    }
+
+    $this->associateManyRelationship($this->awards, 'awards', 'Award', $this->awards(), $clean_awards);
+
+    $clean_publications = [];
+    foreach ($input['publications'] as $publication)
+    {
+      if ((array_key_exists('article_title',$publication) and !empty($publication['article_title'])) or (array_key_exists('article_url',$publication) and !empty($publication['article_url'])))
+        $clean_publications[]= $publication;
+    }
+    $this->associateManyRelationship($this->publications, 'profile_publication', 'ProfilePublication', $this->publications(), $clean_publications);
   }
 
   // take the existing profile->[many-type] relationship and the [many-type] input and either update existing, delete pruned, or insert and associate new [many-type] entities

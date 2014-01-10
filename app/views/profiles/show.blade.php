@@ -270,7 +270,11 @@
                           @endif
                         </div>
                         <div class="row publication-link">
-                          <a href="{{ $publication->article_clean_url }}">{{ $publication->article_title }}</a> 
+                          @if (empty($publication->article_clean_url))
+                            {{ $publication->article_title }}
+                          @else
+                          <a href="{{ $publication->article_clean_url }}">{{ (empty($publication->article_title) ? 'View Publication' : $publication->article_title) }}</a> 
+                          @endif
                         </div>
                       </div>
                     @if ($idx % 4 === 3 or $idx === sizeof($profile->publications) - 1)
@@ -291,7 +295,11 @@
                     <ul>
                     @foreach ($profile->presentations as $presentation)
                       <li>
-                        <a href="{{ $presentation->clean_url }}">{{ $presentation->title }}</a>
+                        @if (empty($presentation->clean_url))
+                          {{ $presentation->title }}
+                        @else
+                        <a href="{{ $presentation->clean_url }}">{{ (empty($presentation->title) ? $presentation->clean_url : $presentation->title) }}</a>
+                        @endif
                       </li>
                     @endforeach 
                     </ul> 
@@ -309,7 +317,11 @@
                     <ul>
                     @foreach ($profile->awards as $award)
                       <li>
-                        <a href="{{ $award->clean_url }}">{{ $award->title }}</a>
+                        @if (empty($award->clean_url))
+                        {{ $award->title }}
+                        @else
+                          <a href="{{ $award->clean_url }}">{{ (empty($award->title) ? $award->clean_url : $award->title) }}</a>
+                        @endif
                       </li>
                     @endforeach 
                     </ul> 
