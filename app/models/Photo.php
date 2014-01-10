@@ -13,6 +13,7 @@ class Photo extends BaseModel {
         'large' => '450',
         'thumb' => '100'
       ),
+      'default_url' => null,
     ));
 
     parent::__construct($attributes);
@@ -21,5 +22,19 @@ class Photo extends BaseModel {
   public function profile()
   {
     return $this->belongsTo('Profile');
+  }
+
+  public function getProfileTosAttribute()
+  {
+    $profile = $this->getAttribute('profile');
+    return $profile->id . ': ' . $profile->tech_title;
+  }
+  public function getPhotoLinkAttribute()
+  {
+    return $this->photo->url('thumb');
+  }
+  public function getViewFormAttribute()
+  {
+    return "<a target='_blank' href='" . route('edit_profile', ['id' => $this->profile->id ]) . "'>Use Profile Wizard</a>";
   }
 }

@@ -92,6 +92,12 @@ class Profile extends Eloquent {
     return StringHelper::clean_url($this->getAttribute('website_url'));
   }
 
+  public function getCreatorTosAttribute()
+  {
+    $creator = $this->creator;
+    return empty($creator) ? '' : $creator->email;
+  }
+
   public function getStatusTosAttribute()
   {
     if (!array_key_exists($this->getAttribute('status'), Config::get('cassini.profile_statuses')))

@@ -24,6 +24,11 @@ class Institution extends Eloquent {
     return $this->hasMany('Profile');
   }
 
+  public function getLogoLinkAttribute()
+  {
+    return $this->logo->url('small');
+  }
+
   public function getAddressAttribute()
   {
     $address_str = '';

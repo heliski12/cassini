@@ -11,16 +11,17 @@ return array(
   'form_width' => 500,
 
   'columns' => array(
+    'id' => [ 'title' => 'Id' ],
+    'tech_title' => [ 'title' => 'Technology' ],  
     'view_form' => [ 'title' => 'Profile Wizard' ],
     'status_tos' => [ 'title' => 'Status' ],
+    'creator_tos' => [ 'title' => 'Creator' ],
     'regions_tos' => [ 'title' => 'Market Regions' ],
     'sectors_tos' => [ 'title' => 'Market Sectors' ],
-    'keypersons_tos' => [ 'title' => 'Key People (click to edit)' ],
-    'innovator_type_tos' => [ 'title' => 'Innovator Type' ], 
-    'photos_count' => [ 'title' => 'Photos' ],
-    'presentations_count' => [ 'title' => 'Presentations' ],
-    'publications_count' => [ 'title' => 'Publications' ],
-    'tech_title' => [ 'title' => 'Tech Title' ],  
+    'keypersons_tos' => [ 'title' => 'Key People' ],
+  ),
+  'filters' => array(
+    'tech_title',
   ),
   'edit_fields' => array(
     'status' => array(
@@ -40,6 +41,16 @@ return array(
         'ENTREPRENEUR' => Config::get('cassini.provider_types')['ENTREPRENEUR'],
         'RESEARCHER' => Config::get('cassini.provider_types')['RESEARCHER'],
       ),
+    ),
+    'creator' => array(
+      'title' => 'Creator',
+      'type' => 'relationship',
+      'name_field' => 'email',
+    ),
+    'collaborators' => array(
+      'title' => 'Secondary Editors',
+      'type' => 'relationship',
+      'name_field' => 'email',
     ),
     'organization' => [ 'title' => 'Organization (if applicable)' ],
     'organization_type' => array(
@@ -115,6 +126,11 @@ return array(
     ),
     'sectors' => array(
       'title' => 'Market Sectors',
+      'type' => 'relationship',
+      'name_field' => 'name',
+    ),
+    'applications' => array(
+      'title' => 'Applications',
       'type' => 'relationship',
       'name_field' => 'name',
     ),

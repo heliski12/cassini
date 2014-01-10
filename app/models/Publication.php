@@ -23,4 +23,9 @@ class Publication extends BaseModel {
   {
     return $this->hasMany('Profile', 'profile_id');
   }
+
+  public function getPhotoLinkAttribute()
+  {
+    return $this->photo->url('small');
+  }
 }

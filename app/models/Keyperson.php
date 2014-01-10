@@ -37,6 +37,14 @@ class Keyperson extends BaseModel {
     $profile = $this->getAttribute('profile');
     return $profile->id . ': ' . $profile->tech_title;
   }
+  public function getPhotoLinkAttribute()
+  {
+    return $this->photo->url('small');
+  }
+  public function getViewFormAttribute()
+  {
+    return "<a target='_blank' href='" . route('edit_profile', ['id' => $this->profile->id ]) . "'>Use Profile Wizard</a>";
+  }
   public function getFullNameAttribute() { return $this->getAttribute('first_name') . ' ' . $this->getAttribute('last_name'); }
   public function getCityStateCountryAttribute() 
   { 
