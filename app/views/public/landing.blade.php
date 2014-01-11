@@ -167,8 +167,8 @@
             </div>
             <div class="col-md-3 col-sm-4 col-xs-6">
               <ul class="social">
-                <li><a href="#"><img src="{{ asset('/img/twitter.png') }}"/></a></li>
-                <li><a href="#"><img src="{{ asset('/img/facebook.png') }}"/></a></li>
+                <li><a href="https://twitter.com/Motionry"><img src="{{ asset('/img/twitter.png') }}"/></a></li>
+                <li><a href="https://www.facebook.com/pages/Motionry/520892087928302"><img src="{{ asset('/img/facebook.png') }}"/></a></li>
               </ul>
             </div>
           </div>
