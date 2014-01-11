@@ -37,7 +37,7 @@
     <div class="row">
       <hr/>
     </div>
-    <h5>Publications</h5>
+    <h5>Publications <span>(all fields are required; if no URL is entered, a "no weblink provided" will appear on your profile)</span></h5>
     <div id="publications_list">
       @if (empty($profile->publications) or sizeof($profile->publications) == 0)
         @include('partials.publication_form', [ 'idx' => 0, 'publication' => new ProfilePublication, 'show_remove' => false ])

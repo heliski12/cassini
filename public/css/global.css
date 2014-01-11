@@ -122,6 +122,7 @@ html .user-nav h5
   font-size: 18px;
   font-weight: 500;
 }
+.create-profile h5 span { font-size: 12px; }
 .create-profile h6
 {
   font-size: 14px;
