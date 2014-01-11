@@ -145,7 +145,10 @@ class ProfilesController extends BaseController {
   {
     $profile = Profile::with(['keypersons','institution','sectors','applications','publications.publication','presentations','awards','photos'])->find($id);
 
-    // TODO - permissions
+    // check permissions
+    if ($profile->restrict_seekers) { if (Auth::user()->seeker) { App::abort('404'); } }
+    if ($profile->restrict_researchers) { $researcher = Auth::user()->researcher; if ($researcher) { App::abort('404'); } }
+    if ($profile->restrict_entrepreneurs) { $entrepreneur = Auth::user()->entrepreneur; if ($entrepreneur) { App::abort('404'); } }
 
     return View::make('profiles.show')->with('profile', $profile);
   }

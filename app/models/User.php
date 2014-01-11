@@ -65,6 +65,29 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   public function getUnsureTosAttribute() { return $this->getAttribute('unsure') ? 'Yes' : ''; }
   public function getIsAdminAttribute() { return $this->getAttribute('role') === 'ADMIN'; }
 
+  // TODO - CACHE THESE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  public function getEntrepreneurAttribute() 
+  {
+    $this->load('profiles');
+    foreach ($this->profiles as $profile)
+    {
+      if ($profile->innovator_type == 'ENTREPRENEUR')
+        return true;
+    }
+    return false;
+  }
+  public function getResearcherAttribute() 
+  {
+    $this->load('profiles');
+    foreach ($this->profiles as $profile)
+    {
+      if ($profile->innovator_type == 'RESEARCHER')
+        return true;
+    }
+    return false;
+  }
+  ////////////////////////////////////////////////////////
+
   public $from_migration = false;
   public function setPasswordAttribute($value) 
   { 
