@@ -73,8 +73,8 @@ $(function(){
   });
   $("button#upload_video").click(function(event) {
     event.preventDefault();
-    if (typeof _trackEvent == 'function') {
-      _trackEvent("VIDEO", "UPLOAD");
+    if (typeof _gaq !== 'undefined') {
+      _gaq.push(['_trackEvent', 'VIDEO UPLOAD','BUTTON CLICKED','Button Click']);
     }
     alert("Video uploads are coming soon!");
   });
