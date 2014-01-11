@@ -9,3 +9,8 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+AuthType Basic
+AuthUserFile /home/motionry/cassini/public/.htpasswd
+AuthName "Protected content"
+require valid-user
