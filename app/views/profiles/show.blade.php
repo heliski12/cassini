@@ -89,22 +89,22 @@
                     <div id="photo_carousel" class="carousel slide" data-interval="9999999999999">
                       <div class="carousel-inner">
                         @foreach($profile->photos as $idx => $photo)
-                          @if (!empty($photo->photo_file_name))
                             @if ($idx === 0 or $idx % 4 === 0)
                               <div class="item {{ $idx === 0 ? 'active' : '' }}">
                                 <div class="row">
                             @endif
+                          @if (!empty($photo->photo_file_name))
                               <div class="col-md-3 col-sm-3 col-xs-3">
                                 <a href="#" class="carousel-thumb" lg="#photo_{{ $photo->id }}_lg" >
                                   <img class="img-responsive img-thumbnail" src="{{ asset($photo->photo->url('thumb')) }}" alt="{{ $photo->description }}" />
                                   <img style="display:none;" src="{{ asset($photo->photo->url('large')) }}" id="photo_{{ $photo->id }}_lg" alt="{{ $photo->description }}" />
                                 </a>
                               </div>
+                          @endif
                             @if ($idx % 4 === 3 or $idx === sizeof($profile->photos) - 1)
                                 </div>
                               </div>
                             @endif
-                          @endif
                         @endforeach
                       </div>
                       @if (sizeof($profile->photos) > 4)
