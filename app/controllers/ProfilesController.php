@@ -101,6 +101,10 @@ class ProfilesController extends BaseController {
 
     $edit = Input::has('edit') and Input::get('edit');
 
+    // forget the user session entrepreneur and researcher cache flags.  these may have changed when he edited his profile
+    Session::forget('entrepreneur');
+    Session::forget('researcher');
+
     if (Input::has('next'))
     {
       Log::info("Going to next step number $step + 1");
@@ -157,6 +161,10 @@ class ProfilesController extends BaseController {
   {
     Input::flash();
 
+    $seeker = Auth::user()->seeker;
+    $researcher = Auth::user()->researcher;
+    $entrepreneur = Auth::user()->entrepreneur;
+
     // "a" is the name of the submit button
     if (Input::has('a'))
     {
@@ -201,6 +209,14 @@ class ProfilesController extends BaseController {
         });
       }
 
+      // filter for permissions
+      if ($seeker)
+        $results = $results->where('restrict_seekers',false);
+      if ($researcher)
+        $results = $results->where('restrict_researchers',false);
+      if ($entrepreneur)
+        $results = $results->where('restrict_entrepreneurs',false);
+
       // filter the market sectors
       if (!empty($market_sectors))
       {
@@ -218,7 +234,17 @@ class ProfilesController extends BaseController {
     }
     else
     {
-      $results = Profile::with(['keypersons','institution','sectors'])->where('status','PUBLISHED')->orderBy('created_at','DESC')->take(10)->get();
+      $results = Profile::with(['keypersons','institution','sectors','applications']);
+
+      // filter for permissions
+      if ($seeker)
+        $results = $results->where('restrict_seekers',false);
+      if ($researcher)
+        $results = $results->where('restrict_researchers',false);
+      if ($entrepreneur)
+        $results = $results->where('restrict_entrepreneurs',false);
+        
+      $results = $results->where('status','PUBLISHED')->orderBy('created_at','DESC')->take(10)->get();
     }
 
     return View::make('profiles.search')->with('results',$results);

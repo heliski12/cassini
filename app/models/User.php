@@ -68,22 +68,42 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   // TODO - CACHE THESE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   public function getEntrepreneurAttribute() 
   {
+    if (Session::has('entrepreneur'))
+    {
+      Log::info('user entrepreneur cache hit');
+      return Session::get('entrepreneur');
+    }
+
     $this->load('profiles');
     foreach ($this->profiles as $profile)
     {
       if ($profile->innovator_type == 'ENTREPRENEUR')
+      {
+        Session::put('entrepreneur',true);
         return true;
+      }
     }
+    Session::put('entrepreneur',false);
     return false;
   }
   public function getResearcherAttribute() 
   {
+    if (Session::has('researcher'))
+    {
+      Log::info('user researcher cache hit');
+      return Session::get('researcher');
+    }
+
     $this->load('profiles');
     foreach ($this->profiles as $profile)
     {
       if ($profile->innovator_type == 'RESEARCHER')
+      {
+        Session::put('researcher',true);
         return true;
+      }
     }
+    Session::put('researcher',false);
     return false;
   }
   ////////////////////////////////////////////////////////
