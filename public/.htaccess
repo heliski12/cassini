@@ -3,7 +3,7 @@
     RewriteEngine On
 
   RewriteRule ^blog$ http://blog.motionry.com/ [R=301,L,QSA]
-  RewriteRule ^blog/(.*) http://blog.motionry.com/$1 [R=301,L,QSA]
+  RewriteRule ^(.*) http://blog.motionry.com/$1 [R=301,L,QSA]
 
 	RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
