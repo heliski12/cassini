@@ -262,7 +262,7 @@
                       <div class="row publication-row">
                     @endif
                       <div class="col-md-3">
-                        <div class="row">
+                        <div class="row publication-photo">
                           @if (!empty($publication->publication) and !empty($publication->publication->photo_file_name))
                             <img src="{{ asset($publication->publication->photo->url('small')) }}" /> 
                           @else
@@ -270,8 +270,11 @@
                           @endif
                         </div>
                         <div class="row publication-link">
+                          @if (!empty($publication->name))
+                            {{ $publication->name }}:&nbsp;&nbsp;
+                          @endif
                           @if (empty($publication->article_clean_url))
-                            {{ $publication->article_title }}
+                          {{ $publication->article_title }}<br/>(no weblink provided)
                           @else
                           <a href="{{ $publication->article_clean_url }}">{{ (empty($publication->article_title) ? 'View Publication' : $publication->article_title) }}</a> 
                           @endif
