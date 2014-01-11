@@ -407,7 +407,7 @@ class Profile extends Eloquent {
       $this->setIntellectualPropertyAttribute([]);
     if (!array_key_exists('region_ids', $input))
       $this->setRegionIdsAttribute([]);
-    if (!array_key_exists('sectors_ids', $input))
+    if (!array_key_exists('sector_ids', $input))
       $this->setSectorIdsAttribute([]);
     if (!array_key_exists('funding_statuses', $input))
       $this->setFundingStatusesAttribute([]);
