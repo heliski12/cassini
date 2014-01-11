@@ -73,6 +73,9 @@ $(function(){
   });
   $("button#upload_video").click(function(event) {
     event.preventDefault();
+    if (typeof _trackEvent == 'function') {
+      _trackEvent("VIDEO", "UPLOAD");
+    }
     alert("Video uploads are coming soon!");
   });
   $("input[type=checkbox]").change(function(event) {
