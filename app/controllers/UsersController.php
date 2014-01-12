@@ -48,6 +48,9 @@ class UsersController extends BaseController {
       Auth::user()->last_login = new \DateTime;
       Auth::user()->save();
 
+      Session::forget('researcher');
+      Session::forget('entrepreneur');
+
       $user = User::with('profiles')->find(Auth::user()->id);
 
       if ($user->role === 'PENDING')
