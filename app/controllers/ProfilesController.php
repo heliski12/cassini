@@ -149,6 +149,9 @@ class ProfilesController extends BaseController {
   {
     $profile = Profile::with(['keypersons','institution','sectors','applications','publications.publication','presentations','awards','photos'])->find($id);
 
+    if ($profile->status !== 'PUBLISHED' and !$profile->isEditor(Auth::user()))
+      App::abort('404');
+
     // check permissions
     if ($profile->restrict_seekers) { if (Auth::user()->seeker) { App::abort('404'); } }
     if ($profile->restrict_researchers) { $researcher = Auth::user()->researcher; if ($researcher) { App::abort('404'); } }
@@ -217,6 +220,9 @@ class ProfilesController extends BaseController {
       if ($entrepreneur)
         $results = $results->where('restrict_entrepreneurs',false);
 
+      // filter for published
+      $results = $results->where('status','PUBLISHED');
+
       // filter the market sectors
       if (!empty($market_sectors))
       {
@@ -243,7 +249,7 @@ class ProfilesController extends BaseController {
         $results = $results->where('restrict_researchers',false);
       if ($entrepreneur)
         $results = $results->where('restrict_entrepreneurs',false);
-        
+
       $results = $results->where('status','PUBLISHED')->orderBy('created_at','DESC')->take(10)->get();
     }
 
