@@ -307,6 +307,7 @@ ul.step-titles li.active ~ li
   color: inherit;
   margin-left: 20px;
 }
+a.add-fs-additional { font-weight: 700; }
 .innovator-type-extras input, .innovator-type-extras select, .innovator-type-extras label {
   margin-left: 10px;
   margin-right: -10px;
