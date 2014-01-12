@@ -59,7 +59,7 @@ Route::group(array('before' => 'auth'), function()
   Route::post('/create_profile/{step?}', [ 'as' => 'store_profile', 'uses' => 'ProfilesController@store' ])->where('step', '[1-3]');
   Route::get('/edit-profile/{id}/{step?}', [ 'as' => 'edit_profile', 'uses' => 'ProfilesController@edit' ])->where('step', '[1-3]');
   //Route::post('/edit_profile/{step?}', [ 'as' => 'update_profile', 'uses' => 'ProfilesController@store' ]);
-  Route::get('/marketplace', [ 'as' => 'marketplace', 'uses' => 'ProfilesController@index' ]);
+  Route::get('/innovators', [ 'as' => 'marketplace', 'uses' => 'ProfilesController@index' ]);
   Route::get('/saved-profiles', [ 'as' => 'saved_profiles', 'uses' => 'UsersController@savedProfiles' ]);
   Route::get('/my-account', [ 'as' => 'my_account', 'uses' => 'UsersController@myAccount' ]);
   Route::post('/add-editor', [ 'as' => 'add_editor', 'uses' => 'ProfilesController@addEditor' ]);

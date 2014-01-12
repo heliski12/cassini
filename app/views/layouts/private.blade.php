@@ -57,7 +57,7 @@
             <a href="http://www.motionry.com"><img alt="Motionry Logo" src="{{ asset('img/Black-Motionry-Logo.png') }}"/></a>
           </div>
           <div class="col-md-5 col-md-offset-2 nav">
-            <a href="{{ URL::to('/marketplace') }}">Browse Innovators</a>
+            <a href="{{ URL::to('/innovators') }}">Browse Innovators</a>
             <a href="{{ URL::to('/saved-profiles') }}">Saved Profiles</a>
             <a href="{{ URL::to('/my-account') }}">My Account</a>
           </div>

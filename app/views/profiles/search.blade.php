@@ -1,5 +1,9 @@
 @extends('layouts.private')
 
+@section('title')
+ Motionry Innovators
+@stop
+
 @section('content')
 <div class="container-full">
   <div class="marketplace">
