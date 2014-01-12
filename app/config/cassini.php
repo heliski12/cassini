@@ -26,7 +26,7 @@ return [
 
   'product_stages' => [
     'EXPERIMENTAL' => 'Experimental',
-    'PROTOTYPE' => 'Prototpye',
+    'PROTOTYPE' => 'Prototype',
     'MARKET_PILOT' => 'Market Pilot',
     'MARKET' => 'Market', 
   ],
