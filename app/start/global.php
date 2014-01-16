@@ -101,7 +101,7 @@ User::saving(function($user)
   $attributes = $user->getAttributes();
 
   // send the email alert to users if previous version wasn't published and this version is 
-  if ($original['role'] === 'PENDING' and $attributes['role'] === 'USER')
+  if (!empty($original) and $original['role'] === 'PENDING' and $attributes['role'] === 'USER')
   {
     if ($attributes['innovator'])
     {
