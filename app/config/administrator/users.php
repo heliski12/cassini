@@ -38,7 +38,7 @@ return array(
     'unsure' => [ 'title' => 'Unsure', 'type' => 'bool' ], 
     'title' => [ 'title' => 'Title' ],
     'organization' => [ 'title' => 'Organization' ],
-    'role' => [ 'title' => 'Role', 'type' => 'enum', 'options' => [ 'PENDING', 'USER', 'PRESS', 'ADMIN' ] ],
+    'role' => [ 'title' => 'Role (Changing to USER approves user and sends a welcome email)', 'type' => 'enum', 'options' => [ 'PENDING', 'USER', 'PRESS', 'ADMIN' ] ],
     'phone' => [ 'title' => 'Phone' ],
     'password' => [ 'title' => 'Password', 'type' => 'password', 'title' => 'Password' ] ,
   ),

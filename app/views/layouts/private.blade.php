@@ -62,13 +62,13 @@
             <a href="{{ URL::to('/my-account') }}">My Account</a>
           </div>
           <div class="col-md-2 col-md-offset-1 user-nav">
-            <h5>{{ Auth::user()->email }}</h5>
-            <h5>
+            <div>{{ Auth::user()->email }}</div>
+            <div>
               @if (Auth::user()->is_admin)
                 <a href="{{ URL::to('/admin') }}">[admin]</a>&nbsp;&nbsp;
               @endif
               <a href="{{ URL::to('/logout') }}">Log Out</a>
-            </h5>
+            </div>
           </div>
         </div>
       </div>

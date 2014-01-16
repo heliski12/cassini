@@ -94,3 +94,29 @@ Password::validator(function($credentials)
 {
   return strlen($credentials['password']) >= 8;
 });
+
+User::saving(function($user)
+{
+  $original = $user->getOriginal();
+  $attributes = $user->getAttributes();
+
+  // send the email alert to users if previous version wasn't published and this version is 
+  if ($original['role'] === 'PENDING' and $attributes['role'] === 'USER')
+  {
+    if ($attributes['innovator'])
+    {
+      Mail::send('emails.innovator_approved_email', [], function($message) use ($user)
+      {
+        $message->to($user->email, $user->fullName)->subject("Welcome to Motionry");
+      });
+    }
+    else
+    {
+      Mail::send('emails.seeker_approved_email', [], function($message) use ($user)
+      {
+        $message->to($user->email, $user->fullName)->subject("Welcome to Motionry");
+      });
+    }
+  }
+});
+

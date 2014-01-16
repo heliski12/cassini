@@ -78,15 +78,16 @@ div.error-message {
 }
 
 /* private layout */
-.user-nav h5
+.user-nav div
 {
   text-align: right;
+  float: right;
   margin-right:10px;
 }
-.user-nav h5:first-child {
+.user-nav div:first-child {
   padding-top:25px;
 }
-html .user-nav h5
+html .user-nav div
 {
   font-size: 16px;
   font-weight: 400;
