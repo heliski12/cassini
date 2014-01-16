@@ -495,7 +495,7 @@
 
                                                 Thank you for signing up as an Innovator. &nbsp;Motionry is about connecting those innovating with those in need of innovation. &nbsp;Just click on the link below and sign in to begin the quick profile application. &nbsp;<br>
                                                 <br>
-                                                If you have questions, contact us anytime&nbsp;at <a href="mailto:support@motionry.com?subject=Questions%20on%20Innovator%20Applications" target="_self" style="word-wrap: break-word;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #6DC6DD;font-weight: normal;text-decoration: underline;">support@motionry.com</a>.<br>
+                                                If you have questions, contact us anytime&nbsp;at <a href="mailto:support@motionry.com?subject=Questions%20about%20Motionry" target="_self" style="word-wrap: break-word;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #6DC6DD;font-weight: normal;text-decoration: underline;">support@motionry.com</a>.<br>
                                                 <br>
 
                                               </td>
