@@ -108,6 +108,7 @@
         <ul id="message_profiles">
         </ul>
         Please let us know what action you would like us to take, such as having the team on the profile contact you directly.<br/><br/>
+        Your Message:<br/>
         <textarea id="message" name="message" class="form-control" rows="10"></textarea>
       </div>
       <div class="modal-footer">

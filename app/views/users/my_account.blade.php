@@ -183,6 +183,7 @@
       <div class="modal-body">
         This message will be sent to Motionry.  How can we help you?
         <br/><br/>
+        Your Message:<br/>
         <textarea id="message" name="message" class="form-control" rows="10"></textarea>
       </div>
       <div class="modal-footer">
