@@ -9,6 +9,8 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="SHORTCUT ICON" HREF="favicon.png?1">
+
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/fonts.css') }}
     {{ HTML::style('css/jquery.fullPage.css') }}
