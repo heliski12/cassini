@@ -153,9 +153,12 @@ class ProfilesController extends BaseController {
       App::abort('404');
 
     // check permissions
-    if ($profile->restrict_seekers) { if (Auth::user()->seeker) { App::abort('404'); } }
-    if ($profile->restrict_researchers) { $researcher = Auth::user()->researcher; if ($researcher) { App::abort('404'); } }
-    if ($profile->restrict_entrepreneurs) { $entrepreneur = Auth::user()->entrepreneur; if ($entrepreneur) { App::abort('404'); } }
+    if (!$profile->isEditor(Auth::user()))
+    {
+      if ($profile->restrict_seekers) { if (Auth::user()->seeker) { App::abort('404'); } }
+      if ($profile->restrict_researchers) { $researcher = Auth::user()->researcher; if ($researcher) { App::abort('404'); } }
+      if ($profile->restrict_entrepreneurs) { $entrepreneur = Auth::user()->entrepreneur; if ($entrepreneur) { App::abort('404'); } }
+    }
 
     return View::make('profiles.show')->with('profile', $profile);
   }
@@ -213,12 +216,15 @@ class ProfilesController extends BaseController {
       }
 
       // filter for permissions
-      if ($seeker)
-        $results = $results->where('restrict_seekers',false);
-      if ($researcher)
-        $results = $results->where('restrict_researchers',false);
-      if ($entrepreneur)
-        $results = $results->where('restrict_entrepreneurs',false);
+      if (Auth::user()->role !== 'ADMIN')
+      {
+        if ($seeker)
+          $results = $results->where('restrict_seekers',false);
+        if ($researcher)
+          $results = $results->where('restrict_researchers',false);
+        if ($entrepreneur)
+          $results = $results->where('restrict_entrepreneurs',false);
+      }
 
       // filter for published
       $results = $results->where('status','PUBLISHED');
