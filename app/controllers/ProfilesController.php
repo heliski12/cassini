@@ -249,12 +249,15 @@ class ProfilesController extends BaseController {
       $results = Profile::with(['keypersons','institution','sectors','applications']);
 
       // filter for permissions
-      if ($seeker)
-        $results = $results->where('restrict_seekers',false);
-      if ($researcher)
-        $results = $results->where('restrict_researchers',false);
-      if ($entrepreneur)
-        $results = $results->where('restrict_entrepreneurs',false);
+      if (Auth::user()->role !== 'ADMIN')
+      {
+        if ($seeker)
+          $results = $results->where('restrict_seekers',false);
+        if ($researcher)
+          $results = $results->where('restrict_researchers',false);
+        if ($entrepreneur)
+          $results = $results->where('restrict_entrepreneurs',false);
+      }
 
       $results = $results->where('status','PUBLISHED')->orderBy('created_at','DESC')->take(10)->get();
     }

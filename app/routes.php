@@ -49,10 +49,6 @@ Route::group(array('before' => 'pre-auth'), function()
 // user approved areas 
 Route::group(array('before' => 'auth'), function() 
 {
-  Route::get('/profiles', function() 
-  {
-    return "Protected profiles page";
-  }); 
   Route::get('/profiles/new', [ 'as' => 'new_profile', 'uses' => 'ProfilesController@newProfile' ]);
   Route::get('/profiles/{id}', [ 'as' => 'show_profile', 'uses' => 'ProfilesController@show' ]);
   Route::get('/create-profile/{step?}', [ 'as' => 'create_profile', 'uses' => 'ProfilesController@create' ])->where('step', '[1-3]');
