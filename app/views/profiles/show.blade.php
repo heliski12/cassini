@@ -278,7 +278,7 @@
                           @if (empty($publication->article_clean_url))
                           {{ $publication->article_title }}<br/>(no weblink provided)
                           @else
-                          <a href="{{ $publication->article_clean_url }}">{{ (empty($publication->article_title) ? 'View Publication' : $publication->article_title) }}</a> 
+                          <a href="{{ $publication->article_clean_url }}" target="_blank">{{ (empty($publication->article_title) ? 'View Publication' : $publication->article_title) }}</a> 
                           @endif
                         </div>
                       </div>
@@ -303,7 +303,7 @@
                         @if (empty($presentation->clean_url))
                           {{ $presentation->title }}
                         @else
-                        <a href="{{ $presentation->clean_url }}">{{ (empty($presentation->title) ? $presentation->clean_url : $presentation->title) }}</a>
+                        <a href="{{ $presentation->clean_url }}" target="_blank">{{ (empty($presentation->title) ? $presentation->clean_url : $presentation->title) }}</a>
                         @endif
                       </li>
                     @endforeach 
@@ -325,7 +325,7 @@
                         @if (empty($award->clean_url))
                         {{ $award->title }}
                         @else
-                          <a href="{{ $award->clean_url }}">{{ (empty($award->title) ? $award->clean_url : $award->title) }}</a>
+                          <a href="{{ $award->clean_url }}" target="_blank">{{ (empty($award->title) ? $award->clean_url : $award->title) }}</a>
                         @endif
                       </li>
                     @endforeach 
