@@ -40,7 +40,8 @@ a.forgot:hover { text-decoration: none; color: #ed9c2b; }
 div.arrow-down { position: absolute; bottom: 0; left: 50%; margin-left: -45px; }
 div.arrow-down a { color: #FFF; font-size: 30px; }
 div.arrow-down a span { margin-left: 27px; }
-div.arrow-down span.scroll-down { color: #FFF; font-size: 16px; margin-right: 55px; }
+div.arrow-down a span.arrow2 { margin-left: 0px; }
+div.arrow-down span.scroll-down { color: #FFF; font-size: 16px; }
 div.arrow-down > div { text-align: center; }
 div.arrow-down a:hover { color: #ed9c28; }
 #page2 { text-align: center; }

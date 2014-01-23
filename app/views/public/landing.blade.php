@@ -139,6 +139,12 @@
                 <img class="img-responsive" src="{{ asset('/img/page2bg.png') }}" />
               </div>
             </div>
+            <div class="row arrow-down">
+                <span class="scroll-down">Scroll&nbsp;Down</span><br/>
+                <a href="#" id="scroll_down">
+                  <span class="glyphicon glyphicon-chevron-down arrow2"></span>
+                </a>
+            </div>
           </div>
         </div>
     </div>
