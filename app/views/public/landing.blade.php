@@ -58,8 +58,11 @@
                   <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
                     <a href="http://www.motionry.com"><img alt="Motionry Logo" class="logo img-responsive" src="{{ asset('img/White-Motionry-Logo.png') }}"/></a>
                   </div>
-                  <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-3 col-sm-5 col-sm-offset-2 col-xs-12 navlinks">
+                  <div class="col-lg-5 col-lg-offset-3 col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1 col-xs-12 navlinks">
                     <ul>
+                      <li><a href="https://twitter.com/Motionry" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @Motionry</a>
+                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> 
+                      </li>
                       <li><a href="http://blog.motionry.com">Blog</a></li>
                       <li><a href="{{{ asset('/Motionry Terms of Service and Privacy Policy.pdf') }}}" target="_blank">Terms</a></li>
                       <li><a href="#" data-toggle='modal' data-target="#contact">Contact</a></li>

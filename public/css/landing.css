@@ -65,6 +65,7 @@ button.password { float: right; }
 
 
 /* overrides */
+iframe#twitter-widget-0 { margin-bottom: -3px; }
 html .onepage-pagination li a.active:before {
   border-color: #ed9c28; 
   border-width: 2px;
