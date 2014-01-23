@@ -258,7 +258,7 @@
                 <div class="row">&nbsp;</div>
               </div>
               <div class="tab-pane fade" id="publications">
-                @if (!empty($profile->publications))
+                @if (!empty($profile->publications) and sizeof($profile->publications) > 0)
                   @foreach ($profile->publications as $idx => $publication)
                     @if ($idx % 4 === 0)
                       <div class="row publication-row">
