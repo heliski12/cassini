@@ -26,6 +26,8 @@ img.logo { margin-top: 40px; }
 .navlinks a:hover { text-decoration: none; }
 .title-login { margin-top: 150px; }
 .title-login h1 { color: #FFF; margin-top: 30px; }
+.title-login-mini { margin-top: 10px; }
+.title-login-mini h1 { color: #FFF; margin-top: 5px; font-size: 18px; }
 .signin, .signup { background-color: #FFF; margin-bottom: 15px; }
 .signin form, .signup { padding:10px 20px 30px; }
 .signin input { margin-bottom:10px; }
@@ -46,15 +48,25 @@ div.arrow-down > div { text-align: center; }
 div.arrow-down a:hover { color: #ed9c28; }
 #page2 { text-align: center; }
 #page2 h2 { color: #FFF; margin-top: 30px; }
+#page2 h2.visible-sm, #page2 h2.visible-xs { color: #FFF; margin-top: 10px; font-size: 18px; }
 #page2 img { display: block; margin: 0 auto; max-width: 850px; margin-top: 30px; }
+#page2 img.visible-xs { display: block; margin: 0 auto; max-height: 300px; margin-top: 0px; }
+#page2 img.visible-sm { display: block; margin: 0 auto; max-height: 520px; margin-top: 0px; }
 .our-story { text-align: center; border-bottom: #7e7e7e solid 2px; }
 .our-story h2 { color: #204a72; margin-top: 25px; font-size: 30px; margin-bottom: 5px; }
+.our-story h2.visible-sm, .our-story h2.visible-xs { color: #204a72; margin-top: 10px; font-size: 18px; margin-bottom: 5px; }
 .our-story-desc { margin-top: 20px; }
 .our-story-desc p { color: #204a72; font-size: 24px; padding: 5px 0px; }
+.our-story-desc.visible-sm { margin-top: 10px; }
+.our-story-desc.visible-sm p { color: #204a72; font-size: 20px; padding: 5px 0px; }
+.our-story-desc.visible-xs { margin-top: 10px; }
+.our-story-desc.visible-xs p { color: #204a72; font-size: 16px; padding: 5px 0px; }
 .footer { background: #204A72;  height: 80px; }
 .footer ul.bottom-nav { margin-top: 15px; }
+.footer ul.bottom-nav.visible-sm, .footer ul.bottom-nav.visible-xs { margin-top: 10px; }
 .footer ul.social { margin-top: 12px; }
 .social img { max-width: 60px; }
+.social.visible-sm img, .social.visible-xs img { max-width: 45px; }
 .footer ul li a { color: #fff; font-size: 18px; }
 .footer .copy { color: #4B8CB2; }
 .thanks, .forgot, .email { margin-top: 13px; }
@@ -63,6 +75,10 @@ button.password { float: right; }
 #password_reset_form { background: #FFF; padding: 20px 20px 50px; margin-bottom: 15px; }
 .password-reset h2 { font-size: 18px; }
 
+/* mobile */
+.mini-nav { margin-top: 45px; }
+.mini-nav button { font-size: 18px; padding: 5px; padding-top: 0px; padding-bottom: 0px; }
+.visible-sm iframe#twitter-widget-1, .visible-xs iframe#twitter-widget-1 { margin-left: 19px; margin-top: 7px; }
 
 
 /* overrides */
