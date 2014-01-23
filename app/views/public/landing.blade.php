@@ -27,6 +27,21 @@
 		</script>
     <![endif]-->
 
+    <meta property="og:image" content="{{ URL::to('/img/Black-Motionry-Logo.png') }}">
+    <meta property="og:site_name" content="Motionry Marketplace" >
+    <meta property="og:type" content="website" >
+    <meta property="og:url" content="{{ URL::current() }}" >
+    <meta name="twitter:card" content="summary" >
+    <meta name="twitter:domain" content="www.motionry.com" >
+    <meta name="twitter:site" content="@Motionry" >
+    <meta name="twitter:site:id" content="784612502">
+    <meta name="twitter:creator" content="@Motionry" >
+    <meta name="description" content="Motionry is changing the way people connect to innovate.  We offer the only platform that connects the world's technologists, researchers and entrepreneurs developing sustainable technologies.">
+    <meta property="og:title" content="Motionry Marketplace">
+    <meta property="og:description" content="Motionry is changing the way people connect to innovate.  We offer the only platform that connects the world's technologists, researchers and entrepreneurs developing sustainable technologies.">
+    
+    
+
     @if (app()->env == 'production')
     <script type="text/javascript">
       var _gaq = _gaq || [];
