@@ -30,4 +30,60 @@ class AdminController extends Controller {
     return Redirect::route('publication_photo',[$publication->id]);
   } 
 
+  public function csvExport()
+  {
+    return View::make('admin.csv');
+  }
+
+  public function csvUsers()
+  {
+    $csv = User::getCSVHeading();
+
+    $users = User::all();
+
+    foreach ($users as $user)
+      $csv.= $user->getCSVLine();
+
+    $filename = "users_". date('Ymd') .".csv";
+
+    header("Content-Type: text/plain");
+    header('Content-Disposition: attachment; filename="'.$filename.'"');
+    header("Content-Length: " . strlen($csv));
+    return $csv;
+  }
+
+  public function csvKeypersons()
+  {
+    $csv = Keyperson::getCSVHeading();
+
+    $keypersons = Keyperson::all();
+
+    foreach ($keypersons as $keyperson)
+      $csv.= $keyperson->getCSVLine();
+
+    $filename = "keypersons_". date('Ymd') .".csv";
+
+    header("Content-Type: text/plain");
+    header('Content-Disposition: attachment; filename="'.$filename.'"');
+    header("Content-Length: " . strlen($csv));
+    return $csv;
+  }
+
+  public function csvProfiles()
+  {
+    $csv = Profile::getCSVHeading();
+
+    $profiles = Profile::with(['institution','sectors','applications','regions'])->get();
+
+    foreach ($profiles as $profile)
+      $csv.= $profile->getCSVLine();
+
+    $filename = "profiles_". date('Ymd') .".csv";
+
+    header("Content-Type: text/plain");
+    header('Content-Disposition: attachment; filename="'.$filename.'"');
+    header("Content-Length: " . strlen($csv));
+    return $csv;
+  }
+
 }

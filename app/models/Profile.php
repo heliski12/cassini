@@ -1,12 +1,14 @@
 <?php
 
-class Profile extends Eloquent {
+class Profile extends BaseModel {
   use Codesleeve\Stapler\Stapler;
 
   // there has to be another way of ignoring standard form input in one place.
   // using Input::except(['next','previous']) would lead to repeated code
   // TODO - photo
   protected $guarded = ['keypersons','next','previous','submit','edit','regions','photo','presentations','publications','awards','organization_logo','keypersons_photos','photo_photos','photos'];
+
+  protected static $csv_headings = 'id,creator_id,status,innovator_type,institution.name,institution_department,organization,organization_type,tech_title,product_stage,fs_funded,fs_seeking,fs_not_funded,fs_extra_info,ip_trademarks,ip_trademarks_pending,ip_patents,ip_patents_pending,website_url,website_title,sectors.name,applications.name,regions.name,restrict_seekers,restrict_researchers,restrict_entrepreneurs,created_at';
 
   public static $rules = array();
 

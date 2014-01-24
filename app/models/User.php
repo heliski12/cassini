@@ -3,7 +3,9 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends BaseModel implements UserInterface, RemindableInterface {
+
+  protected static $csv_headings = 'id,first_name,last_name,email,last_login,innovator,seeker,unsure,title,organization,role,created_at';
 
   public static $rules = array(
     'first_name' => 'required',
@@ -65,7 +67,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   public function getUnsureTosAttribute() { return $this->getAttribute('unsure') ? 'Yes' : ''; }
   public function getIsAdminAttribute() { return $this->getAttribute('role') === 'ADMIN'; }
 
-  // TODO - CACHE THESE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   public function getEntrepreneurAttribute() 
   {
     if (Session::has('entrepreneur'))
@@ -106,7 +107,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     Session::put('researcher',false);
     return false;
   }
-  ////////////////////////////////////////////////////////
 
   public $from_migration = false;
   public function setPasswordAttribute($value) 

@@ -75,6 +75,10 @@ Route::group(array('before' => 'admin'), function()
   Route::post('admin_institution_logo', ['as' => 'save_institution_logo', 'uses' => 'AdminController@saveInstitutionLogo' ]);
   Route::get('admin_publication_photo/{id}', ['as' => 'publication_photo', 'uses' => 'AdminController@publicationPhoto' ]);
   Route::post('admin_publication_photo', ['as' => 'save_publication_photo', 'uses' => 'AdminController@savePublicationPhoto' ]);
+  Route::get('csv', [ 'as' => 'csv_export', 'uses' => 'AdminController@csvExport' ]);
+  Route::get('admin_csv_users', [ 'as' => 'csv_users', 'uses' => 'AdminController@csvUsers' ]);
+  Route::get('admin_csv_keypersons', [ 'as' => 'csv_keypersons', 'uses' => 'AdminController@csvKeypersons' ]);
+  Route::get('admin_csv_profiles', [ 'as' => 'csv_profiles', 'uses' => 'AdminController@csvProfiles' ]);
 });
 
 

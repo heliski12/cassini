@@ -7,6 +7,8 @@ class Keyperson extends BaseModel {
 
 	protected $guarded = array();
 
+  protected static $csv_headings = 'id,profile_id,first_name,last_name,title,email,phone,address,address_line2,address_line3,city,state,zip_code,country,created_at';
+
   public static $rules = array(
     'first_name' => 'required',
     'last_name' => 'required',
