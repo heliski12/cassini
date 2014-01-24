@@ -265,7 +265,10 @@
                   <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>
                 </ul>
               </div>
-              <div class="row copy">
+              <div class="row copy hidden-xs">
+                &copy;{{{ date('Y') }}} Motionry.  All Rights Reserved. 
+              </div>
+              <div class="row copy visible-xs">
                 &copy;{{{ date('Y') }}} Motionry.  All Rights Reserved. 
               </div>
             </div>
