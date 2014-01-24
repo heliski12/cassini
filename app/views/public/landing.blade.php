@@ -259,7 +259,12 @@
                   <li><a href="{{{ asset('/Motionry Terms of Service and Privacy Policy.pdf') }}}" target="_blank">Terms</a></li>
                   <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>
                 </ul>
-                <ul class="bottom-nav visible-sm visible-xs">
+                <ul class="bottom-nav visible-sm">
+                  <li><a href="http://blog.motionry.com">Blog</a></li>
+                  <li><a href="{{{ asset('/Motionry Terms of Service and Privacy Policy.pdf') }}}" target="_blank">Terms</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>
+                </ul>
+                <ul class="bottom-nav visible-xs">
                   <li><a href="http://blog.motionry.com">Blog</a></li>
                   <li><a href="{{{ asset('/Motionry Terms of Service and Privacy Policy.pdf') }}}" target="_blank">Terms</a></li>
                   <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>
