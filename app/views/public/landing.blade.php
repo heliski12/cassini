@@ -3,7 +3,7 @@
   <head>
     <title>
       @section('title')
-        Motionry
+        Motionry: Connecting the World's Researchers and Tech Entrepreneurs
       @show
     </title>
     
