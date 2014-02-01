@@ -3,11 +3,13 @@
   <head>
     <title>
       @section('title')
-        Motionry Marketplace
+        Motionry
       @show
     </title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="SHORTCUT ICON" HREF="favicon.png?2">
 
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/fonts.css') }}
