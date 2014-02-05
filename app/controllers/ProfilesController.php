@@ -259,7 +259,7 @@ class ProfilesController extends BaseController {
           $results = $results->where('restrict_entrepreneurs',false);
       }
 
-      $results = $results->where('status','PUBLISHED')->orderBy('created_at','DESC')->take(10)->get();
+      $results = $results->where('status','PUBLISHED')->orderBy('created_at','DESC')->take(25)->get();
     }
 
     return View::make('profiles.search')->with('results',$results);
