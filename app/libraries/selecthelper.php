@@ -5,7 +5,7 @@ class SelectHelper
   public static function get_region_options() 
   {  
     // TODO - cache these
-    $regions = Region::all();   
+    $regions = Region::orderBy('name')->get();   
     $options = [];
     foreach ($regions as $region)
     {
@@ -17,7 +17,7 @@ class SelectHelper
   public static function get_sector_options() 
   {  
     // TODO - cache these
-    $sectors = Sector::all();   
+    $sectors = Sector::orderBy('name')->get();   
     $options = [];
     foreach ($sectors as $sector)
     {
@@ -29,7 +29,7 @@ class SelectHelper
   public static function get_publication_options()
   {
     // TODO - cache these
-    $publications = Publication::all();   
+    $publications = Publication::orderBy('name')->get();   
     $options = [ '' => 'Select a web publication...' ];
     foreach ($publications as $publication)
     {
@@ -41,7 +41,7 @@ class SelectHelper
   public static function get_institution_options()
   {
     // TODO - cache these
-    $institutions = Institution::all();
+    $institutions = Institution::orderBy('name')->get();
     $options = [ '' => 'Select an institution...' ];
     foreach ($institutions as $institution)
     {
