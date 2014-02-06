@@ -535,10 +535,10 @@ html .btn-warning {
 .profile-kp-name { font-weight: 700; }
 .profile-description { padding: 20px 0px; }
 .profile-description:last-child { padding: 0px 0px 20px; }
-#publications img { display: block; margin: auto; }
+#publications img { display: block; margin: auto; max-height: 125px; }
 .publication-row { margin-top: 10px; margin-bottom: 30px; }
 .publication-link { padding: 10px 20px; text-align: center; }
-.publication-photo { min-height: 100px; }
+.publication-photo { min-height: 125px; }
 .photo-main { margin-top: 15px; margin-bottom: 15px; min-height: 250px; }
 .photo-main img { display: block; margin: 0 auto; min-width: 450px; }
 #photo_main_desc { text-align: center; padding: 0 0px 10px; min-height: 50px; width: 450px; margin: 0 auto; }
