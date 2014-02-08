@@ -14,5 +14,8 @@ return array(
   ),
   'edit_fields' => array(
     'name',
+    'city',
+    'state',
+    'country',
   ),
 );
