@@ -333,6 +333,7 @@ class Profile extends BaseModel {
         $this->saveAssociatesStep3($input);
         break; 
     }
+
   }
 
   public static function fetchFullProfileForStep($profile_id, $step)
@@ -460,6 +461,8 @@ class Profile extends BaseModel {
         $clean_publications[]= $publication;
     }
     $this->associateManyRelationship($this->publications, 'profile_publication', 'ProfilePublication', $this->publications(), $clean_publications);
+
+    $this->save();
   }
 
   // take the existing profile->[many-type] relationship and the [many-type] input and either update existing, delete pruned, or insert and associate new [many-type] entities
