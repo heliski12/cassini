@@ -85,10 +85,10 @@
   <script type="text/javascript">
     var counts = { 
       'tm_count': {{ Input::old('keypersons') ? (sizeof(Input::old('keypersons')) - 1) : ((empty($profile->keypersons)) ? 0 : sizeof($profile->keypersons) - 1) }}, 
-      'photo_count': {{ ((empty($profile->photos)) ? 1 : sizeof($profile->photos)) }},
-      'presentation_count': {{ ((empty($profile->presentations)) ? 0 : sizeof($profile->presentations) - 1) }},
-      'publication_count': {{ ((empty($profile->publications)) ? 0 : sizeof($profile->publications) - 1) }},
-      'award_count': {{ ((empty($profile->awards)) ? 0 : sizeof($profile->awards) - 1) }}
+        'photo_count': {{ ((empty($profile->photos) or sizeof($profile->photos) == 0) ? 1 : sizeof($profile->photos)) }},
+        'presentation_count': {{ ((empty($profile->presentations) or sizeof($profile->presentations) == 0) ? 0 : sizeof($profile->presentations) - 1) }},
+        'publication_count': {{ ((empty($profile->publications) or sizeof($profile->publications) == 0) ? 0 : sizeof($profile->publications) - 1) }},
+        'award_count': {{ ((empty($profile->awards) or sizeof($profile->awards) == 0) ? 0 : sizeof($profile->awards) - 1) }}
     };
   </script>
 @stop
