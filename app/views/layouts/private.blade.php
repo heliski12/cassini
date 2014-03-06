@@ -13,7 +13,7 @@
 
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/fonts.css') }}
-    {{ HTML::style('css/global.css?5') }}
+    {{ HTML::style('css/global.css?6') }}
 
     @yield('css')
     
