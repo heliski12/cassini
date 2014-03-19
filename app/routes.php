@@ -28,6 +28,11 @@ Route::get('/', function()
 	return View::make('public.landing');
 });
 
+Route::get('signup', function()
+{
+  return Redirect::to('/');
+});
+
 // public
 Route::post('login',  'UsersController@login');
 Route::get('logout',  'UsersController@logout');
