@@ -283,34 +283,39 @@ class Profile extends BaseModel {
 
     $new_application_names = [];
 
+    $lower_values = [];
+    foreach ($value as $val) {
+      $lower_values[]= strtolower($val);
+    }
+
     // possibly detach old applications
     if (!empty($existing_applications))
     {
       foreach($existing_applications as $existing_application)
       {
-        if (!in_array($existing_application->name, $value))
+        if (!in_array(strtolower($existing_application->name), $lower_values))
           $this->applications()->detach($existing_application->id);
         else
-          $existing_and_new_application_names[]= $existing_application->name;
+          $existing_and_new_application_names[]= strtolower($existing_application->name);
       }
     }
 
     // attach all of the common applications (those already in the db)
-    $common_applications = Application::whereIn('name',$value)->get();
+    $common_applications = Application::whereIn(DB::raw('lower(name)'),$lower_values)->get();
     foreach ($common_applications as $common_application)
     {
       // if it doesn't already exist, then attach it
-      if (!in_array($common_application->name, $existing_and_new_application_names))
+      if (!in_array(strtolower($common_application->name), $existing_and_new_application_names))
       {
         $this->applications()->attach($common_application->id);
-        $existing_and_new_application_names[]= $common_application->name; 
+        $existing_and_new_application_names[]= strtolower($common_application->name); 
       }
     }
 
     // finally, add all of the applications that aren't in the database yet
     foreach ($value as $new_name)
     {
-      if (!in_array($new_name, $existing_and_new_application_names))
+      if (!in_array(strtolower($new_name), $existing_and_new_application_names))
       { 
         $application = new Application(['name' => $new_name]);
         $application->save();
