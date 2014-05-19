@@ -22,14 +22,5 @@ $(function(){
   });
 });
 
-$(document).ready(function() {
-  $(".main").onepage_scroll({
-      sectionContainer: "div.section"
-  });
-  $("a#scroll_down").click(function(event) {
-    event.preventDefault();
-    $(".main").moveDown();
-  });
-});
 
 

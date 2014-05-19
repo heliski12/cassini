@@ -34,6 +34,7 @@ Route::get('signup', function()
 });
 
 // public
+Route::get('sign-in', [ 'as' => 'sign-in', 'uses' => 'UsersController@signIn' ]);
 Route::post('login',  'UsersController@login');
 Route::get('logout',  'UsersController@logout');
 Route::post('signup', 'UsersController@signup');

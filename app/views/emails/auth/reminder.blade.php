@@ -545,7 +545,7 @@
                                           <tbody>
                                             <tr>
                                               <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial;font-size: 16px;padding: 15px;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                                <a class="mcnButton " title="Link" href="{{ action('RemindersController@getReset', array($token)) }}" target="_self" style="font-weight: bold;letter-spacing: -0.5px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;word-wrap: break-word;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">Link</a>
+                                                <a class="mcnButton " title="Link" href="{{ action('RemindersController@getReset', array($token)) }}" target="_self" style="font-weight: bold;letter-spacing: -0.5px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;word-wrap: break-word;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">Reset password</a>
                                               </td>
                                             </tr>
                                           </tbody>

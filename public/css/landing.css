@@ -1,21 +1,16 @@
-#motionry .wrap {
-  background: url("../img/login-bg.jpg") no-repeat center fixed;
+.wrap {
+  background: url("../img/landing-bg.jpg") no-repeat center fixed;
   background-size: cover;
   height: 100%;
-}
-#page2 .wrap {
-  height: 100%;
-  background: #4B8CB2;
-}
-#page3 .wrap {
-  min-height: 100%;
-  height: auto !important;
-  margin: 0 auto -80px;
-  background: #FFF;
 }
 body.password-reset {
   background: #bfbfbf;
 }
+body.sign-in {
+  background: #f5f5f5;
+}
+
+
 img.logo { margin-top: 40px; }
 .navlinks { font-size: 24px; margin-top: 40px; }
 .navlinks ul, .footer ul { list-style-type: none; margin: 0; padding: 0; }
@@ -24,53 +19,26 @@ img.logo { margin-top: 40px; }
 .navlinks ul li:last-child, .footer ul li:last-child { margin-right: 0px; }
 .navlinks a { color: #FFF; }
 .navlinks a:hover { text-decoration: none; }
-.title-login { margin-top: 150px; }
-.title-login h1 { color: #FFF; margin-top: 30px; }
+.navlinks img { max-height: 22px; margin-bottom: 5px; }
+.title-login { margin-top: 150px; text-align: center; }
+.title-login h1 { color: #FFF; margin-top: 30px; font-size: 30px; font-weight: 300; }
+.title-login h2 { color: #FFF; margin-top: 20px; font-size: 20px; font-weight: 300; line-height: 28px; }
+.title-login button { width: 250px; margin-top: 20px; }
 .title-login-mini { margin-top: 10px; }
 .title-login-mini h1 { color: #FFF; margin-top: 5px; font-size: 18px; }
 .signin, .signup { background-color: #FFF; margin-bottom: 15px; }
 .signin form, .signup { padding:10px 20px 30px; }
 .signin input { margin-bottom:10px; }
 .signin button.btn-primary { float: right; }
-.login-or-signup { padding: 15px 0px 0px; margin: 0px 20px; border-bottom: 1px solid #428bca; color: #bababa; }
+.login-or-signup { text-align: center; padding: 15px 0px 0px; margin: 0px 20px; border-bottom: 1px solid #428bca; color: #bababa; }
 .login-or-signup button { padding: 0px; margin-bottom: 2px; font-weight: 700; }
 .login-or-signup button:hover { text-decoration: none; color: #ed9c2b; }
 .login-or-signup .login-msg { color: #7e7e7e; font-weight: 700; }
-a.forgot { color: #7e7e7e; font-size: 11px; }
+html hr { background-color: #428bca; height: 3px; }
+a.forgot { color: #428bca; font-size: 11px; }
 a.forgot:hover { text-decoration: none; color: #ed9c2b; }
 .error-message { color: #a94442; font-size: 12px; margin-bottom: 5px; }
-div.arrow-down { position: absolute; bottom: 0; left: 50%; margin-left: -45px; }
-div.arrow-down a { color: #FFF; font-size: 30px; }
-div.arrow-down a span { margin-left: 27px; }
-div.arrow-down a span.arrow2 { margin-left: 0px; }
-div.arrow-down span.scroll-down { color: #FFF; font-size: 16px; }
-div.arrow-down > div { text-align: center; }
-div.arrow-down a:hover { color: #ed9c28; }
-#page2 { text-align: center; }
-#page2 h2 { color: #FFF; margin-top: 30px; }
-#page2 h2.visible-sm, #page2 h2.visible-xs { color: #FFF; margin-top: 10px; font-size: 18px; }
-#page2 img { display: block; margin: 0 auto; max-width: 850px; margin-top: 30px; }
-#page2 img.visible-xs { display: block; margin: 0 auto; max-height: 300px; margin-top: 0px; }
-#page2 img.visible-sm { display: block; margin: 0 auto; max-height: 520px; margin-top: 0px; }
-.our-story { text-align: center; border-bottom: #7e7e7e solid 2px; }
-.our-story h2 { color: #204a72; margin-top: 25px; font-size: 30px; margin-bottom: 5px; }
-.our-story h2.visible-sm, .our-story h2.visible-xs { color: #204a72; margin-top: 10px; font-size: 18px; margin-bottom: 5px; }
-.our-story-desc { margin-top: 20px; }
-.our-story-desc p { color: #204a72; font-size: 24px; padding: 5px 0px; }
-.our-story-desc.visible-sm { margin-top: 10px; }
-.our-story-desc.visible-sm p { color: #204a72; font-size: 20px; padding: 5px 0px; }
-.our-story-desc.visible-xs { margin-top: 10px; }
-.our-story-desc.visible-xs p { color: #204a72; font-size: 16px; padding: 5px 0px; }
-.footer { background: #204A72;  height: 80px; }
-.footer ul.bottom-nav { margin-top: 15px; }
-.footer ul.bottom-nav.visible-sm, .footer ul.bottom-nav.visible-xs { margin-top: 10px; font-size: 14px; }
-.footer ul.bottom-nav.visible-xs li { margin: 0px; }
-.footer ul.social { margin-top: 12px; }
-.social img { max-width: 60px; }
-.social.visible-sm img, .social.visible-xs img { max-width: 45px; }
-.footer ul li a { color: #fff; font-size: 18px; }
-.footer .copy { color: #4B8CB2; }
-.footer .copy.visible-xs { color: #4B8CB2; font-size: 12px }
+div.copy { position: absolute; bottom: 0; color: #FFF; text-align: left; }
 .thanks, .forgot, .email { margin-top: 13px; }
 .forgot .form-group { margin-top: 10px; }
 button.password { float: right; }

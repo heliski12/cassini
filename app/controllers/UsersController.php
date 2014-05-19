@@ -2,6 +2,11 @@
 
 class UsersController extends BaseController {
 
+    public function signIn()
+    {
+        return View::make('public.sign-in');
+    }
+
 	public function signup()
 	{
     Input::flash();
@@ -62,7 +67,7 @@ class UsersController extends BaseController {
     }
     else
     {
-      return Redirect::guest('/')->with("status", "Error: Invalid Username or Password");
+      return Redirect::guest('sign-in')->with("status", "Error: Invalid Username or Password");
     }
   }
 
