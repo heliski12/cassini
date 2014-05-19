@@ -13,7 +13,6 @@
 
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/fonts.css') }}
-    {{ HTML::style('css/onepage-scroll.css') }}
     {{ HTML::style('css/landing.css?3') }}
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

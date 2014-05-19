@@ -1,7 +1,6 @@
-.wrap {
+body {
   background: url("../img/landing-bg.jpg") no-repeat center fixed;
   background-size: cover;
-  height: 100%;
 }
 body.password-reset {
   background: #bfbfbf;
@@ -18,9 +17,12 @@ img.logo { margin-top: 40px; }
 .navlinks ul li:first-child, .footer ul li:first-child { margin-left: 0px; }
 .navlinks ul li:last-child, .footer ul li:last-child { margin-right: 0px; }
 .navlinks a { color: #FFF; }
-.navlinks a:hover { text-decoration: none; }
+.navlinks a:hover { text-decoration: none; color: #ed9c28; }
 .navlinks img { max-height: 22px; margin-bottom: 5px; }
-.title-login { margin-top: 150px; text-align: center; }
+.title-login {text-align: center; }
+.title-login.visible-xs { margin-top: 50px; }
+.title-login.visible-sm { margin-top: 80px; }
+.title-login.visible-lg, .title-login.visible-md { margin-top: 120px; }
 .title-login h1 { color: #FFF; margin-top: 30px; font-size: 30px; font-weight: 300; }
 .title-login h2 { color: #FFF; margin-top: 20px; font-size: 20px; font-weight: 300; line-height: 28px; }
 .title-login button { width: 250px; margin-top: 20px; }

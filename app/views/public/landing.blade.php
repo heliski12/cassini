@@ -9,12 +9,11 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="SHORTCUT ICON" HREF="favicon.png?3">
+    <link rel="SHORTCUT ICON" HREF="favicon.png?4">
 
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/fonts.css') }}
-    {{ HTML::style('css/onepage-scroll.css') }}
-    {{ HTML::style('css/landing.css?3') }}
+    {{ HTML::style('css/landing.css?4') }}
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -70,10 +69,10 @@
       <div class="wrap">
               <div class="container">
                 <div class="row">
-                  <div class="col-lg-4 col-md-5 col-sm-6 col-xs-8">
+                  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                     <a href="{{ URL::to('/') }}"><img alt="Motionry Logo" class="logo img-responsive" src="{{ asset('img/White-Motionry-Logo.png') }}"/></a>
                   </div>
-                  <div class="col-lg-5 col-lg-offset-3 col-md-6 col-md-offset-1 hidden-sm hidden-xs navlinks">
+                  <div class="col-lg-4 col-lg-offset-5 col-md-5 col-md-offset-3 hidden-sm hidden-xs navlinks">
                     <ul>
                       <li><a href="{{ route('sign-in') }}">Sign in</a></li>
                       <li><a href="http://blog.motionry.com">Blog</a></li>
@@ -99,7 +98,12 @@
                     </div> 
                   </div>
                 @endif
-                <div class="row title-login hidden-xs">
+                <div class="row title-login visible-md visible-lg">
+                    <h1>Discover and connect with the world's leading<br/>researchers and entrepreneurs.</h1>
+                    <h2>Our platform fosters greater innovation and streamlined<br/>technology transfer, from basic R&D to early market demonstration.</h2>
+                    {{ Form::button('GET STARTED', [ 'class' => 'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#user_signup' ]) }}
+                </div>
+                <div class="row title-login visible-sm">
                     <h1>Discover and connect with the world's leading<br/>researchers and entrepreneurs.</h1>
                     <h2>Our platform fosters greater innovation and streamlined<br/>technology transfer, from basic R&D to early market demonstration.</h2>
                     {{ Form::button('GET STARTED', [ 'class' => 'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#user_signup' ]) }}
