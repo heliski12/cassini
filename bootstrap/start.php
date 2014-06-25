@@ -29,7 +29,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
   'local' => array('localhost*', '*.local',),
-  'staging' => array('yottaram*',),
+  'staging' => array('yottaram*','alltabhainne*'),
   'production' => array('motionry*','marketplace.motionry*','*.motionry.com'),
   
 
