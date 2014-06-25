@@ -34,3 +34,4 @@ Initialize the laravel migration table
 Load the db schema
     
     php artisan migrate
+
