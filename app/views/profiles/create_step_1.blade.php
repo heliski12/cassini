@@ -3,11 +3,11 @@
 @section('form')
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <h5>What type of Innovator are you?</h5>
+    <h5>What type of Innovator are you?  <span class="public-warning">(this and your organization/institution name will appear on your public profile 'business card')</span></h5>
     <div class="radio col-md-9 col-md-offset-3">
       <label class="radio-label">
         <input type="radio" name="innovator_type" value="RESEARCHER" {{ ($profile->innovator_type === 'RESEARCHER') ? 'checked' : '' }} >
-        Researcher
+        Researcher 
       </label>
     </div>
     <div class="col-md-9 col-md-offset-3 innovator-type-extras collapse" id="researcher">

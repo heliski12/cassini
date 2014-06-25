@@ -13,6 +13,10 @@
       <div id="tech_description_charcount">
       </div>
     </div>
+    <h5>Public tagline <span class="public-warning">(this will appear on your public profile 'business card' and may be edited by Motionry admins)</span></h5>
+    <div class="form-group">
+      {{ Form::text('public_tagline',$profile->public_tagline, [ 'class' => 'form-control', 'id' => 'public_tagline' ]) }}
+    </div>
     <h5>Technology or research stage</h5>
     <div class="row">
       <div class="form-group">
@@ -48,7 +52,7 @@
         @endforeach
       </ul>
     </div>
-    <h5>Market sector</h5>
+    <h5>Market sector  <span class="public-warning">(this will appear on your public profile 'business card')</span></h5>
     <div class="row">
       <div class="form-group">
         <div class="col-md-6">
@@ -77,7 +81,7 @@
     <div class="row">
       <hr/>
     </div>
-    <h5>Upload photo of the technology or research (max 4 photos)</h5>
+    <h5>Upload photo of the technology or research (max 4 photos)  <span class="public-warning">(these may appear on your public profile 'business card')</span></h5>
       <div id="photos_list">
         @foreach (range(0,3) as $idx)
           @if (sizeof($profile->photos) > $idx)

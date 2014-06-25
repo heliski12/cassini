@@ -150,6 +150,9 @@ html .user-nav div
   padding-top: 0px;
   margin-bottom: 10px;
 }
+.public-warning {
+    color: #a94442;
+}
 .steps-nav
 {
   text-align:center;

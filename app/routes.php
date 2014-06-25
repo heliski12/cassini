@@ -87,7 +87,6 @@ Route::group(array('before' => 'admin'), function()
   Route::get('admin_csv_profiles', [ 'as' => 'csv_profiles', 'uses' => 'AdminController@csvProfiles' ]);
 });
 
-
 if (app()->env !== 'production')
 {
   Event::listen('illuminate.query', function($sql,$bindings,$time) {
@@ -97,6 +96,10 @@ if (app()->env !== 'production')
         $bindings[$i]= $bindings[$i]->getTimestamp();
     }
     Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
+  });
+
+  Route::get('/test', function() {
+      dd(gethostname()); 
   });
 }
 
