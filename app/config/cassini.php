@@ -2,6 +2,8 @@
 
 return [
 
+  'asset_version' => '7',
+
   'filestorage' => 'filesystem',  // or s3
 
   'admin_email' => 'jstavis@gmail.com',
