@@ -26,6 +26,13 @@ class Profile extends BaseModel implements StaplerableInterface {
     parent::__construct($attributes);
   }
 
+  public function scopePublicPublished($query)
+  {
+      return $query->whereStatus('PUBLISHED')
+          ->whereNotNull('tech_title')
+          ->where('tech_title', '!=', '');
+  }
+
   public function sectors()
   {
     return $this->belongsToMany('Sector');

@@ -167,6 +167,7 @@ class ProfilesController extends BaseController {
   {
       $profile = Profile::find($slug);
 
+      // TODO - restrict private profiles
       if (empty($profile)) {
           App::abort('404');
       }

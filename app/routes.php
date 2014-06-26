@@ -42,7 +42,10 @@ Route::controller('reminders', 'RemindersController');
 Route::post('/pcontact', [ 'as' => 'pcontact', 'uses' => 'UsersController@pcontact' ]);
 
 // innovator public pages
-Route::get('/innovators/{slug}', [ 'as' => 'show_public_profile', 'uses' => 'ProfilesController@showPublic' ]);
+Route::get('innovators/{slug}', [ 'as' => 'show_public_profile', 'uses' => 'ProfilesController@showPublic' ]);
+
+// sitemap
+Route::get('sitemap', [ 'as' => 'sitemap', 'uses' => 'SitemapController@sitemap' ]);
 
 // user pending approval
 Route::group(array('before' => 'pre-auth'), function() 
@@ -103,7 +106,6 @@ if (app()->env !== 'production')
 
   Route::get('/test', function() {
 
-      dd(Config::get('laravel-stapler::s3.bucket'));
 
       $profiles = Profile::whereNotNull('tech_title')->where('tech_title', '!=', '')->get();
 
