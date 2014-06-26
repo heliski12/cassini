@@ -115,10 +115,11 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
     'Way\Generators\GeneratorsServiceProvider',
     'Frozennode\Administrator\AdministratorServiceProvider',
-    'Codesleeve\Stapler\StaplerServiceProvider',
     'Scalia\SphinxSearch\SphinxSearchServiceProvider',
     'Aws\Laravel\AwsServiceProvider',
     'Illuminate\Remote\RemoteServiceProvider',
+    'Codesleeve\LaravelStapler\LaravelStaplerServiceProvider',
+    'Roumen\Sitemap\SitemapServiceProvider',
     
 
 	),

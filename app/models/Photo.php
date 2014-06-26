@@ -1,7 +1,10 @@
 <?php
+use Codesleeve\Stapler\ORM\StaplerableInterface;
+use Codesleeve\Stapler\ORM\EloquentTrait;
 
-class Photo extends BaseModel {
-  use Codesleeve\Stapler\Stapler;
+class Photo extends BaseModel implements StaplerableInterface {
+  use EloquentTrait;
+  
 	protected $guarded = array();
 
 	public static $rules = array();

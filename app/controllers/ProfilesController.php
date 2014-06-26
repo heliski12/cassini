@@ -163,6 +163,22 @@ class ProfilesController extends BaseController {
     return View::make('profiles.show')->with('profile', $profile);
   }
 
+  public function showPublic($slug)
+  {
+      $profile = Profile::find($slug);
+
+      if (empty($profile)) {
+          App::abort('404');
+      }
+
+      // send 301 permanent redirect if the user-supplied slug doesn't match the profile slug but a profile was found by id
+      if ($profile->slug != $slug) {
+          return Redirect::route('show_public_profile', [ $profile->slug ], 301);
+      }
+
+      return View::make('profiles.show_public')->with('profile', $profile);
+  }
+
   public function index()
   {
     Input::flash();

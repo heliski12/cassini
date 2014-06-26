@@ -41,6 +41,9 @@ Route::post('signup', 'UsersController@signup');
 Route::controller('reminders', 'RemindersController');
 Route::post('/pcontact', [ 'as' => 'pcontact', 'uses' => 'UsersController@pcontact' ]);
 
+// innovator public pages
+Route::get('/innovators/{slug}', [ 'as' => 'show_public_profile', 'uses' => 'ProfilesController@showPublic' ]);
+
 // user pending approval
 Route::group(array('before' => 'pre-auth'), function() 
 {
@@ -99,7 +102,20 @@ if (app()->env !== 'production')
   });
 
   Route::get('/test', function() {
-      dd(gethostname()); 
+
+      dd(Config::get('laravel-stapler::s3.bucket'));
+
+      $profiles = Profile::whereNotNull('tech_title')->where('tech_title', '!=', '')->get();
+
+      $fp = fopen(base_path() . '/output/public_provile_urls.csv', 'w');
+      
+      foreach ($profiles as $profile) {
+          $slug = $profile->slug;
+          $arr = [$profile->tech_title, 'http://www.motionry.com/innovators/' . $slug];
+          fputcsv($fp, $arr); 
+      }
+
+      fclose($fp);
   });
 }
 

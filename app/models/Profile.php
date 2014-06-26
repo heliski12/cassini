@@ -1,7 +1,9 @@
 <?php
+use Codesleeve\Stapler\ORM\StaplerableInterface;
+use Codesleeve\Stapler\ORM\EloquentTrait;
 
-class Profile extends BaseModel {
-  use Codesleeve\Stapler\Stapler;
+class Profile extends BaseModel implements StaplerableInterface {
+  use EloquentTrait;
 
   // there has to be another way of ignoring standard form input in one place.
   // using Input::except(['next','previous']) would lead to repeated code
@@ -84,6 +86,11 @@ class Profile extends BaseModel {
     return $this->hasMany('Award');
   }
 
+  public function getSlugAttribute()
+  {
+    return $this->id . "-" . Str::slug($this->tech_title);
+  }
+
   public function getViewFormAttribute()
   {
     return "<a target='_blank' href='" . route('edit_profile', ['id' => $this->id ]) . "'>Use Profile Wizard</a>";
@@ -161,6 +168,7 @@ class Profile extends BaseModel {
       return "0";
     return sizeof($publications);
   }
+  // TODO - refactor these up and make generic
   public function getIntellectualPropertyAttribute()
   {
     $props = [];

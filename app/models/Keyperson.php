@@ -1,9 +1,10 @@
 <?php
 
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Codesleeve\Stapler\ORM\StaplerableInterface;
+use Codesleeve\Stapler\ORM\EloquentTrait;
 
-class Keyperson extends BaseModel {
-  use Codesleeve\Stapler\Stapler;
+class Keyperson extends BaseModel implements StaplerableInterface {
+  use EloquentTrait;
 
 	protected $guarded = array();
 
@@ -81,36 +82,4 @@ class Keyperson extends BaseModel {
   }
   
 }
-
-Keyperson::saving(function($keyperson)
-{
-  // TODO - check for admin
-  if (Input::has('photo_file_name'))
-  {
-    //print_r(Input::get('photo_file_name'));
-    //$original = $keyperson->getOriginal();
-    //print_r("\n" . $original['photo_file_name']);
-
-    // stapler attempt - this would require line 119 of stapler/storage/filesystem to be changed from rename to copy 
-    /*
-    $path = public_path() . '/system/originals/' . Input::get('photo_file_name');
-    $new_path = public_path() . '/system/originals/Keyperson/photo/' . Input::get('photo_file_name');
-
-    $file = new UploadedFile($path, Input::get('photo_file_name'), null, filesize($path), UPLOAD_ERR_OK, true); 
-    $keyperson->photo = $file;
-
-    copy($path,$new_path);
-     */
-  }
-  
-});
-Keyperson::updating(function($keyperson)
-{
-  if (Input::has('photo_file_name'))
-  {
-    //print_r(Input::get('photo_file_name'));
-    //$original = $keyperson->getOriginal();
-    //print_r("\n" . $original['photo_file_name']);
-  }  
-});
 

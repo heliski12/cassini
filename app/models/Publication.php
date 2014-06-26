@@ -1,7 +1,9 @@
 <?php
+use Codesleeve\Stapler\ORM\StaplerableInterface;
+use Codesleeve\Stapler\ORM\EloquentTrait;
 
-class Publication extends BaseModel {
-  use Codesleeve\Stapler\Stapler;
+class Publication extends BaseModel implements StaplerableInterface {
+  use EloquentTrait;
 
 	protected $guarded = array();
 
