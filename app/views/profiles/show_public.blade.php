@@ -30,16 +30,20 @@
 </header>
 
 <div id="content" class="group">
+
 <div id="column_right">
-<h1>{{{ $profile->public_tagline_or_tech_title }}}</h1>
+<h1 id="h2_mobile">{{{ $profile->public_tagline_or_tech_title }}}</h1>
 <h3>{{{ $profile->organization_or_institution_name }}}</h3>
 </div>
+<h2 id="h2_regular">{{{ $profile->public_tagline_or_tech_title }}}</h2>
+
 {{ HTML::image($profile->public_image_url, $profile->public_image_description, [ 'class' => '', 'id' => 'field' ]) }}
 <div id="text">
+    <h3>{{{ $profile->organization_or_institution_name }}}</h3>
     <p><strong>Markets:</strong> {{{ $profile->sectors_tos }}}</p>
     <p><strong>Strategic Opportunities:</strong> {{{ $profile->fs_extra_info ?: "None specified." }}}</p>
     @foreach ($profile->applications as $application)
-        <button class="industry">{{{ $application->name }}}</button>
+        <div class="industry">{{{ $application->name }}}</div>
     @endforeach
 </div>
 <a class="button-wrap" href="{{ route('show_profile', [ $profile->id ]) }}"><button id="view_profile">View Complete Profile</button></a>

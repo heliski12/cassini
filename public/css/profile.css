@@ -57,6 +57,10 @@ button {
 	padding: 10px;
 }
 
+#h2_regular {
+	display:none;
+}
+
 img#field {
 	float:left;
 	width:138px;
@@ -69,6 +73,7 @@ img#field {
 	width:49%;
 }
 
+
 h1, h2, h3 {
 	float:left;
 	font-size: 14px;
@@ -77,6 +82,8 @@ h1, h2, h3 {
 h3 {
 	color: #428BCA;
 }
+
+#text h3 {display:none;}
 
 p {
 	clear:both;
@@ -99,7 +106,7 @@ aside button {
 }
 
 
-#join1, #view_profile, #join2 {
+#join1, #view_profile, #view_profile_mobile, #join2 {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0);
 	background-color: #F5A623;
 	background-image:none;
@@ -117,22 +124,39 @@ aside button {
 	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 
-#join1, #join2, #sign_in, .industry {
+.industry {
+	padding: 4px 10px;
+	color:white;
+	border-radius: 4px;
+	margin-bottom:5px;
+}
+
+#join1, #join2, #sign_in {
 	font-size: 10px;
 	padding: 4px 10px 5px 10px;
 }
 
 #join1, .industry {
-	margin-bottom:7px;
+	margin-bottom:2px;
+	display: inline-block;
 }
 
-.industry {
-    display: inline;
+#view_profile_mobile {
+	font-size:14px;
+	padding: 5px 10px;
+	margin:10px 0 0 0;
 }
 
 #view_profile {
-	font-size:14px;
-	padding: 5px 10px;
+	display:none;
+}
+
+.industry {
+	font-size: 12px;
+}
+
+a.button-wrap {
+    text-decoration: none;
 }
 
 #join2 {
@@ -149,10 +173,6 @@ footer {
 	border-top:3px solid #428BCA;
 	padding-top:5px;
 	padding-left:10px;
-}
-
-a.button-wrap {
-    text-decoration: none;
 }
 
 @media only screen and (min-width : 768px) and (max-width : 1024px){
@@ -182,12 +202,18 @@ img#field {
 }
 
 #column_right {
+	display:none;
 	float:none;
 	width:520px;
 }
 
-h1, h2, h3 {
-	float:right;
+#h2_mobile {
+	display:none;
+}
+
+#column_left {
+width: 230px;
+float: left;
 }
 
 h1, h2 {
@@ -195,14 +221,20 @@ h1, h2 {
 	font-size: 20px;
 }
 
+#h2_regular {
+	display:block;
+	float:none;
+}
+
 h3 {
 	margin:0;
 	float:right;
 	color: #428BCA;
-	-webkit-transform: translateX(-124px);
-	-ms-transform: translateX(-124px);
-	-moz-transform: translateX(-124px);
-	transform: translateX(-124px);
+}
+
+#text h3 {
+	display:block;
+	float:none;
 }
 
 #text {
@@ -220,7 +252,7 @@ aside {
 /**Buttons**/
 
 header #buttons {
-	width:156px;
+	width:157px;
 	height:62px;
 	margin: 25px 0 0 0;
 	float:right;
@@ -239,9 +271,13 @@ aside button {
 }
 
 #view_profile {
+	display:block;
 	font-size:14px;
 	padding: 5px 10px;
-	clear:both;
+}
+
+#view_profile_mobile {
+	display:none;
 }
 
 #join2 {
@@ -291,27 +327,36 @@ img#field {
 }
 
 #column_right {
-	float:none;
-	width:520px;
+	display:none;
 }
 
-h1, h2, h3 {
-	float:right;
+#column_left {
+display:block;
+width: 230px;
+float: left;
 }
+
 
 h1, h2 {
 	margin:0 0 15px 0;
 	font-size: 20px;
 }
 
+#h2_regular {
+	display:block;
+	float:none;
+}
+
+
 h3 {
 	margin:0;
 	float:right;
 	color: #428BCA;
-	-webkit-transform: translateX(-124px);
-	-ms-transform: translateX(-124px);
-	-moz-transform: translateX(-124px);
-	transform: translateX(-124px);
+}
+
+#text h3 {
+	display:block;
+	float:none;
 }
 
 #text {
@@ -353,19 +398,19 @@ header #buttons {
 	margin-right:10px;
 }
 
-button.industry {
-	margin-top:13px;
-    display:inline;
-}
 
 aside button {
 	display:inline;
 }
 
-#view_profile {
+#view_profile{
+	display:block;
 	font-size:14px;
 	padding: 5px 10px;
-	clear:both;
+}
+
+#view_profile_mobile {
+	display:none;
 }
 
 #join2 {

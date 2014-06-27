@@ -111,7 +111,7 @@ class Profile extends BaseModel implements StaplerableInterface {
 
   public function getPublicImageUrlAttribute()
   {
-      if (!empty($this->photos) && sizeof($this->photos) > 0 && !empty($this->photos[0]->photo)) {
+      if (!empty($this->photos) && sizeof($this->photos) > 0 && $this->photos[0]->photo) {
           return $this->photos[0]->photo->url('large');
       } elseif ($this->innovator_type == 'RESEARCHER') {
           return asset('/img/university-avatar.png');
