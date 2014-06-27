@@ -78,7 +78,7 @@
           <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
               <div class="signin">
                   <div class="login-or-signup">
-                      <span class="login-msg">SIGN IN</span> 
+                      <span class="login-msg">SIGN IN</span> or <span class="login-msg"><a href="#user_signup" data-toggle="modal" data-target="#user_signup">SIGN UP</a></span> 
                   </div>
                   {{ Form::open([ 'url' => URL::to('/login'), 'id' => 'login_form' ]) }}
                   @if (Session::has('status'))
@@ -98,6 +98,8 @@
 
       </div>
   </div>
+
+      @include('partials.signup_wrap')
 
 <div class="modal fade" id="forgot_password" tabindex="-1" role="dialog" aria-labelledby="forgot_password_label" aria-hidden="true">
   <div class="modal-dialog">

@@ -20,6 +20,10 @@ $(function(){
         $('#forgot_password_modal_content').html(data);
     });
   });
+
+  if (window.location.hash != undefined && (window.location.hash == '#s' || window.location.hash == '#s2')) {
+      $("#user_signup").modal();
+  }
 });
 
 

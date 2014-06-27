@@ -40,7 +40,7 @@ Route::filter('pre-auth', function()
 
 Route::filter('auth', function()
 {
-  if (Auth::guest() or Auth::user()->role === 'PENDING') return Redirect::guest('/');
+  if (Auth::guest() or Auth::user()->role === 'PENDING') return Redirect::guest('/sign-in');
 });
 
 Route::filter('admin', function()

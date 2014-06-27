@@ -63,7 +63,7 @@ class UsersController extends BaseController {
       elseif ($user->innovator and (empty($user->profiles) or sizeof($user->profiles) == 0))
         return Redirect::route('create_profile');
       else
-        return Redirect::route('marketplace');
+        return Redirect::intended('innovators'); 
     }
     else
     {

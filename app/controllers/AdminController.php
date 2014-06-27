@@ -86,4 +86,10 @@ class AdminController extends Controller {
     return $csv;
   }
 
+  public function publicProfiles()
+  {
+      $profiles = Profile::publicPublished()->get(); 
+      return View::make('admin.all_public_profiles')->with('profiles', $profiles);
+  }
+
 }

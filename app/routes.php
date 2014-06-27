@@ -91,6 +91,7 @@ Route::group(array('before' => 'admin'), function()
   Route::get('admin_csv_users', [ 'as' => 'csv_users', 'uses' => 'AdminController@csvUsers' ]);
   Route::get('admin_csv_keypersons', [ 'as' => 'csv_keypersons', 'uses' => 'AdminController@csvKeypersons' ]);
   Route::get('admin_csv_profiles', [ 'as' => 'csv_profiles', 'uses' => 'AdminController@csvProfiles' ]);
+  Route::get('admin_all_public_profiles', [ 'as' => 'admin_all_public_profiles', 'uses' => 'AdminController@publicProfiles' ]);
 });
 
 if (app()->env !== 'production')

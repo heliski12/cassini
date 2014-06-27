@@ -30,7 +30,8 @@ class Profile extends BaseModel implements StaplerableInterface {
   {
       return $query->whereStatus('PUBLISHED')
           ->whereNotNull('tech_title')
-          ->where('tech_title', '!=', '');
+          ->where('tech_title', '!=', '')
+          ->orderBy('tech_title');
   }
 
   public function sectors()
@@ -96,6 +97,41 @@ class Profile extends BaseModel implements StaplerableInterface {
   public function getSlugAttribute()
   {
     return $this->id . "-" . Str::slug($this->tech_title);
+  }
+
+  public function getPublicTaglineOrTechTitleAttribute()
+  {
+      return $this->public_tagline ?: $this->tech_title;
+  }
+  
+  public function getOrganizationOrInstitutionNameAttribute()
+  {
+      return $this->organization ?: ($this->institution ? ($this->institution->name . ' ' . $this->institution_department) : "");
+  }
+
+  public function getPublicImageUrlAttribute()
+  {
+      if (!empty($this->photos) && sizeof($this->photos) > 0 && !empty($this->photos[0]->photo)) {
+          return $this->photos[0]->photo->url('large');
+      } elseif ($this->innovator_type == 'RESEARCHER') {
+          return asset('/img/university-avatar.png');
+      } else {
+          return asset('/img/company-avatar.png');
+      }
+  }
+
+  public function getPublicImageDescriptionAttribute()
+  {
+      if (!empty($this->photos) && sizeof($this->photos) > 0 && !empty($this->photos[0]->photo)) {
+          return $this->photos[0]->description;
+      } else {
+          return $this->organization_or_institution_name;
+      }
+  }
+
+  public function getPublicDescriptionAttribute()
+  {
+      return ($this->tech_description ? preg_replace('/\s+?(\S+)?$/', '', substr($this->tech_description, 0, 175)) : null);
   }
 
   public function getViewFormAttribute()

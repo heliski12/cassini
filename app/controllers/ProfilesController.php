@@ -165,10 +165,12 @@ class ProfilesController extends BaseController {
 
   public function showPublic($slug)
   {
-      $profile = Profile::find($slug);
+      $profile = Profile::with([ 'institution', 'sectors', 'applications', 'photos' ])->find($slug);
 
-      // TODO - restrict private profiles
-      if (empty($profile)) {
+      if (empty($profile) || 
+          empty($profile->tech_title) || 
+          $profile->tech_title == '' ||
+          $profile->status != 'PUBLISHED') {
           App::abort('404');
       }
 

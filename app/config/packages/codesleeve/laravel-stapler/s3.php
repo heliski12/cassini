@@ -29,7 +29,7 @@ return [
 	|
 	*/
 	's3_object_config' => [
-		'Bucket' => getenv('AWS_BUCKET'),
+		'Bucket' => 'motionry', //getenv('AWS_BUCKET'),
 		'ACL' => 'public-read'
 	],
 	
