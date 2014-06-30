@@ -45,7 +45,7 @@ Route::post('/pcontact', [ 'as' => 'pcontact', 'uses' => 'UsersController@pconta
 Route::get('innovators/{slug}', [ 'as' => 'show_public_profile', 'uses' => 'ProfilesController@showPublic' ]);
 
 // sitemap
-Route::get('sitemap', [ 'as' => 'sitemap', 'uses' => 'SitemapController@sitemap' ]);
+Route::get('sitemap.xml', [ 'as' => 'sitemap', 'uses' => 'SitemapController@sitemap' ]);
 
 // user pending approval
 Route::group(array('before' => 'pre-auth'), function() 
