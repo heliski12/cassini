@@ -51,6 +51,7 @@ class UsersController extends BaseController {
     if (Auth::attempt($credentials)) 
     {
       Auth::user()->last_login = new \DateTime;
+      Auth::user()->last_login_ip = Request::getClientIp();
       Auth::user()->save();
 
       Session::forget('researcher');
