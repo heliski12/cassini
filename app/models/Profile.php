@@ -123,10 +123,8 @@ class Profile extends BaseModel implements StaplerableInterface {
 
   public function getPublicImageUrlAttribute()
   {
-      if (!empty($this->photos) && sizeof($this->photos) > 0 && $this->photos[0]->photo) {
+      if (!empty($this->photos) && sizeof($this->photos) > 0 && $this->photos[0]->photo && $this->photos[0]->photo_file_name) {
           return $this->photos[0]->photo->url('large');
-      } elseif ($this->innovator_type == 'RESEARCHER') {
-          return asset('/img/university-avatar.png');
       } else {
           return asset('/img/company-avatar.png');
       }
