@@ -101,7 +101,7 @@
           <h4>Innovator Listing</h4>
         </div>
       </div>
-      @if (!empty($results))
+      @if (!empty($results) && sizeof($results) > 0)
         <div class="row">
             <div class="col-md-3 pager-count-top">
                 Viewing page {{ $results->getCurrentPage() }} of {{ $results->getLastPage() }}
