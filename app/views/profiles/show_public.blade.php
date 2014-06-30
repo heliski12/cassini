@@ -57,7 +57,7 @@
     </aside>
 </div><!--end #wrapper -->
 
-<footer> Motionry (c) {{ date('Y') }} </footer>
+<footer> Motionry &copy; {{ date('Y') }} </footer>
 
 </body>
 </html>
