@@ -94,7 +94,7 @@ aside {
 	background: #428BCA;
 	color:white;
 	border: 1px solid #ccc;
-
+    height: 100px;
 }
 
 aside p {

@@ -108,17 +108,6 @@ if (app()->env !== 'production')
   Route::get('/test', function() {
 
 
-      $profiles = Profile::whereNotNull('tech_title')->where('tech_title', '!=', '')->get();
-
-      $fp = fopen(base_path() . '/output/public_provile_urls.csv', 'w');
-      
-      foreach ($profiles as $profile) {
-          $slug = $profile->slug;
-          $arr = [$profile->tech_title, 'http://www.motionry.com/innovators/' . $slug];
-          fputcsv($fp, $arr); 
-      }
-
-      fclose($fp);
   });
 }
 

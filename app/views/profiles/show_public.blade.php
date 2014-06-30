@@ -46,12 +46,12 @@
         <div class="industry">{{{ $application->name }}}</div>
     @endforeach
 </div>
-<a class="button-wrap" href="{{ route('show_profile', [ $profile->id ]) }}"><button id="view_profile">View Complete Profile</button></a>
+<a class="button-wrap" href="{{ route('show_profile', [ $profile->id ]) }}"><button id="view_profile">View complete profile</button></a>
 </div>
 
 <aside>
-	<p>Discover and connect with the world's leading researchers and enterpreneurs.</p> 
-	<p>Motionry streamlines technology transfer...<a class="button-wrap" href="{{ URL::to('/#s2') }}"><button id="join2">Join Motionry</button></a></p>
+	<p>Discover and connect with the world's leading researchers and entrepreneurs in energy, agriculture and materials related technologies.</p> 
+	<p><a class="button-wrap" href="{{ URL::to('/#s2') }}"><button id="join2">Join now for free</button></a></p>
 	
 </aside>
 
