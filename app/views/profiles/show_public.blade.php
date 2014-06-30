@@ -42,7 +42,7 @@
     <div id="text">
         <h3>{{{ $profile->organization_or_institution_name }}}</h3>
         <p><strong>Markets:</strong> {{{ $profile->sectors_tos }}}</p>
-        <p><strong>Strategic Opportunities:</strong> {{{ $profile->fs_extra_info ?: "None specified." }}}</p>
+        <p><strong>Strategic Opportunities:</strong> {{{ $profile->public_description ?: "None specified." }}}</p>
         @foreach ($profile->applications as $application)
             <div class="industry">{{{ $application->name }}}</div>
         @endforeach

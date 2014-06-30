@@ -141,7 +141,11 @@ class Profile extends BaseModel implements StaplerableInterface {
 
   public function getPublicDescriptionAttribute()
   {
-      return ($this->tech_description ? preg_replace('/\s+?(\S+)?$/', '', substr($this->tech_description, 0, 175)) : null);
+      $elipses = '';
+      if ($this->tech_description && strlen($this->tech_description) > 175) {
+          $elipses = '...';
+      }
+      return ($this->tech_description ? preg_replace('/,\s+?(\S+)?$/', '', substr($this->tech_description, 0, 175)) . $elipses : null);
   }
 
   public function getViewFormAttribute()
