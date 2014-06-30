@@ -102,6 +102,14 @@
         </div>
       </div>
       @if (!empty($results))
+        <div class="row">
+            <div class="col-md-3 pager-count">
+                Viewing page {{ $results->getCurrentPage() }} of {{ $results->getLastPage() }}
+            </div>
+            <div class="col-md-2 col-md-offset-7">
+                {{ $results->links('partials.pagination') }}
+            </div> 
+        </div>
         @foreach ($results as $idx => $result)
           <div class="row marketplace-result">
             <div class="col-md-1 col-sm-2 col-xs-12">
@@ -150,6 +158,14 @@
             </div>
           @endif
         @endforeach
+        <div class="row">
+            <div class="col-md-3 pager-count">
+                Viewing page {{ $results->getCurrentPage() }} of {{ $results->getLastPage() }}
+            </div>
+            <div class="col-md-2 col-md-offset-7">
+                {{ $results->links('partials.pagination') }}
+            </div> 
+        </div>
       @else
       <div class="row">
       <div class="col-md-12">No results found!</div> 

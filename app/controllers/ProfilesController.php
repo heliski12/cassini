@@ -261,7 +261,7 @@ class ProfilesController extends BaseController {
       if (!empty($ids))
         $results = $results->whereIn('id',$ids);
       
-      $results = $results->get();
+      $results = $results->paginate(15);
     }
     else
     {
@@ -278,7 +278,7 @@ class ProfilesController extends BaseController {
           $results = $results->where('restrict_entrepreneurs',false);
       }
 
-      $results = $results->where('status','PUBLISHED')->orderBy('created_at','DESC')->take(25)->get();
+      $results = $results->where('status','PUBLISHED')->orderBy('created_at','DESC')->paginate(15);
     }
 
     return View::make('profiles.search')->with('results',$results);

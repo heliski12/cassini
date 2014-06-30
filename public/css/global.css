@@ -473,6 +473,14 @@ div.saved-profile { margin-left: 40px; }
 .marketplace-result a.title { font-size: 18px; font-weight: 500; }
 .marketplace-result h5 { font-size: 18px; font-weight: 500; }
 
+/* pagination */
+
+.pager-count { margin: 38px -9px 0px 9px; font-weight: 700; }
+.pager-nav { margin: 26px 5px 0px -5px; font-size: 32px; text-align: right; }
+.pager-nav li { display: inline; } 
+.pager-nav li a { color: #000; } 
+.pager-nav li.active a:hover { color: #ed9c28; }
+
 /* single profile */
 div.profile-wrap {
   margin-top:40px;
