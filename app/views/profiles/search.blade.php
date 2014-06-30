@@ -103,7 +103,7 @@
       </div>
       @if (!empty($results))
         <div class="row">
-            <div class="col-md-3 pager-count">
+            <div class="col-md-3 pager-count-top">
                 Viewing page {{ $results->getCurrentPage() }} of {{ $results->getLastPage() }}
             </div>
             <div class="col-md-2 col-md-offset-7">
@@ -159,7 +159,7 @@
           @endif
         @endforeach
         <div class="row">
-            <div class="col-md-3 pager-count">
+            <div class="col-md-3 pager-count-bottom">
                 Viewing page {{ $results->getCurrentPage() }} of {{ $results->getLastPage() }}
             </div>
             <div class="col-md-2 col-md-offset-7">
