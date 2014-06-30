@@ -167,10 +167,7 @@ class ProfilesController extends BaseController {
   {
       $profile = Profile::with([ 'institution', 'sectors', 'applications', 'photos' ])->find($slug);
 
-      if (empty($profile) || 
-          empty($profile->tech_title) || 
-          $profile->tech_title == '' ||
-          $profile->status != 'PUBLISHED') {
+      if (empty($profile) || !$profile->isPublicDisplayed()) {
           App::abort('404');
       }
 

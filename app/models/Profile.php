@@ -31,7 +31,19 @@ class Profile extends BaseModel implements StaplerableInterface {
       return $query->whereStatus('PUBLISHED')
           ->whereNotNull('tech_title')
           ->where('tech_title', '!=', '')
+          ->whereRestrictSeekers(false)
+          ->whereRestrictResearchers(false)
+          ->whereRestrictEntrepreneurs(false)
           ->orderBy('tech_title');
+  }
+
+  public function isPublicDisplayed() 
+  {
+      return !empty($this->tech_title) && 
+          $this->status == 'PUBLISHED' && 
+          !$this->restrict_seekers &&
+          !$this->restrict_researchers &&
+          !$this->restrict_entrepreneurs;
   }
 
   public function sectors()
