@@ -179,6 +179,12 @@ class ProfilesController extends BaseController {
       return View::make('profiles.show_public')->with('profile', $profile);
   }
 
+  public function clearSearchFields()
+  {
+      Session::forget('saved_search');
+      return true;
+  }
+
   public function index()
   {
     Input::flash();
@@ -187,13 +193,26 @@ class ProfilesController extends BaseController {
     $researcher = Auth::user()->researcher;
     $entrepreneur = Auth::user()->entrepreneur;
 
+    $savedSearch = Session::get('saved_search');
+
+    $search_params = [];
+    if (!empty($savedSearch)) {
+        parse_str($savedSearch, $search_params);
+    }
+
     // "a" is the name of the submit button
-    if (Input::has('a'))
+    if (Input::has('a') || !empty($search_params))
     {
-      $query = Input::has('q') ? Input::get('q') : '';
-      $market_sectors = Input::has('m') ? Input::get('m') : null;
-      $product_stages = Input::has('p') ? Input::get('p') : null;
-      $innovator_types = Input::has('i') ? Input::get('i') : null;
+      $query = Input::has('q') ? Input::get('q') : (isset($search_params['q']) ? $search_params['q'] : '');
+      $market_sectors = Input::has('m') ? Input::get('m') : (isset($search_params['m']) ? $search_params['m'] : null);
+      $product_stages = Input::has('p') ? Input::get('p') : (isset($search_params['p']) ? $search_params['p'] : null);
+      $innovator_types = Input::has('i') ? Input::get('i') : (isset($search_params['i']) ? $search_params['i'] : null);
+
+      // Store the search params in the user session
+      Session::put('saved_search', http_build_query(['q' => $query, 
+          'm' => $market_sectors, 
+          'p' => $product_stages, 
+          'i' => $innovator_types]));
 
       // query sphinx if a search term was entered
       if (!empty($query))
@@ -208,7 +227,7 @@ class ProfilesController extends BaseController {
 
       // if a search term was entered and there are no results, return an empty result set
       if (!empty($query) and empty($ids))
-        return View::make('profiles.search')->with('results', []);
+          return View::make('profiles.search')->with('results', [])->with('saved_input',$search_params);
 
       // do the eager fetches
       $results = Profile::with(['keypersons','institution','applications','sectors']);
@@ -278,7 +297,7 @@ class ProfilesController extends BaseController {
       $results = $results->where('status','PUBLISHED')->orderBy('created_at','DESC')->paginate(15);
     }
 
-    return View::make('profiles.search')->with('results',$results);
+    return View::make('profiles.search')->with('results',$results)->with('saved_input',$search_params);
   }
 
   public function contact()

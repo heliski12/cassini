@@ -68,6 +68,7 @@ Route::group(array('before' => 'auth'), function()
   Route::get('/edit-profile/{id}/{step?}', [ 'as' => 'edit_profile', 'uses' => 'ProfilesController@edit' ])->where('step', '[1-3]');
   //Route::post('/edit_profile/{step?}', [ 'as' => 'update_profile', 'uses' => 'ProfilesController@store' ]);
   Route::get('/innovators', [ 'as' => 'marketplace', 'uses' => 'ProfilesController@index' ]);
+  Route::get('/clear-search-fields', [ 'as' => 'clear_search_fields', 'uses' => 'ProfilesController@clearSearchFields' ]);
   Route::get('/saved-profiles', [ 'as' => 'saved_profiles', 'uses' => 'UsersController@savedProfiles' ]);
   Route::get('/my-account', [ 'as' => 'my_account', 'uses' => 'UsersController@myAccount' ]);
   Route::post('/add-editor', [ 'as' => 'add_editor', 'uses' => 'ProfilesController@addEditor' ]);

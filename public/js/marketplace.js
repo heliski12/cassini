@@ -161,6 +161,7 @@ $(function(){
     event.preventDefault();
     $("input[name=q]").val("");
     $(".selectpicker").selectpicker("deselectAll");
+    $.get(BASE_URL + '/clear-search-fields', {}, function(data) {});
   });
   
   // initialize open/close state of innovator type based on previous model value
