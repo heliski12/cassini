@@ -115,6 +115,10 @@ aside button {
 	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 
+#join1:hover, #view_profile:hover, #view_profile_mobile:hover, #join2:hover {
+    background-color: #428BCA;
+}
+
 #sign_in, .industry {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0);
 	background-color: #428BCA;
@@ -122,6 +126,10 @@ aside button {
 	background-repeat:repeat-x;
 	border-color: rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1);
 	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+#sign_in:hover {
+    background-color: #F5A623;
 }
 
 .industry {
@@ -167,12 +175,17 @@ a.button-wrap {
 }
 
 footer {
-	position: fixed;
+	clear: both;
 	width:1014px;
 	bottom: 5px;
 	border-top:3px solid #428BCA;
 	padding-top:5px;
-	padding-left:10px;
+	/* padding-left:10px; */
+	margin-top: 36px;
+}
+
+footer p {
+	padding-left: 5px;
 }
 
 @media only screen and (min-width : 768px) and (max-width : 1024px){
@@ -295,6 +308,10 @@ aside button {
 
 html {
 	background: #F5F5F5;
+}
+
+#wrapper {
+	overflow: auto;
 }
 
 body {
