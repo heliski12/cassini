@@ -19,6 +19,7 @@ return array(
     'full_name' => [ 'title' => 'Full Name', 'sort_field' => 'last_name' ],
     'email' => [ 'title' => 'Email' ],
     'last_login' => [ 'title' => 'Last Login' ],
+    'last_login_ip' => [ 'title' => 'Last Login IP' ],
     'type_tos' => [ 'title' => 'type' ],
     'role' => [ 'title' => 'Role' ],
     'organization' => [ 'title' => 'Organization' ],
