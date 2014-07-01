@@ -32,7 +32,7 @@
 
     <div id="content" class="group">
 
-    <h1 id="h2_mobile">{{{ $profile->public_tagline_or_tech_title }}}</h1>
+    <h1 class="tagline">{{{ $profile->public_tagline_or_tech_title }}}</h1>
 
     <div id="column_1">
         {{ HTML::image($profile->public_image_url, $profile->public_image_description, [ 'class' => '', 'id' => 'company_img' ]) }}
