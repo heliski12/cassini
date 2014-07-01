@@ -24,36 +24,37 @@
 <div id="wrapper">
     <header>
     <a href="{{ URL::to('/') }}"><img alt="Motionry Logo" id="logo" src="{{ asset('img/Black-Motionry-Logo.png') }}"/></a>
-    <div id="buttons">
-    <a class="button-wrap" href="{{ URL::to('/#s') }}"><button id="join1" >Join Motionry</button></a>
-    <a class="button-wrap" href="{{ URL::to('/sign-in') }}"><button id="sign_in" >Sign In</button></a>
+    <div id="nav_buttons">
+    <a href="{{ URL::to('/#s') }}"><button id="join_1" >Join Motionry</button></a>
+    <a href="{{ URL::to('/sign-in') }}"><button id="sign_in" >Sign In</button></a>
     </div>
     </header>
 
     <div id="content" class="group">
 
-    <div id="column_right">
     <h1 id="h2_mobile">{{{ $profile->public_tagline_or_tech_title }}}</h1>
-    <h3>{{{ $profile->organization_or_institution_name }}}</h3>
-    </div>
-    <h2 id="h2_regular">{{{ $profile->public_tagline_or_tech_title }}}</h2>
 
-    {{ HTML::image($profile->public_image_url, $profile->public_image_description, [ 'class' => '', 'id' => 'field' ]) }}
-    <div id="text">
-        <h3>{{{ $profile->organization_or_institution_name }}}</h3>
+    <div id="column_1">
+        {{ HTML::image($profile->public_image_url, $profile->public_image_description, [ 'class' => '', 'id' => 'company_img' ]) }}
+        <a href="{{ route('show_profile', [ $profile->id ]) }}"><button id="view_profile">View complete profile</button></a>
+    </div><!--end #column_1-->
+
+    <div id="column_2">
+        <h3 id="company">{{{ $profile->organization_or_institution_name }}}</h3>
+    
         <p><strong>Markets:</strong> {{{ $profile->sectors_tos }}}</p>
         <p><strong>Strategic Opportunities:</strong> {{{ $profile->public_description ?: "None specified." }}}</p>
         @foreach ($profile->applications as $application)
             <div class="industry">{{{ $application->name }}}</div>
         @endforeach
     </div>
-    <a class="button-wrap" href="{{ route('show_profile', [ $profile->id ]) }}"><button id="view_profile">View complete profile</button></a>
+
+
     </div>
 
     <aside>
         <p>Discover and connect with the world's leading researchers and entrepreneurs in energy, agriculture and materials related technologies.</p> 
-        <p><a class="button-wrap" href="{{ URL::to('/#s2') }}"><button id="join2">Join now for free</button></a></p>
-        
+        <a href="{{ URL::to('/#s2') }}"><button id="join_2">Join now for free</button></a>
     </aside>
 </div><!--end #wrapper -->
 

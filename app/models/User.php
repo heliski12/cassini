@@ -52,7 +52,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
   public function collaborations()
   {
     return $this->belongsToMany('Profile', 'profile_permissions', 'profile_id', 'user_id')->withTimestamps();
-  }
+  } 
 
   public function getTypeTosAttribute() { 
     $type = "";
