@@ -3,7 +3,8 @@
 @section('form')
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <h5>What type of Innovator are you?  <span class="public-warning">(this and your organization/institution name will appear on your public profile 'business card')</span></h5>
+    <h5><span class="public-warning">If you elect to have your profile visible for everyone on Motionry, the information noted with an orange asterisk will be shown on an internet search.</span></h5>
+    <h5>What type of Innovator are you?</h5>
     <div class="radio col-md-9 col-md-offset-3">
       <label class="radio-label">
         <input type="radio" name="innovator_type" value="RESEARCHER" {{ ($profile->innovator_type === 'RESEARCHER') ? 'checked' : '' }} >
@@ -13,10 +14,12 @@
     <div class="col-md-9 col-md-offset-3 innovator-type-extras collapse" id="researcher">
       <div class="form-group">
         {{ Form::label('institution_id', 'Academic or Government&nbsp;Institution', [ 'class' => 'control-label' ]) }}
+        <span class="public-warning">&nbsp;&nbsp;&nbsp;*</span>
         {{ Form::select('institution_id', SelectHelper::get_institution_options(), $profile->institution_id, [ 'class' => 'form-control' ] ) }} 
       </div>
       <div class="form-group">
         {{ Form::label('institution_department', 'Department', [ 'class' => 'control-label' ]) }}
+        <span class="public-warning">&nbsp;&nbsp;&nbsp;*</span>
         {{ Form::text('institution_department',$profile->institution_department, [ 'class' => 'form-control', 'id' => 'institution_department' ]) }}
       </div>
     </div>
@@ -29,6 +32,7 @@
     <div class="col-md-9 col-md-offset-3 innovator-type-extras collapse" id="entrepreneur">
       <div class="form-group">
         {{ Form::label('organization', 'Organization', [ 'class' => 'control-label' ]) }}
+        <span class="public-warning">&nbsp;&nbsp;&nbsp;*</span>
         {{ Form::text('organization',$profile->organization, [ 'class' => 'form-control', 'id' => 'organization' ]) }}
       </div>
       <div class="form-group form-group-label">

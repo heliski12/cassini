@@ -151,7 +151,8 @@ html .user-nav div
   margin-bottom: 10px;
 }
 .public-warning {
-    color: #a94442;
+    color: #ed9c28;
+    font-size: 16px !important;
 }
 .steps-nav
 {

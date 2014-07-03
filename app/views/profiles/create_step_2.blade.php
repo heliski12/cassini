@@ -3,17 +3,17 @@
 @section('form')
 <div class="row" id="profile-step-2">
   <div class="col-md-10 col-md-offset-1">
-    <h5>Title of technology or research (can include a tagline)</h5>
+      <h5>Title of technology or research (can include a tagline)&nbsp;&nbsp;<span class="public-warning">*</span></h5>
     <div class="form-group">
       {{ Form::text('tech_title',$profile->tech_title, [ 'class' => 'form-control', 'id' => 'tech_title' ]) }}
     </div>
-    <h5>Description of the technology or research (max 1550 characters with spaces)</h5>
+    <h5>Description of the technology or research (max 1550 characters with spaces)&nbsp;&nbsp;<span class="public-warning">* (only the first 165 characters)</span></h5>
     <div class="form-group">
       <textarea id="tech_description" name="tech_description" class="form-control" maxlength="1550" rows="10">{{{ $profile->tech_description }}}</textarea>
       <div id="tech_description_charcount">
       </div>
     </div>
-    <h5>Public tagline <span class="public-warning">(this will appear on your public profile 'business card' and may be edited by Motionry admins)</span></h5>
+    <h5>Public tagline&nbsp;&nbsp;<span class="public-warning">* (may be edited by Motionry admins)</span></h5>
     <div class="form-group">
       {{ Form::text('public_tagline',$profile->public_tagline, [ 'class' => 'form-control', 'id' => 'public_tagline' ]) }}
     </div>
@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-    <h5>What are the market applications?  For instance, a nanotechnology may be applicable to solar panels, HVAC, and green building materials.  Click on enter or return key after each entry to separate.</h5>
+    <h5>What are the market applications?  For instance, a nanotechnology may be applicable to solar panels, HVAC, and green building materials.  Click on enter or return key after each entry to separate.&nbsp;&nbsp;<span class="public-warning">*</span></h5>
     <div class="form-group">
       <ul id="market_applications">
         @foreach ($profile->applications as $application)
@@ -52,7 +52,7 @@
         @endforeach
       </ul>
     </div>
-    <h5>Market sector  <span class="public-warning">(this will appear on your public profile 'business card')</span></h5>
+    <h5>Market sector&nbsp;&nbsp;<span class="public-warning">*</span></h5>
     <div class="row">
       <div class="form-group">
         <div class="col-md-6">
@@ -81,7 +81,7 @@
     <div class="row">
       <hr/>
     </div>
-    <h5>Upload photo of the technology or research (max 4 photos)  <span class="public-warning">(these may appear on your public profile 'business card')</span></h5>
+    <h5>Upload photo of the technology or research (max 4 photos)</h5>
       <div id="photos_list">
         @foreach (range(0,3) as $idx)
           @if (sizeof($profile->photos) > $idx)

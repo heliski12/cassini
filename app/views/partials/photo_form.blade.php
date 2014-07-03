@@ -2,13 +2,14 @@
   @if (empty($photo) or empty($photo->photo_file_name))
     <div class="form-group">
       {{ Form::label('photo_photos[]', 'Photo ' . ($label), [ 'class' => 'col-md-3 control-label' ]) }}
+      <label class="col-md-3 control-label" for="photo_photos[]">Photo {{ $label }}@if ($label == 1)&nbsp;&nbsp;<span class="public-warning">*</span>@endif</label>
       <div class="col-md-9">
         {{ Form::file('photo_photos[]',[ 'class' => 'form-control' ]) }}
       </div>
     </div>
   @else
     <div class="form-group">
-      <label class="col-md-3 control-label">Photo {{ $label }}</label>
+      <label class="col-md-3 control-label">Photo {{ $label }}@if ($label == 1)&nbsp;&nbsp;<span class="public-warning">*</span>@endif</label>
       <div class="col-md-9">
         <img class="photo-photo" src="{{ asset($photo->photo->url('thumb')) }}" />
       </div>
