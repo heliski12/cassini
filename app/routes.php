@@ -98,5 +98,8 @@ if (app()->env !== 'production')
     }
     Log::info(sprintf("%s (%s) : %s",$sql,implode(",",$bindings),$time));
   });
+  Route::get('test', function() {
+    dd(app()->env);
+  });
 }
 

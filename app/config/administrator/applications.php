@@ -13,5 +13,8 @@ return array(
   'edit_fields' => array(
     'name',
   ),
+  'filters' => array(
+    'name',
+  ),
 );
 
