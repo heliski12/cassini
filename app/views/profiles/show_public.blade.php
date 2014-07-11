@@ -42,8 +42,8 @@
     <div id="column_2">
         <h3 id="company">{{{ $profile->organization_or_institution_name }}}</h3>
     
-        <p><strong>Markets:</strong> {{{ $profile->sectors_tos }}}</p>
-        <p><strong>Strategic Opportunities:</strong> {{{ $profile->public_description ?: "None specified." }}}</p>
+        <p><strong>Technology Overview:</strong> {{{ $profile->public_description ?: "None specified." }}}</p>
+        <p><strong>Markets & Applications:</strong> {{{ $profile->sectors_tos }}}</p>
         @foreach ($profile->applications as $application)
             <div class="industry">{{{ $application->name }}}</div>
         @endforeach
@@ -53,7 +53,7 @@
     </div>
 
     <aside>
-        <p>Discover and connect with the world's leading researchers and entrepreneurs in energy, agriculture and materials related technologies.</p> 
+        <p>Discover and connect with the world’s leading researchers, entrepreneurs and companies in energy, agriculture and materials related technologies.</p> 
         <a href="{{ URL::to('/#s2') }}"><button id="join_2">Join now for free</button></a>
     </aside>
 </div><!--end #wrapper -->
