@@ -9,6 +9,8 @@ return [
 
   'admin_email' => 'jstavis@gmail.com',
 
+  'search_results_page_size' => 10,
+
   'profile_statuses' => [ 
     'STARTED' => 'Started',
     'COMPLETE_PENDING' => 'Submitted and will be reviewed by Motionry shortly before it is published.',

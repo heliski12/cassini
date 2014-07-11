@@ -277,7 +277,7 @@ class ProfilesController extends BaseController {
       if (!empty($ids))
         $results = $results->whereIn('id',$ids);
       
-      $results = $results->paginate(15);
+      $results = $results->paginate(Config::get('cassini.search_results_page_size'));
     }
     else
     {
@@ -294,7 +294,7 @@ class ProfilesController extends BaseController {
           $results = $results->where('restrict_entrepreneurs',false);
       }
 
-      $results = $results->where('status','PUBLISHED')->orderBy('created_at','DESC')->paginate(15);
+      $results = $results->where('status','PUBLISHED')->orderBy('created_at','DESC')->paginate(Config::get('cassini.search_results_page_size'));
     }
 
     return View::make('profiles.search')->with('results',$results)->with('saved_input',$search_params);
