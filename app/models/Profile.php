@@ -126,7 +126,7 @@ class Profile extends BaseModel implements StaplerableInterface {
       if (!empty($this->photos) && sizeof($this->photos) > 0 && $this->photos[0]->photo && $this->photos[0]->photo_file_name) {
           return $this->photos[0]->photo->url('large');
       } else {
-          return asset('/img/company-avatar.png');
+          return asset('/img/innovator-avatar.png');
       }
   }
 
