@@ -13,10 +13,12 @@
       <div id="tech_description_charcount">
       </div>
     </div>
-    <h5>Public tagline&nbsp;&nbsp;<span class="public-warning">* (may be edited by Motionry admins)</span></h5>
-    <div class="form-group">
-      {{ Form::text('public_tagline',$profile->public_tagline, [ 'class' => 'form-control', 'id' => 'public_tagline' ]) }}
-    </div>
+    @if (false)
+        <h5>Public tagline&nbsp;&nbsp;<span class="public-warning">* (may be edited by Motionry admins)</span></h5>
+        <div class="form-group">
+          {{ Form::text('public_tagline',$profile->public_tagline, [ 'class' => 'form-control', 'id' => 'public_tagline' ]) }}
+        </div>
+    @endif
     <h5>Technology or research stage</h5>
     <div class="row">
       <div class="form-group">

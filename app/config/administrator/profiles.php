@@ -14,7 +14,6 @@ return array(
     'id' => [ 'title' => 'Id' ],
     'tech_title' => [ 'title' => 'Technology' ],  
     'view_form' => [ 'title' => 'Profile Wizard' ],
-    'public_tagline' => [ 'title' => 'Public Tagline' ],
     'status_tos' => [ 'title' => 'Status' ],
     'creator_tos' => [ 'title' => 'Creator' ],
     'regions_tos' => [ 'title' => 'Market Regions' ],
@@ -25,9 +24,6 @@ return array(
     'tech_title',
   ),
   'edit_fields' => array(
-    'public_tagline' => array(
-        'title' => 'Public Tagline',
-    ),
     'status' => array(
       'title' => 'Status',
       'type' => 'enum',

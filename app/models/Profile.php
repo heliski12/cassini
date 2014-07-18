@@ -113,7 +113,8 @@ class Profile extends BaseModel implements StaplerableInterface {
 
   public function getPublicTaglineOrTechTitleAttribute()
   {
-      return $this->public_tagline ?: $this->tech_title;
+      //return $this->public_tagline ?: $this->tech_title;
+      return $this->tech_title;
   }
   
   public function getOrganizationOrInstitutionNameAttribute()
