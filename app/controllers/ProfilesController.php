@@ -196,7 +196,7 @@ class ProfilesController extends BaseController {
     $savedSearch = Session::get('saved_search');
 
     $search_params = [];
-    if (!empty($savedSearch)) {
+    if (!empty($savedSearch) && !Input::has('a')) {
         parse_str($savedSearch, $search_params);
     }
 
