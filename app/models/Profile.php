@@ -1,7 +1,9 @@
 <?php
+use Codesleeve\Stapler\ORM\StaplerableInterface;
+use Codesleeve\Stapler\ORM\EloquentTrait;
 
-class Profile extends BaseModel {
-  use Codesleeve\Stapler\Stapler;
+class Profile extends BaseModel implements StaplerableInterface {
+  use EloquentTrait;
 
   // there has to be another way of ignoring standard form input in one place.
   // using Input::except(['next','previous']) would lead to repeated code
@@ -22,6 +24,26 @@ class Profile extends BaseModel {
     ));
 
     parent::__construct($attributes);
+  }
+
+  public function scopePublicPublished($query)
+  {
+      return $query->whereStatus('PUBLISHED')
+          ->whereNotNull('tech_title')
+          ->where('tech_title', '!=', '')
+          ->whereRestrictSeekers(false)
+          ->whereRestrictResearchers(false)
+          ->whereRestrictEntrepreneurs(false)
+          ->orderBy('tech_title');
+  }
+
+  public function isPublicDisplayed() 
+  {
+      return !empty($this->tech_title) && 
+          $this->status == 'PUBLISHED' && 
+          !$this->restrict_seekers &&
+          !$this->restrict_researchers &&
+          !$this->restrict_entrepreneurs;
   }
 
   public function sectors()
@@ -82,6 +104,48 @@ class Profile extends BaseModel {
   public function awards()
   {
     return $this->hasMany('Award');
+  }
+
+  public function getSlugAttribute()
+  {
+    return $this->id . "-" . Str::slug($this->tech_title);
+  }
+
+  public function getPublicTaglineOrTechTitleAttribute()
+  {
+      return $this->public_tagline ?: $this->tech_title;
+  }
+  
+  public function getOrganizationOrInstitutionNameAttribute()
+  {
+      return $this->organization ?: ($this->institution ? ($this->institution->name . ' ' . $this->institution_department) : "");
+  }
+
+  public function getPublicImageUrlAttribute()
+  {
+      if (!empty($this->photos) && sizeof($this->photos) > 0 && $this->photos[0]->photo && $this->photos[0]->photo_file_name) {
+          return $this->photos[0]->photo->url('large');
+      } else {
+          return asset('/img/innovator-avatar.png');
+      }
+  }
+
+  public function getPublicImageDescriptionAttribute()
+  {
+      if (!empty($this->photos) && sizeof($this->photos) > 0 && !empty($this->photos[0]->photo)) {
+          return $this->photos[0]->description;
+      } else {
+          return $this->organization_or_institution_name;
+      }
+  }
+
+  public function getPublicDescriptionAttribute()
+  {
+      $elipses = '';
+      if ($this->tech_description && strlen($this->tech_description) > 175) {
+          $elipses = '...';
+      }
+      return ($this->tech_description ? preg_replace('/,\s+?(\S+)?$/', '', substr($this->tech_description, 0, 175)) . $elipses : null);
   }
 
   public function getViewFormAttribute()
@@ -161,6 +225,7 @@ class Profile extends BaseModel {
       return "0";
     return sizeof($publications);
   }
+  // TODO - refactor these up and make generic
   public function getIntellectualPropertyAttribute()
   {
     $props = [];

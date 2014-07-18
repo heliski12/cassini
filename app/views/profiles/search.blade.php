@@ -25,7 +25,7 @@
                 <div class="row">
                   <div class="form-group">
                     <div class="col-md-12">
-                      {{ Form::select('m[]', SelectHelper::get_sector_options(), Input::old('m[]'), [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
+                      {{ Form::select('m[]', SelectHelper::get_sector_options(), Input::old('m[]') ?: (isset($saved_input['m']) ? $saved_input['m'] : null), [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
                     </div>
                   </div>
                 </div>
@@ -35,7 +35,7 @@
                 <div class="row">
                   <div class="form-group">
                     <div class="col-md-12">
-                      {{ Form::select('p[]', Config::get('cassini.product_stages'), Input::old('p[]'), [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
+                      {{ Form::select('p[]', Config::get('cassini.product_stages'), Input::old('p[]') ?: (isset($saved_input['p']) ? $saved_input['p'] : null), [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
                     </div>
                   </div>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="row">
                   <div class="form-group">
                     <div class="col-md-12">
-                      {{ Form::select('i[]', Config::get('cassini.innovator_search_types'), Input::old('i[]'), [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
+                      {{ Form::select('i[]', Config::get('cassini.innovator_search_types'), Input::old('i[]') ?: (isset($saved_input['i']) ? $saved_input['i'] : null), [ 'class' => 'selectpicker', 'multiple' => 'multiple', 'title' => 'Select all that apply...', 'data-container' => '.marketplace-search', 'data-width' => '100%' ] ) }} 
                     </div>
                   </div>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="input-group">
-                      {{ Form::text('q', Input::old('q'), [ 'class' => 'form-control', 'placeholder' => 'Enter search term' ]) }}
+                      {{ Form::text('q', Input::old('q') ?: (isset($saved_input['q']) ? $saved_input['q'] : null), [ 'class' => 'form-control', 'placeholder' => 'Enter search term' ]) }}
                       <span class="input-group-btn">
                         {{ Form::submit('Search', [ 'class' => 'btn btn-default', 'id' => 'search', 'name' => 'a' ]) }}
                       </span>
@@ -101,7 +101,15 @@
           <h4>Innovator Listing</h4>
         </div>
       </div>
-      @if (!empty($results))
+      @if (!empty($results) && sizeof($results) > 0)
+        <div class="row">
+            <div class="col-md-3 pager-count-top">
+                Viewing page {{ $results->getCurrentPage() }} of {{ $results->getLastPage() }}
+            </div>
+            <div class="col-md-2 col-md-offset-7">
+                {{ $results->links('partials.pagination') }}
+            </div> 
+        </div>
         @foreach ($results as $idx => $result)
           <div class="row marketplace-result">
             <div class="col-md-1 col-sm-2 col-xs-12">
@@ -150,6 +158,14 @@
             </div>
           @endif
         @endforeach
+        <div class="row">
+            <div class="col-md-3 pager-count-bottom">
+                Viewing page {{ $results->getCurrentPage() }} of {{ $results->getLastPage() }}
+            </div>
+            <div class="col-md-2 col-md-offset-7">
+                {{ $results->links('partials.pagination') }}
+            </div> 
+        </div>
       @else
       <div class="row">
       <div class="col-md-12">No results found!</div> 

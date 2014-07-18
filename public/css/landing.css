@@ -85,3 +85,7 @@ html .open .dropdown-toggle.btn-default {
   border-color: #d58512;
 }
 html .modal-body { padding-bottom: 0px; padding-top: 0px; }
+
+@media (max-width: 992px) {
+    div.copy { position: relative; }
+}

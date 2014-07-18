@@ -5,11 +5,12 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.1.*",
-    "frozennode/administrator": "dev-master",
-    "way/generators": "dev-master",
-    "codesleeve/stapler": "dev-master",
-    "aws/aws-sdk-php-laravel": "1.*",
-    "scalia/sphinxsearch": "dev-master"
+        "frozennode/administrator": "dev-master",
+        "way/generators": "dev-master",
+        "codesleeve/laravel-stapler": "1.0.*",
+        "aws/aws-sdk-php-laravel": "1.*",
+        "scalia/sphinxsearch": "dev-master",
+        "roumen/sitemap": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

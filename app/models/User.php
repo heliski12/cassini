@@ -52,7 +52,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
   public function collaborations()
   {
     return $this->belongsToMany('Profile', 'profile_permissions', 'profile_id', 'user_id')->withTimestamps();
-  }
+  } 
 
   public function getTypeTosAttribute() { 
     $type = "";
@@ -133,6 +133,20 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     return Validator::make($input, static::$password_rules);
   }
   
+  public function getRememberToken()
+  {
+      return $this->remember_token;
+  }
+
+  public function setRememberToken($value)
+  {
+      $this->remember_token = $value;
+  }
+
+  public function getRememberTokenName()
+  {
+      return 'remember_token';
+  }
   
 
 }

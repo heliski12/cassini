@@ -150,6 +150,10 @@ html .user-nav div
   padding-top: 0px;
   margin-bottom: 10px;
 }
+.public-warning {
+    color: #ed9c28;
+    font-size: 16px !important;
+}
 .steps-nav
 {
   text-align:center;
@@ -469,6 +473,15 @@ div.saved-profile { margin-left: 40px; }
 .marketplace-result-img { width: 100px; margin-top: 10px; }
 .marketplace-result a.title { font-size: 18px; font-weight: 500; }
 .marketplace-result h5 { font-size: 18px; font-weight: 500; }
+
+/* pagination */
+
+.pager-count-bottom { margin: 34px -9px 0px 9px; font-weight: 700; }
+.pager-count-top { margin: 30px -9px 15px 9px; font-weight: 700; }
+.pager-nav { margin: 26px 5px 0px -5px; font-size: 22px; text-align: right; }
+.pager-nav li { display: inline; } 
+.pager-nav li a { color: #000; } 
+.pager-nav li.active a:hover { color: #ed9c28; }
 
 /* single profile */
 div.profile-wrap {

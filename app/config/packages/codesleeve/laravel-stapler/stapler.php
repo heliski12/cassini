@@ -1,7 +1,7 @@
 <?php
 
 return [
-	
+
 	/*
 	|--------------------------------------------------------------------------
 	| Stapler Storage Driver
@@ -19,12 +19,12 @@ return [
 	| Stapler Image Processing Library
 	|--------------------------------------------------------------------------
 	|
-	| The default library used for image processing.  Can be one GD, Imagick, or
-	| Gmagick.
+	| The default library used for image processing.  Can be one of the following:
+	| Imagine\Gd\Imagine, Imagine\Imagick\Imagine, or Imagine\Gmagick\Imagine.
 	|
 	*/
-	
-	'image_processing_library' => 'GD',
+
+	'image_processing_library' => 'Imagine\Gd\Imagine',
 
 
 	/*

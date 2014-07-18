@@ -2,9 +2,14 @@
 
 return [
 
-  'filestorage' => 'filesystem',  // or s3
+  'asset_version' => '15',
+  'public_profile_launch_date' => new DateTime('2014-07-01'),
+
+  'filestorage' => 's3', // 'filesystem',  // or s3
 
   'admin_email' => 'jstavis@gmail.com',
+
+  'search_results_page_size' => 10,
 
   'profile_statuses' => [ 
     'STARTED' => 'Started',

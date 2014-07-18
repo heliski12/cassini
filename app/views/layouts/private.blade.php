@@ -13,7 +13,7 @@
 
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/fonts.css') }}
-    {{ HTML::style('css/global.css?6') }}
+    {{ HTML::style('css/global.css?' . Config::get('cassini.asset_version')) }}
 
     @yield('css')
     
@@ -86,7 +86,7 @@
 
     @yield('js-lib')
 
-    {{ HTML::script('js/marketplace.js?2') }}
+    {{ HTML::script('js/marketplace.js?' . Config::get('cassini.asset_version')) }}
 
     @yield('js-user')
 

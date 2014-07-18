@@ -1,0 +1,343 @@
+
+.group:before,
+.group:after {
+    content: " ";
+    display: table;
+}
+
+.group:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.group {
+    *zoom: 1;
+}
+
+body {
+	margin:0;
+	color:#4A4A4A;
+	font-size:12px;
+	font-family: "Helvetica Neue", sans-serif;
+}
+
+header {
+	height:52px;
+	padding: 2%;
+	border-bottom:4px solid #428BCA;
+}
+
+button {
+	color:white;
+	cursor: pointer;
+	display:block;
+	border-radius: 4px;
+	padding: .5em .9em;
+}
+
+h1 {
+	float:left;
+	font-size: 1.3em;
+} 
+
+h2, h3 {
+	float:left;
+	font-size: 1.2em;
+}
+
+
+p {
+	clear:both;
+}
+
+aside {
+	padding: 6px 10px 0 10px;
+	background: #428BCA;
+	color:white;
+	border: 1px solid #ccc;
+    overflow: auto;
+}
+
+aside p {
+	font-weight: 600;
+	line-height: 1.7em;
+}
+
+#logo {
+	width:198px;
+	height:52px;
+	float:left;
+}
+
+#nav_buttons {
+	float: right;
+	width: 100px;
+}
+
+#join_1, #join_2, #sign_in {
+	float:right;
+}
+
+#join_2 {
+	margin-top: -10px;
+	margin-bottom: 10px;
+	}
+
+
+#content {
+	width: 96%;
+	padding: 2%;
+}
+
+img#company_img {
+	float:left;
+	width:70%;
+	border:1px solid gray;
+}
+
+#column_1 {
+	width: 96%;
+}
+
+h3#company {
+	color: #428BCA;
+	clear: both;
+}
+
+#view_profile, #join_2 {
+	font-size: 1em;
+	padding: .5em .9em;
+}
+
+#view_profile {
+	margin: 16px 0 0 0;
+	float: left;
+	clear: both;
+}
+
+#join_1, #view_profile, #join_2 {
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0);
+	background-color: #F5A623;
+	background-image:none;
+	background-repeat:repeat-x;
+	border-color: rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+#join_1:hover, #view_profile:hover, #join_2:hover {
+    background-color: #428BCA;
+}
+
+#sign_in, .industry {
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0);
+	background-color: #428BCA;
+	background-image:none;
+	background-repeat:repeat-x;
+	border-color: rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+#sign_in:hover {
+    background-color: #F5A623;
+}
+
+#sign_in {
+	margin-right: 5px;
+}
+
+.industry {
+	padding: .4em .8em;
+	color:white;
+	border-radius: 4px;
+	margin-bottom:5px;
+	font-size: .9em;
+}
+
+#join_1, #sign_in {
+	font-size: .8em;
+	padding: .4em .8em;
+}
+
+#join_1, .industry {
+	margin-bottom:2px;
+	display: inline-block;
+}
+
+footer {
+	clear: both;
+	bottom: 5px;
+	border-top: 3px solid #428BCA;
+	padding-top: 5px;
+	margin-top: 30px;
+}
+
+footer p {
+	padding-left: 5px;
+	margin: 0;
+}
+
+.tagline {
+    width: 100%;
+}
+
+
+/**************************************************Tablet & Destop**/
+
+@media only screen and (min-width : 768px) {
+
+	#view_profile, #join_2 {
+		font-size: 14px;
+	}
+
+	#column_1 {
+		float: left;
+		width: 32%;
+		margin-right: 2%;
+	}
+
+	#column_2 {
+		float:left;
+		width: 66%;
+	}
+
+	img#company_img {
+		float:left;
+		width:98%;
+		border:1px solid gray;
+	}
+	#nav_buttons {
+		float: right;
+		margin: 20px 0 0 0;
+		width: 300px;
+    }	
+
+}
+
+/**************************************************Tablet Only**/
+
+
+@media only screen and (min-width : 768px) and (max-width : 1024px){
+
+html {
+	background: #F5F5F5;
+}
+
+body {
+	font-size:14px;
+}
+
+#content {
+	background:white;
+	margin: 15px 10px 10px 10px;
+	border: 1px solid #ccc;
+	box-shadow: 4px 4px 0 #ccc;
+	/*padding: 10px 0 10px 10px;*/
+	width: auto;
+}
+
+
+h1, h2 {
+	margin:0 0 15px 0;
+	font-size: 20px;
+}
+
+h3 {
+	margin:0;
+	float:right;
+	color: #428BCA;
+}
+
+#column_2 h3 {
+	display:block;
+	float:none;
+}
+
+
+
+aside {
+	padding: 0 30px;
+	line-height: 1.7em;
+	font-size: 18px;
+	height: 135px;
+}
+
+
+}
+
+/**************************************************Desktop Only**/
+
+@media only screen and (min-width : 1024px) {
+
+html {
+	background: #F5F5F5;
+}
+
+#wrapper {
+	overflow: auto;
+}
+
+body {
+	font-size:14px;
+	width: 1024px;
+	margin: 0 auto;
+}
+
+header {
+	padding: 18px 0;
+	margin-bottom: 15px;
+}
+
+#content {
+	background:white;
+	margin-right:1%;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	box-shadow: 4px 4px 0 #ccc;
+	padding: 10px 0 10px 10px;
+	min-width:625px;
+	width:65%;
+	float:left;
+}
+
+h1, h2 {
+	font-size: 1.7em;
+}
+
+
+h3 {
+	margin: -2px 0 10px 0;
+	color: #428BCA;
+}
+
+#column_2 p {
+	margin:5px 0;
+}
+
+aside {
+	padding: 15px 3.3%;
+	line-height: 1.7em;
+	font-size: 1.3em;
+	float:left;
+	width:26%;
+	/*height:254px;*/
+	height: 100%;
+    margin-left: 1px;
+    margin-right: -1px;
+}
+
+aside button {
+	margin-top: 0px;
+}
+
+#join_2 {
+	margin-top: 40px;
+	margin-bottom: 0px;
+}
+
+}
+
+
