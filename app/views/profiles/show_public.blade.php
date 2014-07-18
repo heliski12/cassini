@@ -19,6 +19,23 @@
     <meta property="og:title" content="Motionry Marketplace">
     <meta property="og:description" content="{{{ $profile->public_description ?: 'Motionry is changing the way people connect to innovate.  We offer the only platform that connects the world\'s technologists, researchers and entrepreneurs developing sustainable technologies.' }}}">
 
+    @if (app()->env == 'production')
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34438676-1']);
+      _gaq.push(['_setDomainName', 'motionry.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+     </script>
+    @endif
+</head>
+
 <body>
 
 <div id="wrapper">
