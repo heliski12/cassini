@@ -91,7 +91,7 @@
               </div>
           @endforeach
         </div>
-      @elseif (empty($profile->keypersons))
+      @elseif (empty($profile->keypersons) || sizeof($profile->keypersons) == 0)
         <div class="panel panel-default">
           <div class="panel-heading">
             <h5><a data-toggle="collapse" data-parent"#kp_accordion" href="#collapse_kp0" class="icon">Key Researcher or Entrepreneur&nbsp;&nbsp;&nbsp;<span title="Collapse view" class="glyphicon glyphicon-chevron-up"></span></a></h5>
