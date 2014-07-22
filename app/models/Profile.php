@@ -486,6 +486,7 @@ class Profile extends BaseModel implements StaplerableInterface {
     if (!array_key_exists('funding_statuses', $input))
       $this->setFundingStatusesAttribute([]);
 
+    Log::info('input: ' . print_r($input,true));
     $this->associateManyRelationship($this->photos, 'photos', 'Photo', $this->photos(), $input['photos']);
     $this->save();
 

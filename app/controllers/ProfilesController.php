@@ -107,8 +107,6 @@ class ProfilesController extends BaseController {
 
     if (Input::has('next'))
     {
-      Log::info("Going to next step number $step + 1");
-
       if ($edit)
         return Redirect::route('edit_profile', [ $profile->id, $step + 1 ]);
       else
@@ -116,8 +114,6 @@ class ProfilesController extends BaseController {
     }
     elseif (Input::has('previous'))
     {
-      Log::info("Going to previous step number $step - 1");
-
       if ($edit)
         return Redirect::route('edit_profile', [ $profile->id, $step - 1 ]);
       else
@@ -125,8 +121,6 @@ class ProfilesController extends BaseController {
     }
     else
     {
-      Log::info("Storing profile on step $step");
-
       if ($profile->status === 'COMPLETE_PENDING')
       {
         $user = $profile->creator;
