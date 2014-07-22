@@ -15,6 +15,8 @@ class ProfilesController extends BaseController {
 
     $active_profile_id = Session::get('active_profile_id');
 
+    Log::info("The active profile id is " . $active_profile_id);
+
     if (!empty($active_profile_id))
     {
       if (Session::has('active_profile_last_touched') or Input::has('p'))
@@ -45,17 +47,20 @@ class ProfilesController extends BaseController {
 
     if (empty($profile))
     {
+        Log::info("The profile was empty, so creating a new one");
       Session::forget('active_profile_id');
       Session::forget('active_profile_last_touched');
       $profile = new Profile;
     }
 
+    Log::info("Starting profile edit on profile " . $profile->id . " and step " . $step);
 
     return View::make("profiles.create_step_$step")->with('step', $step)->with('profile', $profile);
   }
 
   public function edit($id, $step = 1)
   {
+      Log::info("Editing with profile id " . $id . "and step " . $step);
     Session::put('active_profile_id', $id);
     Session::put('active_profile_last_touched', new \DateTime);
     return $this->create($step);
