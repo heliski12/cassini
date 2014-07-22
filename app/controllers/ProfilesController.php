@@ -17,7 +17,8 @@ class ProfilesController extends BaseController {
 
     Log::info("The active profile id is " . $active_profile_id);
 
-    if (!empty($active_profile_id))
+    // This seems to be causing problems with users taking more than a day to re-work their profiles.  Disabling for now.
+    if (false && !empty($active_profile_id))
     {
       if (Session::has('active_profile_last_touched') or Input::has('p'))
       {
@@ -39,6 +40,13 @@ class ProfilesController extends BaseController {
 
     if (!empty($active_profile_id))
       $profile = Profile::fetchFullProfileForStep($active_profile_id, $step);
+
+    if (empty($profile)) {
+        Log::info("An empty profile was fetched.");
+    } else {
+        Log::info("User is " . Auth::user()->id);
+        Log::info("Is editor " . $profile->isEditor(Auth::user()));
+    }
 
     // TODO - revisit with complete permissions
     // don't let unauthorized users modify a profile!

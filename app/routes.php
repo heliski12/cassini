@@ -95,7 +95,7 @@ Route::group(array('before' => 'admin'), function()
   Route::get('admin_all_public_profiles', [ 'as' => 'admin_all_public_profiles', 'uses' => 'AdminController@publicProfiles' ]);
 });
 
-if (app()->env !== 'production')
+if (false && app()->env !== 'production')
 {
   Event::listen('illuminate.query', function($sql,$bindings,$time) {
     for ($i = 0; $i < sizeof($bindings); $i++)
