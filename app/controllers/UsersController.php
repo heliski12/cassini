@@ -68,7 +68,7 @@ class UsersController extends BaseController {
     }
     else
     {
-      return Redirect::guest('sign-in')->with("status", "Error: Invalid Username or Password");
+      return Redirect::to('/sign-in')->with("status", "Error: Invalid Username or Password");
     }
   }
 
