@@ -181,7 +181,7 @@
             <div class="row profile-body-cell">
               <div class="col-md-12">
                 <div class="row profile-description">
-                  {{ $profile->tech_description }}
+                  {{ nl2br($profile->tech_description) }}
                 </div>
                 <div class="row profile-description">
                   <div class="profile-h">Market Applications</div>
