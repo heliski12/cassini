@@ -475,13 +475,17 @@ div.saved-profile { margin-left: 40px; }
 .marketplace-result h5 { font-size: 18px; font-weight: 500; }
 
 /* pagination */
-
+.pagination { margin: 0px; }
+.pagination ul li { display: inline; }
+.pagination ul li .btn { margin-left: 1px; margin-right: 1px; }
+.pagination ul { margin-bottom: 0px; padding-left: 4px; }
+/*
 .pager-count-bottom { margin: 34px -9px 0px 9px; font-weight: 700; }
 .pager-count-top { margin: 30px -9px 15px 9px; font-weight: 700; }
-.pager-nav { margin: 26px 5px 0px -5px; font-size: 22px; text-align: right; }
 .pager-nav li { display: inline; } 
 .pager-nav li a { color: #000; } 
 .pager-nav li.active a:hover { color: #ed9c28; }
+*/
 
 /* single profile */
 div.profile-wrap {

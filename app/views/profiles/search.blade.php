@@ -103,12 +103,9 @@
       </div>
       @if (!empty($results) && sizeof($results) > 0)
         <div class="row">
-            <div class="col-md-3 pager-count-top">
-                Viewing page {{ $results->getCurrentPage() }} of {{ $results->getLastPage() }}
-            </div>
-            <div class="col-md-2 col-md-offset-7">
+            <div class="col-md-4">
                 {{ $results->links('partials.pagination') }}
-            </div> 
+            </div>
         </div>
         @foreach ($results as $idx => $result)
           <div class="row marketplace-result">
@@ -159,12 +156,9 @@
           @endif
         @endforeach
         <div class="row">
-            <div class="col-md-3 pager-count-bottom">
-                Viewing page {{ $results->getCurrentPage() }} of {{ $results->getLastPage() }}
-            </div>
-            <div class="col-md-2 col-md-offset-7">
+            <div class="col-md-4">
                 {{ $results->links('partials.pagination') }}
-            </div> 
+            </div>
         </div>
       @else
       <div class="row">
