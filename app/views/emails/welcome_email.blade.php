@@ -986,7 +986,7 @@
 
 
 
-                                                Thank you for signing up! &nbsp;We are reviewing your information and will confirm your access to the beta platform shortly. &nbsp;If indicated you were unsure if an Innovator or Seeker, we will contact you directly. &nbsp;<br>
+                                                Thank you for signing up! &nbsp;We are reviewing your information and will confirm your access to the beta platform shortly. &nbsp;If you indicated that you were unsure whether you are an Innovator or a Seeker, we will contact you directly. &nbsp;<br>
 
                                                 <br>
 
