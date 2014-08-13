@@ -112,7 +112,7 @@
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js') }}
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/public.js?1') }}
+    {{ HTML::script('js/public.js?'. Config::get('cassini.asset_version')) }}
   </body>
 </html>
 

@@ -12,20 +12,12 @@
     <link rel="SHORTCUT ICON" HREF="favicon.png?4">
 
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/fonts.css') }}
-    {{ HTML::style('css/landing.css?4') }}
-    
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+    {{ HTML::style('css/custom.css?'. Config::get('cassini.asset_version')) }}
 
-    <!--[if IE]>
-		<script type="text/javascript">
-			 var console = { log: function() {} };
-		</script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <meta property="og:image" content="{{ URL::to('/img/Black-Motionry-Logo.png') }}">
@@ -40,7 +32,6 @@
     <meta name="description" content="Motionry is changing the way people connect to innovate.  We offer the only platform that connects the world's technologists, researchers and entrepreneurs developing sustainable technologies.">
     <meta property="og:title" content="Motionry Marketplace">
     <meta property="og:description" content="Motionry is changing the way people connect to innovate.  We offer the only platform that connects the world's technologists, researchers and entrepreneurs developing sustainable technologies.">
-    
     
 
     @if (app()->env == 'production')
@@ -66,59 +57,84 @@
   </head>
   <body>
 
-      <div class="wrap">
-              <div class="container">
-                <div class="row">
-                  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                    <a href="{{ URL::to('/') }}"><img alt="Motionry Logo" class="logo img-responsive" src="{{ asset('img/White-Motionry-Logo.png') }}"/></a>
-                  </div>
-                  <div class="col-lg-4 col-lg-offset-5 col-md-5 col-md-offset-3 hidden-sm hidden-xs navlinks">
-                    <ul>
-                      <li><a href="{{ route('sign-in') }}">Sign in</a></li>
-                      <li><a href="http://blog.motionry.com">Blog</a></li>
-                      <li><a href="#" data-toggle='modal' data-target="#contact">Contact</a></li>
-                      <li><a target="_blank" href="https://twitter.com/motionry"><img src="{{ asset('img/twitter2.png') }}"/></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="row visible-sm visible-xs">
-                  <div class="col-sm-12 col-xs-12 navlinks">
-                    <ul>
-                      <li><a href="{{ route('sign-in') }}">Sign in</a></li>
-                      <li><a href="http://blog.motionry.com">Blog</a></li>
-                      <li><a href="#" data-toggle='modal' data-target="#contact">Contact</a></li>
-                      <li><a target="_blank" href="https://twitter.com/motionry"><img src="{{ asset('img/twitter2.png') }}"/></a></li>
-                    </ul>
-                  </div>
-                </div>
-                @if (Session::has('message'))
-                  <div class="row" style="margin-top:10px;">
-                    <div class="col-md-6 col-md-offset-3">
-                      <div class="alert alert-success">{{{ Session::get('message') }}}</div> 
-                    </div> 
-                  </div>
-                @endif
-                <div class="row title-login visible-md visible-lg">
-                    <h1>Discover and connect with the world's leading<br/>researchers and entrepreneurs.</h1>
-                    <h2>Our platform fosters greater innovation and streamlined<br/>technology transfer, from basic R&D to early market demonstration.</h2>
-                    {{ Form::button('GET STARTED', [ 'class' => 'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#user_signup' ]) }}
-                </div>
-                <div class="row title-login visible-sm">
-                    <h1>Discover and connect with the world's leading<br/>researchers and entrepreneurs.</h1>
-                    <h2>Our platform fosters greater innovation and streamlined<br/>technology transfer, from basic R&D to early market demonstration.</h2>
-                    {{ Form::button('GET STARTED', [ 'class' => 'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#user_signup' ]) }}
-                </div>
-                <div class="row title-login visible-xs">
-                    <h1>Discover and connect with the<br/>world's leading researchers<br/>and entrepreneurs.</h1>
-                    <h2>Our platform fosters greater innovation and<br/>streamlined technology transfer, from basic<br/>R&D to early market demonstration.</h2>
-                    {{ Form::button('GET STARTED', [ 'class' => 'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#user_signup' ]) }}
-                </div>
-                <div class="row copy">
-                    &copy; {{ date('Y') }} Motionry. All rights reserved.
-                </div>
-              </div>
-      </div> 
+    <div class="container">
 
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="nav-container">
+          <div class="navbar-header">
+            <a href="{{ URL::to('/') }}">
+              <img alt="Motionry Logo" class="logo" src="{{URL::to('img/Black-Motionry-Logo.png')}}">
+            </a>
+          </div>
+          <div class="nav-wrap">
+            <ul class="nav nav-pills navbar-right">
+                @if (Session::has('message'))
+                  <li class="alert alert-success">{{{ Session::get('message') }}}</li>
+                @endif
+              <li><a href="{{ URL::to('/sign-in') }}">Sign In</a></li>
+                <li><a href="http://blog.motionry.com/">Blog</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#contact">Contact</a></li>
+                <li><a class="twitter" href="https://twitter.com/motionry">Twitter</a></li>
+            </ul>
+          </div><!-- /.nav-wrap -->
+        </div><!-- /.container -->
+      </nav>
+
+      <div class="jumbotron">
+        <h1>Technology Transfer, Rebooted</h1>
+        <p class="lead">We give innovators everywhere the power to connect, from an agtech startup in Silicon Valley to an energy researcher in Australia. Motionry is a community of startups, researchers and companies streamlining how to discover and develop partnerships.</p>
+        <p>Get early access and help build something awesome.</p>
+        <p><a class="btn btn-lg btn-sign-up" href="#" data-toggle="modal" data-target="#user_signup" role="button">Get Started</a></p>
+      </div>
+
+      <div class="row brands">
+         <h2>Meet some of our innovators:</h2>
+
+
+        <div class="col-sm-4 brand-column">
+          <a href="{{ URL::to('/innovators/219-peer-to-peer-electricity-network-for-those-who-lack-access-in-rural-areas') }}" class="bwWrapper">
+            <img src="{{URL::to('img/ulink.jpg')}}" width="100%">
+          </a>
+          <a href="{{ URL::to('/innovators/233-valentis-nanotech-highly-improved-polymeric-films') }}" class="bwWrapper">
+           <img src="{{URL::to('img/valentis.jpg')}}" width="100%">
+          </a>
+          <a href="http://www.bluerivert.com" class="bwWrapper">
+           <img src="{{URL::to('img/blue-river.jpg')}}" width="100%">
+          </a>
+        </div>
+
+          <div class="col-sm-4 brand-column">
+          <a href="{{ URL::to('/innovators/241-enterprise-platform-for-global-agriculture') }}" class="bwWrapper">
+           <img src="{{URL::to('img/agsquared.jpg')}}" width="100%">
+          </a>
+          <a href="{{ URL::to('/innovators/305-smart-grid-outage-management-load-management-technical-and-non-technical-remediation-medium-voltage-sensoring') }}" class="bwWrapper">
+           <img src="{{URL::to('img/dtechs.jpg')}}" width="100%">
+          </a>
+          <a href="{{ URL::to('/innovators/253-farmia-livestock-exchange-made-easy') }}" class="bwWrapper">
+           <img src="{{URL::to('img/farmia.jpg')}}" width="100%">
+          </a>
+        </div>
+
+        <div class="col-sm-4 brand-column">
+          <a href="{{ URL::to('/innovators/84-self-assembly-of-proteinpolymer-nanostructures') }}" class="bwWrapper">
+           <img src="{{URL::to('img/MIT.jpg')}}" width="100%">
+          </a>
+          <a href="{{ URL::to('/innovators/223-strider-precision-agricultural-platform-for-smart-pest-control') }}" class="bwWrapper">
+           <img src="{{URL::to('img/strider.jpg')}}" width="100%">
+          </a>
+          <a href="{{ URL::to('/innovators/247-pond-biofuels-industrial-algae-production-facility') }}" class="bwWrapper">
+           <img src="{{URL::to('img/pond-biofuels.jpg')}}" width="100%">
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footer">
+        <p>&copy; 2014 Motionry. All rights reserved.</p>
+      </div>
+
+    </div> <!-- /container -->
+      
       @include('partials.signup_wrap')
 
 <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="email_label" aria-hidden="true">
@@ -145,9 +161,10 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js') }}
-    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js') }}
+    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }} 
+    {{ HTML::script('js/jQuery.BlackAndWhite.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/public.js?1') }}
+    {{ HTML::script('js/initializer.js?'. Config::get('cassini.asset_version')) }}
+    
   </body>
 </html>
