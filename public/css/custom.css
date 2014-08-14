@@ -16,33 +16,52 @@ h1,h2,h3,h4,h5,h6 {
 
 }
 
-.container {
-	margin-top: .5em;
+.top-container {
+	margin: 0 auto;
 }
 
-.container .jumbotron {
+.navbar {
+	padding: 10px;
+	max-width: 1170px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.jumbotron {
 	background-image: url('../img/stars.jpg');
-	background-repeat: no-repeat;
 	text-align: center;
 	margin-bottom: 1em;
 	border-radius: 0px;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	/*background-position: center;*/
+	background-size: 400%;
+	background-position: center;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .jumbotron h1, .jumbotron .h1 {
 	color: #F5A623;
 	font-weight: 600;
-	font-size: 2em;
+	font-size: 30px;
 	text-shadow: 0px 1px 4px rgba(0,0,0,0.50);
+	max-width: 1170px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .jumbotron p {
 	color: #fff;
-	font-size: 1em;
+	font-size: 14px;
 	font-weight: 400;
 	text-shadow: 0px 1px 4px rgba(0,0,0,0.50);
+	max-width: 1170px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h2 {
+	font-size: 26px;
 }
 
 .logo {
@@ -116,8 +135,15 @@ img.BWFilter.BWfade {
 
 /***Media Queries***/
 
-@media (max-width: 767px) {
+@media (min-width:600px) and (max-width: 767px) {
+	.brand-column {
+		padding-left: 60px;
+		padding-right: 60px;
+	}
 
+	.jumbotron {
+		background-size: 150%;
+	}
  } 
 
 @media (min-width: 768px) {
@@ -129,16 +155,23 @@ img.BWFilter.BWfade {
  	.navbar-default {
 		margin-bottom: .5em;
 	}
+
 	.motionry-logo {
 		background-size: 80%;
 	}
 
 	.jumbotron h1, .jumbotron .h1 {
-		font-size: 2.5em;
+		font-size: 46px;
 	}
+
 	.jumbotron p {
-		font-size: 1.2em;
+		font-size: 22px;
 	}
+
+	h2 {
+		font-size: 30px;
+	}
+
 	.brand-column {
 		padding: 0 5px;	
 	}
@@ -150,19 +183,28 @@ img.BWFilter.BWfade {
 	.nav-wrap {
 		padding-top: 10px;
 	}
+
+	.jumbotron {
+		background-size: 150%;
+	}
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
  
+ 
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
- 
-  
+ 	
 }
+
 @media (min-width: 1200px) {
 
-   
+	.jumbotron {
+		background-size: 100%;
+		max-width: 1600px;	
+	}
+
 }
 
 

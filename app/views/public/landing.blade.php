@@ -57,7 +57,7 @@
   </head>
   <body>
 
-    <div class="container">
+    <div class="top-container">
 
       <nav class="navbar navbar-default" role="navigation">
         <div class="nav-container">
@@ -77,63 +77,66 @@
                 <li><a class="twitter" href="https://twitter.com/motionry">Twitter</a></li>
             </ul>
           </div><!-- /.nav-wrap -->
-        </div><!-- /.container -->
+        </div><!-- /.nav-container -->
       </nav>
 
-      <div class="jumbotron">
-        <h1>Technology Transfer, Rebooted</h1>
-        <p class="lead">We give innovators everywhere the power to connect, from an agtech startup in Silicon Valley to an energy researcher in Australia. Motionry is a community of startups, researchers and companies streamlining how to discover and develop partnerships.</p>
-        <p>Get early access and help build something awesome.</p>
-        <p><a class="btn btn-lg btn-sign-up" href="#" data-toggle="modal" data-target="#user_signup" role="button">Get Started</a></p>
-      </div>
+          <div class="jumbotron">
+            <h1>Technology Transfer, Rebooted</h1>
+            <p class="lead">We give innovators everywhere the power to connect, from an agtech startup in Silicon Valley to an energy researcher in Australia. Motionry is a community of startups, researchers and companies streamlining how to discover and develop partnerships.</p>
+            <p>Get early access and help build something awesome.</p>
+            <p><a class="btn btn-lg btn-sign-up" href="#" data-toggle="modal" data-target="#user_signup" role="button">Get Started</a></p>
+          </div>
+      </div><!-- /.top-container -->
 
-      <div class="row brands">
-         <h2>Meet some of our innovators:</h2>
+      <div class="container">
+
+          <div class="row brands">
+             <h2>Meet some of our innovators:</h2>
 
 
-        <div class="col-sm-4 brand-column">
-          <a href="{{ URL::to('/innovators/219-peer-to-peer-electricity-network-for-those-who-lack-access-in-rural-areas') }}" class="bwWrapper">
-            <img src="{{URL::to('img/ulink.jpg')}}" width="100%">
-          </a>
-          <a href="{{ URL::to('/innovators/233-valentis-nanotech-highly-improved-polymeric-films') }}" class="bwWrapper">
-           <img src="{{URL::to('img/valentis.jpg')}}" width="100%">
-          </a>
-          <a href="http://www.bluerivert.com" class="bwWrapper">
-           <img src="{{URL::to('img/blue-river.jpg')}}" width="100%">
-          </a>
-        </div>
+            <div class="col-sm-4 brand-column">
+              <a href="{{ URL::to('/innovators/219-peer-to-peer-electricity-network-for-those-who-lack-access-in-rural-areas') }}" class="bwWrapper">
+                <img src="{{URL::to('img/ulink.jpg')}}" width="100%">
+              </a>
+              <a href="{{ URL::to('/innovators/233-valentis-nanotech-highly-improved-polymeric-films') }}" class="bwWrapper">
+               <img src="{{URL::to('img/valentis.jpg')}}" width="100%">
+              </a>
+              <a href="http://www.bluerivert.com" class="bwWrapper">
+               <img src="{{URL::to('img/blue-river.jpg')}}" width="100%">
+              </a>
+            </div>
 
-          <div class="col-sm-4 brand-column">
-          <a href="{{ URL::to('/innovators/241-enterprise-platform-for-global-agriculture') }}" class="bwWrapper">
-           <img src="{{URL::to('img/agsquared.jpg')}}" width="100%">
-          </a>
-          <a href="{{ URL::to('/innovators/305-smart-grid-outage-management-load-management-technical-and-non-technical-remediation-medium-voltage-sensoring') }}" class="bwWrapper">
-           <img src="{{URL::to('img/dtechs.jpg')}}" width="100%">
-          </a>
-          <a href="{{ URL::to('/innovators/253-farmia-livestock-exchange-made-easy') }}" class="bwWrapper">
-           <img src="{{URL::to('img/farmia.jpg')}}" width="100%">
-          </a>
-        </div>
+              <div class="col-sm-4 brand-column">
+              <a href="{{ URL::to('/innovators/241-enterprise-platform-for-global-agriculture') }}" class="bwWrapper">
+               <img src="{{URL::to('img/agsquared.jpg')}}" width="100%">
+              </a>
+              <a href="{{ URL::to('/innovators/305-smart-grid-outage-management-load-management-technical-and-non-technical-remediation-medium-voltage-sensoring') }}" class="bwWrapper">
+               <img src="{{URL::to('img/dtechs.jpg')}}" width="100%">
+              </a>
+              <a href="{{ URL::to('/innovators/253-farmia-livestock-exchange-made-easy') }}" class="bwWrapper">
+               <img src="{{URL::to('img/farmia.jpg')}}" width="100%">
+              </a>
+            </div>
 
-        <div class="col-sm-4 brand-column">
-          <a href="{{ URL::to('/innovators/84-self-assembly-of-proteinpolymer-nanostructures') }}" class="bwWrapper">
-           <img src="{{URL::to('img/MIT.jpg')}}" width="100%">
-          </a>
-          <a href="{{ URL::to('/innovators/223-strider-precision-agricultural-platform-for-smart-pest-control') }}" class="bwWrapper">
-           <img src="{{URL::to('img/strider.jpg')}}" width="100%">
-          </a>
-          <a href="{{ URL::to('/innovators/247-pond-biofuels-industrial-algae-production-facility') }}" class="bwWrapper">
-           <img src="{{URL::to('img/pond-biofuels.jpg')}}" width="100%">
-          </a>
-        </div>
+            <div class="col-sm-4 brand-column">
+              <a href="{{ URL::to('/innovators/84-self-assembly-of-proteinpolymer-nanostructures') }}" class="bwWrapper">
+               <img src="{{URL::to('img/MIT.jpg')}}" width="100%">
+              </a>
+              <a href="{{ URL::to('/innovators/223-strider-precision-agricultural-platform-for-smart-pest-control') }}" class="bwWrapper">
+               <img src="{{URL::to('img/strider.jpg')}}" width="100%">
+              </a>
+              <a href="{{ URL::to('/innovators/247-pond-biofuels-industrial-algae-production-facility') }}" class="bwWrapper">
+               <img src="{{URL::to('img/pond-biofuels.jpg')}}" width="100%">
+              </a>
+            </div>
 
-      </div>
+          </div>
 
-      <div class="footer">
-        <p>&copy; 2014 Motionry. All rights reserved.</p>
-      </div>
+          <div class="footer">
+            <p>&copy; 2014 Motionry. All rights reserved.</p>
+          </div>
 
-    </div> <!-- /container -->
+        </div> <!-- /container -->
       
       @include('partials.signup_wrap')
 
