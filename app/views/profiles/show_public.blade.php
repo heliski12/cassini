@@ -81,9 +81,8 @@
 
 
       <div class="col-lg-6">
-        <div class="heading-wrap">
-            <h3 id="company">{{{ $profile->organization_or_institution_name }}}</h3><a class="btn btn-xs btn-primary btn-profile" href="{{ route('show_profile', [ $profile->id ]) }}" role="button">View Full Profile</a>
-      </div>
+          <h3 id="company">{{{ $profile->organization_or_institution_name }}}</h3>
+          <p><a class="btn btn-xs btn-primary btn-profile" href="{{ route('show_profile', [ $profile->id ]) }}" role="button">View Full Profile</a></p>
     
       <p><strong>Technology Overview:</strong> {{{ $profile->public_description ?: "None specified." }}}</p>
       <p><strong>Markets & Applications:</strong> {{{ $profile->sectors_tos }}}</p>
@@ -107,49 +106,6 @@
     <footer>
         <p>&copy; {{ date('Y') }} Motionry. All rights reserved.</p>
       <footer>
-
-
-      {{--
-<div id="wrapper">
-    <header>
-    <a href="{{ URL::to('/') }}"><img alt="Motionry Logo" id="logo" src="{{ asset('img/Black-Motionry-Logo.png') }}"/></a>
-    <div id="nav_buttons">
-    <a href="{{ URL::to('/#s') }}"><button id="join_1" >Join Motionry</button></a>
-    <a href="{{ URL::to('/sign-in') }}"><button id="sign_in" >Sign In</button></a>
-    </div>
-    </header>
-
-    <div id="content" class="group">
-
-    <h1 class="tagline">{{{ $profile->public_tagline_or_tech_title }}}</h1>
-
-    <div id="column_1">
-        {{ HTML::image($profile->public_image_url, $profile->public_image_description, [ 'class' => '', 'id' => 'company_img' ]) }}
-        <a href="{{ route('show_profile', [ $profile->id ]) }}"><button id="view_profile">View complete profile</button></a>
-    </div><!--end #column_1-->
-
-    <div id="column_2">
-        <h3 id="company">{{{ $profile->organization_or_institution_name }}}</h3>
-    
-        <p><strong>Technology Overview:</strong> {{{ $profile->public_description ?: "None specified." }}}</p>
-        <p><strong>Markets & Applications:</strong> {{{ $profile->sectors_tos }}}</p>
-        @foreach ($profile->applications as $application)
-            <div class="industry">{{{ $application->name }}}</div>
-        @endforeach
-    </div>
-
-
-    </div>
-
-    <aside>
-        <p>Discover and connect with the world’s leading researchers, entrepreneurs and companies in energy, agriculture and materials related technologies.</p> 
-        <a href="{{ URL::to('/#s2') }}"><button id="join_2">Join now for free</button></a>
-    </aside>
-</div><!--end #wrapper -->
-
-<footer> Motionry &copy; {{ date('Y') }} </footer> 
-
---}}
 
 </body>
 </html>
