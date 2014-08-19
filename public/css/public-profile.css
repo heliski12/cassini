@@ -1,0 +1,123 @@
+
+.group:before,
+.group:after {
+    content: " ";
+    display: table;
+}
+
+.group:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.group {
+    *zoom: 1;
+}
+
+p {
+	line-height: 1.2em;
+}
+
+h3 {
+	font-weight: 400;
+}
+
+.container {
+	padding-left: 0px;
+}
+
+.wrap {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.heading-wrap {
+	clear: both;
+	height: 40px;
+}
+
+.pitch {
+	color: #616161;
+	font-weight: 400;
+}
+
+#company_img {
+	margin-bottom: 10px;
+}
+
+h3#company {
+	display: inline-block;
+}
+
+#company h1,h2,h3,h4,h5,h6, aside h1, h2, h3, h4, h5, h6  {
+	margin-top: 0px;
+}
+
+.btn-profile {
+	margin-left: 10px;
+	margin-bottom: 10px;
+	
+}
+
+.industry {
+	color: #428bca;
+	margin-right: 20px;
+	margin-bottom:2px;
+	display: inline-block;
+	font-weight: 600;
+}
+
+aside {
+	margin-top: 36px;
+	padding: 20px !important;
+	background-image: url('../img/stars-small.jpg');
+	color:white;
+	height: 100%;
+}
+
+aside p, aside h3 {
+	text-shadow: 0px 1px 4px rgba(0,0,0,0.50);
+}
+
+footer {
+	margin-top: 10px;
+	clear: both;
+	padding: 10px;
+	max-width: 1170px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/**************************************************Tablet & Destop**/
+
+@media only screen and (min-width : 768px) {
+
+}
+
+/**************************************************Tablet Only**/
+
+
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+
+}
+
+
+
+/**************************************************Desktop Only**/
+
+@media only screen and (min-width : 1200px) {
+
+h3#company {
+	float: left;
+}
+
+.btn-profile {
+	margin-bottom: 0px;
+	margin-top: 1px;
+}
+
+}
