@@ -154,7 +154,7 @@ class ProfilesController extends BaseController {
 
   public function show($id)
   {
-    $profile = Profile::with(['keypersons','institution','sectors','applications','publications.publication','presentations','awards','photos'])->find($id);
+    $profile = Profile::with(['keypersons','institution','sectors','applications','publications.publication','presentations','awards','realPhotos'])->find($id);
 
     if ($profile->status !== 'PUBLISHED' and !$profile->isEditor(Auth::user()))
       App::abort('404');

@@ -263,18 +263,18 @@
  <div class="col-xs-12 col-md-4">
 
 
-          @if (!empty($profile->photos) && sizeof($profile->photos) > 0)
+          @if (!empty($profile->realPhotos) && sizeof($profile->realPhotos) > 0)
 
               <div id="carousel" class="carousel slide" data-interval="false">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
-                  @foreach ($profile->photos as $idx => $photo)
+                  @foreach ($profile->realPhotos as $idx => $photo)
                     <li data-target="#carousel" data-slide-to="{{ $idx }}" class="{{ $idx == 0 ? 'active' : '' }}"></li>
                   @endforeach
                 </ol>
 
                 <div class="carousel-inner">
-                @foreach ($profile->photos as $idx => $photo)
+                @foreach ($profile->realPhotos as $idx => $photo)
                   <div class="item {{ $idx == 0 ? 'active' : '' }}">
                     <img src="{{{ asset($photo->photo->url('large')) }}}" class="img-rounded" id="photo_main_img" alt="{{{ $photo->description }}}">
                   </div>
@@ -291,7 +291,7 @@
               </div><!--/#carousel-->
 
               <span>
-              @foreach ($profile->photos as $idx => $photo)
+              @foreach ($profile->realPhotos as $idx => $photo)
                 <div class="photo_main_desc" style="{{ $idx != 0 ? 'display:none;' : '' }}">
                   <p class="desc">{{{ $photo->description }}}</p>
                 </div> 

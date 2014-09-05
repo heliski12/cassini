@@ -101,6 +101,12 @@ class Profile extends BaseModel implements StaplerableInterface {
     return $this->hasMany('Photo');
   }
 
+  public function realPhotos()
+  {
+    return $this->hasMany('Photo')
+      ->whereNotNull('photo_file_name');
+  }
+
   public function awards()
   {
     return $this->hasMany('Award');
