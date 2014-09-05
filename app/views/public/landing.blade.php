@@ -133,7 +133,7 @@
           </div>
 
           <div class="footer">
-            <p>&copy; 2014 Motionry. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} Motionry. All rights reserved.</p>
           </div>
 
         </div> <!-- /container -->

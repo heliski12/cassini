@@ -1,343 +1,322 @@
-
-.group:before,
-.group:after {
-    content: " ";
-    display: table;
+.logo {
+	position: relative;
+	top: 10px;
 }
 
-.group:after {
-    clear: both;
+.user-wrap {
+  	margin-top: -10px;
 }
 
-/**
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
-
-.group {
-    *zoom: 1;
+.nav-pills>li {
+	float: none;
 }
 
-body {
-	margin:0;
-	color:#4A4A4A;
-	font-size:12px;
-	font-family: "Helvetica Neue", sans-serif;
+.nav>li>a {
+	padding: 5px;
+}
+		
+hr.horizontal-one {
+    border: 0;
+    height: 3px;
+    background: #2a6496;
+    margin-top: 0;
 }
 
-header {
-	height:52px;
-	padding: 2%;
-	border-bottom:4px solid #428BCA;
+hr.horizontal-two {
+    border: 0;
+    height: 1px;
+    background: #2a6496;
+    margin-top: 0;
 }
 
-button {
-	color:white;
-	cursor: pointer;
-	display:block;
-	border-radius: 4px;
-	padding: .5em .9em;
+#user {
+	padding: 10px 0 10px 5px;
 }
 
-h1 {
-	float:left;
-	font-size: 1.3em;
-} 
+.header-buttons {
+	margin-top: 10px;
+}
 
-h2, h3 {
-	float:left;
-	font-size: 1.2em;
+.section {
+	margin: 30px 0px;
 }
 
 
-p {
-	clear:both;
+.company-img {
+	width: 100%;
 }
 
-aside {
-	padding: 6px 10px 0 10px;
-	background: #428BCA;
-	color:white;
-	border: 1px solid #ccc;
-    overflow: auto;
-}
-
-aside p {
-	font-weight: 600;
-	line-height: 1.7em;
-}
-
-#logo {
-	width:198px;
-	height:52px;
-	float:left;
-}
-
-#nav_buttons {
-	float: right;
-	width: 100px;
-}
-
-#join_1, #join_2, #sign_in {
-	float:right;
-}
-
-#join_2 {
-	margin-top: -10px;
-	margin-bottom: 10px;
-	}
-
-
-#content {
-	width: 96%;
-	padding: 2%;
-}
-
-img#company_img {
-	float:left;
-	width:70%;
-	border:1px solid gray;
-}
-
-#column_1 {
-	width: 96%;
-}
-
-h3#company {
-	color: #428BCA;
-	clear: both;
-}
-
-#view_profile, #join_2 {
-	font-size: 1em;
-	padding: .5em .9em;
-}
-
-#view_profile {
-	margin: 16px 0 0 0;
+#key-people img {
 	float: left;
-	clear: both;
+	margin: 0 20px 7px 0;
+	/*width: 100%;*/
 }
 
-#join_1, #view_profile, #join_2 {
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0);
-	background-color: #F5A623;
-	background-image:none;
-	background-repeat:repeat-x;
-	border-color: rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1);
-	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+.key-person {
+	margin-top: 10px;	
 }
 
-#join_1:hover, #view_profile:hover, #join_2:hover {
-    background-color: #428BCA;
+
+#trademark-patent {
+	margin: 15px 0;
+	font-size: 11px;
 }
 
-#sign_in, .industry {
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0);
-	background-color: #428BCA;
-	background-image:none;
-	background-repeat:repeat-x;
-	border-color: rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1);
-	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+.nav-tabs {
+	margin-bottom: 15px;
 }
 
-#sign_in:hover {
-    background-color: #F5A623;
+#publications img {
+	margin: 15px 0;
 }
 
-#sign_in {
-	margin-right: 5px;
+.row.message { 
+	margin-top: 20px; 
+	margin-bottom: -20px; 
 }
 
-.industry {
-	padding: .4em .8em;
-	color:white;
-	border-radius: 4px;
-	margin-bottom:5px;
-	font-size: .9em;
+.stages { 
+	background-color: #2a6496; 
+	margin-top: 15px;
+	font-size: 11px;
 }
 
-#join_1, #sign_in {
-	font-size: .8em;
-	padding: .4em .8em;
+.stages:last-child { 
+	margin-bottom: 15px; 
 }
 
-#join_1, .industry {
-	margin-bottom:2px;
-	display: inline-block;
-}
-
-footer {
-	clear: both;
-	bottom: 5px;
-	border-top: 3px solid #428BCA;
-	padding-top: 5px;
-	margin-top: 30px;
-}
-
-footer p {
-	padding-left: 5px;
-	margin: 0;
-}
-
-.tagline {
+.stage-circles, .stage-titles, .patent-circles, .patent-titles {
+    display: table;
     width: 100%;
+    padding: 10px;
+}
+
+.stage-titles, .patent-titles {
+	 padding-top: 0px;
+	 padding-bottom: 10px;
+}
+
+.circle-wrap, .connect, .stage-title {
+    display: table-cell;
+}
+.circle-wrap {
+    width: 1px;
+}
+.stage-title {
+  color: #fff;
+  width: 25%;
+}
+
+#stage-1 {
+}
+
+#stage-2 {
+	padding-right: 30px;
+	text-align: center;
+}
+
+#stage-3 {
+	padding-left: 34px;
+	text-align: center;
+}
+
+#stage-4 {
+	text-align: right;	
 }
 
 
+.patent-heading {
+	color: #fff;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+.patent-circle-wrap:last-child {
+  margin-left: 6px;
+}
+.circle {
+    background: #fff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+.connect {
+    border-top: 2px solid #FFF;
+    position: relative;
+    top: 7px;
+}
+.connect.outside {
+  width: 30px;
+}
+.patent-circles .connect.outside {
+  width: 10px;
+}
+.circle.active {
+   background: #20B2FF;
+}
+#carousel {
+	margin: 20px 0px 10px 0px;
+	width: 80%;
+}
+p.desc {
+	color: #428bca;
+	font-size: 12px;
+}
+
+.header-link {
+	color: #000;
+}
+
+.header-link:hover {
+}
+
+.img-box {
+	position: relative;
+	padding-bottom: 80%;
+	overflow: hidden;
+}
+
+.img-box img {
+	position: absolute;
+	max-width: 100%;
+	max-height: 100%;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transfrom: translate(-50%, -50%);
+}
+
+.text-box {
+	text-align: center;
+}
+
+form.save-profile {
+  display: inline;
+}
+
+.header-buttons {
+  margin-bottom: 10px;
+}
+
+@media (min-width : 600px) {
+
+	.row {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	.img-box {
+		padding-bottom: 60%;
+	}
+}
 /**************************************************Tablet & Destop**/
 
-@media only screen and (min-width : 768px) {
+@media (min-width : 768px) {
 
-	#view_profile, #join_2 {
-		font-size: 14px;
+	.row {
+		margin-left: -15px;
+		margin-right: -15px;
 	}
 
-	#column_1 {
-		float: left;
-		width: 32%;
-		margin-right: 2%;
-	}
 
-	#column_2 {
-		float:left;
-		width: 66%;
-	}
-
-	img#company_img {
-		float:left;
-		width:98%;
-		border:1px solid gray;
-	}
-	#nav_buttons {
+	#user {
 		float: right;
-		margin: 20px 0 0 0;
-		width: 300px;
-    }	
+		padding: 0px 5px 0px 0px;
+	}
+	.nav-pills>li {
+		float: right;
+	}
+	.navbar-right {
+		float: right!important;
+		clear: both;
+		margin-top: -20px;
+	}
+
+	.nav>li>a {
+		position: relative;
+		display: block;
+		padding: 5px;
+	}
+	.stages {
+		font-size: 1em;
+		border-radius: 12px;
+	}
+
+	#trademark-patent {
+		margin: 15px 0;
+		font-size: 1em;
+	}
+	.patent-heading {
+		float: left;
+	}
+
+	#patent-heading-2 {
+		padding-left: 4%;
+	}
+	.patent-circle-wrap {
+  		float: left;
+  		width: 35%;
+	}
+
+	#publications img {
+		margin: 15px 0;
+		/*width: 100%;*/
+	}
+
+	#publications {
+		font-size: 13px;
+	}
+	.publication {
+		color: #428bca;
+	}
+	.publication-link {
+		padding: 10px 0px;
+	}
+	#carousel {
+		width: 100%;
+	}
 
 }
+
+/**************************************************Large Mobile Only**/
+
+@media (min-width : 300px) and (max-width : 480px) {
+
+}
+
 
 /**************************************************Tablet Only**/
 
 
-@media only screen and (min-width : 768px) and (max-width : 1024px){
-
-html {
-	background: #F5F5F5;
-}
-
-body {
-	font-size:14px;
-}
-
-#content {
-	background:white;
-	margin: 15px 10px 10px 10px;
-	border: 1px solid #ccc;
-	box-shadow: 4px 4px 0 #ccc;
-	/*padding: 10px 0 10px 10px;*/
-	width: auto;
-}
-
-
-h1, h2 {
-	margin:0 0 15px 0;
-	font-size: 20px;
-}
-
-h3 {
-	margin:0;
-	float:right;
-	color: #428BCA;
-}
-
-#column_2 h3 {
-	display:block;
-	float:none;
-}
-
-
-
-aside {
-	padding: 0 30px;
-	line-height: 1.7em;
-	font-size: 18px;
-	height: 135px;
-}
-
+@media (min-width : 600px) and (max-width : 989px) {
+	#carousel {
+		width: 60%;
+	}
+	p.desc {
+		width: 60%;
+	}
+	#key-people img {
+		/*width: 76px;
+*/	}
 
 }
+
+
+
+
 
 /**************************************************Desktop Only**/
 
-@media only screen and (min-width : 1024px) {
+@media (min-width : 900px) {
 
-html {
-	background: #F5F5F5;
+	.header-buttons {
+		text-align: right;
+		margin-top: -30px;
+	}
+	p.desc {
+		width: 100%;
+	}
+	
 }
-
-#wrapper {
-	overflow: auto;
-}
-
-body {
-	font-size:14px;
-	width: 1024px;
-	margin: 0 auto;
-}
-
-header {
-	padding: 18px 0;
-	margin-bottom: 15px;
-}
-
-#content {
-	background:white;
-	margin-right:1%;
-	margin-bottom: 10px;
-	border: 1px solid #ccc;
-	box-shadow: 4px 4px 0 #ccc;
-	padding: 10px 0 10px 10px;
-	min-width:625px;
-	width:65%;
-	float:left;
-}
-
-h1, h2 {
-	font-size: 1.7em;
-}
-
-
-h3 {
-	margin: -2px 0 10px 0;
-	color: #428BCA;
-}
-
-#column_2 p {
-	margin:5px 0;
-}
-
-aside {
-	padding: 15px 3.3%;
-	line-height: 1.7em;
-	font-size: 1.3em;
-	float:left;
-	width:26%;
-	/*height:254px;*/
-	height: 100%;
-    margin-left: 1px;
-    margin-right: -1px;
-}
-
-aside button {
-	margin-top: 0px;
-}
-
-#join_2 {
-	margin-top: 40px;
-	margin-bottom: 0px;
-}
-
-}
-
-
+	

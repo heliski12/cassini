@@ -12,8 +12,17 @@ a {
 }
 
 h1,h2,h3,h4,h5,h6 {
-	color: #F5A623;
+	/*color: #F5A623;*/
+	color: #000;
 
+}
+
+.top-buffer {
+	margin-top: 20px;
+}
+
+.bottom-buffer {
+	margin-bottom: 20px;
 }
 
 .top-container {
@@ -83,7 +92,7 @@ h2 {
 	background-size: 50%;
 	background-repeat: no-repeat;
 	background-position: 50% 20%;
-	margin: 6px 0 -6px;
+	margin: 6px -15px 0px -6px;
 }
 
 .twitter:hover {
@@ -132,6 +141,21 @@ img.BWFilter.BWfade {
 	margin-bottom: 10px;
 }
 
+.industry {
+	padding: 5px;
+	font-size: 13px;
+}
+
+.industry a {
+	color: #428bca;
+	text-decoration: none;
+}
+
+.industry:hover, industry:focus {
+	text-decoration: none;
+	background-color: #eee;
+	border-radius: 4px;
+}
 
 /***Media Queries***/
 
@@ -206,5 +230,3 @@ img.BWFilter.BWfade {
 	}
 
 }
-
-

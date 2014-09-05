@@ -1,4 +1,6 @@
 
+/***************************************************************Public Profile Page**/
+
 .group:before,
 .group:after {
     content: " ";
@@ -24,10 +26,6 @@ p {
 
 h3 {
 	font-weight: 400;
-}
-
-.container {
-	padding-left: 0px;
 }
 
 .wrap {
@@ -59,7 +57,6 @@ h3#company {
 }
 
 .btn-profile {
-	/*margin-left: 10px;*/
 	margin-bottom: 10px;
 	
 }
@@ -123,13 +120,14 @@ footer {
 
 @media only screen and (min-width : 1200px) {
 
-/*h3#company {
-	float: left;
-}*/
 
-.btn-profile {
-	margin-bottom: 0px;
-	margin-top: 1px;
-}
+	.btn-profile {
+		margin-bottom: 0px;
+		margin-top: 1px;
+	}
 
 }
+
+
+
+
