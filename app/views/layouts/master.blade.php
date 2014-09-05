@@ -16,9 +16,9 @@
     <link rel="SHORTCUT ICON" HREF="favicon.png? {{ Config::get('cassini.asset_version') }}">
 
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/custom.css') }}
-    {{ HTML::style('css/public-profile.css') }}
-    {{ HTML::style('css/profile.css') }}
+    {{ HTML::style('css/custom.css?'. Config::get('cassini.asset_version')) }}
+    {{ HTML::style('css/public-profile.css?'. Config::get('cassini.asset_version')) }}
+    {{ HTML::style('css/profile.css?'. Config::get('cassini.asset_version')) }}
 
     @yield('css')
     
@@ -91,11 +91,11 @@
 
     {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
     {{ HTML::script('js/jQuery.BlackAndWhite.js') }}
-    {{ HTML::script('js/initializer.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
 
     @yield('js-lib')
 
+    {{ HTML::script('js/initializer.js?'.  Config::get('cassini.asset_version')) }}
     {{ HTML::script('js/marketplace.js?' . Config::get('cassini.asset_version')) }}
 
     @yield('js-user')

@@ -277,9 +277,6 @@
                 @foreach ($profile->photos as $idx => $photo)
                   <div class="item {{ $idx == 0 ? 'active' : '' }}">
                     <img src="{{{ asset($photo->photo->url('large')) }}}" class="img-rounded" id="photo_main_img" alt="{{{ $photo->description }}}">
-                    <div id="photo_main_desc row">
-                      <p class="desc">{{{ $photo->description }}}</p>
-                    </div> 
                   </div>
                 @endforeach
               </div>
@@ -292,6 +289,14 @@
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
               </div><!--/#carousel-->
+
+              <span>
+              @foreach ($profile->photos as $idx => $photo)
+                <div class="photo_main_desc" style="{{ $idx != 0 ? 'display:none;' : '' }}">
+                  <p class="desc">{{{ $photo->description }}}</p>
+                </div> 
+              @endforeach
+              </span>
             
         @endif
             
@@ -358,7 +363,16 @@
 @section('css')
 @stop
 
-@section('js-lib')
+@section('js-user')
+<script type="text/javascript">
+$(function() {
+  $(".carousel").on('slide.bs.carousel', function(event) {
+      var idx = $(event.relatedTarget).index() + 1
+      $(".photo_main_desc").hide();
+      $(".photo_main_desc:nth-child("+idx+")").show(500);
+  });
+});
+</script>
 @stop
 
 @section('modal')
