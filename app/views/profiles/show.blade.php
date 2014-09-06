@@ -194,7 +194,7 @@
                     <div class="col-xs-12">
                       <div class="publication-link">
                          @if (!empty($publication->publication) && !empty($publication->name))
-                           {{{ $publication->name }}}:&nbsp;&nbsp;
+                          {{{ $publication->publication->name }}}:&nbsp;&nbsp;
                          @endif       
                          @if (empty($publication->article_clean_url))
                            {{{ $publication->article_title}}} (no weblink provided)
