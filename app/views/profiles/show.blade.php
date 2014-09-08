@@ -60,8 +60,8 @@
             </div>
           @else
             <div class="col-xs-3 col-md-2">
-                @if (!empty($profile->institution->logo_file_name))
-                  <img class="company-img" src="{{ asset($profile->institution->logo->url('small')) }}"/>
+                @if (!empty($profile->organization_logo_file_name))
+                  <img class="company-img" src="{{ asset($profile->organization_logo->url('small')) }}"/>
                 @else
                   <img class="company-img" src="{{ URL::to('/img/company-avatar.png') }}"/>
                 @endif
