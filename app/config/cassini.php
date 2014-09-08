@@ -2,7 +2,7 @@
 
 return [
 
-  'asset_version' => '21',
+  'asset_version' => '22',
   'public_profile_launch_date' => new DateTime('2014-07-01'),
 
   'filestorage' => 's3', // 'filesystem',  // or s3
