@@ -193,8 +193,8 @@
                   @foreach ($profile->publications as $idx => $publication)
                     <div class="col-xs-12">
                       <div class="publication-link">
-                         @if (!empty($publication->name))
-                           {{{ $publication->name }}}:&nbsp;&nbsp;
+                         @if (!empty($publication->publication) && !empty($publication->publication->name))
+                          {{{ $publication->publication->name }}}:&nbsp;&nbsp;
                          @endif       
                          @if (empty($publication->article_clean_url))
                            {{{ $publication->article_title}}} (no weblink provided)
