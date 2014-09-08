@@ -80,7 +80,7 @@
         </div>
 
         <p class="top-buffer">
-          {{ nl2br($profile->tech_description) }}
+          {{ nl2br(e($profile->tech_description)) }}
         </p>
 
         <p class="top-buffer"><strong>Market Applications:</strong></p>
@@ -343,7 +343,7 @@
               <div class="profile-kp bottom-buffer">
                 <div class="profile-kp-info">
                    @if (!empty($profile->fs_extra_info))
-                     {{ nl2br($profile->fs_extra_info) }}
+                     {{ nl2br(e($profile->fs_extra_info)) }}
                    @else
                      No info specified
                    @endif 
