@@ -13,7 +13,7 @@
     <meta name="description" content="Motionry is changing the way people connect to innovate.  We offer the only platform that connects the world's technologists, researchers and entrepreneurs developing sustainable technologies.">
     <meta name="author" content="Motionry">
 
-    <link rel="SHORTCUT ICON" HREF="favicon.png? {{ Config::get('cassini.asset_version') }}">
+    <link rel="SHORTCUT ICON" HREF="{{ URL::to('/favicon.png?' . Config::get('cassini.asset_version')) }}">
 
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/custom.css?'. Config::get('cassini.asset_version')) }}

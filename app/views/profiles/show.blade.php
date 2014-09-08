@@ -267,11 +267,13 @@
 
               <div id="carousel" class="carousel slide" data-interval="false">
                 <!-- Indicators -->
-                <ol class="carousel-indicators">
-                  @foreach ($profile->realPhotos as $idx => $photo)
-                    <li data-target="#carousel" data-slide-to="{{ $idx }}" class="{{ $idx == 0 ? 'active' : '' }}"></li>
-                  @endforeach
-                </ol>
+                @if (sizeof($profile->realPhotos) > 1)
+                  <ol class="carousel-indicators">
+                    @foreach ($profile->realPhotos as $idx => $photo)
+                      <li data-target="#carousel" data-slide-to="{{ $idx }}" class="{{ $idx == 0 ? 'active' : '' }}"></li>
+                    @endforeach
+                  </ol>
+                @endif
 
                 <div class="carousel-inner">
                 @foreach ($profile->realPhotos as $idx => $photo)
@@ -281,6 +283,7 @@
                 @endforeach
               </div>
 
+              @if (sizeof($profile->realPhotos) > 1)
                 <!-- Controls -->
                 <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left"></span>
@@ -288,6 +291,7 @@
                 <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
+              @endif
               </div><!--/#carousel-->
 
               <span>

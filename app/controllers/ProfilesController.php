@@ -156,7 +156,7 @@ class ProfilesController extends BaseController {
   {
     $profile = Profile::with(['keypersons','institution','sectors','applications','publications.publication','presentations','awards','realPhotos'])->find($id);
 
-    if ($profile->status !== 'PUBLISHED' and !$profile->isEditor(Auth::user()))
+    if (!$profile || ($profile->status !== 'PUBLISHED' and !$profile->isEditor(Auth::user())))
       App::abort('404');
 
     // check permissions
