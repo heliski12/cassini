@@ -90,6 +90,10 @@ footer {
 	margin-right: auto;
 }
 
+h4 {
+ color: #F5A623 !important;
+}
+
 /**************************************************Tablet & Destop**/
 
 @media only screen and (min-width : 768px) {

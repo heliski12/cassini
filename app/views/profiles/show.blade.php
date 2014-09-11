@@ -253,7 +253,7 @@
                 @endforeach
               </ul>
             @else
-              <p>This profile has no presentations</p>
+              <p>This profile has no awards</p>
             @endif
           </div>
         </div>
