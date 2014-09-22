@@ -3,38 +3,51 @@
   <head>
     <title>
       @section('title')
-        Motionry Marketplace
+        Motionry: Connecting the World's Researchers and Tech Entrepreneurs
       @show
     </title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="SHORTCUT ICON" HREF="favicon.png?2">
+    <link rel="SHORTCUT ICON" HREF="favicon.png?4">
 
     {{ HTML::style('css/bootstrap.min.css') }}
-    {{ HTML::style('css/fonts.css') }}
-    {{ HTML::style('css/jquery.fullPage.css') }}
-    {{ HTML::style('css/global.css?2') }}
-    
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    {{ HTML::style('css/custom.css?'. Config::get('cassini.asset_version')) }}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <meta property="og:image" content="{{ URL::to('/img/Black-Motionry-Logo.png') }}">
+    <meta property="og:site_name" content="Motionry Marketplace" >
+    <meta property="og:type" content="website" >
+    <meta property="og:url" content="{{ URL::current() }}" >
+    <meta name="twitter:card" content="summary" >
+    <meta name="twitter:domain" content="www.motionry.com" >
+    <meta name="twitter:site" content="@Motionry" >
+    <meta name="twitter:site:id" content="784612502">
+    <meta name="twitter:creator" content="@Motionry" >
+    <meta name="description" content="Motionry is changing the way people connect to innovate.  We offer the only platform that connects the world's technologists, researchers and entrepreneurs developing sustainable technologies.">
+    <meta property="og:title" content="Motionry Marketplace">
+    <meta property="og:description" content="Motionry is changing the way people connect to innovate.  We offer the only platform that connects the world's technologists, researchers and entrepreneurs developing sustainable technologies.">
+    
 
     @if (app()->env == 'production')
     <script type="text/javascript">
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34438676-1']);
+      _gaq.push(['_setDomainName', 'motionry.com']);
+      _gaq.push(['_trackPageview']);
 
-      ga('create', 'UA-44904108-1', 'marketplace.motionry.com');
-      ga('send', 'pageview');
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
 
-    </script>
-
+     </script>
     @endif
 
       <script type="text/javascript">
@@ -42,33 +55,16 @@
       </script>
     
   </head>
-
   <body>
-    @section('wrap_open')
-      <div class="wrap">
-    @show
 
-      <div class="container-full header">
-        <div class="row">
-          <div class="col-md-2">
-            <a href="http://www.motionry.com"><img alt="Motionry Logo" src="{{ asset('img/motionry.jpg') }}"/></a>
-          </div>
-        </div>
-      </div>
-
-      @yield('content')
-
-    </div>
+    @yield('content')
 
     @yield('modal')
 
-    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js') }}
-    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js') }}
+    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }} 
+    {{ HTML::script('js/jQuery.BlackAndWhite.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/jquery.fullPage.min.js') }}
-    {{ HTML::script('js/public.js?2') }}
-
-    @yield('js')
-
+    {{ HTML::script('js/initializer.js?'. Config::get('cassini.asset_version')) }}
+    
   </body>
 </html>
