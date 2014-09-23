@@ -245,19 +245,19 @@ div.profile-tabs .nav {
 
 .tab-content { 
   margin-bottom: 20px;
-  background: #F0F0F0;
+  /*background: #F0F0F0;*/
 }
 .nav-tabs a {
   font-size: 14px;
   color: #000;
 }
 
-.nav-tabs>li {
-  margin-bottom: -11px;
-}
+/*.nav-tabs>li {*/
+  /*margin-bottom: -11px;*/
+/*}*/
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
-  background: #F0F0F0;
+  /*background: #F0F0F0;*/
   outline: 0;
 }
 
