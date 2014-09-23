@@ -132,17 +132,8 @@ div.row.my-profiles-new {
   font-weight: 400;
 }
 
-div.my-profiles {
-  margin-top: 20px;
-}
-
 img.my-profiles {
   max-width: 160px;
-}
-
-div.my-profile {
-  margin-top: 30px;
-  margin-bottom: 30px;
 }
 
 .add-secondary-editor { 
