@@ -1,11 +1,11 @@
-@extends('layouts.private')
+@extends('layouts.master')
 
 @section('title')
  Motionry Innovators
 @stop
 
 @section('content')
-<div class="container-full">
+
   <div class="marketplace">
     <div class="marketplace-search">
 
@@ -13,13 +13,9 @@
       <div class="panel panel-default">
         <div id="collapse_search" class="panel-collapse collapse in">
           <div class="panel-body">
-            <div class="row">
-              <div class="col-md-10 col-md-offset-1">
-                <h4>Welcome.  You can easily customize your search results.</h4>
-              </div>
-            </div>
-            {{ Form::open([ 'url' => route('marketplace'), 'id' => 'marketplace_search', 'role' => 'form', 'method' => 'get' ]) }}
-            <div class="row">
+           <h1 class="welcome">Welcome. You can easily customize your search results.</h1>  
+             {{ Form::open([ 'url' => route('marketplace'), 'id' => 'marketplace_search', 'role' => 'form', 'method' => 'get', 'class' => 'top-buffer' ]) }}
+              <div class="row">
               <div class="col-md-4">
                 <h5>Market sector</h5>
                 <div class="row">
@@ -50,7 +46,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> <!-- row -->
             <div class="row search-input">
               <div class="col-md-4">
                 <div class="row">
@@ -63,18 +59,18 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> <!-- col-md-4 -->
               <div class="col-md-4">
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-12 clear-fields">
                     <a href="#" id="clear_fields">Clear search fields</a>
                   </div>
                 </div>
               </div>
             </div>
             {{ Form::close() }}
-          </div>
-        </div>
+          </div> <!-- panel-body -->
+        </div> <!-- collapse-search -->
         <div class="panel-heading">
           <div class="row">
             <div class="col-md-12">
@@ -91,83 +87,74 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    </div>
+        </div> <!-- panel-heading -->
+      </div> <!-- panel-default -->
+    </div> <!-- panel-group -->
+  </div> <!-- marketplace-search -->
     <div class="marketplace-results">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <h4>Innovator Listing</h4>
+          <h2>Innovator Listing</h2>
         </div>
-      </div>
-      @if (!empty($results) && sizeof($results) > 0)
-        <div class="row">
-            <div class="col-md-4">
-                {{ $results->links('partials.pagination') }}
-            </div>
-        </div>
-        @foreach ($results as $idx => $result)
-          <div class="row marketplace-result">
-            <div class="col-md-1 col-sm-2 col-xs-12">
-              <a href="{{ route('show_profile', [ 'id' => $result->id ]) }}">
-                @if (!empty($result->keypersons) and sizeof($result->keypersons) > 0)
-                  <img class="marketplace-result-img" src="{{ asset($result->keypersons[0]->photo->url('small')) }}"></img>
-                @else
-                  <img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.jpg') }}"></img>
-                @endif
-              </a>
-            </div>
-            <div class="col-md-5 col-sm-5 col-xs-12 kp-name">
-              <a class="title" href="{{ route('show_profile', [ 'id' => $result->id ]) }}">{{ $result->tech_title }}</a><br/>
+      </div> <!-- row -->
+        @if (!empty($results) && sizeof($results) > 0)
+         <div class="pagination-align">
+          {{ $results->links('partials.pagination') }}
+         </div> <!-- pagination-align -->
+          @foreach ($results as $idx => $result)
+        <div class="row marketplace-result">
+          <div class="col-md-1 col-sm-2 col-xs-12">
+            <a href="{{ route('show_profile', [ 'id' => $result->id ]) }}">
               @if (!empty($result->keypersons) and sizeof($result->keypersons) > 0)
-                {{ $result->keypersons[0]->full_name }}<br/>
-              @endif
-              @if ($result->innovator_type === 'RESEARCHER')
-                @if (!empty($result->institution))
-                  {{ $result->institution->name }}<br/>
-                  {{ $result->institution_department }}<br/>
-                @endif
+                <img class="marketplace-result-img" src="{{ asset($result->keypersons[0]->photo->url('small')) }}"></img>
               @else
-                {{ $result->organization }}<br/>
+                <img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.jpg') }}"></img>
               @endif
-            </div>
+            </a>
+          </div> <!-- col-md-1 -->
+          <div class="col-md-5 col-sm-5 col-xs-12 kp-name">
+            <a class="title" href="{{ route('show_profile', [ 'id' => $result->id ]) }}">{{ $result->tech_title }}</a><br/>
+            @if (!empty($result->keypersons) and sizeof($result->keypersons) > 0)
+              {{ $result->keypersons[0]->full_name }}<br/>
+            @endif
+            @if ($result->innovator_type === 'RESEARCHER')
+              @if (!empty($result->institution))
+                {{ $result->institution->name }}<br/>
+                {{ $result->institution_department }}<br/>
+              @endif
+            @else
+              {{ $result->organization }}<br/>
+            @endif
+          </div> <!-- kp-name -->
             <div class="col-md-5 col-sm-4 col-xs-12">
-              <div class="row"><h5>Market Sectors</h5></div>
-              <div class="row">
+              <h5 class="top-sm-buffer">Market Sectors</h5>
+              <div>
                 @foreach ($result->sectors as $sector)
-                <a href="{{ route('marketplace', [ 'm[]' => $sector->id, 'a' => 'Search' ]) }}"><span class="label label-primary sector-pill">{{ $sector->name }}</span></a>
+                <a href="{{ route('marketplace', [ 'm[]' => $sector->id, 'a' => 'Search' ]) }}"><span class="industry">{{ $sector->name }}</span></a>
                 @endforeach
               </div>
-              <div class="row"><h5>Applications</h5></div>
-              <div class="row">
+              <div><h5 class="top-sm-buffer">Applications</h5></div>
+              <div>
                 @foreach ($result->applications as $application)
-                <a href="{{ route('marketplace', [ 'q' => $application->name, 'a' => 'Search' ]) }}"><span class="label label-primary sector-pill">{{ $application->name }}</span></a>
+                <a href="{{ route('marketplace', [ 'q' => $application->name, 'a' => 'Search' ]) }}"><span class="industry">{{ $application->name }}</span></a>
                 @endforeach
               </div>
-            </div>
-          </div>
-          @if ($idx < sizeof($results) - 1)
-            <div class="row">
-              <div class="col-md-12">
-                <hr/>
-              </div>
-            </div>
-          @endif
-        @endforeach
-        <div class="row">
-            <div class="col-md-4">
+            </div> <!-- col-md-5 -->
+          </div> <!-- marketplace-result -->
+            @endforeach
+
+            <div class="pagination-align">
                 {{ $results->links('partials.pagination') }}
+            </div> <!-- pagination-align -->
+            @else  <!-- results -->
+            <div class="col-xs-12">
+              No results found! 
             </div>
-        </div>
-      @else
-      <div class="row">
-      <div class="col-md-12">No results found!</div> 
-      </div>
-      @endif
-    </div>
-  </div>
-</div>
+            @endif <!-- results -->
+          </div> <!-- marketplace-results -->
+          
+        </div> <!-- marketplace -->
+
 @stop
 
 
