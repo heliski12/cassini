@@ -1,43 +1,40 @@
-@extends('layouts.private')
+@extends('layouts.master')
 
 @section('content')
 
-  <div class="container-full">
     <div class="create-profile">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h4>Welcome to the private beta.  You are just minutes away from establishing your profile.</h4>
-      </div> 
-    </div>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2 steps-nav">
-        <ul class="steps">
-          <li class="{{ $step == 1 ? 'active' : '' }}">1</li>
-          <li class="{{ $step == 2 ? 'active' : '' }}">2</li>
-          <li class="{{ $step == 3 ? 'active' : '' }}">3</li>
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2 steps-nav">
-          <ul class="step-titles">
-            <li class="{{ $step == 1 ? 'active' : '' }}">Contact</li>
-            <li class="{{ $step == 2 ? 'active' : '' }}">Technology or Research</li>
-            <li class="{{ $step == 3 ? 'active' : '' }}">Documents</li>
-          </ul>
-      </div>
-    </div>
+
+            <h1 class="welcome">Welcome to the private beta. You are just minutes away from establishing your profile.</h1>
+
+          <div id="steps-wrap">
+            <div class="steps-nav">
+              <ul class="steps">
+                <li class="{{ $step == 1 ? 'active' : '' }}">1</li>
+                <li class="{{ $step == 2 ? 'active' : '' }}">2</li>
+                <li class="{{ $step == 3 ? 'active' : '' }}">3</li>
+              </ul>
+            </div>
+
+
+
+            <div class="steps-nav">
+              <ul class="step-titles">
+                <li class="{{ $step == 1 ? 'active' : '' }}">Contact</li>
+                <li class="{{ $step == 2 ? 'active' : '' }}">Technology or Research</li>
+                <li class="{{ $step == 3 ? 'active' : '' }}">Documents</li>
+              </ul>
+            </div>
+            </div>
 
     @if (!$errors->isEmpty())
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-xs-12">
         <div class="alert alert-danger">{{ $errors->first() }}</div>
       </div>
     </div>
     @endif
 
     {{ Form::open([ 'url' => route('store_profile', $step), 'files' => true, 'id' => 'create_profile_form', 'role' => 'form', 'class' => ($step == 1) ? 'form-horizontal' : '' ]) }}
-    {{-- Form::model($profile, [ 'route' => ['store_profile', $step ], 'id' => 'create_profile_form', 'role' => 'form', 'class' => ($step == 1) ? 'form-horizontal' : '' ]) --}}
 
     <input type="hidden" name="id" value="{{$profile->id}}"/>
     <input type="hidden" name="edit" value="{{ Request::segment(1) == 'edit-profile' }}" />
@@ -46,36 +43,43 @@
 
 @yield('form')
 
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-2 col-md-offset-1">
-            @if ($step > 1)
-            {{ Form::submit('&laquo; Previous', [ 'class' => 'btn btn-primary', 'name' => 'previous' ] ) }} 
-            @else
-            &nbsp;
-            @endif
-          </div>
+      @if ($step == 1)
 
-          <div class="col-md-2 col-md-offset-6 profile-next">
-            @if ($step < 3)
-              {{ Form::submit('Save &amp; Next &raquo;', [ 'class' => 'btn btn-primary step' . $step, 'name' => 'next' ] ) }} 
-            @else
-              <div id="clicker">
-                {{ Form::submit('Publish Profile', [ 'class' => 'btn btn-primary disabled', 'id' => 'submit_profile', 'name' => 'submit' ]) }}
-              </div>
-            @endif
-          </div>
+        <div class="pull-right">
+          {{ Form::submit('Save &amp; Next &raquo;', [ 'class' => 'btn btn-primary step1', 'name' => 'next' ] ) }} 
         </div>
-      </div>
+
+      @elseif ($step == 2)
+        <ul class="profile-nav pull-right"> 
+          <li> 
+            {{ Form::submit('&laquo; Previous', [ 'class' => 'btn btn-primary', 'name' => 'previous' ] ) }} 
+          </li>
+          <li>
+            <div class="profile-next">
+            {{ Form::submit('Save &amp; Next &raquo;', [ 'class' => 'btn btn-primary step2', 'name' => 'next' ] ) }} 
+            </div>
+          </li>
+        </ul>
+      @else
+          <ul class="profile-nav pull-right"> 
+            <li> 
+            {{ Form::submit('&laquo; Previous', [ 'class' => 'btn btn-primary', 'name' => 'previous' ] ) }} 
+            </li>
+            <li>
+              <div class="profile-next">
+                <div id="clicker">
+                  {{ Form::submit('Publish Profile', [ 'class' => 'btn btn-primary disabled', 'id' => 'submit_profile', 'name' => 'submit' ]) }}
+                </div>
+              </div>
+            </li>
+          </ul>
+      @endif
 
     </div>
-
-
 
     {{ Form::close() }}
     
     </div> <!-- /.create-profile -->
-  </div><!-- /.container-full -->
 
   @yield('extra_forms')
 
