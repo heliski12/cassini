@@ -442,7 +442,7 @@ img.BWFilter.BWfade {
 .bwWrapper {
 	position: relative;
 	display: block;
-	margin-bottom: 10px;
+  margin: 30px 30px 40px 30px;
 }
 
 .industry {
