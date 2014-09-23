@@ -285,6 +285,13 @@ html .btn-warning {
 .error-text { text-align: center; font-size: 24px; font-weight: 700; }
 .error-text a { color: #560812; }
 
+.error-message {
+  color: #a94442;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+  
+
 
 
 
