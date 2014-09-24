@@ -33,7 +33,7 @@
               @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0 and !empty($profile->keypersons[0]->photo_file_name))
                 <img class="marketplace-result-img" src="{{ asset($profile->keypersons[0]->photo->url('small')) }}"></img>
               @else
-                <img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.jpg') }}"></img>
+                <img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.png') }}"></img>
               @endif
             </div>
 

@@ -50,7 +50,7 @@
                 @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0)
                   <img class="my-profiles" src="{{ asset($profile->keypersons[0]->photo->url('small')) }}" />
                 @else
-                  <img class="my-profiles" src="{{ URL::to('/img/blank-avatar.jpg') }}" />
+                  <img class="my-profiles" src="{{ URL::to('/img/blank-avatar.png') }}" />
                 @endif
               </a>
             </div>

@@ -108,7 +108,7 @@
               @if (!empty($result->keypersons) and sizeof($result->keypersons) > 0)
                 <img class="marketplace-result-img" src="{{ asset($result->keypersons[0]->photo->url('small')) }}"></img>
               @else
-                <img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.jpg') }}"></img>
+                <img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.png') }}"></img>
               @endif
             </a>
           </div> <!-- col-md-1 -->
