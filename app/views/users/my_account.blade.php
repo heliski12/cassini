@@ -40,6 +40,8 @@
             <div class="col-xs-12 col-sm-8">
               @if (!empty($profile->tech_title))
                   <h4><a href="{{ route('show_profile', [ $profile->id ]) }}">{{ $profile->tech_title }}</a></h4>
+              @else
+                  <h4><a href="{{ route('show_profile', [ $profile->id ]) }}">[[ no title yet ]]</a></h4>
               @endif
               @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0 and trim($profile->keypersons[0]->full_name))
                 {{ $profile->keypersons[0]->full_name }}<br/>
