@@ -33,7 +33,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="" class="margin-fix">Market regions</label>
-                  <select class="selectpicker form-control" multiple="multiple" title="Select all that apply..." name="region_ids[]"><option value="4">Africa</option><option value="9">Asia</option><option value="5">Australia</option><option value="8">China</option><option value="2">Europe</option><option value="3">India</option><option value="6">Latin America</option><option value="7">Middle East</option><option value="1">North America</option></select> 
+                  {{ Form::select('region_ids[]', SelectHelper::get_region_options(), $profile->regionIds, [ 'class' => 'selectpicker form-control', 'multiple' => 'multiple', 'title' => 'Select all that apply...' ] ) }}
                 </div>
               </div>
 

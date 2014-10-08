@@ -33,12 +33,17 @@
               @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0 and !empty($profile->keypersons[0]->photo_file_name))
                 <img class="marketplace-result-img" src="{{ asset($profile->keypersons[0]->photo->url('small')) }}"></img>
               @else
-                <img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.jpg') }}"></img>
+                <img class="marketplace-result-img" src="{{ URL::to('/img/blank-avatar.png') }}"></img>
               @endif
             </div>
 
             <div class="col-xs-12 col-sm-8">
-              @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0)
+              @if (!empty($profile->tech_title))
+                  <h4><a href="{{ route('show_profile', [ $profile->id ]) }}">{{ $profile->tech_title }}</a></h4>
+              @else
+                  <h4><a href="{{ route('show_profile', [ $profile->id ]) }}">[[ no title yet ]]</a></h4>
+              @endif
+              @if (!empty($profile->keypersons) and sizeof($profile->keypersons) > 0 and trim($profile->keypersons[0]->full_name))
                 {{ $profile->keypersons[0]->full_name }}<br/>
               @endif
               @if ($profile->innovator_type === 'RESEARCHER')

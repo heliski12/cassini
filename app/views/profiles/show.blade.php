@@ -314,7 +314,7 @@
                     <div class="row">
                       <div class="col-xs-12 img-box">
                         @if (empty($keyperson->photo_file_name))
-                        <img src="{{ asset('/img/blank-avatar.jpg') }}" alt="{{{ $keyperson->full_name }}}" />
+                        <img src="{{ asset('/img/blank-avatar.png') }}" alt="{{{ $keyperson->full_name }}}" />
                         @else
                         <img src="{{ asset($keyperson->photo->url('small')) }}" alt="{{{ $keyperson->full_name }}}" />
                         @endif
