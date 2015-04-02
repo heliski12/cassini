@@ -65,6 +65,8 @@
     {{ HTML::script('js/jQuery.BlackAndWhite.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
     {{ HTML::script('js/initializer.js?'. Config::get('cassini.asset_version')) }}
+
+	@yield('js')
     
   </body>
 </html>

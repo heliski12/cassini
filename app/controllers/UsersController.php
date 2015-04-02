@@ -141,6 +141,31 @@ class UsersController extends BaseController {
 
   public function pcontact()
   {
+
+	$rules = [
+		'message' => 'required',
+		'name' => 'required',
+		'email' => 'required|email',
+		'challenge' => 'required',
+	];
+
+    $v = Validator::make(Input::all(), $rules);
+
+	if ($v->fails())
+	{
+		Input::flash();
+		return Redirect::to('/')->with('errors', $v->messages());
+	}
+
+	$challenge = Input::get('challenge');
+
+	$storedChallenge = Session::get('challenge');
+
+	if (!$storedChallenge || $challenge != $storedChallenge) {
+		Input::flash();
+		return Redirect::to('/')->with('errors', new Illuminate\Support\MessageBag(['challenge' => 'Incorrect.  Try again.'])); 
+	}
+
     $user_message = Input::get('message');
     $name = Input::get('name');
     $email = Input::get('email');

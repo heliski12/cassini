@@ -98,9 +98,10 @@
         <div class="modal-body email">
           This message will be sent to Motionry.  How can we help you?
           <br/><br/>
-          Your name: <input name="name" class="form-control" type="text"></input><br/>
-          Your email: <input name="email" class="form-control" type="email"></input><br/>
-          Your message: <textarea id="message" name="message" class="form-control" rows="10"></textarea>
+		  <span class="{{ $errors->has('name') ? 'alert-danger' : '' }}">Your name: {{ $errors->has('name') ? $errors->first('name') : '' }}</span> <input name="name" class="form-control" type="text" value="{{ Input::old('name') }}"></input><br/>
+		  <span class="{{ $errors->has('email') ? 'alert-danger' : '' }}">Your email: {{ $errors->has('email') ? $errors->first('email') : '' }}</span> <input name="email" class="form-control" type="email" value="{{ Input::old('email') }}"></input><br/>
+		  <span class="{{ $errors->has('message') ? 'alert-danger' : '' }}">Your message: {{ $errors->has('message') ? $errors->first('message') : '' }}</span> <textarea id="message" name="message" class="form-control" rows="10" >{{ Input::old('message') }}</textarea><br/>
+		  <span class="{{ $errors->has('challenge') ? 'alert-danger' : '' }}">What is {{{ $challenge }}}? {{ $errors->has('challenge') ? $errors->first('challenge') : '' }}</span> <input type="text" name="challenge" class="form-control" ></input>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -110,4 +111,15 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+@stop
+
+@section('js')
+<script type="text/javascript">
+	$(function() {
+		var contact = {{ $errors->isEmpty() ? 'false' : 'true' }};
+		if (contact) {
+			$("#contact").modal();
+		}
+	});
+</script>
 @stop

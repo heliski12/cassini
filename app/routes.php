@@ -25,7 +25,9 @@ Route::get('/', function()
     }
   }
 
-	return View::make('public.landing');
+  $challenge = get_challenge();
+
+  return View::make('public.landing')->with('challenge', $challenge); 
 });
 
 Route::get('signup', function()
